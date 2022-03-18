@@ -29,7 +29,7 @@ $ git clone git@github.com:argonne-lcf/ai-testbed-userdocs.git
 To install `mkdocs` in the current environment: 
 
 ```
-$ cd alcf-userguide
+$ cd ai-testbed-userdocs
 $ make install-dev
 ```
 
