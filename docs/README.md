@@ -45,7 +45,7 @@ $ make serve
 * All commits must have the commit comment
 * Create your own branch from the main branch.  For this writing we are using YOURBRANCH as an example.
 ```
-$ cd alcf-userguide
+$ cd ai-testbed-userdocs
 $ git fetch --all
 $ git checkout main
 $ git pull origin main
@@ -54,7 +54,7 @@ $ git push -u origin YOURBRANCH
 ```
 * Commit your changes to the remote repo
 ```
-$ cd alcf-userguide
+$ cd ai-testbed-userdocs
 $ git status                         # check the status of the files you have editted
 $ git commit -a -m "Updated docs"    # preferably one issue per commit
 $ git status                         # should say working tree clean
