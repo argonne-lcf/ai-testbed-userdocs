@@ -19,7 +19,10 @@ $ source env/bin/activate
 
 ### Git
 
-Using Git ssh. Make sure you add ssh public key to your profile (https cloning to be deprecated soon)
+Using Git ssh. Make sure you add ssh public key to your profile.
+
+Https cloning can be used with a Personal Access Token.
+
 ```
 $ git clone git@github.com:argonne-lcf/ai-testbed-userdocs.git
 ```
@@ -35,7 +38,10 @@ $ make install-dev
 
 ### Preview the Docs Locally
 
+This launches a server.  Do this in a seperate terminal.
+
 Run `mkdocs serve` or `make serve` to auto-build and serve the docs for preview in your web browser.
+
 ```
 $ make serve
 ```
@@ -44,6 +50,7 @@ $ make serve
 
 * All commits must have the commit comment
 * Create your own branch from the main branch.  For this writing we are using YOURBRANCH as an example.
+
 ```
 $ cd ai-testbed-userdocs
 $ git fetch --all

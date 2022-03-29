@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: AI Testbed User Guide
+nav:
+  - Home: README.md
+  - SambaNova:
+    - SambaNova: sambanova/sambanova.md
