@@ -192,35 +192,35 @@ Arguments
 |------------------------|-----------|--------------------------------|
 | --b                    | 1         | Batch size for training        |
 |                        |           |                                |
-| \--mb                  | None      | Microbatch size for training   |
+| --mb                   | None      | Microbatch size for training   |
 |                        |           |                                |
 |                        |           | **Note: Do not use or set only |
 |                        |           | to 1.**                        |
 |                        |           |                                |
-| \--lr                  | 0.01      | Learning rate for training     |
+| --lr                   | 0.01      | Learning rate for training     |
 |                        |           |                                |
-| \--momentum            | 0.0       | Momentum value for training    |
+| --momentum             | 0.0       | Momentum value for training    |
 |                        |           |                                |
-| \--weight-decay        | 0.01      | Weight decay for training      |
+| --weight-decay         | 0.01      | Weight decay for training      |
 |                        |           |                                |
-| \-n,                   | 100       | Number of iterations to run    |
-| \--num-iterations      |           | the pef for                    |
+| -n,                    | 100       | Number of iterations to run    |
+| --num-iterations       |           | the pef for                    |
 |                        |           |                                |
-| \-e,                   | 1         | Number epochs for training     |
-| \--num-epochs          |           |                                |
+| -e,                    | 1         | Number epochs for training     |
+| --num-epochs           |           |                                |
 |                        |           |                                |
-| \--log-path            | 'check    | Log path                       |
+| --log-path             | 'check    | Log path                       |
 |                        | points'   |                                |
 |                        |           |                                |
-| \--data-path           | './data'  | Data path                      |
+| --data-path            | './data'  | Data path                      |
 |                        |           |                                |
 |                        |           |                                |
-| \--num-workers         | 0         | Number of workers              |
+| --num-workers          | 0         | Number of workers              |
 |                        |           |                                |
-| \--measure-train-      | None      | Measure training performance   |
+| --measure-train-       | None      | Measure training performance   |
 | performance            |           |                                |
 |                        |           |                                |
-| \--data-folder         | 'mnist_   | Folder containing mnist data   |
+| --data-folder          | 'mnist_   | Folder containing mnist data   |
 |                        | data'     |                                |
 |                        |           |                                |
 
@@ -341,15 +341,13 @@ srun python lenet3d.py test -p out/lenet3d/lenet3d.pef
 srun python lenet3d.py measure-performance -p out/lenet3d/lenet3d.pef
 ```
 
-
 **MNIST Using Feed Forward Network**
 
 Change directory (if necessary)
 
 ```bash
+cd ~/apps/starters/pytorch/
 ```
-
-\$ cd \~/apps/starters/pytorch/
 
 **Arguments**
 
@@ -357,17 +355,16 @@ This is not an exhaustive list of arguments.
 
 Arguments
 
-  --------------------------------------------------------------------------
-  **Argument**            **Default**   **Help**
-  ----------------------- ------------- ------------------------------------
-  \--lr                   0.001         Learning rate for training
-
-  \--momentum             0.0           Momentum value for training
-
-  \--weight-decay         1e-4          Weight decay for training
-
-  -e or \--num-epochs     1             Number epochs for training
-  --------------------------------------------------------------------------
+| Argument               | Default      | Help                           |
+|------------------------|--------------|--------------------------------|
+| --lr                   | 0.001        | Learning rate for training     |
+|                        |              |                                |
+| --momentum             | 0.0          | Momentum value for training    |
+|                        |              |                                |
+| --weight-decay         | 1e-4         | Weight decay for training      |
+|                        |              |                                |
+| -e or --num-epochs     | 1            | Number epochs for training     |
+|                        |              |                                |
 
 Run these commands:
 
