@@ -142,7 +142,7 @@ cd ~/
 cp -r /opt/sambaflow/apps/ .
 ```
 
-#### LeNet
+### LeNet
 
 Change directory
 
@@ -150,7 +150,7 @@ Change directory
 cd ~/apps/starters/pytorch/
 ```
 
-**Arguments**
+#### LeNet Arguments
 
 This is not an exhaustive list of arguments.
 
@@ -292,7 +292,7 @@ elif args.command == "measure-performance":
         common_app_driver(args, model, inputs, optimizer, name='ffn_mnist_torch', app_dir=utils.get_file_dir(__file__))
 ```
 
-**LeNet3D**
+### LeNet3D
 
 Change directory (if necessary)
 
@@ -309,7 +309,7 @@ srun python lenet3d.py test -p out/lenet3d/lenet3d.pef
 srun python lenet3d.py measure-performance -p out/lenet3d/lenet3d.pef
 ```
 
-**MNIST Using Feed Forward Network**
+### MNIST Using Feed Forward Network
 
 Change directory (if necessary)
 
@@ -317,7 +317,7 @@ Change directory (if necessary)
 cd ~/apps/starters/pytorch/
 ```
 
-**Arguments**
+#### MNIST Arguments
 
 This is not an exhaustive list of arguments.
 
@@ -579,7 +579,7 @@ Change directory (if necessary)
 cd ~/apps/starters/pytorch/
 ```
 
-**Arguments**
+#### Logistic Regression Arguments
 
 This is not an exhaustive list of arguments.
 
