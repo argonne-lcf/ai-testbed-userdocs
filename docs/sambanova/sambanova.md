@@ -23,10 +23,10 @@ the ssh "-v" switch to debug ssh problems.
 
 ### Aliases
 
-The SambaNova system that has 2 nodes sm-01 and sm-02. Host names for
+The SambaNova system that has two nodes **sm-01** and **sm-02**. Host names for
 SambaNova are [sm-01.cels.anl.gov](http://sm-01.cels.anl.gov) and [sm-02.cels.anl.gov](http://sm-02.cels.anl.gov)
 
-This would be good to put into your homes computer .bashrc file.  Or,
+This would be good to put into your **homes** computer .bashrc file.  Or,
 execute them from the command line.
 
 ```bash
@@ -107,7 +107,7 @@ the answers from the CPU and SambaNova RDU and will raise errors if any
 discrepancies are found. Pass the pef file generated above as the input.
 
 ```bash
-srun python myapp.py test --pef="out/myapp/myapp.pef"
+srun python myapp.py test --pef="pef/myapp/myapp.pef"
 ```
 
 #### Run
@@ -115,7 +115,7 @@ srun python myapp.py test --pef="out/myapp/myapp.pef"
 This will run the application on SN nodes.
 
 ```bash
-srun python myapp.py run --pef="out/myapp/myapp.pef"
+srun python myapp.py run --pef="pef/myapp/myapp.pef"
 ```
 
 #### Measure Performance
@@ -124,7 +124,7 @@ This step will report the measured performance. The parameters depend on
 the model and can include latency, samples/sec.
 
 ```bash
-srun python myapp.py measure-performance --pef="out/myapp/myapp.pef
+srun python myapp.py measure-performance --pef="pef/myapp/myapp.pef
 ```
 
 **Using the SLURM scheduling system and workload manager for running
@@ -304,9 +304,9 @@ LeNet3D does compile but its "run" command is missing data at this
 time.
 
 ```bash
-srun python lenet3d.py compile --pef-name=lenet3d
-srun python lenet3d.py test -p out/lenet3d/lenet3d.pef
-srun python lenet3d.py measure-performance -p out/lenet3d/lenet3d.pef
+srun python lenet3d.py compile --pef-name=lenet3d --output-folder="pef"
+srun python lenet3d.py test -p pef/lenet3d/lenet3d.pef
+srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
 ```
 
 ### MNIST Using Feed Forward Network
@@ -348,6 +348,7 @@ contents:
 
 ```bash
 #!/bin/sh
+
 python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef"
@@ -471,14 +472,10 @@ cd ~/apps/starters/pytorch/
 Run these commands:
 
 ```bash
-srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist"
---output-folder="pef"
-srun python res_ffn_mnist.py test
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-srun python res_ffn_mnist.py run
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-srun python res_ffn_mnist.py measure-performance
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+srun python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
 To use Slurm, create submit-res_ffn_mnist-job.sh with the following
@@ -487,17 +484,10 @@ contents:
 ```bash
 #!/bin/sh
 
-python res_ffn_mnist.py compile --pef-name="res_ffn_mnist"
---output-folder="pef"
-
-python res_ffn_mnist.py test
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-
-python res_ffn_mnist.py run
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-
-python res_ffn_mnist.py measure-performance
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
 Then
@@ -616,6 +606,7 @@ To use Slurm, create submit-logreg-job.sh with the following contents:
 
 ```bash
 #!/bin/sh
+
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
 python logreg.py run --pef="pef/logreg/logreg.pef"
