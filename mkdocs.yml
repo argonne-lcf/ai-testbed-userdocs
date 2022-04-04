@@ -3,3 +3,5 @@ nav:
   - Home: README.md
   - SambaNova:
     - SambaNova: sambanova/sambanova.md
+  - Cerebras:
+    - Cerebras: cerebras/cerebras.md
