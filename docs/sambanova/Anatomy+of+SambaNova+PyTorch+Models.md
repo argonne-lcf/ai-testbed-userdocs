@@ -399,25 +399,52 @@ If you ever need to do debugging, you're
 going to prefer creating layers separately
 better.
 
-go ahead and create your own separate
-7:25
-forward method instead of relying on
-7:27
-what's built in
-7:29
-it's a lot easier
-7:31
-here we have out equals and then
-7:35
-the gym one layer and then the regular
-7:38
-layer
-7:39
-and then out equals gym two
-7:42
-and then you return the out okay this
-7:45
-isn't very much work and so here we have
+#### LogReg
+
+There's an initialization method. Declare a few
+layers.
+
+Declare your forward method.
+
+These classes basically only have an
+initialization method and also a forward method.
+
+#### FFNLogReg
+
+Now combine those two networks.
+
+In the initialization method, you
+set up the forward feed network
+and you also set up the logistical
+regression network.
+
+Next is some parameter initialization.
+
+The **forward(...)** method is very
+straightforward.
+Call the
+feedforward network with the inputs
+resulting in
+the variable **out**.
+
+Then you take **out** you run that
+8:59
+through the logistical regression method
+9:02
+with the targets and you get the loss
+9:05
+and now
+9:06
+so here we have the forward method
+9:09
+it combines the feed forward network
+9:12
+with the logistical regression network
+9:15
+and you may return more than one tensor
+9:17
+with your forward method 
+
 
 
 ### sn_boilerplate_other.py
