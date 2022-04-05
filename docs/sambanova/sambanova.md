@@ -23,10 +23,10 @@ the ssh "-v" switch to debug ssh problems.
 
 ### Aliases
 
-The SambaNova system that has 2 nodes sm-01 and sm-02. Host names for
+The SambaNova system that has two nodes **sm-01** and **sm-02**. Host names for
 SambaNova are [sm-01.cels.anl.gov](http://sm-01.cels.anl.gov) and [sm-02.cels.anl.gov](http://sm-02.cels.anl.gov)
 
-This would be good to put into your homes computer .bashrc file.  Or,
+This would be good to put into your **homes** computer .bashrc file.  Or,
 execute them from the command line.
 
 ```bash
@@ -107,7 +107,7 @@ the answers from the CPU and SambaNova RDU and will raise errors if any
 discrepancies are found. Pass the pef file generated above as the input.
 
 ```bash
-srun python myapp.py test --pef="out/myapp/myapp.pef"
+srun python myapp.py test --pef="pef/myapp/myapp.pef"
 ```
 
 #### Run
@@ -115,7 +115,7 @@ srun python myapp.py test --pef="out/myapp/myapp.pef"
 This will run the application on SN nodes.
 
 ```bash
-srun python myapp.py run --pef="out/myapp/myapp.pef"
+srun python myapp.py run --pef="pef/myapp/myapp.pef"
 ```
 
 #### Measure Performance
@@ -124,7 +124,7 @@ This step will report the measured performance. The parameters depend on
 the model and can include latency, samples/sec.
 
 ```bash
-srun python myapp.py measure-performance --pef="out/myapp/myapp.pef
+srun python myapp.py measure-performance --pef="pef/myapp/myapp.pef
 ```
 
 **Using the SLURM scheduling system and workload manager for running
@@ -142,15 +142,15 @@ cd ~/
 cp -r /opt/sambaflow/apps/ .
 ```
 
-#### LeNet
+### LeNet
 
 Change directory
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
-**Arguments**
+#### LeNet Arguments
 
 This is not an exhaustive list of arguments.
 
@@ -292,32 +292,32 @@ elif args.command == "measure-performance":
         common_app_driver(args, model, inputs, optimizer, name='ffn_mnist_torch', app_dir=utils.get_file_dir(__file__))
 ```
 
-**LeNet3D**
+### LeNet3D
 
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 LeNet3D does compile but its "run" command is missing data at this
 time.
 
 ```bash
-srun python lenet3d.py compile --pef-name=lenet3d
-srun python lenet3d.py test -p out/lenet3d/lenet3d.pef
-srun python lenet3d.py measure-performance -p out/lenet3d/lenet3d.pef
+srun python lenet3d.py compile --pef-name=lenet3d --output-folder="pef"
+srun python lenet3d.py test -p pef/lenet3d/lenet3d.pef
+srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
 ```
 
-**MNIST Using Feed Forward Network**
+### MNIST Using Feed Forward Network
 
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
-**Arguments**
+#### MNIST Arguments
 
 This is not an exhaustive list of arguments.
 
@@ -348,6 +348,7 @@ contents:
 
 ```bash
 #!/bin/sh
+
 python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef"
@@ -465,20 +466,16 @@ residual connection.
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 Run these commands:
 
 ```bash
-srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist"
---output-folder="pef"
-srun python res_ffn_mnist.py test
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-srun python res_ffn_mnist.py run
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-srun python res_ffn_mnist.py measure-performance
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+srun python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
 To use Slurm, create submit-res_ffn_mnist-job.sh with the following
@@ -487,17 +484,10 @@ contents:
 ```bash
 #!/bin/sh
 
-python res_ffn_mnist.py compile --pef-name="res_ffn_mnist"
---output-folder="pef"
-
-python res_ffn_mnist.py test
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-
-python res_ffn_mnist.py run
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-
-python res_ffn_mnist.py measure-performance
---pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
 Then
@@ -576,10 +566,10 @@ Log ID initialized to: [wilsonb][python][98357] at
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
-**Arguments**
+#### Logistic Regression Arguments
 
 This is not an exhaustive list of arguments.
 
@@ -616,6 +606,7 @@ To use Slurm, create submit-logreg-job.sh with the following contents:
 
 ```bash
 #!/bin/sh
+
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
 python logreg.py run --pef="pef/logreg/logreg.pef"
@@ -693,7 +684,7 @@ Run these commands for training (compile + train):
 
 ```bash
 srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
-srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --data-dir $DATADIR --log-dir ${OUTDIR} log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
+srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
 Run these commands for inference (compile + test +
@@ -701,6 +692,7 @@ measure-performance):
 
 ```bash
 srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef-name=unet_inf --default-par-factors --output-folder=${OUTDIR}
+srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
 srun python unet.py measure-performance --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
@@ -714,6 +706,7 @@ export DATADIR=/var/tmp/kaggle_3m/
 python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
 python unet.py run --do-train  --in-channels=3  --in-width=32  --in-height=32 --init-features 32 --batch-size=1? --data-dir $DATADIR --log-dir ${OUTDIR}/log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 python unet.py compile --in-channels=3  --in-width=32 --in-height=32 --init-features 32  --batch-size=1  --inference --pef-name=unet_inf  --default-par-factors --output-folder=${OUTDIR}
+python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
 python unet.py measure-performance  --in-channels=3 --in-width=32 --in-height=32  --init-features 32  --batch-size=1 --inference  --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
