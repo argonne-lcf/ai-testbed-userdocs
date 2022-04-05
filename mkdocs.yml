@@ -3,3 +3,4 @@ nav:
   - Home: README.md
   - SambaNova:
     - SambaNova: sambanova/sambanova.md
+    - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy+of+SambaNova+PyTorch+Models.md
