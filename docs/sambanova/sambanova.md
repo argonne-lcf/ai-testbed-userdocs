@@ -147,7 +147,7 @@ cp -r /opt/sambaflow/apps/ .
 Change directory
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 #### LeNet Arguments
@@ -297,7 +297,7 @@ elif args.command == "measure-performance":
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 LeNet3D does compile but its "run" command is missing data at this
@@ -314,7 +314,7 @@ srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 #### MNIST Arguments
@@ -466,7 +466,7 @@ residual connection.
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 Run these commands:
@@ -566,7 +566,7 @@ Log ID initialized to: [wilsonb][python][98357] at
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/pytorch/
+cd ~/apps/starters/
 ```
 
 #### Logistic Regression Arguments
@@ -684,7 +684,7 @@ Run these commands for training (compile + train):
 
 ```bash
 srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
-srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --data-dir $DATADIR --log-dir ${OUTDIR} log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
+srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
 Run these commands for inference (compile + test +
@@ -692,6 +692,7 @@ measure-performance):
 
 ```bash
 srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef-name=unet_inf --default-par-factors --output-folder=${OUTDIR}
+srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
 srun python unet.py measure-performance --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
@@ -705,6 +706,7 @@ export DATADIR=/var/tmp/kaggle_3m/
 python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
 python unet.py run --do-train  --in-channels=3  --in-width=32  --in-height=32 --init-features 32 --batch-size=1? --data-dir $DATADIR --log-dir ${OUTDIR}/log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 python unet.py compile --in-channels=3  --in-width=32 --in-height=32 --init-features 32  --batch-size=1  --inference --pef-name=unet_inf  --default-par-factors --output-folder=${OUTDIR}
+python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
 python unet.py measure-performance  --in-channels=3 --in-width=32 --in-height=32  --init-features 32  --batch-size=1 --inference  --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
