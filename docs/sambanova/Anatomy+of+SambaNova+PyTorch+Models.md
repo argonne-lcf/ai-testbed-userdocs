@@ -372,6 +372,54 @@ class FFNLogReg(nn.Module):
         return X_randn, Y_randint
 ```
 
+This model is a feed forward network
+with logistical regression.
+
+It's declared within classes which is
+highly, highly recommended.
+
+#### FFN
+
+There's an initialization
+method.
+
+Here is a
+good practice. Go
+ahead and create some
+variables within the class.
+They're
+going to be various layers of the model.
+
+It is also possible to use the
+**nn.modules(...)** method
+and create everything and then skip the
+forward section.
+
+If you ever need to do debugging, you're
+going to prefer creating layers separately
+better.
+
+go ahead and create your own separate
+7:25
+forward method instead of relying on
+7:27
+what's built in
+7:29
+it's a lot easier
+7:31
+here we have out equals and then
+7:35
+the gym one layer and then the regular
+7:38
+layer
+7:39
+and then out equals gym two
+7:42
+and then you return the out okay this
+7:45
+isn't very much work and so here we have
+
+
 ### sn_boilerplate_other.py
 
 ```python
