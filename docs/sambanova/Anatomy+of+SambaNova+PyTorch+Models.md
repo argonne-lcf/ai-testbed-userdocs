@@ -119,6 +119,8 @@ if __name__ == '__main__':
     main(sys.argv[1:])
 ```
 
+#### Initial Code
+
 Here we have the main method.
 We're going to set a seed.
 
@@ -154,31 +156,86 @@ SambaNova machine.
 
 Set up the inputs.
 
-There are four key arguments.
+#### Inference
 
-1. --inference
-    1. It can be used both with the
-compile command and the run command.
+The **--inference** argument can be used both with the
+compile and run commands.
 
-    2. When running the code from
+When running the code from
 the command line you're either going to
 compile, test, or run.
 
-    3. With either
+With either
 compile or run
 it's going to be doing inference instead
 of training.
 
-    4. If doing inference,
+If doing inference,
 you don't need an optimizer.
 Use the optimizer for training.
 
+Here sgd is being used as the optimizer.
 
+#### Compile
 
+When you run
+with the **--compile** option, the
+SambaNova system is going to
+compile your model.
+
+The parameters are:
+
+1. model
+2. inputs
+3. optimizer
+4. name
+5. app_dir
+6. config_dict
+7. pef_metadata
+
+#### Test
+
+Checks if the model works.
+
+The ***samba.utils.trace_graph(...)*** method builds the graph that will run on the system.
+
+#### Run
+
+Also calls the samba.utils.trace_graph(...) method to build the graph that will run on the system.
+
+It then calls the **train(...)*** method.
+
+#### Measure Performance
+
+Measures the performance of the model
+
+That's it for main. We are going to
+circle around and come back to it.
 
 ### sn_boilerplate_args.py
 
 ```python
+import argparse
+
+def add_args(parser: argparse.ArgumentParser):
+    """Add common arguments that are used for every type of run."""
+    parser.add_argument('--lr', type=float, default=0.001, help="Learning rate for training")
+    parser.add_argument('--momentum', type=float, default=0.0, help="Momentum value for training")
+    parser.add_argument('--weight-decay', type=float, default=1e-4, help="Weight decay for training")
+    parser.add_argument('-e', '--num-epochs', type=int, default=1)
+    parser.add_argument('--num-features', type=int, default=784)
+    parser.add_argument('--num-classes', type=int, default=10)
+    parser.add_argument('--acc-test', action='store_true', help='Option for accuracy guard test in CH regression.')
+    parser.add_argument('--ffn-dim-1', type=int, default=32)
+    parser.add_argument('--ffn-dim-2', type=int, default=32)
+
+
+def add_run_args(parser: argparse.ArgumentParser):
+    """Add run arguments."""
+    parser.add_argument('--data-folder',
+                        type=str,
+                        default='mnist_data',
+                        help="The folder to download the MNIST dataset to.")
 ```
 
 ### sn_boilerplate_model.py
