@@ -413,12 +413,16 @@ initialization method and also a forward method.
 
 Now combine those two networks.
 
+##### __init__
+
 In the initialization method, you
 set up the forward feed network
 and you also set up the logistical
 regression network.
 
 Next is some parameter initialization.
+
+##### Forward
 
 The **forward(...)** method is very
 straightforward.
@@ -427,24 +431,97 @@ feedforward network with the inputs
 resulting in
 the variable **out**.
 
-Then you take **out** you run that
-8:59
+Then take **out** and run that
 through the logistical regression method
-9:02
-with the targets and you get the loss
-9:05
-and now
-9:06
-so here we have the forward method
-9:09
-it combines the feed forward network
-9:12
-with the logistical regression network
-9:15
-and you may return more than one tensor
-9:17
-with your forward method 
+with the targets and to get the loss.
 
+The forward method
+combines the feed forward network
+with the logistical regression network.
+
+More than one tensor may be returned
+in the forward method.
+
+##### GetFakeInputs
+
+Here's a
+real important method called **get_fake_inputs(...)**.
+
+inputs that's what they are they're fake
+9:25
+they're just random but their size is
+9:27
+important their size is very important
+9:29
+you have to get these right so i just
+9:31
+set it up as a static method so that you
+9:34
+don't have to have an instantiated class
+9:37
+let's scroll up here
+9:39
+so for x
+9:41
+my inputs
+9:42
+okay i'm going to call rand n with these
+9:45
+various arguments okay so back size
+9:48
+number of features
+9:50
+take a look at both x and y
+9:53
+what you'll notice is that the first
+9:55
+dimension of both of those variables is
+9:58
+batch size
+10:00
+my suggestion is just stick to this
+10:02
+format
+10:03
+do it like this and always set batch
+10:05
+then to zero
+
+
+10:07
+this is a classification problem so
+10:10
+we're next going to do some random
+10:12
+integers we're going to call randint
+10:15
+here
+10:16
+random takes as the first parameter the
+10:19
+lower bound of the random numbers and
+10:22
+this number is inclusive and then as the
+10:25
+second parameter it takes the the high
+10:28
+integer that is the desired exclusive
+10:32
+okay so if this high number is 10 it
+10:36
+excludes that and then you're down to
+10:39
+using nine so zero through nine so it's
+10:42
+just like the arrange method in python
+10:45
+here is the size we give it the size
+10:47
+that we want back which is going to be
+10:49
+the batch size and it's a label and we
+10:53
+have that again
 
 
 ### sn_boilerplate_other.py
