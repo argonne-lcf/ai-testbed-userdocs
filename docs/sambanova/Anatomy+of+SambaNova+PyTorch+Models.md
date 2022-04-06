@@ -600,6 +600,104 @@ def test(args: argparse.Namespace, model: nn.Module, inputs: Tuple[samba.SambaTe
         samba.utils.assert_close(gemm1_grad_gold, gemm1_grad_samba, 'ffn__gemm1__weight__grad', threshold=3e-3)
 ```
 
+Here is the fourth and final file.
+
+#### Prepare_dataloader
+
+**Prepare_dataloader(...)**
+is becoming a standard within the
+industry.
+It is very handy. It passes out the
+information from the data sets on a
+batch to batch basis.
+
+That is really
+good when you get onto these AI
+accelerators.
+Actually it's good for even using a
+regular computer like your laptop. It
+helps to organize your code. And it
+makes it very convenient for retrieving
+your data.
+
+Grab the **train_dataset** by using
+**torchvision.datasets.MNIST** with **train=True**.
+
+Then grab the **test_dataset** by using
+**torchvision.datasets.MNIST** with **train=False**.
+
+Now **DataLoader**. This is becoming
+an industry standard. Give it the batch_size.
+This just really works out for data
+pipelining which does get used on the
+the bigger systems and AI accelerators.
+It also works on your laptop.
+
+Lastly, go ahead and
+return both the
+**train_loader** and the **train_loader**.
+
+#### Train
+
+next here we're going to get into the
+12:29
+train method which is used to train the
+12:32
+model
+12:33
+so if you look over here here is our
+12:35
+friend repair data loader so this really
+12:38
+really helps out you got a single line
+12:41
+within your train method for actually
+12:44
+creating both the train loader and also
+12:46
+the test loader
+12:48
+so we grab the total number of steps
+12:51
+we're going to establish a hyper
+12:53
+parameter dictionary and what we're
+12:56
+going to do is we're going to put in
+12:58
+these various arguments here
+13:00
+one of the main uses of the hyper
+13:02
+parameter dictionary is to allow
+13:04
+arguments to be updated during runtime
+13:07
+ensemble flow for example the step
+13:10
+learning rate
+13:11
+and here's pretty much a standard loop
+13:14
+for stepping through your epochs we're
+13:16
+going to enumerate through the train
+13:18
+lever we do have to
+13:20
+do this step here so we have to do this
+13:24
+samba. from torch
+13:26
+and then we're passing in the images in
+13:29
+the name and then that's going to
+13:31
+convert those tensors from torch tensors
+13:34
+to samba tensors so we're also going to
+
+
 ## References
 
 <https://docs.sambanova.ai/api-reference/index.html>
