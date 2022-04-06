@@ -355,7 +355,7 @@ class FFNLogReg(nn.Module):
             X_randn: A Samba tensor representing the correct shape for model inputs.
             Y_randint: A Samba tensor representing the correct shape for model outputs.
         """
-        # If the first argument to samba,randn is batch size then the batch_dim is 0.
+        # If the first argument to samba.randn is batch size then the batch_dim is 0.
         X_randn = samba.randn(args.batch_size, args.num_features, name='image', batch_dim=0).bfloat16().float()
 
         low_inclusive = 0
@@ -447,65 +447,41 @@ in the forward method.
 Here's a
 real important method called **get_fake_inputs(...)**.
 
-inputs that's what they are they're fake
-9:25
-they're just random but their size is
-9:27
-important their size is very important
-9:29
-you have to get these right so i just
-9:31
-set it up as a static method so that you
-9:34
-don't have to have an instantiated class
-9:37
-let's scroll up here
-9:39
-so for x
-9:41
-my inputs
-9:42
-okay i'm going to call rand n with these
-9:45
-various arguments okay so back size
-9:48
-number of features
-9:50
-take a look at both x and y
-9:53
-what you'll notice is that the first
-9:55
+That's what they are. They're fake.
+They're just random but their size is
+very important.
+
+**These must be right.**
+
+The method is set up as a static method
+so it isn't necessary to instantiated the class.
+
+For X_randn, call **samba.randn(...)** with these
+various arguments, e.g., args.batch_size and args.num_features.
+
+Look at both X_randn and Y_randint.
+You'll notice is that the first
 dimension of both of those variables is
-9:58
-batch size
-10:00
-my suggestion is just stick to this
-10:02
-format
-10:03
-do it like this and always set batch
-10:05
-then to zero
+batch_size.
 
+**Suggestion: Stick to this format.**
 
-10:07
-this is a classification problem so
-10:10
-we're next going to do some random
-10:12
-integers we're going to call randint
-10:15
-here
-10:16
-random takes as the first parameter the
-10:19
+Do it like this and always set
+**batch_dim** to zero.
+
+This is a classification problem so
+next generate some random
+integers for **Y_randint**.
+
+Call **samba.randint(...)** here.
+Randint takes as the first parameter the
 lower bound of the random numbers and
-10:22
-this number is inclusive and then as the
-10:25
+this number is inclusive.
+
+Then as the
 second parameter it takes the the high
-10:28
-integer that is the desired exclusive
+integer that is the desired exclusive.
+
 10:32
 okay so if this high number is 10 it
 10:36
