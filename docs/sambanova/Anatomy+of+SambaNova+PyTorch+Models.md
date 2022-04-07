@@ -635,68 +635,191 @@ It also works on your laptop.
 
 Lastly, go ahead and
 return both the
-**train_loader** and the **train_loader**.
+**train_loader** and the **test_loader**.
 
 #### Train
 
-next here we're going to get into the
-12:29
-train method which is used to train the
-12:32
-model
-12:33
-so if you look over here here is our
-12:35
-friend repair data loader so this really
-12:38
-really helps out you got a single line
-12:41
-within your train method for actually
-12:44
-creating both the train loader and also
-12:46
-the test loader
-12:48
-so we grab the total number of steps
-12:51
-we're going to establish a hyper
-12:53
-parameter dictionary and what we're
-12:56
-going to do is we're going to put in
-12:58
-these various arguments here
-13:00
-one of the main uses of the hyper
-13:02
-parameter dictionary is to allow
-13:04
-arguments to be updated during runtime
-13:07
-ensemble flow for example the step
-13:10
-learning rate
-13:11
-and here's pretty much a standard loop
-13:14
-for stepping through your epochs we're
-13:16
-going to enumerate through the train
-13:18
-lever we do have to
-13:20
-do this step here so we have to do this
-13:24
-samba. from torch
-13:26
-and then we're passing in the images in
-13:29
-the name and then that's going to
-13:31
-convert those tensors from torch tensors
-13:34
-to samba tensors so we're also going to
+Next we're going to get into the
+**train** method which is used to train the
+model.
 
+First we call **prepare_dataloader(...)**.
+This really,
+really helps.
+A single line
+within your **train** method for actually
+creating both the **train_loader** and also
+the **test_loader**.
+
+Grab the total number of steps.
+
+Establish a hyperparameter dictionary.
+
+One of the main uses of the hyperparameter dictionary is to allow
+arguments to be updated during runtime in
+SambaFlow, for example, the step
+learning rate, i.e., **lr**.
+
+Next is pretty much a standard loop
+for stepping through your epochs.
+
+```python
+        for i, (images, labels) in enumerate(train_loader):
+            sn_images = samba.from_torch(images, name='image', batch_dim=0)
+            sn_labels = samba.from_torch(labels, name='label', batch_dim=0)
+```
+
+Enumerate through the train_loader.
+
+You must use
+**samba.from_torch(...)**.
+Pass in the **images**,
+**name** and **batch_dim=0**.
+
+The compiler is going to
+convert those tensors from torch tensors
+to Samba tensors.
+
+Also, convert the **labels** from torch tensors to
+Samba tensors.
+
+```python
+            loss, outputs = samba.session.run(input_tensors=[sn_images, sn_labels],
+                                              output_tensors=model.output_tensors,
+                                              hyperparam_dict=hyperparam_dict)
+            loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
+            avg_loss += loss.mean()
+
+            if (i + 1) % 10000 == 0:
+                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch + 1, args.num_epochs, i + 1, total_step,
+                                                                         avg_loss / (i + 1)))
+```
+
+Call **samba.session.run(...)**.
+Pass it
+the the various inputs.
+
+Convert the **loss** and the **outputs** to
+Torch tensors.
+
+Accumulate **avg_loss**.
+
+Then
+once every 10,000 epics, print the status.
+
+```python
+        samba.session.to_cpu(model)
+        test_acc = 0.0
+        with torch.no_grad():
+            correct = 0
+            total = 0
+            total_loss = 0
+            for images, labels in test_loader:
+                loss, outputs = model(images, labels)
+                loss, outputs = samba.to_torch(loss), samba.to_torch(outputs)
+                total_loss += loss.mean()
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum()
+
+            test_acc = 100.0 * correct / total
+            print('Test Accuracy: {:.2f}'.format(test_acc),
+                  ' Loss: {:.4f}'.format(total_loss.item() / (len(test_loader))))
+
+        if args.acc_test:
+            assert args.num_epochs == 1, "Accuracy test only supported for 1 epoch"
+            assert test_acc > 91.0 and test_acc < 92.0, "Test accuracy not within specified bounds."
+```
+
+Control is still within the
+epoch loop.
+
+Use **samba.session.to_cpu(model)** to move the
+model to the cpu to do
+some testing.
+
+Check
+the **test_acc** by using the
+**test_loader** instead of the
+**train_loader** .
+
+Using the **test_loader**,
+get **images** and **labels** for
+the next batch.
+
+Calculate the **loss** and the **outputs**.
+
+Ultimately, calculate
+the number correct by summing those up.
+
+Then calculate the
+test accuracy, **test_acc**, by taking the number
+**correct** divided by the **total** number times one hundred.
+
+There's also a command
+line argument for an accuracy test.
+It is only going to run one epic
+and make sure that the test accuracy is
+between 91 and 92 percent.
+
+That wraps that up for the **train**
+method. Let's step on into the **test**
+method.
+
+#### Test Method
+
+Let's step on into the **test**
+method. The **test** method is going
+to compare the results from the CPU
+to the RDU. The method will check
+if the results are accurate enough.
+
+```python
+def test(args: argparse.Namespace, model: nn.Module, inputs: Tuple[samba.SambaTensor],
+         outputs: Tuple[samba.SambaTensor]) -> None:
+    """Test the model by compairing the Samba and Torch outputs."""
+    samba.session.tracing = False
+    outputs_gold = model(*inputs)
+
+    outputs_samba = samba.session.run(input_tensors=inputs,
+                                      output_tensors=outputs,
+                                      data_parallel=args.data_parallel,
+                                      reduce_on_rdu=args.reduce_on_rdu)
+
+    # check that all samba and torch outputs match numerically
+    for i, (output_samba, output_gold) in enumerate(zip(outputs_samba, outputs_gold)):
+        print('samba:', output_samba)
+        print('gold:', output_gold)
+        samba.utils.assert_close(output_samba, output_gold, f'forward output #{i}', threshold=3e-3)
+
+    if not args.inference:
+        # training mode, check two of the gradients
+        torch_loss, torch_gemm_out = outputs_gold
+        torch_loss.mean().backward()
+
+        # we choose two gradients from different places to test numerically
+        gemm1_grad_gold = model.ffn.gemm1.weight.grad
+        gemm1_grad_samba = model.ffn.gemm1.weight.sn_grad
+
+        samba.utils.assert_close(gemm1_grad_gold, gemm1_grad_samba, 'ffn__gemm1__weight__grad', threshold=3e-3)
+```
+
+Pass **inputs** to the
+**model** to get the outputs and call them gold standard, **outputs_gold**.
+
+Use **samba.session.run(...)**
+with the various inputs and
+call these outputs **outputs_samba**.
+
+Go through all of these
+to ensure
+that they are approximately the same.
+
+If not doing inference then
+the script is in the training mode.
+Check the gradients from
+the CPU and from the RDU and make sure that
+they're close enough.
 
 ## References
 
