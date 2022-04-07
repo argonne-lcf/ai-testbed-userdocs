@@ -73,4 +73,4 @@ $ git merge main                     # merge the local develop into **YOURBRANCH
                                      # make sure NO merge conflicts exist
 $ git push origin YOURBRANCH         # push the changes from local branch up to your remote branch
 ```
-* Create merge request from https://github.com/argonne-lcf/ai-testbed-userdocs from YOURBRANCH to main branch.
+* Create pull request from https://github.com/argonne-lcf/ai-testbed-userdocs from YOURBRANCH to main branch.

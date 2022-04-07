@@ -4,3 +4,5 @@ nav:
   - SambaNova:
     - SambaNova: sambanova/sambanova.md
     - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy+of+SambaNova+PyTorch+Models.md
+  - Cerebras:
+    - Cerebras: cerebras/cerebras.md
