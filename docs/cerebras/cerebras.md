@@ -1,10 +1,11 @@
 Cerebras
 ========
 
-**Note: This documentation is correct as of 5 March 2022. **
+### System Overview
+TODO need a paragraph plus a diagram briefly describing a CS-2 and ANL's CS2 configuration.
 
 *Cerebras's current Python support is built around Cerebras Estimator, which inherits from TensorFlow Estimator.*
-Cerebras Release 1.2 will introduce PyTorch support. 
+Cerebras Release 1.2 will introduce PyTorch support. Release 1.1 includes a preview of the PyTorch support. 
 
 Keras models can be converted to TF Estimator and to Cerebras Estimator.  See <https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator>
 
@@ -20,22 +21,27 @@ TODO need a pointer to a mirror/pdf(or whatever format chosen) for a copy of the
 
 Use the instructions below as a guide for login details.
 
-### Connect to cerebras.alcf.anl.gov
-|                                                                                  |
-|----------------------------------------------------------------------------------|
-| **ssh &lt;yourALCFloginid&gt;@cerebras.alcf.anl.gov** |
+### How to setup your base environment
+TODO
+### Steps to run a model/program
+TODO
+### Using virtual environments to customize environment
+TODO
+### Job Queuing and Submission
+Overlaps with running basic tests.
+csrun_cpu ...
+csrun_wse ...
+squeue -a
+scancel <jobid>
 
-Your home directory has a default 1TB quota.  (TODO is this true?)
 
-TODO are there instructions for ALCF id onboarding?
-
+### Example Programs
 Follow the instructions in the tensorflow quickstart to train, evaluate and validate the fc\_mnist tensorflow estimator example.
 
 <table>
 <tbody>
 <tr class="odd">
-<td><strong>...$ cd /data/shared/&lt;yourALCFloginid&gt;<br />
-...$ # create that user directory if it does not exist<br />
+<td><strong>...$ cd ~/<br />
 ...$ cp -r /soft/cerebras/modelzoo/ .<br />
 ...$ cd modelzoo<br />
 ...$ ls<br />
@@ -77,6 +83,26 @@ To separately compile and run,
 </tbody>
 </table>
 The training will reuse an existing compilation if no changes were made that force a recompile.
+
+### Performance Tools (Covers how to profile and get performance data)
+TODO
+### Best Practices and FAQs ( We can link here to the vendor docs as well)
+TODO
+### Tunneling and  forwarding ports
+TODO
+### System and Storage Policies
+TODO
+
+
+### Connect to cerebras.alcf.anl.gov
+|                                                                                  |
+|----------------------------------------------------------------------------------|
+| **ssh &lt;yourALCFloginid&gt;@cerebras.alcf.anl.gov** |
+
+Your home directory has a default 1TB quota.  (TODO is this true?)
+
+TODO are there instructions for ALCF id onboarding?
+
 
 
 Running Tensorboard from testbed-cs2-01-med1
