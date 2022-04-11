@@ -130,6 +130,7 @@ TODO
 TODO
 ### System and Storage Policies
 TODO
+Your home directory has a default 1TB quota.  (TODO is this true?)
 ### Miscellaneous
 
 ##### Running the CPU-mode examples
@@ -220,8 +221,6 @@ To connect to a CS-2 [chief?] node:
 |                                                                                  |
 |----------------------------------------------------------------------------------|
 | **ssh -o "ProxyJump ALCFid@cerebras.alcf.anl.gov" ALCFid@cs2.ai.alcf.anl.gov** |
-
-Your home directory has a default 1TB quota.  (TODO is this true?)
 
 To copy a file to your CS-2 [ed: chief?] node home dir:
 
