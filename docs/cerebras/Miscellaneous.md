@@ -119,7 +119,7 @@ if you used port 9999. 
 --------------------
 
 TODO 
-Awaiting version with a pytorch sample that doesnt' require editing sorce code to enable training.<br/>
+Awaiting version with a PyTorch sample that doesnt' require editing sorce code to enable training.<br/>
 same general approach -<br />
 remove the model_dir<br />
 csrun_cpu run.py --mode train --compile_only ...<br />
