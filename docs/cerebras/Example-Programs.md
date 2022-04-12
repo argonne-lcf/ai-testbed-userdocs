@@ -2,7 +2,7 @@ Cerebras
 ========
 
 ### Example Programs
-Follow the instructions in the tensorflow quickstart to train, evaluate and validate the fc\_mnist tensorflow estimator example. This model is a couple of fully connected layers plus dropout and RELU. 
+Follow the instructions in the TensorFlow quickstart to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. 
 TODO need a pointer to a mirror of the current Cerebras public documentation
 
 <table>

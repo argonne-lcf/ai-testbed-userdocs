@@ -21,5 +21,5 @@ scancel <jobid><br>
 </tbody>
 </table>
 
-Add "--help" to see basic help for a slurm command.
+Add *"--help"* to see basic help for a slurm command.
 
