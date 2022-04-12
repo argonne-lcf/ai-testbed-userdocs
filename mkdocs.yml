@@ -2,6 +2,16 @@ site_name: AI Testbed User Guide
 nav:
   - Home: README.md
   - SambaNova:
+    - System Overview: sambanova/System+Overview.md
+    - How to setup your base environment: sambanova/How+to+setup+your+base+environment.md
+    - Steps to run a model/program: sambanova/Steps+to+run+a+model+or+program.md
+    - Using virtual environments to customize environment: sambanova/Using+virtual+environments+to+customize+environment.md
+    - Job Queuing and Submission: sambanova/Job+Queuing+and+Submission.md
+    - Example Programs: sambanova/Example+Programs
+    - Performance Tools: sambanova/Performance+Tools
+    - Best Practices and FAQs: sambanova/Best+Practices+and+FAQs.md
+    - Tunneling and forwarding ports: sambanova/Tunneling+and+forwarding+ports.md
+    - System and Storage Policies: sambanova/System+and+Storage+Policies.md
     - SambaNova: sambanova/sambanova.md
     - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy+of+SambaNova+PyTorch+Models.md
   - Cerebras:
