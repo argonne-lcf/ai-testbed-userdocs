@@ -1,9 +1,11 @@
 Cerebras
 ========
 
-### Performance Tools (Covers how to profile and get performance data)
+### Performance Tools
+Covers how to profile and get performance data
 
-After a compile, see the generated compile_report.txt. The product of "Active PEs" and "Compute Utilization" is the effective wafer utilization. [TODO verify this]
+##### Compile Report
+After a compile, see the generated compile_report.txt. The product of "Active PEs" and "Compute Utilization" is the effective wafer utilization as estimated by the compiler when the application is not I/O bound. [TODO verify this]
 
 <table>
 <tbody>
@@ -26,3 +28,6 @@ Compute Utilization:          52%<br>
 </tr>
 </tbody>
 </table>
+
+In this example, the wafer utilization estimate is 32 percent (0.62*0.52).
+
