@@ -3,7 +3,9 @@ Cerebras
 
 ### Job Queuing and Submission
 [ed: Overlaps with running basic tests.]<br>
-The CS-2 systems use slurm for job submission and queueing.
+The CS-2 systems use slurm for job submission and queueing.<br>
+The srun frontend **csrun_cpu** runs cpu job on one or more worker nodes.<br>
+The srun frontend **csrun_wse** runs a job on both the wafer scale engine and one or more worker nodes.
 <table>
 <tbody>
 <tr class="odd">
@@ -12,7 +14,7 @@ The CS-2 systems use slurm for job submission and queueing.
 csrun_cpu ...<br>
 csrun_wse ...<br>
 # Other useful slurm commands <br>
-sinfo
+sinfo<br>
 squeue -a<br>
 scancel <jobid><br>
 

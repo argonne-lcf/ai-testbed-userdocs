@@ -2,8 +2,8 @@ Cerebras
 ========
 
 ### Example Programs
-Follow the instructions in the TensorFlow quickstart to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. 
-TODO need a pointer to a mirror of the current Cerebras public documentation
+Follow the instructions in the TensorFlow quickstart to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
+[TODO need a pointer to a mirror of the current Cerebras public documentation]
 
 <table>
 <tbody>
@@ -49,4 +49,7 @@ To separately compile and run,
 </tr>
 </tbody>
 </table>
-The training will reuse an existing compilation if no changes were made that force a recompile.
+The training will reuse an existing compilation if no changes were made that force a recompile. Compiles may be done while another job is using the wafer.
+
+
+
