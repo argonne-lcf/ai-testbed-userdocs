@@ -5,13 +5,13 @@ Cerebras
 
 ##### Running the CPU-mode examples
 
-The CPU-mode examples in the TensorFlow quickstart will run as csrun_cpu jobs or in a singularity shell.<br>
+The CPU-mode examples in the TensorFlow [TODO And PyTorch?] quickstart will run as csrun_cpu jobs or in a singularity shell.<br>
 <i>If no cs_ip is specified, the run will be in cpu mode. </i>
 
 Change the max steps for the training run command line to something smaller so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for this example.)
 
 This illustrates how to create a singularity container.
-The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. 
+The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The sigularity containers by default bind one's home directory, and TODO what else?)
 The current directory in the container will be the same as the current directory immediately prior to creating the container.
 <table>
 <tbody>
@@ -45,37 +45,61 @@ exit</strong></td>
 </tbody>
 </table>
 
-##### Downloading a dataset from www.kaggle.com to the CS-2
+##### Downloading a dataset from www.kaggle.com to a CS-2 node using the command line
 
-Here are some notes that may be helpful for downloading kaggle datasets
+These notes may be helpful for downloading kaggle datasets
 
-Downloading a dataset from www.kaggle.com to testbed-cs2-01-med1 using the command line
+Inside a singularity shell (e.g. singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif )
 
-Inside a singularity shell (e.g. singularity shell -B ~/data:/data /lambda_stor/slurm/cbcore_images/cbcore_latest.sif )
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
+virtualenv env<br>
+source env/bin/activate</br>
+pip3 install kaggle</br>
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
 
-virtualenv env
-
-source env/bin/activate
-
-pip3 install kaggle
 
 Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
 
-put the json in ~/.kaggle/kaggle.json
-
-e.g. single quote the json text and echo it
-
-echo '{"username":"REDACTED","key":"REDACTED"}'' &gt; ~/.kaggle/kaggle.json
-
+put the json in ~/.kaggle/kaggle.json</br>
+e.g. single quote the json text and echo it</br>
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
+echo '{"username":"REDACTED","key":"REDACTED"}'' &gt; ~/.kaggle/kaggle.json</br>
 chmod 600 ~/.kaggle/kaggle.json
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
 
 On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
 
-In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/&lt;youriddir&gt;
+In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/&lt;youriddir&gt; [TODO fix when filesystem/mounts are stable]
 
-Paste the API command to the command line inside the singularity shell with the venv activated. E.g.
-
+Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
 kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
+
 
 It will download as a zip file. ('unzip' is available testbed-cs2-01-med1)
 
@@ -83,9 +107,10 @@ exit the singularity container to unzip the dataset zip file
 
 Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
 
-
 ##### Running Tensorboard from testbed-cs2-01-med1
 --------------------------------
+
+[TODO fix this when system is working enough to test tunneling]
 
 if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-01-med1 terminal and you will see the output as given below.<br/>
 TODO this doesn't actually work; test/fix when CS-2 is working again. 

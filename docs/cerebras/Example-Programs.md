@@ -4,6 +4,9 @@ Cerebras
 ### Example Programs
 Follow the instructions in the TensorFlow quickstart to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
 [TODO need a pointer to a mirror of the current Cerebras public documentation]
+[TODO perhaps also a pointer to the Cerebras's public reference model github repo -  https://github.com/Cerebras/cerebras_reference_implementations/ - includes fc_mnist(tf, pytorch) and BERT(tf, pytorch).]
+[TODO perhaps also describe the parameterized simple model used for benchmarking]
+[TODO Describe the available samples in the Cerebras modelzoo]
 
 <table>
 <tbody>
