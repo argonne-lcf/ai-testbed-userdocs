@@ -12,7 +12,7 @@ nav:
     - Best Practices and FAQs: sambanova/Best-Practices-and-FAQs.md
     - Tunneling and forwarding ports: sambanova/Tunneling-and-forwarding-ports.md
     - System and Storage Policies: sambanova/System-and-Storage-Policies.md
-    - SambaNova: sambanova/sambanova.md
+    - Miscellaneous: sambanova/Miscellaneous.md
     - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy-of-SambaNova-PyTorch-Models.md
   - Cerebras:
     - Cerebras: cerebras/cerebras.md
