@@ -33,7 +33,6 @@ Now
 ```bash
 source .bashrc
 sm1
- ___ALCF_username___@sm-01.cels.anl.gov's password: < MobilPass+ code >
 ```
 
 These four commands could be put into your .bashrc file on a SambaNova

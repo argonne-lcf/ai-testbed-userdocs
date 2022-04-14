@@ -2,6 +2,13 @@
 
 Covers how to profile and get performance data
 
+## Tile Status
+
+```bash
+sntilestat
+watch sntilestat
+```
+
 ## Measure TFLOPs
 
 This is an example for measuring TFLOPs for Conv2D forward pass.

@@ -1,4 +1,4 @@
-# SambaNova
+# Miscellaneous
 
 ## PyTorch Mirrors
 
