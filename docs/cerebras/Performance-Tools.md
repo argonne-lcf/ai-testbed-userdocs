@@ -29,5 +29,11 @@ Compute Utilization:          52%<br>
 </tbody>
 </table>
 
-In this example, the wafer utilization estimate is 32 percent (0.62*0.52).
+In this example, the wafer utilization estimate is 32 percent (0.62*0.52).<br>
+There is no sharing of the wafer by different jobs, so each job should strive to maximize its use of the wafer. <br>
+Consider using multiple model replicas if the model is only filling a small part of the wafer. The Cerebras software makes this straightforward; in the best case, simply add(or set) "multireplica: True" to the config yaml.<br>
+TODO Replace with the appropriate URL from the public documentation.<br>
+https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html
+
+
 

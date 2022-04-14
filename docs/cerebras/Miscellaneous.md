@@ -140,7 +140,7 @@ if you used port 9999. 
 <embed src="media/image1.tmp" width="468" height="239" />
 =========================================================
 
-**PyTorch Support:**
+##### PyTorch Support
 --------------------
 
 TODO 
@@ -150,3 +150,22 @@ remove the model_dir<br />
 csrun_cpu run.py --mode train --compile_only ...<br />
 csrun_wse run.py --mode train ... <br />
 
+##### Determining the CS-2 firmware version
+-------------------------------------------
+
+The CS-2 team supplied this query for determining the version of the CS-2 firmware. Replace the IP address with the CS_IP for the CS-2 cluster of interest.<br>
+TODO should this API/auth string be made public? 
+
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
+...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion<br>
+"FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",<br>
+...$ <br>
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
