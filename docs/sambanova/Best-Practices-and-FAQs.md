@@ -177,6 +177,7 @@ great, thank you
  def rng_seed(seed):
      torch.manual_seed(seed)
      np.random.seed(seed)```
+```
 
 \[3:55 PM\] Arnold, William
 the ConvTranspose2d adds more parameters to the model; didn't attempt to
@@ -197,8 +198,6 @@ like the switch. 
 
 ## How busy is the system?
 
-## sm-01 or sm-02
-
 Use one of
 
 ```bash
@@ -206,95 +205,80 @@ top
 htop
 ```
 
-# How to Use Inference Arg
+## How to Use Inference Arg
 
-<table>
-<thead>
-<tr class="header">
-<th><p>Bruce: just add --inference both to compile and run commands. See here: <a href="https://docs.sambanova.ai/sambanova-docs/1.8/developer/getting-started.html#_options">https://docs.sambanova.ai/sambanova-docs/1.8/developer/getting-started.html#_options</a></p>
-<p>Examples:   <a href="https://docs.sambanova.ai/sambanova-docs/1.8/developer/run-examples-language.html">https://docs.sambanova.ai/sambanova-docs/1.8/developer/run-examples-language.html</a> -Rick W</p>
-<p>9/8/2021</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p>It sounds like --inference is supposed to work with every CLI command.</p>
-<p>So, compile --inference and measure-performance --inference work.<br />
-Also, run --inference works. </p>
-<p>I am awaiting verification by Rick W.</p></td>
-</tr>
-</tbody>
-</table>
+Bruce: just add --inference both to compile and run commands. See here: https://docs.sambanova.ai/sambanova-docs/1.8/developer/getting-started.html#_options
 
-# Data Parallel
+Examples: https://docs.sambanova.ai/sambanova-docs/1.8/developer/run-examples-language.html -Rick W
+9/8/2021
+It sounds like --inference is supposed to work with every CLI command.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>If the code is correct(distributed loader) the compile looks like python unet_main.py compile - --batch-size=48 --data-parallel -ws 2 --pef-name=dillon_2k_b48_dp</p>
-<p>The run command looks like python unet_main.py run - -p ${SOFTWARE_HOME}/out/dillon_2k_b48_dp/dillon_2k_b48_dp.pef --data-parallel --reduce-on-rdu</p>
-<p>You put the run command in a script and use mpirun to run the script.<br />
-<br />
-Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh<br />
-<br />
-Also look in ac.rick.weisner@sm-02:~/tmp/dillon_dir</p>
-<p>9/13 Rick W</p></td>
-</tr>
-</tbody>
-</table>
+So, compile --inference and measure-performance --inference work.
+Also, run --inference works.
 
-# SambaNova Accelerator
+## Data Parallel
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>$ sntilestat</p>
-<p>$ watch sntilestat</p></td>
-</tr>
-</tbody>
-</table>
+If the code is correct(distributed loader) the compile looks like:
 
-# Spatial Batches
+```bash
+python unet_main.py compile - --batch-size=48 --data-parallel -ws 2 --pef-name=dillon_2k_b48_dp
+```
 
-<table>
-<thead>
-<tr class="header">
-<th><a href="https://app.slack.com/team/U029H401ALX">Varuni Sastry</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1638999132150800">2:32 PM</a><br />
-<br />
-Are you looking at the spatial_train func ?<br />
-<a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1638999246151400">2:34</a><br />
-I thought you are supposed to use the --spatial_train argument for uno.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p><a href="https://app.slack.com/team/U029H401ALX">Varuni Sastry</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1638999697153000">2:41 PM</a></p>
-<p>Ok I think i got it. Since training has two batches of 32000 samples — and each args.num_spatial_batches = 2000. So total of 4000 for training. While on validation it has only 1 set of 32000 samples - hence that 2000 value.</p></td>
-</tr>
-<tr class="even">
-<td><p><a href="https://app.slack.com/team/UV5V4FWLE">Rick Weisner</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1638999788154400">2:43 PM</a></p>
-<p>sounds good to me</p></td>
-</tr>
-<tr class="odd">
-<td><p><a href="https://app.slack.com/team/U029H401ALX">Varuni Sastry</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1638999840155300">2:44 PM</a></p>
-<p>And seems like the loss across 2000 batches. So for the total of 32000 samples, loss iteration has 16 samples for which it is calculating the loss.</p></td>
-</tr>
-<tr class="even">
-<td><p><a href="https://app.slack.com/team/UV5V4FWLE">Rick Weisner</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1639014365155600">6:46 PM</a></p>
-<p>From SN engineering: 2000 is number of spatial batches used for mapping and 16 is the batch size. The minibatch_count is a multiple of 2000, and 32000 samples is divided into 2000 spatial batches, each has batch size 16.<br />
-<a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1639014387156100">6:46</a><br />
-So you were right on the money.</p></td>
-</tr>
-<tr class="odd">
-<td><p><a href="https://app.slack.com/team/UV5V4FWLE">Rick Weisner</a>  <a href="https://cels-anl.slack.com/archives/C01637S6BV2/p1639025611156500">9:53 PM</a></p>
-<p>More from SN engineering: Training on Uno/MT is done in “spatial mapping” mode.<br />
-This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd-&gt;bwd-&gt;param_update in one single execution context.<br />
-Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd-&gt;bwd to calculate weight gradients and make a weight update.<br />
-This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to.In this specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, we perform 1 execution context -&gt; we train with 2000 batches or 2000 * 16 samples.Why do we do it this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host&lt;-&gt;device transfers, which significantly helps the performance/throughput.</p></td>
-</tr>
-</tbody>
-</table>
+The run command looks like:
 
-# Finding Hung Tiles
+```bash
+python unet_main.py run - -p ${SOFTWARE_HOME}/out/dillon_2k_b48_dp/dillon_2k_b48_dp.pef --data-parallel --reduce-on-rdu
+```
+
+You put the run command in a script and use **mpirun** to run the script.
+
+Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
+
+9/13 Rick W
+
+## SambaNova Accelerator Performance
+
+```bash
+sntilestat
+watch sntilestat
+```
+
+## Spatial Batches
+
+Varuni Sastry  2:32 PM
+
+Are you looking at the spatial_train func ?
+
+I thought you are supposed to use the --spatial_train argument for uno.
+
+Ok I think i got it. Since training has two batches of 32000 samples — and each args.num_spatial_batches = 2000. So total of 4000 for training. While on validation it has only 1 set of 32000 samples - hence that 2000 value.
+
+Rick Weisner  2:43 PM
+
+sounds good to me
+
+Varuni Sastry  2:44 PM
+
+And seems like the loss across 2000 batches. So for the total of 32000 samples, loss iteration has 16 samples for which it is calculating the loss.
+
+Rick Weisner  6:46 PM
+
+From SN engineering: 2000 is number of spatial batches used for mapping and 16 is the batch size. The minibatch_count is a multiple of 2000, and 32000 samples is divided into 2000 spatial batches, each has batch size 16.
+
+6:46
+
+So you were right on the money.
+
+Rick Weisner  9:53 PM
+
+More from SN engineering: Training on Uno/MT is done in “spatial mapping” mode.
+
+This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context.
+
+Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update.
+
+This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to.In this specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, we perform 1 execution context -> we train with 2000 batches or 2000 * 16 samples.Why do we do it this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
+
+## Finding Hung Tiles
 
 snconfig show Node dynamic | grep perfect
