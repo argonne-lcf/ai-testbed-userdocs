@@ -15,5 +15,5 @@ The materials from the Cerebras training workshop 21 March 2021 are available on
 TODO need a pointer to a mirror of the current Cerebras public documentation
 
 
-An ANL CS-2 cluster will look similar to the following diagram (but with 8 worker nodes):
+An ANL CS-2 cluster will look similar to the following diagram (but with 8 worker nodes). The worker nodes and the chief node each have two AMD EPYC 7702P 64-Core processors and 128 GB memory (131603444). [TODO verify with Ryan; that's from "free" and /proc/cpuinfo) [TODO something about filesystems when we have at least one stable system.]
 ![CS-2 cluster diagram](./cs-getting-started.png)
