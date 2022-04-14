@@ -11,7 +11,7 @@ The CPU-mode examples in the TensorFlow [TODO And PyTorch?] quickstart will run 
 Change the max steps for the training run command line to something smaller so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for this example.)
 
 This illustrates how to create a singularity container.
-The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The sigularity containers by default bind one's home directory, and TODO what else?)
+The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind one's home directory, and TODO what else?)
 The current directory in the container will be the same as the current directory immediately prior to creating the container.
 <table>
 <tbody>
@@ -144,7 +144,7 @@ if you used port 9999. 
 --------------------
 
 TODO 
-Awaiting version with a PyTorch sample that doesnt' require editing sorce code to enable training.<br/>
+Awaiting version with a PyTorch sample that doesn't' require editing source code to enable training.<br/>
 same general approach -<br />
 remove the model_dir<br />
 csrun_cpu run.py --mode train --compile_only ...<br />
