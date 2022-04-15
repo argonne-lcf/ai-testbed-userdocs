@@ -5,7 +5,8 @@ Cerebras
 [ed: Overlaps with running basic tests.]<br>
 The CS-2 systems use slurm for job submission and queueing.<br>
 The srun frontend **csrun_cpu** is used to run a cpu-only job on one or more worker nodes.<br>
-The srun frontend **csrun_wse** is used to run a job on both the wafer scale engine and one or more worker nodes. 
+The srun frontend **csrun_wse** is used to run a job on both the wafer scale engine and one or more worker nodes.
+"squeue -a" may be used to see what jobs are currently using the CS-2. Your job will be blocked until there are available resources. Scheduling is in simple job request order. 
 <table>
 <tbody>
 <tr class="odd">
