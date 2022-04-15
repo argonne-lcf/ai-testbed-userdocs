@@ -281,4 +281,6 @@ This means in a single execution context, the number weight-updates happened is 
 
 ## Finding Hung Tiles
 
+```bash
 snconfig show Node dynamic | grep perfect
+```
