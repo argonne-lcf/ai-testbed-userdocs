@@ -4,12 +4,16 @@ The SambaNova workflow includes the following four steps to run a model.
 
 ## Compile
 
+## TODO Use SN description of pef files here
+
 Compiles the model and generates a .pef file. This file contains
 information on how to reconfigure the hardware like how many compute and
 memory resources are required, and will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
 SambaNova documentation advises to save pef files in separate
 directories with the '--output-folder' option.
+
+## TODO explain when it is necessary to re-compile
 
 Example:
 
@@ -35,7 +39,9 @@ This will run the application on SN nodes.
 srun python myapp.py run --pef="pef/myapp/myapp.pef"
 ```
 
-## Measure Performance
+## Measure Performance (Optional)
+
+## TODO It only uses simulated data.  Not real data.
 
 This step will report the measured performance. The parameters depend on
 the model and can include latency, samples/sec.

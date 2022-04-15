@@ -2,6 +2,18 @@
 
 We can link here to the vendor docs as well
 
+
+
+
+## Explain
+
+## TODO
+
+export OMP_NUM_THREADS=1
+
+
+
+
 ## Where is the Model?
 
 Two copies of model are maintained.  One in CPU memory and one in RDU

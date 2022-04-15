@@ -17,35 +17,36 @@ Use the ssh "-v" switch to debug ssh problems.
 
 ### Aliases
 
-The SambaNova system that has two nodes **sm-01** and **sm-02**. Host names for
-SambaNova are [sm-01.cels.anl.gov](http://sm-01.cels.anl.gov) and [sm-02.cels.anl.gov](http://sm-02.cels.anl.gov)
-
-This would be good to put into your **sm-login-1** computer .bashrc file.  Or,
-execute them from the command line.
-
-```bash
-alias sm1='ssh sm-01.cels.anl.gov'
-alias sm2='ssh sm-02.cels.anl.gov'
-```
+The SambaNova system that has two nodes **sm-01** and **sm-02**.
 
 Now
 
 ```bash
-source .bashrc
-sm1
+ssh sm-01
+source /software/sambanova/envs/sn_env.sh
 ```
 
+
+
+
+Explain
+export OMP_NUM_THREADS=1
+
+
+
+
+
+Begin put into script /software/sambanova/
 These four commands could be put into your .bashrc file on a SambaNova
 node.
 
 They can also be executed from the command line.
 
-```bash
-alias snpath='export PATH=$PATH:/opt/sambaflow/bin'
-alias snthreads='export OMP_NUM_THREADS=1'
-alias snvenv='source /opt/sambaflow/venv/bin/activate'
-alias snp='snpath;snthreads;snvenv'
-```
+export PATH=$PATH:/opt/sambaflow/bin
+export OMP_NUM_THREADS=1
+source /opt/sambaflow/venv/bin/activate
+snpath;snthreads;snvenv
+put into script /software/sambanova/
 
 Currently, the **.bashrc** file is not automatically being executed at this time.
 Each time you log in **source** the file.
