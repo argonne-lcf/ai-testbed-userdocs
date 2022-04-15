@@ -15,21 +15,15 @@ directories with the '--output-folder' option.
 
 ## TODO explain when it is necessary to re-compile
 
+## TODO why are we using srun
+
 Example:
 
 ```bash
 srun python myapp.py compile --pef-name="myapp.pef" --output-folder="pef"
 ```
 
-## Test (optional)
-
-Runs the model on both the host CPU and the SambaNova node.  It compares
-the answers from the CPU and SambaNova RDU and will raise errors if any
-discrepancies are found. Pass the pef file generated above as the input.
-
-```bash
-srun python myapp.py test --pef="pef/myapp/myapp.pef"
-```
+## Move Test
 
 ## Run
 
@@ -39,16 +33,7 @@ This will run the application on SN nodes.
 srun python myapp.py run --pef="pef/myapp/myapp.pef"
 ```
 
-## Measure Performance (Optional)
-
-## TODO It only uses simulated data.  Not real data.
-
-This step will report the measured performance. The parameters depend on
-the model and can include latency, samples/sec.
-
-```bash
-srun python myapp.py measure-performance --pef="pef/myapp/myapp.pef
-```
+## TODO move measure performance 
 
 **Using the SLURM scheduling system and workload manager for running
 jobs**

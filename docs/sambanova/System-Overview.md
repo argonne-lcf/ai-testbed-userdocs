@@ -6,7 +6,7 @@ The SambaNova DataScale system is architected around the next-generation Reconfi
 
 ## Configuration
 
-ANL has two SambaNova nodes, accessed as  sm-01.cels.anl.gov and
+ANL has two SambaNova nodes, accessed as sm-01.alcf.anl.gov and
 sm-02.cels.anl.gov. The two nodes are configured similarly (excepting
 serial numbers).
 

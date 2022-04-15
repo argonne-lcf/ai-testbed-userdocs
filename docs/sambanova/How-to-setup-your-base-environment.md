@@ -6,7 +6,7 @@ Get an account on the SambaNova (SN) system. Contact <support@alcf.anl.gov> for 
 
 ## Setup
 
-You will first need to login to SambaNova login node.
+Log in to the SambaNova login node.
 
 ```bash
 ssh ___ALCF_username___@sambanova.alcf.anl.gov
