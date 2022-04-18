@@ -1,10 +1,68 @@
 # Job Queueing and Submission
 
+**NOTE:  Please be mindful of how you use the systems.
+For example, run larger jobs in the evening or on weekends.**
+
+**NOTE:  Jobs on AI Accelerators *ARE NOT* ran interactively.
+Jobs must be batched using *srun* or *sbatch*.**
+
+## Tile Status
+
+Check to see if there is resources.
+Use one of the following commands:
+
+```bash
+sntilestat
+watch sntilestat
+```
+
+The output below shows that the system is completely idle.
+
+```text
+TILE                 %idle %exec %pload %aload %chkpt %quiesce    PID     USER COMMAND
+/XRDU_0/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+```
+
+## Introduction
+
 Here are example commands for using Slurm.
 
 **NOTE:  If you receive an "HTTP error" message on any of the
 following commands, run the command again. Such errors (e.g. 503) are
 commonly an intermittent failure to download a dataset.**
+
+## Resource Commands
 
 Run these commands:
 

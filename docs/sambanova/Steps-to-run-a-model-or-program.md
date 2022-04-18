@@ -1,5 +1,11 @@
 # Steps to run a model/program
 
+## On-Boarding
+
+https://www.alcf.anl.gov/support-center/get-started
+
+## Introduction
+
 The SambaNova workflow includes the following four steps to run a model.
 
 ## Compile
@@ -14,6 +20,8 @@ SambaNova documentation advises to save pef files in separate
 directories with the '--output-folder' option.
 
 ## TODO explain when it is necessary to re-compile
+
+## TODO explain How long to compile the model
 
 ## TODO why are we using srun
 

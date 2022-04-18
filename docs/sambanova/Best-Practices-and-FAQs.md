@@ -75,6 +75,9 @@ sm-02."
 
 ## Slurm
 
+**NOTE:  Please be mindful of how you are using the system.
+For example, run larger jobs in the evening or on weekends.**
+
 ### Srun
 
 You may use **srun** to execute the Python interpreter with a script.
