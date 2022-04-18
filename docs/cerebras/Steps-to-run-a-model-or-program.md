@@ -4,8 +4,8 @@ Cerebras
 ### Steps to run a model/program
 
 ##### Getting Started
-Need to cover material in this page, customized to ANL:<br>
-[https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html](https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html)
+[This following is an adaption of <br>
+[https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html](https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html)]
 
 Login steps:<br>
 Give copy-pastable steps to login, using ssh, to the chief node of each of the CS system clusters. 
