@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### Miscellaneous
 
 ##### Running the CPU-mode examples

@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### How to setup your base environment
 [Maybe add a zero or two to the default HISTSIZE and HISTFILESIZE in .bashrc?<br>
 .bashrc:HISTSIZE=1000000<br>

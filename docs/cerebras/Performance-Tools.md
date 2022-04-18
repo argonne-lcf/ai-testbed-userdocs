@@ -1,10 +1,6 @@
-Cerebras
-========
-
 ### Performance Tools
-Covers how to profile and get performance data
 
-##### Compile Report
+#### Compile Report
 After a compile, see the generated compile_report.txt. The product of "Active PEs" and "Compute Utilization" is the effective wafer utilization as estimated by the compiler when the application is not I/O bound. [TODO verify this]
 
 <table>
@@ -32,9 +28,22 @@ Compute Utilization:          52%<br>
 In this example, the wafer utilization estimate is 32 percent (0.62*0.52).<br>
 There is no sharing of the wafer by different jobs, so each job should strive to maximize its use of the wafer. <br>
 Consider using multiple model replicas if the model is only filling a small part of the wafer. The Cerebras software makes this straightforward; in the best case, simply add(or set) "multireplica: True" to the config yaml.<br>
-See https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html<br>
-[TODO for the fc_mist example, this has no apparent effect. Confirm that it works.]
+See
+[https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
+
+[TODO With v 1.1, for the fc_mist example, this has no apparent effect. Determine why, and document.]<br>
 [TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]
 
+#### Cerebra's guidance on sharding and shuffling datasets
+This Cerebras document covers dataset sharding, and how to shuffle datasets.<br>
+[https://docs.cerebras.net/en/latest/tensorflow-docs/tuning-tf-for-cs/best-practices-tf.html](https://docs.cerebras.net/en/latest/tensorflow-docs/tuning-tf-for-cs/best-practices-tf.html)
 
+#### Cerebra's guidance on the compiler console output
+This covers output to the console (and only to the console) during compile.<br>
+Search the compile console output for any WARNING lines with the substring "input_fn".<br>
+[https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html](https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html)
+
+#### Cerebra's Input Analyzer
+In version 1.2, Cerebras introduces the "cs_input_analyzer" script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
+[https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html](https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html)
 
