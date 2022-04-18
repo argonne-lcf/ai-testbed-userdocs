@@ -2,7 +2,8 @@
 
 ## On-Boarding
 
-https://www.alcf.anl.gov/support-center/get-started
+See https://www.alcf.anl.gov/support-center/get-started 
+to request an acccount and additional information.
 
 ## Introduction
 

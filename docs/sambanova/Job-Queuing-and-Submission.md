@@ -62,7 +62,7 @@ Here are example commands for using Slurm.
 following commands, run the command again. Such errors (e.g. 503) are
 commonly an intermittent failure to download a dataset.**
 
-## Resource Commands
+## Running with Slurm
 
 Run these commands:
 

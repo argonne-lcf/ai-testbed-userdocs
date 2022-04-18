@@ -1,16 +1,27 @@
 # How to setup your base environment
 
-## Accounts
+## On-Boarding
 
-Get an account on the SambaNova (SN) system. Contact <support@alcf.anl.gov> for access.
+See https://www.alcf.anl.gov/support-center/get-started 
+to request an acccount and additional information.
 
 ## Setup
+
+### OMP_NUM_THREADS
+
+The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
+
+The value of this environment variable must be a list of positive integer values. The values of the list set the number of threads to use for parallel regions at the corresponding nested levels.
+
+For the SambaNova system it is usually set to one.
+
+### Log In
 
 Log in to the SambaNova login node.
 
 ```bash
-ssh ___ALCF_username___@sambanova.alcf.anl.gov
-___ALCF_username___@sambanova.alcf.anl.gov's password: < MobilPass+ code >
+ssh ALCFUserID@sambanova.alcf.anl.gov
+ALCFUserID@sambanova.alcf.anl.gov's password: < MobilPass+ code >
 ```
 
 Use the ssh "-v" switch to debug ssh problems.
@@ -24,42 +35,7 @@ Now
 ```bash
 ssh sm-01
 source /software/sambanova/envs/sn_env.sh
-```
-
-
-
-
-Explain
-export OMP_NUM_THREADS=1
-
-
-
-
-
-Begin put into script /software/sambanova/
-These four commands could be put into your .bashrc file on a SambaNova
-node.
-
-They can also be executed from the command line.
-
-export PATH=$PATH:/opt/sambaflow/bin
-export OMP_NUM_THREADS=1
-source /opt/sambaflow/venv/bin/activate
-snpath;snthreads;snvenv
-put into script /software/sambanova/
-
-Currently, the **.bashrc** file is not automatically being executed at this time.
-Each time you log in **source** the file.
-
-```bash
-source .bashrc
-```
-
-Next, activate the SambaNova virtual environment.
-
-```bash
-snp
-(venv) ___ALCF_username___@sm-01:~$
+(venv) ALCFUserID@sm-01:~$
 ```
 
 **NOTE:  SambaNova operations will fail unless the SambaNova venv is set
