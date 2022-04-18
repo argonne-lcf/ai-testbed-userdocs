@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### System Overview
 The Cerebras CS-2 is a wafer-scale deep learning accelerator comprising 850,000 processing cores, each providing 48KB of dedicated SRAM memory for an on-chip total of 40GB and interconnected to optimize bandwidth and latency. Its software platform integrates popular machine learning frameworks such as TensorFlow and PyTorch.<br>
 For more details, see Cerebras's whitepaper:

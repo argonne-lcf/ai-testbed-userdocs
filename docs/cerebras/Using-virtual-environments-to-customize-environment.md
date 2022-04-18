@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### Using virtual python environments to customize environment
 It is considered good practice to create and use a python virtual environment for python projects with dependencies not satisfied by the base environment.
 This prevents dependency conflicts between projects.
