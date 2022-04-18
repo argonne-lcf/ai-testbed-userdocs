@@ -2,6 +2,42 @@
 
 We can link here to the vendor docs as well
 
+## Useful Commands
+
+### SambaNova Daemon Service
+
+Check if SambaNova daemon service is running.
+
+```bash
+systemctl status snd
+```
+
+The output should look something like:
+
+```text
+* snd.service - SN Devices Service
+   Loaded: loaded (/usr/lib/systemd/system/snd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2022-02-18 11:45:15 CST; 1 months 25 days ago
+ Main PID: 3550 (snd)
+    Tasks: 10 (limit: 19660)
+   CGroup: /system.slice/snd.service
+           `-3550 /opt/sambaflow/bin/snd
+
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+```
+
+## OMP_NUM_THREADS
+
+The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
+
+The value of this environment variable must be a list of positive integer values. The values of the list set the number of threads to use for parallel regions at the corresponding nested levels.
+
+For the SambaNova system it is usually set to one.
+
+```bash
+export OMP_NUM_THREADS=1
+```
+
 ## Where is the Model?
 
 Two copies of model are maintained.  One in CPU memory and one in RDU
@@ -9,8 +45,8 @@ memory. They do not interfere with each other unless you explicitly sync
 the model/parameter in between using:
 
 ```text
-SambaTensor.rdu() cpu -> rdu
-SambaTensor.cpu() rdu -> cpu
+SambaTensor.rdu() # Moves the CPU model to the RDU
+SambaTensor.cpu() # Moves the RDU model to the CPU
 ```
 
 In order to run the model on CPU, you can simply use the pytorch model
