@@ -1,4 +1,4 @@
-# Tunneling and forwarding ports
+# Tunneling and Forwarding Ports
 
 ## TensorBoard Port-Forwarding
 
@@ -22,19 +22,17 @@ Password: < MobilPass+ code >
 
 Run
 
-```bash
-Now
-ssh -N -f -L localhost:16026:localhost:6026 wilsonb@sm-01.cels.anl.gov
-ssh wilsonb@sm-01.cels.anl.gov
+**NOTE:  sm-01 is getting resolved by the DNS server.  The abbreviation is correct.
+The full name is sm-01.ai.alcf.anl.gov.**
 
-Future
-ssh -N -f -L localhost:16026:localhost:6026 wilsonb@sm-01.alcf.anl.gov
-ssh wilsonb@sm-01.alcf.anl.gov
+```bash
+ssh -N -f -L localhost:16026:localhost:6026 wilsonb@sm-01
+ssh wilsonb@sm-01
 ```
 
-### On **sm-01.alcf.anl.gov**
+### On **sm-01**
 
-The next three steps will be automatically ran in the future.
+Run the next three steps.
 
 ```bash
 export PATH=$PATH:/opt/sambaflow/bin
@@ -50,7 +48,7 @@ cd /path/to/your/project
 sbatch --output=pef/my_model/output.log submit-my_model-job.sh
 ```
 
-### On Another sm-01.alcf.anl.gov Terminal Window
+### On Another sm-01 Terminal Window
 
 The next three steps will be automatically ran in the future.
 
