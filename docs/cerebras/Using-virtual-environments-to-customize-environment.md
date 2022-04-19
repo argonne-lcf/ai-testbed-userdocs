@@ -29,7 +29,6 @@ source testp3env/bin/activate
 </tbody>
 </table>
 
-### Creating a custom singularity image file
-[TODO Varuni suggests also including information on how to construct a singularity image. This may be preferable to virtual python environments for some use cases or by some people.]
-
-
+### Customizing the Cerebras singularity container
+See this section of the Cerebras documentation:
+[Adding Custom Packages To cbcore Container](https://docs.cerebras.net/en/latest/software-guides/adding-custom-pkgs-to-cbcore-container.html)
