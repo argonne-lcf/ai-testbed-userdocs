@@ -10,7 +10,7 @@ to request an acccount and additional information.
 
 ## Introduction
 
-The SambaNova workflow includes the following four steps to run a model.
+The SambaNova workflow includes the following main steps to run a model.
 
 ## Compile
 
@@ -26,8 +26,7 @@ model's graph changes.  This includes batch size.
 Re-compiles are not necessary for other code changes.
 
 Compile times can be significant.  
-Unet for 32x32 pixels takes 358 (s).
-And Unet for 256x256 pixels takes 1844 (s).
+Unet for example, when using images of size 32x32 pixels takes 358 (s), while a 256x256 image takes 1844 (s).
 
 **Using the SLURM scheduling system and workload manager for running
 jobs**
