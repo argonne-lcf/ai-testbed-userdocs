@@ -8,8 +8,7 @@ Jobs must be batched using *srun* or *sbatch*.**
 
 ## Tile Status
 
-Check to see if there is resources.
-Use one of the following commands:
+Check to see if there is resources, use one of the following commands:
 
 ```bash
 sntilestat
