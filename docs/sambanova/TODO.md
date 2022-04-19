@@ -2,11 +2,11 @@
 
 ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 
-## Job Queueing and Submission
+## System Overview
 
-- [X] First draft
-- [X] First draft reviewed
-- [X] Second draft
+- [ ] First draft
+- [ ] First draft reviewed
+- [ ] Second draft
 - [ ] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
@@ -15,7 +15,97 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 
 - [X] First draft
 - [X] First draft reviewed
-- [X] Second draft
+- [X] Second draft 4/18
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Using Virtual Environments to Customize Environment
+
+- [X] First draft
+- [X] First draft reviewed
+- [X] Second draft 4/18
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Steps to Run a Model/Program
+
+- [X] First draft
+- [X] First draft reviewed
+- [X] Second draft 4/19
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Job Queueing and Submission
+
+- [X] First draft
+- [X] First draft reviewed
+- [X] Second draft 4/18
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Example Programs
+
+- [X] First draft
+- [X] First draft reviewed
+- [X] Second draft 4/19
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Performance Tools
+
+- [X] First draft 4/19
+- [ ] First draft reviewed
+- [ ] Second draft
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Best Practices and FAQs
+
+- [X] First draft 4/19
+- [ ] First draft reviewed
+- [ ] Second draft
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Tunneling and Forwarding Ports
+
+- [X] First draft 4/19
+- [ ] First draft reviewed
+- [ ] Second draft
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## System and Storage Policies
+
+- [ ] First draft
+- [ ] First draft reviewed
+- [ ] Second draft
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Miscellaneous
+
+- [X] First draft
+- [ ] First draft reviewed
+- [ ] Second draft
+- [ ] Second draft reviewed
+- [ ] Final draft
+- [ ] Final draft reviewed
+
+## Anatomy of SambaNova PyTorch Models
+
+- [X] First draft
+- [X] First draft reviewed
+- [ ] Second draft
 - [ ] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed

@@ -1,8 +1,8 @@
-# How to setup your base environment
+# How to Setup Your Base Environment
 
 ## On-Boarding
 
-See https://www.alcf.anl.gov/support-center/get-started 
+See [Get Started](https://www.alcf.anl.gov/support-center/get-started)
 to request an acccount and additional information.
 
 ## Setup
