@@ -15,15 +15,14 @@ The SambaNova workflow includes the following main steps to run a model.
 ## Compile
 
 Compiles the model and generates a .pef file. This file contains
-information on how to reconfigure the hardware like how many compute and
-memory resources are required, and will be used in all subsequent steps.
+information on how to reconfigure the hardware, as to how many compute and
+memory resources are required and how it will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
 SambaNova documentation advises to save pef files in separate
 directories with the '--output-folder' option.
 
-It is necessary to re-compile only when information specific to these
-model's graph changes.  This includes batch size.  
-Re-compiles are not necessary for other code changes.
+It is necessary to re-compile only when parameters specific to the
+model graph changes, including the batch size.  
 
 Compile times can be significant.  
 Unet for example, when using images of size 32x32 pixels takes 358 (s), while a 256x256 image takes 1844 (s).
