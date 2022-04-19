@@ -94,7 +94,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 
 ## Miscellaneous
 
-- [X] First draft
+- [X] First draft 4/19
 - [ ] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
