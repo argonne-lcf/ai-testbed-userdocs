@@ -144,7 +144,7 @@ Test Accuracy: 98.06 Loss: 0.0628
 2021-6-10 10:52:28 : [INFO][SC][53607]: SambaConnector: PEF File:
 pef/lenet/lenet.pef
 
-Log ID initialized to: [wilsonb][python][53607] at
+Log ID initialized to: [ALCFUserID][python][53607] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
@@ -258,10 +258,10 @@ trimmed according to requires_grad to save computation.
 [Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
 according to requires_grad to save computation.
 [info ] [PLASMA] Launching plasma compilation! See log file:
-/lambda_stor/homes/wilsonb/apps/starters/pytorch/pef/ffn_mnist//ffn_mnist.plasma_compile.log
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/ffn_mnist//ffn_mnist.plasma_compile.log
 Prism report not available
 Pef file
-/lambda_stor/homes/wilsonb/apps/starters/pytorch/pef/ffn_mnist/ffn_mnist.pef
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/ffn_mnist/ffn_mnist.pef
 created
 [info] Run A Round of PerOp Pass: iter 0
 [info] We run 1 iterations of PerOp transformation totally.
@@ -302,7 +302,7 @@ batch_dim: None, named_dims: (None, None), keep_data: True,
 materializer_provided: False)
 2021-6-10 14:54:47 : [INFO][SC][74527]: SambaConnector: PEF File:
 pef/ffn_mnist/ffn_mnist.pef
-Log ID initialized to: [wilsonb][python][74527] at
+Log ID initialized to: [ALCFUserID][python][74527] at
 /var/log/sambaflow/runtime/sn.log
 [Warning][SAMBA][Default] #
 --------------------------------------------------
@@ -321,7 +321,7 @@ Epoch [1/1], Step [60000/60000], Loss: 0.3028
 Test Accuracy: 94.50 Loss: 0.1905
 2021-6-10 14:54:49 : [INFO][SC][74554]: SambaConnector: PEF File:
 pef/ffn_mnist/ffn_mnist.pef
-Log ID initialized to: [wilsonb][python][74554] at
+Log ID initialized to: [ALCFUserID][python][74554] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
@@ -394,10 +394,10 @@ trimmed according to requires_grad to save computation.
 [Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
 according to requires_grad to save computation.
 [info ] [PLASMA] Launching plasma compilation! See log file:
-/lambda_stor/homes/wilsonb/apps/starters/pytorch/pef/res_ffn_mnist//res_ffn_mnist.plasma_compile.log
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/res_ffn_mnist//res_ffn_mnist.plasma_compile.log
 Prism report not available
 Pef file
-/lambda_stor/homes/wilsonb/apps/starters/pytorch/pef/res_ffn_mnist/res_ffn_mnist.pef
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/res_ffn_mnist/res_ffn_mnist.pef
 created
 [info] Run A Round of PerOp Pass: iter 0
 [info] We run 1 iterations of PerOp transformation totally.
@@ -424,7 +424,7 @@ iterations. Average latency: 0.0005266880989074707 s.
 e2e_latency: 0.05266880989074707 s
 2021-6-11 7:58:4 : [INFO][SC][98357]: SambaConnector: PEF File:
 pef/res_ffn_mnist/res_ffn_mnist.pef
-Log ID initialized to: [wilsonb][python][98357] at
+Log ID initialized to: [ALCFUserID][python][98357] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
@@ -516,7 +516,7 @@ trimmed according to requires_grad to save computation.
 [Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
 according to requires_grad to save computation.
 [info ] [PLASMA] Launching plasma compilation! See log file:
-/lambda_stor/homes/wilsonb/apps/starters/pytorch/pef/logreg//logreg.plasma_compile.log
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/logreg//logreg.plasma_compile.log
 ...
 
 [Warning][SAMBA][Default] # The dtype of "targets" to
@@ -531,7 +531,7 @@ Epoch [1/1], Step [60000/60000], Loss: 0.3524
 Test Accuracy: 90.07 Loss: 0.3361
 2021-6-11 8:38:49 : [INFO][SC][99185]: SambaConnector: PEF File:
 pef/logreg/logreg.pef
-Log ID initialized to: [wilsonb][python][99185] at
+Log ID initialized to: [ALCFUserID][python][99185] at
 /var/log/sambaflow/runtime/sn.log
 ```
 

@@ -145,7 +145,7 @@ Test Accuracy: 98.06 Loss: 0.0628
 2021-6-10 10:52:28 : [INFO][SC][53607]: SambaConnector: PEF File:
 pef/lenet/lenet.pef
 
-Log ID initialized to: [wilsonb][python][53607] at
+Log ID initialized to: [ALCFUserID][python][53607] at
 /var/log/sambaflow/runtime/sn.log
 ```
 

@@ -1,21 +1,24 @@
 # Tunneling and Forwarding Ports
 
+## On-Boarding
+
+See [Get Started](https://www.alcf.anl.gov/support-center/get-started )
+to request an acccount and additional information.
+
 ## TensorBoard Port-Forwarding
 
-Use ports other than 6026 and 16026 to avoid collisions with other users.
+Use ports other than 6006 and 16006 to avoid collisions with other users.
 
 ### From your local machine
 
 Run
 
-### TODO Add link to ALCF Onboarding
-
 ```bash
-ssh -v -N -f -L localhost:16026:localhost:16026 wilsonb@sambanova.alcf.anl.gov
+ssh -v -N -f -L localhost:16006:localhost:16006 ALCFUserID@sambanova.alcf.anl.gov
 ...
 Password: < MobilPass+ code >
 
-ssh wilsonb@sambanova.alcf.anl.gov
+ssh ALCFUserID@sambanova.alcf.anl.gov
 ...
 Password: < MobilPass+ code >
 ```
@@ -28,8 +31,8 @@ Run
 The full name is sm-01.ai.alcf.anl.gov.**
 
 ```bash
-ssh -N -f -L localhost:16026:localhost:6026 wilsonb@sm-01
-ssh wilsonb@sm-01
+ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@sm-01
+ssh ALCFUserID@sm-01
 ```
 
 ### On **sm-01**
@@ -64,12 +67,12 @@ Navigate to the appropriate directory for your model.
 
 ```bash
 cd /path/to/your/project
-tensorboard --logdir /logs --port 6026
+tensorboard --logdir /logs --port 6006
 ```
 
 ### Browser on Local Machine
 
-Then, navigate [in your browser] to (in this example) http://localhost:16026 on your local machine.
+Then, navigate \[in your browser\] to (in this example) http://localhost:16006 on your local machine.
 
 ## Notes
 
