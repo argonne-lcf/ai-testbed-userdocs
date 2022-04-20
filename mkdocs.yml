@@ -16,14 +16,14 @@ nav:
     - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy-of-SambaNova-PyTorch-Models.md
   - Cerebras:
     - System Overview: cerebras/System-Overview.md
-    - How to setup your base environment: cerebras/How-to-setup-your-base-environment.md
+    - Connect to a CS-2 node: cerebras/Connect-to-a-CS-2-node.md
     - Steps to run a model or program: cerebras/Steps-to-run-a-model-or-program.md
-    - Using virtual environments to customize environment: cerebras/Using-virtual-environments-to-customize-environment.md
-    - Job Queuing and Submission: cerebras/Job-Queuing-and-Submission.md
     - Example Programs: cerebras/Example-Programs.md
+    - Job Queuing and Submission: cerebras/Job-Queuing-and-Submission.md
+    - How to setup your base environment: cerebras/How-to-setup-your-base-environment.md
+    - Using virtual environments to customize environment: cerebras/Using-virtual-environments-to-customize-environment.md
     - Performance Tools: cerebras/Performance-Tools.md
     - Best Practices and FAQs: cerebras/Best-Practices-and-FAQs.md
     - Tunneling and forwarding ports: cerebras/Tunneling-and-forwarding-ports.md
     - System and Storage Policies: cerebras/System-and-Storage-Policies.md
-    - Connect to a CS-2 node: cerebras/Connect-to-a-CS-2-node.md
     - Miscellaneous: cerebras/Miscellaneous.md
