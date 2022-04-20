@@ -17,26 +17,13 @@ Change directory
 cd ~/apps/starters/
 ```
 
-### LeNet Arguments
-
-This is not an exhaustive list of arguments.
+## Common Arguments
 
 Arguments
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
 | --b                    | 1         | Batch size for training        |
-|                        |           |                                |
-| --mb                   | None      | Microbatch size for training   |
-|                        |           |                                |
-|                        |           | **Note: Do not use or set only |
-|                        |           | to 1.**                        |
-|                        |           |                                |
-| --lr                   | 0.01      | Learning rate for training     |
-|                        |           |                                |
-| --momentum             | 0.0       | Momentum value for training    |
-|                        |           |                                |
-| --weight-decay         | 0.01      | Weight decay for training      |
 |                        |           |                                |
 | -n,                    | 100       | Number of iterations to run    |
 | --num-iterations       |           | the pef for                    |
@@ -47,13 +34,27 @@ Arguments
 | --log-path             | 'check    | Log path                       |
 |                        | points'   |                                |
 |                        |           |                                |
-| --data-path            | './data'  | Data path                      |
-|                        |           |                                |
-|                        |           |                                |
 | --num-workers          | 0         | Number of workers              |
 |                        |           |                                |
 | --measure-train-       | None      | Measure training performance   |
 | performance            |           |                                |
+|                        |           |                                |
+
+### LeNet Arguments
+
+This is not an exhaustive list of arguments.
+
+Arguments
+
+| Argument               | Default   | Help                           |
+|------------------------|-----------|--------------------------------|
+| --lr                   | 0.01      | Learning rate for training     |
+|                        |           |                                |
+| --momentum             | 0.0       | Momentum value for training    |
+|                        |           |                                |
+| --weight-decay         | 0.01      | Weight decay for training      |
+|                        |           |                                |
+| --data-path            | './data'  | Data path                      |
 |                        |           |                                |
 | --data-folder          | 'mnist_   | Folder containing mnist data   |
 |                        | data'     |                                |
@@ -197,8 +198,6 @@ Arguments
 | --momentum             | 0.0          | Momentum value for training    |
 |                        |              |                                |
 | --weight-decay         | 1e-4         | Weight decay for training      |
-|                        |              |                                |
-| -e or --num-epochs     | 1            | Number epochs for training     |
 |                        |              |                                |
 
 Run these commands:
@@ -450,9 +449,6 @@ Arguments
 |                     |             |                              |          |
 | --weight-decay      | 1e-4        | Weight decay for training    | Compile  |
 |                     |             |                              |          |
-| -e,                 | 1           | Number epochs for training   | Compile  |
-| --num-epochs        |             |                              |          |
-|                     |             |                              |          |
 | --num-features      | 784         | Number features for training | Compile  |
 |                     |             |                              |          |
 | --num-classes       | 10          | Number classes for training  | Compile  |
@@ -484,12 +480,6 @@ Then
 
 ```bash
 sbatch --output=pef/logreg/output.log submit-logreg-job.sh
-```
-
-Squeue will give you the queue status.
-
-```bash
-squeue
 ```
 
 The output file, pef/logreg/output.log, will look something like:
@@ -582,13 +572,3 @@ Then
 ```bash
 sbatch submit-unet-job.sh
 ```
-
-Squeue will give you the queue status.
-
-```bash
-squeue
-```
-
-The output file will look something like:
-
-pef/logreg/output.log

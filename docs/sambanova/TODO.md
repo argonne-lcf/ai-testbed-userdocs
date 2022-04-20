@@ -2,6 +2,10 @@
 
 ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 
+Copy data to /software/sambanova/dataset
+
+If any examples use data, use above link.
+
 ## System Overview
 
 - [ ] First draft
@@ -16,7 +20,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 - [X] First draft
 - [X] First draft reviewed
 - [X] Second draft 4/18
-- [ ] Second draft reviewed
+- [X] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -25,7 +29,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 - [X] First draft
 - [X] First draft reviewed
 - [X] Second draft 4/18
-- [ ] Second draft reviewed
+- [X] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -34,7 +38,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 - [X] First draft
 - [X] First draft reviewed
 - [X] Second draft 4/19
-- [ ] Second draft reviewed
+- [X] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -43,7 +47,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 - [X] First draft
 - [X] First draft reviewed
 - [X] Second draft 4/18
-- [ ] Second draft reviewed
+- [X] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -52,7 +56,7 @@ ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 - [X] First draft
 - [X] First draft reviewed
 - [X] Second draft 4/19
-- [ ] Second draft reviewed
+- [X] Second draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
