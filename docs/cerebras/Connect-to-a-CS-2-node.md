@@ -28,7 +28,7 @@ To connect to a CS-2 ("chief") node:<br>
 | **ssh ALCFUserID@testbed-cs2-02-med1.ai.alcf.anl.gov** |
 
 
-Alternative, this (and scp operations) maybe done in one command line (two passcodes required):
+Alternatively, this (and scp operations) maybe done in one command line (two passcodes required):
 
 |                                                                             |
 |-----------------------------------------------------------------------------|
