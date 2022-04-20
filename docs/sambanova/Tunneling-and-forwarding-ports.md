@@ -7,8 +7,6 @@ to request an acccount and additional information.
 
 ## TensorBoard Port-Forwarding
 
-TODO Check these for redundancy.
-
 This section describes the steps to be followed to set up port forwarding such that the applications like tensorboard, are run on the sambanova system.
 This examples uses 6006 and 16006 as port numbers. Using unique port numbers other than these avoids collisions with other users.
 
