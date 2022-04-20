@@ -2,15 +2,13 @@
 
 ## Overview
 
-The SambaNova DataScale system is architected around the next-generation Reconfigurable Dataflow Unit (RDU) processor for optimal dataflow processing and acceleration. The SambaNova is a half-rack system consisting of two nodes, each of which features eight RDUs interconnected to enable model and data parallelism. SambaFlow, its software stack, extracts, optimizes, and maps dataflow graphs to the RDUs from standard machine learning frameworks, including TensorFlow and PyTorch.
+The SambaNova DataScale system is architected around the next-generation Reconfigurable Dataflow Unit (RDU) processor for optimal dataflow processing and acceleration. The SambaNova is a half-rack system consisting of two nodes, each of which features eight RDUs interconnected to enable model and data parallelism. SambaFlow, its software stack, extracts, optimizes, and maps dataflow graphs to the RDUs from standard machine learning frameworks, like PyTorch.
+
+## TODO Add figure to show going from login node to lksdjf
 
 ## Configuration
 
-ANL has two SambaNova nodes, accessed as sm-01.alcf.anl.gov and
-sm-02.cels.anl.gov. The two nodes are configured similarly (excepting
-serial numbers).
-
-The software is in /opt/sambaflow: utilities are in /opt/sambaflow/bin
+SambaNova node can be accessed as sm-01.ai.alcf.anl.gov.
 
 The snconfig utility shows the static configuration. For example, on
 sm-01, and showing just the first RDU:
@@ -22,7 +20,6 @@ Number of XRDUS: 4
 XRDU Name: XRDU_0
 Number of RDUS: 2
 RDU name: RDU_0
-Serial Number : 1028507769DA4715
 Number of TILES: 4
 TILE Name: TILE_0
 Serial Number : N/A
@@ -39,7 +36,6 @@ DDR CH Name: DDRCH_0
 Number of DIMMS: 2
 DIMM Name: DIMM_C0
 Size : 64.0 GB
-Serial Number : 39B5E30
 DIMM Name: DIMM_C1
 Size : 0.0 GB
 Serial Number : N/A

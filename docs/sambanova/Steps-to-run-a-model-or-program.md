@@ -18,7 +18,7 @@ Compiles the model and generates a .pef file. This file contains
 information on how to reconfigure the hardware like how many compute and
 memory resources are required, and will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
-SambaNova documentation advises to save pef files in separate
+SambaNova documentation advises saving pef files in separate
 directories with the '--output-folder' option.
 
 It is necessary to re-compile only when information specific to these

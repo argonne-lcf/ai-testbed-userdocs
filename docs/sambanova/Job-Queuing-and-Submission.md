@@ -97,6 +97,9 @@ Squeue will give you the queue status.
 squeue
 ```
 
+TODO Add scancel
+
+
 The output file, pef/lenet/output.log, will look something like:
 
 ```text
