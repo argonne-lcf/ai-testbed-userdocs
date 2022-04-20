@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### Job Queuing and Submission
 [ed: Overlaps with running basic tests.]<br>
 The CS-2 systems use slurm for job submission and queueing.<br>

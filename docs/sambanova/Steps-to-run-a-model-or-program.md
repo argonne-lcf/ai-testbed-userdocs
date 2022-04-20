@@ -12,7 +12,7 @@ to request an acccount and additional information.
 
 The SambaNova workflow includes the following main steps to run a model.
 
-TODO Use exiting sample.
+TODO Use existing sample.
 
 ## Compile
 

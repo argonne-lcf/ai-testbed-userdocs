@@ -1,12 +1,11 @@
-Cerebras
-========
-
 ### Example Programs
-Follow the instructions in the TensorFlow quickstart to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
-[TODO need a pointer to a mirror of the current Cerebras public documentation]<br>
-[TODO perhaps also a pointer to the Cerebras's public reference model github repo -  https://github.com/Cerebras/cerebras_reference_implementations/ - includes fc_mnist(tf, pytorch) and BERT(tf, pytorch).]<br>
-[TODO perhaps also describe the parameterized simple model used for benchmarking]<br>
-[TODO Describe the available samples in the Cerebras modelzoo]<br>
+Follow these instructions to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
+
+See also the current Cerebras quickstart documentation, that uses a clone of Cerebras's abbreviated public "reference implementations" github repo rather than the full modelzoo.<br>
+[https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html](https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html)<br>
+[https://github.com/Cerebras/cerebras_reference_implementations/](https://github.com/Cerebras/cerebras_reference_implementations/)
+
+[TODO Describe the available samples in the Cerebras modelzoo? That tree is grows over time.]<br>
 
 <table>
 <tbody>
@@ -55,4 +54,45 @@ To separately compile and run,
 The training will reuse an existing compilation if no changes were made that force a recompile. Compiles may be done while another job is using the wafer.
 
 
+### Training in CPU-mode
+
+The CPU-mode examples in the TensorFlow [TODO And PyTorch?] quickstart will run as either csrun_cpu jobs or in a singularity shell.<br>
+<i>If no cs_ip is specified, a training run will be in cpu mode. </i>
+
+Change the max steps for the training run command line to something smaller so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for this example.)
+
+This illustrates how to create a singularity container.
+The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default binds both one's home directory and /tmp, read/write.)
+The current directory in the container will be the same as the current directory immediately prior to creating the container.
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>cd ~/modelzoo/fc_mnist/tf<br />
+.../tf/$ singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif<br />
+Singularity&gt; pwd<br />
+/home/&lt;ALCFUserID&gt;/modelzoo/fc_mnist/tf
+</strong></td>
+</tr>
+</tbody>
+</table>
+
+At the shell prompt for the container, 
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>
+Singularity&gt; rm -r model_dir<br />
+Singularity&gt; python run.py --mode train --max_steps 1000<br />
+...<br />
+Singularity&gt; python run.py --mode eval --eval_steps 1000 # may be broken<br />
+...<br />
+Singularity&gt; python run.py --mode train --validate_only<br />
+...<br />
+Singularity&gt; rm -r model_dir<br />
+Singularity&gt; python run.py --mode train --compile_only<br />
+...<br />
+exit</strong></td>
+</tr>
+</tbody>
+</table>
 

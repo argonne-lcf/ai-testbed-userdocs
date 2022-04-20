@@ -173,18 +173,12 @@ Here is an update from SambaNova about the FFT.  They can already do
 **n x m** size is 256 x 256. Their next step is to make the array larger
 than 256 and make it work for 2D.
 
-​[3:25 PM] Arnold, William
-
 Arthur, I tried replacing F.interpolate( with nn.ConvTranspose2d( in
 smallUnet.py - it seems to work, with slightly smaller training and test
 losses after 600 epochs. I'm emailing a patch file for you to look
 at.
 
-​[3:52 PM] McCray, Arthur
-
 great, thank you
-
-[3:53 PM] Arnold, William
 
 ```text
 (my_env) arnoldw@thetagpu05:/projects/datascience/arnoldw/SkX_NN$ cat smallUnet.py.patch 
@@ -221,15 +215,15 @@ great, thank you
 \[3:55 PM\] Arnold, William
 the ConvTranspose2d adds more parameters to the model; didn't attempt to
 measure perf or memory usages diffs. 
-​\[3:56 PM\] McCray, Arthur
+
 i can check that pretty easily, i think torchsummary includes \#
 parameters
-​\[4:08 PM\] Arnold, William
+
 I just tried it, and torchinfo works as well (supposedly torchsummary is
 not maintained)
-​\[4:11 PM\] Arnold, William
+
 anyway, a workaround until whenever SambaNova implements F.interpolate
-​\[4:13 PM\] McCray, Arthur
+
 whoops sorry, torchinfo is the new/proper version of torchsummary. and
 sounds good, i'll try training it this evening, but as you say if the
 losses are comparable or better, and the training time isn't way worse I

@@ -1,6 +1,3 @@
-Cerebras
-========
-
 ### System and Storage Policies
 TODO<br>
 [backup policies]<br>
