@@ -176,7 +176,7 @@ srun python lenet3d.py test -p pef/lenet3d/lenet3d.pef
 srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
 ```
 
-## MNIST Using Feed Forward Network
+## MNIST - Feed Forward Network
 
 Change directory (if necessary)
 
@@ -325,7 +325,7 @@ Log ID initialized to: [ALCFUserID][python][74554] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
-## MNIST Using **Feed Forward Network, Etc.**
+## MNIST - Feed Forward Network with residual connection.
 
 Feed Forward Network with two different activation functions and a
 residual connection.

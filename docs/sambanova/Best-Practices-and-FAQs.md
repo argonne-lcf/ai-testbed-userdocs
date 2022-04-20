@@ -273,8 +273,6 @@ You put the run command in a script and use **mpirun** to run the script.
 
 Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
 
-9/13 Rick W
-
 ## SambaNova Accelerator Performance
 
 ```bash
@@ -282,41 +280,9 @@ sntilestat
 watch sntilestat
 ```
 
-## Spatial Batches
+## What are Spatial Batches ?
 
-Varuni Sastry  2:32 PM
-
-Are you looking at the spatial_train func ?
-
-I thought you are supposed to use the --spatial_train argument for uno.
-
-Ok I think i got it. Since training has two batches of 32000 samples — and each args.num_spatial_batches = 2000. So total of 4000 for training. While on validation it has only 1 set of 32000 samples - hence that 2000 value.
-
-Rick Weisner  2:43 PM
-
-sounds good to me
-
-Varuni Sastry  2:44 PM
-
-And seems like the loss across 2000 batches. So for the total of 32000 samples, loss iteration has 16 samples for which it is calculating the loss.
-
-Rick Weisner  6:46 PM
-
-From SN engineering: 2000 is number of spatial batches used for mapping and 16 is the batch size. The minibatch_count is a multiple of 2000, and 32000 samples is divided into 2000 spatial batches, each has batch size 16.
-
-6:46
-
-So you were right on the money.
-
-Rick Weisner  9:53 PM
-
-More from SN engineering: Training on Uno/MT is done in “spatial mapping” mode.
-
-This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context.
-
-Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update.
-
-This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to.In this specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, we perform 1 execution context -> we train with 2000 batches or 2000 * 16 samples.Why do we do it this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
+--spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculating across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
 
 ## Finding Hung Tiles
 
