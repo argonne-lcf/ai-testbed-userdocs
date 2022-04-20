@@ -3,8 +3,8 @@
 **NOTE:  Please be mindful of how you use the systems.
 For example, run larger jobs in the evening or on weekends.**
 
-**NOTE:  Jobs on AI Accelerators *ARE NOT* ran interactively.
-Jobs must be batched using *srun* or *sbatch*.**
+**NOTE:  Jobs on AI Accelerators *SHOULD NOT* be run interactively.
+Jobs should be run using either *srun* or *sbatch*.**
 
 ## Tile Status
 
@@ -96,59 +96,10 @@ Squeue will give you the queue status.
 squeue
 ```
 
-TODO Add scancel
+Scancel is used to signal or cancel jobs, job arrays or job steps.
 
-
-The output file, pef/lenet/output.log, will look something like:
-
-```text
-[Info][SAMBA][Default] # Placing log files in
-pef/lenet/lenet.samba.log
-
-[Info][MAC][Default] # Placing log files in
-pef/lenet/lenet.mac.log
-
-[Warning][SAMBA][Default] #
-
---------------------------------------------------
-
-Using patched version of torch.cat and torch.stack
-
---------------------------------------------------
-
-[Warning][SAMBA][Default] # The dtype of "targets" to
-CrossEntropyLoss is torch.int64, however only int16 is currently
-supported, implicit conversion will happen
-
-[Warning][MAC][GraphLoweringPass] # lenet__reshape skip
-set_loop_to_air
-
-[Warning][MAC][GraphLoweringPass] # lenet__reshape_bwd skip
-set_loop_to_air
-
-...
-
-Epoch [1/1], Step [59994/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59995/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59996/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59997/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59998/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59999/60000], Loss: 0.1712
-
-Epoch [1/1], Step [60000/60000], Loss: 0.1712
-
-Test Accuracy: 98.06 Loss: 0.0628
-
-2021-6-10 10:52:28 : [INFO][SC][53607]: SambaConnector: PEF File:
-pef/lenet/lenet.pef
-
-Log ID initialized to: [ALCFUserID][python][53607] at
-/var/log/sambaflow/runtime/sn.log
+```bash
+scancel job_id
 ```
 
 Please note that there is no measure-performance command handled

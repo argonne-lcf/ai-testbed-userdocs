@@ -1,14 +1,10 @@
 # Tunneling and Forwarding Ports
 
-## On-Boarding
-
-See [Get Started](https://www.alcf.anl.gov/support-center/get-started )
-to request an acccount and additional information.
-
+Port forwarding is covered here.  This is specifically for TensorBoard.
 ## TensorBoard Port-Forwarding
 
 This section describes the steps to be followed to set up port forwarding such that the applications like tensorboard, are run on the sambanova system.
-This examples uses 6006 and 16006 as port numbers. Using unique port numbers other than these avoids collisions with other users.
+This example uses 6006 and 16006 as port numbers. Using unique port numbers other than these avoids collisions with other users.
 
 ### From your local machine
 
@@ -28,8 +24,7 @@ Password: < MobilPass+ code >
 
 Run
 
-**NOTE:  sm-01 is getting resolved by the DNS server.  The abbreviation is correct.
-The full name is sm-01.ai.alcf.anl.gov.**
+**NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**
 
 ```bash
 ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@sm-01
@@ -56,7 +51,7 @@ sbatch --output=pef/my_model/output.log submit-my_model-job.sh
 
 ### On Another sm-01 Terminal Window
 
-The next three steps will be automatically ran in the future.
+The next three steps will be automatically run in the future.
 
 ```bash
 export PATH=$PATH:/opt/sambaflow/bin
@@ -86,7 +81,7 @@ Explanation of **ssh** command:
 
 -L <machine1>:<portA>:<machine2>:<portB> :
 
-forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
+The full command line will forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
 ```
 
 Adapted from:  https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server
