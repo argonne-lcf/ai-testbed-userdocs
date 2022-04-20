@@ -58,22 +58,22 @@ kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-
 </table>
 
 
-It will download as a zip file. ('unzip' is available testbed-cs2-01-med1)
+It will download as a zip file. ('unzip' is available testbed-cs2-01-med8)
 
 exit the singularity container to unzip the dataset zip file
 
 Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
 
-#### Running Tensorboard from testbed-cs2-01-med1
+#### Running Tensorboard from testbed-cs2-01-med8
 --------------------------------
 
 [TODO fix this when system is working enough to test tunneling]
 
-if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-01-med1 terminal and you will see the output as given below.<br/>
+if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-01-med8 terminal and you will see the output as given below.<br/>
 TODO this doesn't actually work; test/fix when CS-2 is working again. 
 |                                                                                                                                                                                                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **\[&lt;ALCFid&gt;@testbed-cs2-01-med1 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
+| **\[&lt;ALCFid&gt;@testbed-cs2-01-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
 **# this fails too: singularity exec -B ~/data:/data --net --network-args "portmap=9999:9999/tcp" /lambda_stor/slurm/cbcore_images/cbcore_latest.sif  tensorboard --bind\_all --logdir model\_dir --port 9999**<br/>
  **W0813 12:38:24.674294 140736110290688 plugin\_event\_accumulator.py:323\] Found more than one graph event per run, or there was a metagraph containing a graph\_def, as well as one or more graph events.  Overwriting the graph with the newest event.**  
                                                                                                                                                                                                                                                               
