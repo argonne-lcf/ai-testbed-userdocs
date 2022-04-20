@@ -3,11 +3,6 @@
 **NOTE:  Please be mindful of how you are using the system.
 For example, run larger jobs in the evening or on weekends.**
 
-## On-Boarding
-
-See [Get Started](https://www.alcf.anl.gov/support-center/get-started )
-to request an acccount and additional information.
-
 ## Introduction
 
 The SambaNova workflow includes the following main steps to run a model.
