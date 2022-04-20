@@ -1,5 +1,6 @@
 # Miscellaneous
 
+## Venkat - Let's not keep this linked in the main docs
 ## Creating a SambaNova Portal Account to access the documentation portal
 
 1. Go to  [login.sambanova.ai](http://login.sambanova.ai/);
