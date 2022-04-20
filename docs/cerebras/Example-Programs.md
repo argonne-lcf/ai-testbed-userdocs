@@ -82,13 +82,16 @@ At the shell prompt for the container,
 <tr class="odd">
 <td><strong>
 Singularity&gt; rm -r model_dir<br />
+Singularity&gt; # compile and train on the CPUs<br />
 Singularity&gt; python run.py --mode train --max_steps 1000<br />
 ...<br />
 Singularity&gt; python run.py --mode eval --eval_steps 1000 # may be broken<br />
 ...<br />
+Singularity&gt; # validate_only is the first portion of a compile<br />
 Singularity&gt; python run.py --mode train --validate_only<br />
 ...<br />
 Singularity&gt; rm -r model_dir<br />
+Singularity&gt; # compile_only does a compile but no training.<br />
 Singularity&gt; python run.py --mode train --compile_only<br />
 ...<br />
 exit</strong></td>

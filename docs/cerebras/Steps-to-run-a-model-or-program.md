@@ -14,7 +14,7 @@ Follow the instructions in section [Connect to a CS-2 node](./Connect-to-a-CS-2-
 The Cerebras Singularity container (SIF) is used for all work with the Cerebras software, and includes the Cerebras Graph Compiler (CGC) and other necessary software.</br>
 Its path is /lambda_stor/slurm/cbcore_images/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
-[TODO update that path when ALCF conversion is done.]
+[TODO update that lamba_store path when ALCF conversion is complete.]
 
 ##### Slurm:<br>
 Slurm is installed and running on all the CPU nodes. The coordination between the CS system and the nodes in the CS cluster is performed by Slurm. See section
@@ -22,13 +22,13 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 [TODO Verify that a csrun_wse job locks the CS-2 wafer for exclusive use; if not, then it will need to be fixed. (Even with a hack like exclusively reserving >50% of the worker nodes by default)]
 
 ##### Worker hostnames:<br>
-The worker nodes for the 1st CS-2 are testbed-cs2-01-med[1-9].ai.alcf.anl.gov<br>
-The worker nodes for the 2nd CS-2 are testbed-cs2-02-med[1-9].ai.alcf.anl.gov<br>
+<!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[1-9].ai.alcf.anl.gov<br>--->
+The worker nodes for the CS-2 are testbed-cs2-02-med[1-9].ai.alcf.anl.gov<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
-##### CS_IP addresses of the CS systems:<br>
-The first CS-2 uses CS_IP 192.168.220.30<br>
-The second CS-2 uses CS_IP 192.168.220.50<br>
+##### CS_IP addresses of the CS system:<br>
+<!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
+The CS-2 uses CS_IP 192.168.220.50<br>
 The CS_IP environment variable is set to the appropriate value by default, and may be used in scripts.  [TODO remove this TODO after this is true.]
 
 ##### Running a job
