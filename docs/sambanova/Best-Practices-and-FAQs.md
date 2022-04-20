@@ -173,18 +173,12 @@ Here is an update from SambaNova about the FFT.  They can already do
 **n x m** size is 256 x 256. Their next step is to make the array larger
 than 256 and make it work for 2D.
 
-​[3:25 PM] Arnold, William
-
 Arthur, I tried replacing F.interpolate( with nn.ConvTranspose2d( in
 smallUnet.py - it seems to work, with slightly smaller training and test
 losses after 600 epochs. I'm emailing a patch file for you to look
 at.
 
-​[3:52 PM] McCray, Arthur
-
 great, thank you
-
-[3:53 PM] Arnold, William
 
 ```text
 (my_env) arnoldw@thetagpu05:/projects/datascience/arnoldw/SkX_NN$ cat smallUnet.py.patch 
@@ -221,15 +215,15 @@ great, thank you
 \[3:55 PM\] Arnold, William
 the ConvTranspose2d adds more parameters to the model; didn't attempt to
 measure perf or memory usages diffs. 
-​\[3:56 PM\] McCray, Arthur
+
 i can check that pretty easily, i think torchsummary includes \#
 parameters
-​\[4:08 PM\] Arnold, William
+
 I just tried it, and torchinfo works as well (supposedly torchsummary is
 not maintained)
-​\[4:11 PM\] Arnold, William
+
 anyway, a workaround until whenever SambaNova implements F.interpolate
-​\[4:13 PM\] McCray, Arthur
+
 whoops sorry, torchinfo is the new/proper version of torchsummary. and
 sounds good, i'll try training it this evening, but as you say if the
 losses are comparable or better, and the training time isn't way worse I
@@ -273,7 +267,6 @@ You put the run command in a script and use **mpirun** to run the script.
 
 Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
 
-
 ## SambaNova Accelerator Performance
 
 ```bash
@@ -281,7 +274,7 @@ sntilestat
 watch sntilestat
 ```
 
-## What is Spatial Batches ?
+## What are Spatial Batches ?
 
 --spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculating across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
 

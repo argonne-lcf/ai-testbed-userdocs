@@ -12,13 +12,15 @@ to request an acccount and additional information.
 
 The SambaNova workflow includes the following main steps to run a model.
 
+TODO Use existing sample.
+
 ## Compile
 
 Compiles the model and generates a .pef file. This file contains
 information on how to reconfigure the hardware, as to how many compute and
 memory resources are required and how it will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
-SambaNova documentation advises saving pef files in separate
+SambaNova documentation advises to save pef files in separate
 directories with the '--output-folder' option.
 
 It is necessary to re-compile only when parameters specific to the
