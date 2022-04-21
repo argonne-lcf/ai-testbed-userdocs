@@ -2,7 +2,7 @@
 
 ## Copy Examples
 
-Copy starters to your personal directory structure:
+Sambanova provides examples of some well known models under the /opt/sambaflow/apps/. Make copy of this code to your personal directory structure:
 
 ```bash
 cd ~/
