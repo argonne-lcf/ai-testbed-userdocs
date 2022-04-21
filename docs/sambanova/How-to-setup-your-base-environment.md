@@ -13,18 +13,18 @@ to request an acccount and additional information.
 
 ### Login to Login Node
 
-Login to the SambaNova login node.
+Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated everytime you login to the system.
 
 ```bash
 ssh ALCFUserID@sambanova.alcf.anl.gov
 ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
 ```
 
-Use the ssh "-v" switch to debug ssh problems.
+Note: Use the ssh "-v" option inorder to debug any ssh problems.
 
 ### Login to SambaNova Node
 
-Login to sm-01 using:
+Once you are on the login node, the sambanova system can be accessed using the alias “sm-01” that resolves to hostname sm-01.ai.alcf.anl.gov. 
 
 ```bash
 ssh sm-01
@@ -32,7 +32,7 @@ ssh sm-01
 
 ### Aliases
 
-The SambaNova system has a bash shell script to setup the environment.
+On the sambanova system,  it has a bash shell script to setup the required software environment.
 
 Use
 
@@ -58,7 +58,7 @@ You may deactivate the environment if finished.
 deactivate
 ```
 
-### OMP_NUM_THREADS
+### OMP_NUM_THREADS 
 
 The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
 
