@@ -1,7 +1,5 @@
 # Example Programs
 
-## Application Repository
-
 Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. Make a copy of this to your home directory:
 
 ```bash
