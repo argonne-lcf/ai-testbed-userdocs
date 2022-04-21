@@ -1,8 +1,8 @@
-### Miscellaneous
+# Miscellaneous
 
 
 
-#### Downloading a dataset from www.kaggle.com to a CS-2 node using the command line
+## Downloading a dataset from www.kaggle.com to a CS-2 node using the command line
 
 These notes may be helpful for downloading kaggle datasets
 
@@ -58,22 +58,23 @@ kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-
 </table>
 
 
-It will download as a zip file. ('unzip' is available testbed-cs2-01-med8)
+It will download as a zip file. ('unzip' is available testbed-cs2-02-med8)
 
 exit the singularity container to unzip the dataset zip file
 
 Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
 
-#### Running Tensorboard from testbed-cs2-01-med8
+<!---
+## Running Tensorboard from testbed-cs2-02-med8
 --------------------------------
 
-[TODO fix this when system is working enough to test tunneling]
+[TODO remove this when Tunneling and fowarding ports is one]
 
-if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-01-med8 terminal and you will see the output as given below.<br/>
+if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-02-med8 terminal and you will see the output as given below.<br/>
 TODO this doesn't actually work; test/fix when CS-2 is working again. 
 |                                                                                                                                                                                                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **\[&lt;ALCFid&gt;@testbed-cs2-01-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
+| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
 **# this fails too: singularity exec -B ~/data:/data --net --network-args "portmap=9999:9999/tcp" /lambda_stor/slurm/cbcore_images/cbcore_latest.sif  tensorboard --bind\_all --logdir model\_dir --port 9999**<br/>
  **W0813 12:38:24.674294 140736110290688 plugin\_event\_accumulator.py:323\] Found more than one graph event per run, or there was a metagraph containing a graph\_def, as well as one or more graph events.  Overwriting the graph with the newest event.**  
                                                                                                                                                                                                                                                               
@@ -92,38 +93,32 @@ To load the tensorboard, you can use the standard port forwarding mechanism usin
 | **...% ssh -L 9999:localhost:9999 [&lt;ALCFUserID&gt;](ALCFUserID)[@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
 
 if you used port 9999. 
-
+--->
 
 <embed src="media/image1.tmp" width="468" height="239" />
 =========================================================
 
-#### PyTorch Support
---------------------
+## PyTorch Support
+[TODO Document beta pytorch samples. Perhaps include a pre-edited sample to eliminate that step.]<br>
 
-[TODO 
-Awaiting version with a PyTorch sample that doesn't' require editing source code to enable training.<br/>
-same general approach -<br />
-remove the model_dir<br />
-csrun_cpu run.py --mode train --compile_only ...<br />
-csrun_wse run.py --mode train ... <br />]
-
-#### Determining the CS-2 firmware version
--------------------------------------------
+## Determining the CS-2 version
 
 
+<!---
 [TODO should this API/auth string be made public? Alternative supplied that inspects the singularity container.]
-
 Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
+--->
 [TODO could use CS_IP environment variable if set.]
 <table>
 <tbody>
 <tr class="odd">
 <td>
 <strong>
+...$ # Query the firmware level<br>
 ...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion<br>
 "FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",<br>
 ...$ <br>
-#Alternatively [TODO the auth token above makes me nervous]:<br>
+...$ # Query the software level in the singularity image<br>
 ...$ singularity sif dump 1 /lambda_stor/slurm/cbcore_images/cbcore_latest.sif | grep "from"<br>
 from: cbcore:1.1.1-202203171919-5-6e2dbf07<br>
 ...$ <br>
