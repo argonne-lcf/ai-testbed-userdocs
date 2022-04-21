@@ -99,7 +99,21 @@ if you used port 9999. 
 =========================================================
 
 ## PyTorch Support
-[TODO Document beta pytorch samples. Perhaps include a pre-edited sample to eliminate that step.]<br>
+[TODO need text]
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong> 
+...$ cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$<br>
+...$ rm -r model_dir/<br>
+...$ csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml <br>
+...$ csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000<br>
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Determining the CS-2 version
 

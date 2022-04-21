@@ -8,31 +8,34 @@ to request an acccount and additional information.
 ## Setup
 
 ### System View
-
+Connection to a Sambanova node is a two step process. First step is to ssh to a "login node"
+This step requires a MFA passcode for authentication - a 8 digit passcode generted by an app on your mobile device (e.g. mobilePASS+).
+The second step is to login to a sambanova node from the login node. 
+In the examples below, replace ALCFUserID with your ALCF user id.
 ![SambaNova System View](Log_in.png "SambaNova System View")
 
 ### Login to Login Node
 
-Login to the SambaNova login node.
+Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated everytime you login to the system.
 
 ```bash
 ssh ALCFUserID@sambanova.alcf.anl.gov
 ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
 ```
 
-Use the ssh "-v" switch to debug ssh problems.
+Note: Use the ssh "-v" option inorder to debug any ssh problems.
 
 ### Login to SambaNova Node
 
-Login to sm-01 using:
+Once you are on the login node, the sambanova system can be accessed using the alias “sm-01” that resolves to hostname sm-01.ai.alcf.anl.gov. 
 
 ```bash
 ssh sm-01
 ```
 
-### Aliases
+### SDK setup
 
-The SambaNova system has a bash shell script to setup the environment.
+On the sambanova system,  it has a bash shell script to setup the required software environment. This sets up the SambaFlow software stack, the associated environmental variables and activates a pre-configured virtual environment. 
 
 Use
 
@@ -40,7 +43,7 @@ Use
 ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
 (venv) ALCFUserID@sm-01:~$
 ```
-
+The contents of the sn_env.sh script is shown below for convenience. 
 ```bash
 alias snpath='export PATH=$PATH:/opt/sambaflow/bin' # This is the path to SambaFlow which is the software stack that is running on SambaNova systems. This stack includes the Runtime, the compilers, and the SambaFlow Python SDK which is used to create and run models.
 
@@ -58,7 +61,7 @@ You may deactivate the environment if finished.
 deactivate
 ```
 
-### OMP_NUM_THREADS
+### OMP_NUM_THREADS 
 
 The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
 
