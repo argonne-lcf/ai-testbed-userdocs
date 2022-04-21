@@ -71,7 +71,7 @@ To use Slurm sbatch, create submit-lenet-job.sh with the following
 contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 python lenet.py test --pef="pef/lenet/lenet.pef"
