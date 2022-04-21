@@ -1,8 +1,8 @@
 # Example Programs
 
-## Copy Examples
+## Application Repository
 
-Sambanova provides examples of some well known models under the /opt/sambaflow/apps/. Make copy of this code to your personal directory structure:
+Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -17,9 +17,9 @@ Change directory
 cd ~/apps/starters/
 ```
 
-## Common Arguments
+### Common Arguments
 
-Arguments
+Below are some of the common arguments used across most of the models in the example code.
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
@@ -41,10 +41,6 @@ Arguments
 |                        |           |                                |
 
 ### LeNet Arguments
-
-This is not an exhaustive list of arguments.
-
-Arguments
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
