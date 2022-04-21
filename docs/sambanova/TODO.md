@@ -2,10 +2,6 @@
 
 ModelZoo to /software/sambanova/modelzoo/ and also use symbolic link for latest.
 
-Copy data to /software/sambanova/dataset
-
-If any examples use data, use above link.
-
 ## System Overview
 
 - [ ] First draft

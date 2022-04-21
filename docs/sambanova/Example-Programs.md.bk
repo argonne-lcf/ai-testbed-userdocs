@@ -191,6 +191,254 @@ Copy data files:
 cp -r /software/sambanova/dataset/mnist_data/ .
 ```
 
+### MNIST Arguments
+
+This is not an exhaustive list of arguments.
+
+Arguments
+
+| Argument               | Default      | Help                           |
+|------------------------|--------------|--------------------------------|
+| --lr                   | 0.001        | Learning rate for training     |
+|                        |              |                                |
+| --momentum             | 0.0          | Momentum value for training    |
+|                        |              |                                |
+| --weight-decay         | 1e-4         | Weight decay for training      |
+|                        |              |                                |
+
+Run these commands:
+
+```bash
+srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path=mnist_data
+srun python ffn_mnist.py measure-performance --pef="pef/ffn_mnist/ffn_mnist.pef"
+```
+
+To use Slurm, create submit-ffn_mnist-job.sh with the following
+contents:
+
+```bash
+!/bin/sh
+
+python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path=mnist_data
+python ffn_mnist.py measure-performance --pef="pef/ffn_mnist/ffn_mnist.pef"
+```
+
+Then
+
+```bash
+sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
+```
+
+Squeue will give you the queue status.
+
+```bash
+squeue
+```
+
+The output file, pef/ffn_mnist/output.log, will look something like:
+
+```text
+pef/ffn_mnist/output.log
+
+[Info][SAMBA][Default] # Placing log files in
+pef/ffn_mnist/ffn_mnist.samba.log
+[Info][MAC][Default] # Placing log files in
+pef/ffn_mnist/ffn_mnist.mac.log
+[Warning][SAMBA][Default] #
+--------------------------------------------------
+Using patched version of torch.cat and torch.stack
+--------------------------------------------------
+
+[Warning][SAMBA][Default] # The dtype of "targets" to
+CrossEntropyLoss is torch.int64, however only int16 is currently
+supported, implicit conversion will happen
+[Warning][MAC][MemoryOpTransformPass] # Backward graph is trimmed
+according to requires_grad to save computation.
+[Warning][MAC][WeightShareNodeMergePass] # Backward graph is
+trimmed according to requires_grad to save computation.
+[Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
+according to requires_grad to save computation.
+[info ] [PLASMA] Launching plasma compilation! See log file:
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/ffn_mnist//ffn_mnist.plasma_compile.log
+Prism report not available
+Pef file
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/ffn_mnist/ffn_mnist.pef
+created
+[info] Run A Round of PerOp Pass: iter 0
+[info] We run 1 iterations of PerOp transformation totally.
+[info] Compilation succeeded.
+[Warning][SAMBA][Default] #
+--------------------------------------------------
+Using patched version of torch.cat and torch.stack
+--------------------------------------------------
+
+[Warning][SAMBA][Default] # The dtype of "targets" to
+CrossEntropyLoss is torch.int64, however only int16 is currently
+supported, implicit conversion will happen
+samba: tensor(1.2188)
+samba.SambaTensor(name:
+ffnlogreg__logreg__criterion__crossentropyloss__outputs__0,
+shape: torch.Size([]), dtype: torch.float32,
+batch_dim: None, named_dims: (), keep_data: True, materializer_provided:
+False)
+gold: tensor(1.2095, grad_fn=<NllLossBackward>)
+samba.SambaTensor(name: sambatensor_140554762586704, shape:
+torch.Size([]), dtype: torch.float32,
+batch_dim: None, named_dims: (), keep_data: True, materializer_provided:
+False)
+samba: tensor([[ 1.8516, 0.1934, -1.4141, -0.3281, 0.8945, 0.6797,
+0.7031, -1.8984,
+-0.2090, 1.8984]])
+samba.SambaTensor(name:
+ffnlogreg__logreg__lin_layer__linear__outputs__0, shape:
+torch.Size([1, 10]), dtype: torch.float32,
+batch_dim: None, named_dims: (None, None), keep_data: True,
+materializer_provided: False)
+gold: tensor([[ 1.8645, 0.1935, -1.4266, -0.3330, 0.9037, 0.6794,
+0.7048, -1.9099,
+-0.2141, 1.9202]], grad_fn=<MmBackward>)
+samba.SambaTensor(name: sambatensor_140554762587664, shape:
+torch.Size([1, 10]), dtype: torch.float32,
+batch_dim: None, named_dims: (None, None), keep_data: True,
+materializer_provided: False)
+2021-6-10 14:54:47 : [INFO][SC][74527]: SambaConnector: PEF File:
+pef/ffn_mnist/ffn_mnist.pef
+Log ID initialized to: [ALCFUserID][python][74527] at
+/var/log/sambaflow/runtime/sn.log
+[Warning][SAMBA][Default] #
+--------------------------------------------------
+Using patched version of torch.cat and torch.stack
+--------------------------------------------------
+
+[Warning][SAMBA][Default] # The dtype of "targets" to
+CrossEntropyLoss is torch.int64, however only int16 is currently
+supported, implicit conversion will happen
+Epoch [1/1], Step [10000/60000], Loss: 0.5563
+Epoch [1/1], Step [20000/60000], Loss: 0.4374
+Epoch [1/1], Step [30000/60000], Loss: 0.3832
+Epoch [1/1], Step [40000/60000], Loss: 0.3479
+Epoch [1/1], Step [50000/60000], Loss: 0.3222
+Epoch [1/1], Step [60000/60000], Loss: 0.3028
+Test Accuracy: 94.50 Loss: 0.1905
+2021-6-10 14:54:49 : [INFO][SC][74554]: SambaConnector: PEF File:
+pef/ffn_mnist/ffn_mnist.pef
+Log ID initialized to: [ALCFUserID][python][74554] at
+/var/log/sambaflow/runtime/sn.log
+```
+
+## MNIST - Feed Forward Network with residual connection.
+
+Feed Forward Network with two different activation functions and a
+residual connection.
+
+Change directory (if necessary)
+
+```bash
+cd ~/apps/starters/
+```
+
+Copy data files:
+
+```bash
+cp -r /software/sambanova/dataset/mnist_data/ .
+```
+
+Run these commands:
+
+```bash
+srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+srun python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+srun python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1 --data-path=mnist_data
+srun python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+```
+
+To use Slurm, create submit-res_ffn_mnist-job.sh with the following
+contents:
+
+```bash
+!/bin/sh
+
+python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
+python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1 --data-path=mnist_data
+python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
+```
+
+Then
+
+```bash
+sbatch --output=pef/res_ffn_mnist/output.log
+submit-res_ffn_mnist-job.sh
+```
+
+Squeue will give you the queue status.
+
+```bash
+squeue
+```
+
+The output file, pef/res_ffn_mnist/output.log, will look something like:
+
+```text
+pef/res_ffn_mnist/output.log
+
+[Info][SAMBA][Default] # Placing log files in
+pef/res_ffn_mnist/res_ffn_mnist.samba.log
+[Info][MAC][Default] # Placing log files in
+pef/res_ffn_mnist/res_ffn_mnist.mac.log
+[Warning][SAMBA][Default] #
+--------------------------------------------------
+Using patched version of torch.cat and torch.stack
+--------------------------------------------------
+
+[Warning][SAMBA][Default] # The dtype of "targets" to
+CrossEntropyLoss is torch.int64, however only int16 is currently
+supported, implicit conversion will happen
+[Warning][MAC][MemoryOpTransformPass] # Backward graph is trimmed
+according to requires_grad to save computation.
+[Warning][MAC][WeightShareNodeMergePass] # Backward graph is
+trimmed according to requires_grad to save computation.
+[Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
+according to requires_grad to save computation.
+[info ] [PLASMA] Launching plasma compilation! See log file:
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/res_ffn_mnist//res_ffn_mnist.plasma_compile.log
+Prism report not available
+Pef file
+/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/res_ffn_mnist/res_ffn_mnist.pef
+created
+[info] Run A Round of PerOp Pass: iter 0
+[info] We run 1 iterations of PerOp transformation totally.
+[info] Compilation succeeded.
+
+...
+
+[Warning][SAMBA][Default] # The dtype of "targets" to
+CrossEntropyLoss is torch.int64, however only int16 is currently
+supported, implicit conversion will happen
+
+Epoch [1/1], Step [10000/60000], Loss: 0.5834
+Epoch [1/1], Step [20000/60000], Loss: 0.5559
+Epoch [1/1], Step [30000/60000], Loss: 0.5428
+Epoch [1/1], Step [40000/60000], Loss: 0.5282
+Epoch [1/1], Step [50000/60000], Loss: 0.5181
+Epoch [1/1], Step [60000/60000], Loss: 0.5086
+Test Accuracy: 90.66 Loss: 0.4340
+
+...
+
+e2e_throughput: 1898.6569130275361 samples/s, measured over 100
+iterations. Average latency: 0.0005266880989074707 s.
+e2e_latency: 0.05266880989074707 s
+2021-6-11 7:58:4 : [INFO][SC][98357]: SambaConnector: PEF File:
+pef/res_ffn_mnist/res_ffn_mnist.pef
+Log ID initialized to: [ALCFUserID][python][98357] at
+/var/log/sambaflow/runtime/sn.log
+```
+
 ## Logistic Regression
 
 Change directory (if necessary)
