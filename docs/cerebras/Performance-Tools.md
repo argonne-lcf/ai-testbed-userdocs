@@ -32,7 +32,7 @@ See
 [https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
 
 [TODO With v 1.1, for the fc_mist example, this has no apparent effect. Determine why, and document.]<br>
-[TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]
+<!---[TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]--->
 
 ## Cerebra's guidance on sharding and shuffling datasets
 This Cerebras document covers dataset sharding, and how to shuffle datasets.<br>
