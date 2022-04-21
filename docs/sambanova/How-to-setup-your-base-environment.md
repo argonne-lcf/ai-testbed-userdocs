@@ -66,6 +66,6 @@ The value of this environment variable must be a list of positive integer values
 
 For the SambaNova system it is usually set to one.  However, there are
 are times when it is beneficial to set the number of threads to a
-larger number.  For example, if one has a complex model
-
-TODO_BRW explain when to increase.  Test scripts use 8.  Check with Rick.
+larger number.  There are some libraries used by runtime that react to OMP_NUM_THREADS.
+If profiling reveals a lot of time on the host either in loading or say a custom loss
+calculation you may want to do a sweep varying OMP_NUM_THREADS.
