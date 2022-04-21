@@ -30,7 +30,7 @@ Once you are on the login node, the sambanova system can be accessed using the a
 ssh sm-01
 ```
 
-### Aliases
+### SDK setup
 
 On the sambanova system,  it has a bash shell script to setup the required software environment.
 
