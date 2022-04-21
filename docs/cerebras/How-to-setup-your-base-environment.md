@@ -1,10 +1,13 @@
 ### How to setup your base environment
 
+<!---
 #### Optionally configure history size
 [TODO Assess whether ALCF default HISTSIZE and HISTFILESIZE is sufficient for new users. If not, suggest adding a zero or two or three to these lines in .bashrc:<br>
 .bashrc:HISTSIZE=1000000<br>
 .bashrc:HISTFILESIZE=2000000<br>]
+--->
 
+<!---
 #### Making permissions user-only except for a transfer directory
 [TODO this or equivalent will be taken care of for new users. The various vendors will have access, and probably shouldn't see ports to other vendors systems or application logs/exceptions. If required as a manual step, it only needs to be done once, and some users may have already done this or similar.]<br>
 [TODO there will definitely need to be a way to share possibly-large files with vendors.]<br>
@@ -28,3 +31,4 @@ chmod a+xr .<br>
 </tr>
 </tbody>
 </table>
+--->
