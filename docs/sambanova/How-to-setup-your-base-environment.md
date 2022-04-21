@@ -35,7 +35,7 @@ ssh sm-01
 
 ### SDK setup
 
-On the sambanova system,  it has a bash shell script to setup the required software environment.
+On the sambanova system,  it has a bash shell script to setup the required software environment. This sets up the SambaFlow software stack, the associated environmental variables and activates a pre-configured virtual environment. 
 
 Use
 
