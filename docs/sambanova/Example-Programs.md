@@ -185,6 +185,12 @@ Change directory (if necessary)
 cd ~/apps/starters/
 ```
 
+Copy data files:
+
+```bash
+cp -r /software/sambanova/dataset/mnist_data/ .
+```
+
 ### MNIST Arguments
 
 This is not an exhaustive list of arguments.
@@ -205,7 +211,7 @@ Run these commands:
 ```bash
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --num-workers 1
+srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path=mnist_data
 srun python ffn_mnist.py measure-performance --pef="pef/ffn_mnist/ffn_mnist.pef"
 ```
 
@@ -217,7 +223,7 @@ contents:
 
 python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --num-workers 1
+python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path=mnist_data
 python ffn_mnist.py measure-performance --pef="pef/ffn_mnist/ffn_mnist.pef"
 ```
 
@@ -335,12 +341,18 @@ Change directory (if necessary)
 cd ~/apps/starters/
 ```
 
+Copy data files:
+
+```bash
+cp -r /software/sambanova/dataset/mnist_data/ .
+```
+
 Run these commands:
 
 ```bash
 srun python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
 srun python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-srun python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1
+srun python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1 --data-path=mnist_data
 srun python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
@@ -352,7 +364,7 @@ contents:
 
 python res_ffn_mnist.py compile --pef-name="res_ffn_mnist" --output-folder="pef"
 python res_ffn_mnist.py test --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
-python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1
+python res_ffn_mnist.py run --pef="pef/res_ffn_mnist/res_ffn_mnist.pef" --num-workers 1 --data-path=mnist_data
 python res_ffn_mnist.py measure-performance --pef="pef/res_ffn_mnist/res_ffn_mnist.pef"
 ```
 
