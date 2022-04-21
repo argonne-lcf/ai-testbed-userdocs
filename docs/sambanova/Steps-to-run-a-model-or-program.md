@@ -3,11 +3,15 @@
 **NOTE:  Please be mindful of how you are using the system.
 For example, run larger jobs in the evening or on weekends.**
 
+**NOTE: Please use only Slurm commands, i.e., srun and sbatch, to run your code.
+If you run your code directly using the python command, it may cause conflicts
+on the system.**
+
 ## Introduction
 
 The SambaNova workflow includes the following main steps to run a model.
 
-TODO Use existing sample.
+For additional information, see [Example Programs](Example-Programs.md).
 
 ## Compile
 
@@ -24,10 +28,6 @@ model graph changes, including the batch size.
 Compile times can be significant.  
 Unet for example, when using images of size 32x32 pixels takes 358 (s), while a 256x256 image takes 1844 (s).
 
-**NOTE: Please use only Slurm commands, i.e., srun and sbatch, to run your code.
-If you run your code directly using the python command, it may cause conflicts
-on the system.**
-
 **Using the SLURM scheduling system and workload manager for running
 jobs**
 
@@ -37,7 +37,7 @@ scheduler](https://slurm.schedmd.com/quickstart.html) to run jobs.
 Example:
 
 ```bash
-srun python myapp.py compile --pef-name="myapp.pef" --output-folder="pef"
+srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 ```
 
 ## Run
@@ -45,7 +45,7 @@ srun python myapp.py compile --pef-name="myapp.pef" --output-folder="pef"
 This will run the application on SN nodes.
 
 ```bash
-srun python myapp.py run --pef="pef/myapp/myapp.pef"
+srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
 
 For more information, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)
