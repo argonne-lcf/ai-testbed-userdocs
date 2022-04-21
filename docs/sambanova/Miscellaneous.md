@@ -34,10 +34,11 @@ See <https://github.com/pytorch/examples> .
 There are two mirrors (in the python docs) used for downloading the
 mnist dataset.
 
+```text
 mirrors = [
         'http://yann.lecun.com/exdb/mnist/',
         'https://ossci-datasets.s3.amazonaws.com/mnist/']
+```
 
 [yann.lecun.com](http://yann.lecun.com) appears to be intermittently
 broken (503 errors).
-
