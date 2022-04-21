@@ -21,6 +21,8 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [X] Second draft 4/18
 - [X] Second draft reviewed
+- [X] Third draft 4/20
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -30,6 +32,8 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [X] Second draft 4/18
 - [X] Second draft reviewed
+- [X] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -39,6 +43,8 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [X] Second draft 4/19
 - [X] Second draft reviewed
+- [X] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -48,6 +54,8 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [X] Second draft 4/18
 - [X] Second draft reviewed
+- [X] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -57,33 +65,41 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [X] Second draft 4/19
 - [X] Second draft reviewed
+- [X] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
 ## Performance Tools
 
 - [X] First draft 4/19
-- [ ] First draft reviewed
+- [X] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
 ## Best Practices and FAQs
 
 - [X] First draft 4/19
-- [ ] First draft reviewed
+- [X] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
 ## Tunneling and Forwarding Ports
 
 - [X] First draft 4/19
-- [ ] First draft reviewed
+- [X] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -93,15 +109,19 @@ If any examples use data, use above link.
 - [ ] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
 ## Miscellaneous
 
 - [X] First draft 4/19
-- [ ] First draft reviewed
+- [X] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
 
@@ -111,5 +131,7 @@ If any examples use data, use above link.
 - [X] First draft reviewed
 - [ ] Second draft
 - [ ] Second draft reviewed
+- [ ] Third draft
+- [ ] Third draft reviewed
 - [ ] Final draft
 - [ ] Final draft reviewed
