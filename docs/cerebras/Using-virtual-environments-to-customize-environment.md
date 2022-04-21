@@ -1,4 +1,5 @@
-### Using virtual python environments to customize environment
+# Customizing environments
+## Using a virtual python environment to customize an environment
 It is considered good practice to create and use a python virtual environment for python projects with dependencies not satisfied by the base environment.
 This prevents dependency conflicts between projects.
 
@@ -29,6 +30,6 @@ source testp3env/bin/activate
 </tbody>
 </table>
 
-### Customizing the Cerebras singularity container
+## Customizing the Cerebras singularity container
 See this section of the Cerebras documentation:
 [Adding Custom Packages To cbcore Container](https://docs.cerebras.net/en/latest/software-guides/adding-custom-pkgs-to-cbcore-container.html)
