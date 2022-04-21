@@ -43,7 +43,7 @@ Use
 ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
 (venv) ALCFUserID@sm-01:~$
 ```
-
+The contents of the sn_env.sh script is shown below for convenience. 
 ```bash
 alias snpath='export PATH=$PATH:/opt/sambaflow/bin' # This is the path to SambaFlow which is the software stack that is running on SambaNova systems. This stack includes the Runtime, the compilers, and the SambaFlow Python SDK which is used to create and run models.
 
