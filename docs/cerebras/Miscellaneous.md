@@ -143,8 +143,8 @@ from: cbcore:1.1.1-202203171919-5-6e2dbf07<br>
 </table>
 
 
-## Viewing the Cerebras V 1.1 documenation
-The Cerebras V 1.1 documentation is stored on the cerebras systems and can be served to be viewed with a local browser by running to following in a command prompt on your workstation/laptop.<br>
+## Viewing the Cerebras V 1.1 documentation
+The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running to following in a command prompt on your workstation/laptop.<br>
 *Change the ALCFUserID to your id.*<br>
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
 <table>
@@ -160,5 +160,14 @@ ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /s
 </table>
 To view, view url localhost:8089 with your browser.
 
-This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
+This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
+
+## Porting applications to the CS-2
+Cerebras has guides for porting TensorFlow and PyTorch models:<br>
+[Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
+[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)
+
+When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
+A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
+Both the README.md files and source code in the modelzoo can be quite helpful. 
 
