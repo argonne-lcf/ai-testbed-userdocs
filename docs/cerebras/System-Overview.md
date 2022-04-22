@@ -22,9 +22,9 @@ An ANL CS-2 cluster will look similar to the following diagram (but with 8 worke
 
 
 
-The CS system is responsible only for running and accelerating the actual training and predictions on the neural network.
+The CS system is responsible only for running and accelerating the actual training and predictions with the model.
 
-All the supporting tasks such as starting with the TensorFlow and PyTorch frameworks and compiling the model, preprocessing the input data, running the input function, streaming the data, and managing the training loop, are executed in the Cerebras CPU cluster by the Cerebras software running on these nodes.
+All the supporting tasks such as compiling the model, preprocessing the input data, running the input function, streaming the data, and managing the training loop, are executed in the Cerebras CPU cluster by the Cerebras software running on these nodes.
 
 ![Programming model](./compile-vs-run.png)
 <!---https://docs.cerebras.net/en/latest/_images/compile-vs-run.png-->

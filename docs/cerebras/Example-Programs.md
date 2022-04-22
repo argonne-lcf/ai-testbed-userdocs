@@ -1,6 +1,20 @@
 # Example Programs
 
+## Use a local copy of the model zoo
+If you have not yet made a local copy of the Cerebras modelzoo,
+
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>
+...$ cd ~/<br />
+...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0/ .<br />
+</tr>
+</tbody>
+</table>
+
 ## Unet
+To run Unet with the <a href="https://www.kaggle.com/c/severstal-steel-defect-detection">Severstal: Steel Defect Detection</a> kaggle dataset, using a pre-downloaded copy of the dataset,
 <table>
 <tbody>
 <tr class="odd">
@@ -16,7 +30,21 @@
 </tbody>
 </table>
 ## Bert
-[TODO]
+This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in source directory for details on how to build a dataset from text input.
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
+...$ cd ~/modelzoo-R1.1.0/transformers/tf/bert<br>
+...$ rm -r model_dir_bert_large_msl128<br>
+...$ csrun_cpu python run.py --mode=train --compile_only --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
+...$ csrun_wse python run.py --mode=train --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
 ## BraggNN
 [TODO]
 
