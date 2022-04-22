@@ -152,6 +152,14 @@ srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
 ```
+To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
+
+```bash
+#!/bin/sh
+srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
+```
 
 ## Logistic Regression
 
@@ -193,7 +201,7 @@ srun python logreg.py run --pef="pef/logreg/logreg.pef"
 To use Slurm, create submit-logreg-job.sh with the following contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
