@@ -151,23 +151,6 @@ elif args.command == "measure-performance":
         common_app_driver(args, model, inputs, optimizer, name='ffn_mnist_torch', app_dir=utils.get_file_dir(__file__))
 ```
 
-## LeNet3D
-
-Change directory (if necessary)
-
-```bash
-cd ~/apps/starters/
-```
-
-LeNet3D does compile but its "run" command is missing data at this
-time.
-
-```bash
-srun python lenet3d.py compile --pef-name=lenet3d --output-folder="pef"
-srun python lenet3d.py test -p pef/lenet3d/lenet3d.pef
-srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
-```
-
 ## MNIST - Feed Forward Network
 
 Change directory (if necessary)
