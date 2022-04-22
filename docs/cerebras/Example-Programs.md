@@ -1,42 +1,24 @@
 # Example Programs
 
 ## Use a local copy of the model zoo
-If you have not yet made a local copy of the Cerebras modelzoo,
+Make a local copy of the Cerebras modelzoo and anl_shared repository if not done before using,  
 
 ```bash
 mkdir ~/R1.1.0/
 cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
-cd ~/R1.1.0/modelzoo
+cp -r /software/cerebras/model_zoo/anl_shared-R1.1.0/ ~/R1.1.0/anl_shared
 ```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><strong>
-...$ cd ~/<br />
-...$ mkdir ~/R1.1.0/<br />
-...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo</br>
-...$ cd ~/R1.1.0/modelzoo<br />
-</tr>
-</tbody>
-</table>
 
 ## Unet
 To run Unet with the <a href="https://www.kaggle.com/c/severstal-steel-defect-detection">Severstal: Steel Defect Detection</a> kaggle dataset, using a pre-downloaded copy of the dataset,
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-...$ cd ~/R1.1.0/modelzoo/unet/tf<br>
-...$ rm -r model_dir_unet_base_severstal<br>
-...$ csrun_cpu python run.py --mode=train --compile_only --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50<br>
-...$ csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+
+```bash
+cd ~/R1.1.0/modelzoo/unet/tf
+rm -r model_dir_unet_base_severstal
+csrun_cpu python run.py --mode=train --compile_only --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50
+csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50
+```
 ## Bert
 This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in source directory for details on how to build a dataset from text input.
 <table>
