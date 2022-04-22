@@ -1,17 +1,9 @@
 # How to setup your base environment
 
+```bash
 After sshing to the CS-02 chief node,
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
 source /software/cerebras/cs2-02/envs/cs_env.sh<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```
 
 No other steps are required.
 
@@ -29,21 +21,13 @@ No other steps are required.
 
 To make permissions all user-only (tested on Ubuntu 18.04 and centos 7):<br>
 Edit ~/.profile and add a new line with:<br>
-```umask 077```<br>
+```umask 077```
 Log out and back in again. Then: 
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-cd ~<br>
-chmod -R o=,g= ~<br>
-mkdir transfer<br>
-chmod a+rxw transfer/<br>
-chmod a+xr .<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```bash
+cd ~
+chmod -R o=,g= ~
+mkdir transfer
+chmod a+rxw transfer/
+chmod a+xr .
+```
 --->
