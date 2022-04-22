@@ -160,3 +160,5 @@ ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /s
 </table>
 To view, view url localhost:8089 with your browser.
 
+This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
+
