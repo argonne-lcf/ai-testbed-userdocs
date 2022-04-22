@@ -40,8 +40,9 @@ Follow these instructions to train, evaluate and validate the fc\_mnist TensorFl
 <tr class="odd">
 <td><strong>
 ...$ cd ~/<br />
-...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0/ .<br />
-...$ cd modelzoo-R1.1.0<br />
+...$ mkdir ~/R1.1.0/<br />
+...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo</br>
+...$ cd ~/R1.1.0/modelzoo<br />
 ...$ ls<br />
 audio common_zoo ctr fc_mnist graphs LICENSE README.md RELEASE-NOTES.md rnn_encoder rnn_lm transformers unet<br />
 ...$ cd fc_mnist/tf<br />
