@@ -61,7 +61,6 @@ Run these commands:
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
-srun python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 To use Slurm sbatch, create submit-lenet-job.sh with the following
@@ -73,7 +72,6 @@ contents:
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 python lenet.py test --pef="pef/lenet/lenet.pef"
 python lenet.py run --pef="pef/lenet/lenet.pef"
-python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 Then
@@ -138,17 +136,6 @@ pef/lenet/lenet.pef
 
 Log ID initialized to: [ALCFUserID][python][53607] at
 /var/log/sambaflow/runtime/sn.log
-```
-
-Please note that there is no measure-performance command handled
-currently in lenet.py and some of the other files in the pytorch starter
-code. Hence if you run measure-performance on lenet.py, it will not
-display anything. One way to run performance measure for lenet is, add
-the following in the main function:
-
-```text
-elif args.command == "measure-performance":
-        common_app_driver(args, model, inputs, optimizer, name='ffn_mnist_torch', app_dir=utils.get_file_dir(__file__))
 ```
 
 ## MNIST - Feed Forward Network
