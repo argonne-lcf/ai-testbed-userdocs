@@ -36,7 +36,6 @@ source /software/cerebras/cs2-02/envs/cs_env.sh<br>
 ```
 This will add some CS2 scripts to the path, and set the CS_IP environment variable. 
 
-<br>
 ## Copying files
 
 To copy a file to your CS-2 home dir, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id*:
