@@ -38,7 +38,8 @@ Follow these instructions to train, evaluate and validate the fc\_mnist TensorFl
 <table>
 <tbody>
 <tr class="odd">
-<td><strong>...$ cd ~/<br />
+<td><strong>
+...$ cd ~/<br />
 ...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0/ .<br />
 ...$ cd modelzoo-R1.1.0<br />
 ...$ ls<br />
