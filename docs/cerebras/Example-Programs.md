@@ -3,12 +3,20 @@
 ## Use a local copy of the model zoo
 If you have not yet made a local copy of the Cerebras modelzoo,
 
+```bash
+mkdir ~/R1.1.0/
+cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
+cd ~/R1.1.0/modelzoo
+```
+
 <table>
 <tbody>
 <tr class="odd">
 <td><strong>
 ...$ cd ~/<br />
-...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0/ .<br />
+...$ mkdir ~/R1.1.0/<br />
+...$ cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo</br>
+...$ cd ~/R1.1.0/modelzoo<br />
 </tr>
 </tbody>
 </table>
@@ -20,7 +28,7 @@ To run Unet with the <a href="https://www.kaggle.com/c/severstal-steel-defect-de
 <tr class="odd">
 <td>
 <strong>
-...$ cd ~/modelzoo-R1.1.0/unet/tf<br>
+...$ cd ~/R1.1.0/modelzoo/unet/tf<br>
 ...$ rm -r model_dir_unet_base_severstal<br>
 ...$ csrun_cpu python run.py --mode=train --compile_only --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50<br>
 ...$ csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50<br>
@@ -36,7 +44,7 @@ This BERT-large msl128 example uses a single sample dataset for both training an
 <tr class="odd">
 <td>
 <strong>
-...$ cd ~/modelzoo-R1.1.0/transformers/tf/bert<br>
+...$ cd ~/R1.1.0/modelzoo/transformers/tf/bert<br>
 ...$ rm -r model_dir_bert_large_msl128<br>
 ...$ csrun_cpu python run.py --mode=train --compile_only --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
 ...$ csrun_wse python run.py --mode=train --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
@@ -46,7 +54,26 @@ This BERT-large msl128 example uses a single sample dataset for both training an
 </tbody>
 </table>
 ## BraggNN
-[TODO]
+The BraggNN model has two versions:<br>
+1) Convolution only - this version does not include the non-local attention block<br>
+2) Nonlocal - This version includes the nonlocal attention block as described in  <br>
+[https://arxiv.org/pdf/1711.07971.pdf](https://arxiv.org/pdf/1711.07971.pdf)
+<table>
+<tbody>
+<tr class="odd">
+<td>
+<strong>
+...$ cd ~/R1.1.0<br>
+...$ cp -r /software/cerebras/model_zoo/anl_shared-R1.1.0/ ~/R1.1.0/anl_shared<br>
+...$ cd ~/R1.1.0/anl_shared/braggnn/tf<br>
+...$ rm -r model_dir_braggnn<br>
+...$ csrun_cpu python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --compile_only --cs_ip 192.168.220.50 <br>
+...$ csrun_wse python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --cs_ip 192.168.220.50<br>
+</strong>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Training in CPU-mode (move this someplace else?)
 
@@ -61,10 +88,10 @@ The current directory in the container will be the same as the current directory
 <table>
 <tbody>
 <tr class="odd">
-<td><strong>cd ~/modelzoo-R1.1.0/fc_mnist/tf<br />
+<td><strong>cd ~/R1.1.0/modelzoo/fc_mnist/tf<br />
 .../tf/$ singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif<br />
 Singularity&gt; pwd<br />
-/home/&lt;ALCFUserID&gt;/modelzoo-R1.1.0//fc_mnist/tf
+/home/&lt;ALCFUserID&gt;/R1.1.0/modelzoo//fc_mnist/tf
 </strong></td>
 </tr>
 </tbody>

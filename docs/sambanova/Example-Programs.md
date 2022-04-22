@@ -21,7 +21,7 @@ Below are some of the common arguments used across most of the models in the exa
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
-| --b                    | 1         | Batch size for training        |
+| -b                     | 1         | Batch size for training        |
 |                        |           |                                |
 | -n,                    | 100       | Number of iterations to run    |
 | --num-iterations       |           | the pef for                    |
@@ -53,7 +53,6 @@ Below are some of the common arguments used across most of the models in the exa
 | --data-folder          | 'mnist_   | Folder containing mnist data   |
 |                        | data'     |                                |
 |                        |           |                                |
-
 
 Run these commands:
 
@@ -146,10 +145,24 @@ Change directory (if necessary)
 cd ~/apps/starters/
 ```
 
-Copy data files:
+commands to run MNIST example:
 
 ```bash
-cp -r /software/sambanova/dataset/mnist_data/ .
+srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
+```
+To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
+
+```bash
+#!/bin/sh
+srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
+```
+
+```bash
+sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
 ```
 
 ## Logistic Regression
@@ -187,18 +200,16 @@ Run these commands:
 srun python logreg.py compile --pef-name="logreg" --output-folder="pef"
 srun python logreg.py test --pef="pef/logreg/logreg.pef"
 srun python logreg.py run --pef="pef/logreg/logreg.pef"
-srun python logreg.py measure-performance --pef="pef/logreg/logreg.pef"
 ```
 
 To use Slurm, create submit-logreg-job.sh with the following contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
 python logreg.py run --pef="pef/logreg/logreg.pef"
-python logreg.py measure-performance --pef="pef/logreg/logreg.pef"
 ```
 
 Then
@@ -257,7 +268,7 @@ Change directory
 ```bash
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
-export DATADIR=/var/tmp/kaggle_3m/
+export DATADIR=/software/sambanova/dataset/kaggle_3m
 ```
 
 Export the path to the dataset which is required for the training.
@@ -269,27 +280,15 @@ srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-
 srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
-Run these commands for inference (compile + test +
-measure-performance):
-
-```bash
-srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef-name=unet_inf --default-par-factors --output-folder=${OUTDIR}
-srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
-srun python unet.py measure-performance --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef
-```
-
 Using SLURM :To use Slurm, create submit-unet-job.sh with the following
 contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 export OUTDIR=~/apps/image/pytorch/unet
-export DATADIR=/var/tmp/kaggle_3m/
+export DATADIR=/software/sambanova/dataset/kaggle_3m
 python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
 python unet.py run --do-train  --in-channels=3  --in-width=32  --in-height=32 --init-features 32 --batch-size=1? --data-dir $DATADIR --log-dir ${OUTDIR}/log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
-python unet.py compile --in-channels=3  --in-width=32 --in-height=32 --init-features 32  --batch-size=1  --inference --pef-name=unet_inf  --default-par-factors --output-folder=${OUTDIR}
-python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
-python unet.py measure-performance  --in-channels=3 --in-width=32 --in-height=32  --init-features 32  --batch-size=1 --inference  --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
 Then

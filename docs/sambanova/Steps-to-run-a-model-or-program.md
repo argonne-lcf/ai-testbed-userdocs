@@ -40,6 +40,13 @@ Example:
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 ```
 
+Where
+
+| Argument               | Default   | Help                           |
+|------------------------|-----------|--------------------------------|
+| -b                     | 1         | Batch size for training        |
+|                        |           |                                |
+
 ## Run
 
 This will run the application on SN nodes.
@@ -47,5 +54,13 @@ This will run the application on SN nodes.
 ```bash
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
+
+## Test (Optional)
+
+This commands is used to run the model on both the host CPU and the SambaNova node.  It compares the answers from the CPU and SambaNova RDU and will raise errors if any discrepancies are found. Pass the pef file generated as part of the compile step as the input to this command.
+```bash
+srun python lenet.py test --pef="pef/lenet/lenet.pef"
+```
+
 
 For more information, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)

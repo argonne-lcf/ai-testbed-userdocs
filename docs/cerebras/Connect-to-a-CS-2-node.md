@@ -11,19 +11,19 @@ The first step requires a MFA passcode for authentication - either a 8 digit pas
 <!---[TODO testbed-cs2-01-med8.ai.alcf.anl.gov is not currently accessible]<br>--->
 To connect to a CS-2 ("chief") node:<br>
 
-(1) ssh to the login node first: <br>
+(1) From the local machine, ssh to the login node first: <br>
 
 |                                                                             |
 |-----------------------------------------------------------------------------|
 | **ssh ALCFUserID@cerebras.alcf.anl.gov** |
 
-(2) Then ssh to the destination CS-2 chief node:<br>
+(2) From the login node, ssh to the destination CS-2 chief node:<br>
 
 |                                                                             |
 |-----------------------------------------------------------------------------|
 | **ssh cs2-02-med8** |
 
-Alternatively, this maybe done in one command line (two passcodes required):
+Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
 
 |                                                                             |
 |-----------------------------------------------------------------------------|
@@ -35,13 +35,13 @@ Alternatively, this maybe done in one command line (two passcodes required):
 <br>
 ## Copying files
 
-To copy a file to your CS-2 home dir, replacing ALCFUserID with your ALCF user id:
+To copy a file to your CS-2 home dir, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id*:
 
 |                                                                                  |
 |----------------------------------------------------------------------------------------------------------------------|
 | **scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/** |
 
-To copy a file from your CS-2 home dir to the current local directory, replacing ALCFUserID with your ALCF user id::
+To copy a file from your CS-2 home dir to the current local directory, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id:
 
 |                                                                                  |
 |----------------------------------------------------------------------------------|
