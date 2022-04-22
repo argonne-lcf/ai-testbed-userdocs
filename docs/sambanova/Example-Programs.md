@@ -284,14 +284,13 @@ Using SLURM :To use Slurm, create submit-unet-job.sh with the following
 contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/var/tmp/kaggle_3m/
 python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
 python unet.py run --do-train  --in-channels=3  --in-width=32  --in-height=32 --init-features 32 --batch-size=1? --data-dir $DATADIR --log-dir ${OUTDIR}/log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 python unet.py compile --in-channels=3  --in-width=32 --in-height=32 --init-features 32  --batch-size=1  --inference --pef-name=unet_inf  --default-par-factors --output-folder=${OUTDIR}
 python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
-python unet.py measure-performance  --in-channels=3 --in-width=32 --in-height=32  --init-features 32  --batch-size=1 --inference  --pef=${OUTDIR}/unet_inf/unet_inf.pef
 ```
 
 Then
