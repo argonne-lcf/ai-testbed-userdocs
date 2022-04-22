@@ -1,8 +1,6 @@
 # Example Programs
 
-## Copy Examples
-
-Copy starters to your personal directory structure:
+Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -17,9 +15,9 @@ Change directory
 cd ~/apps/starters/
 ```
 
-## Common Arguments
+### Common Arguments
 
-Arguments
+Below are some of the common arguments used across most of the models in the example code.
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
@@ -41,10 +39,6 @@ Arguments
 |                        |           |                                |
 
 ### LeNet Arguments
-
-This is not an exhaustive list of arguments.
-
-Arguments
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
@@ -77,7 +71,7 @@ To use Slurm sbatch, create submit-lenet-job.sh with the following
 contents:
 
 ```bash
-!/bin/sh
+#!/bin/sh
 
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 python lenet.py test --pef="pef/lenet/lenet.pef"
