@@ -21,41 +21,25 @@ csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.
 ```
 ## Bert
 This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in source directory for details on how to build a dataset from text input.
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-...$ cd ~/R1.1.0/modelzoo/transformers/tf/bert<br>
-...$ rm -r model_dir_bert_large_msl128<br>
-...$ csrun_cpu python run.py --mode=train --compile_only --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
-...$ csrun_wse python run.py --mode=train --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```bash
+cd ~/R1.1.0/modelzoo/transformers/tf/bert
+rm -r model_dir_bert_large_msl128
+csrun_cpu python run.py --mode=train --compile_only --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50
+csrun_wse python run.py --mode=train --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50
+```
+
 ## BraggNN
 The BraggNN model has two versions:<br>
 1) Convolution only - this version does not include the non-local attention block<br>
 2) Nonlocal - This version includes the nonlocal attention block as described in  <br>
 [https://arxiv.org/pdf/1711.07971.pdf](https://arxiv.org/pdf/1711.07971.pdf)
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-...$ cd ~/R1.1.0<br>
-...$ cp -r /software/cerebras/model_zoo/anl_shared-R1.1.0/ ~/R1.1.0/anl_shared<br>
-...$ cd ~/R1.1.0/anl_shared/braggnn/tf<br>
-...$ rm -r model_dir_braggnn<br>
-...$ csrun_cpu python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --compile_only --cs_ip 192.168.220.50 <br>
-...$ csrun_wse python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --cs_ip 192.168.220.50<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+
+```bash
+cd ~/R1.1.0/anl_shared/braggnn/tf
+rm -r model_dir_braggnn
+csrun_cpu python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --compile_only --cs_ip 192.168.220.50
+csrun_wse python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --cs_ip 192.168.220.50
+```
 
 ## Training in CPU-mode (move this someplace else?)
 
