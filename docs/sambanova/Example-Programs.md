@@ -1,6 +1,6 @@
 # Example Programs
 
-Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. Make a copy of this to your home directory:
+Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. These are located on the Sambanova Compute node sm-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -54,9 +54,6 @@ Below are some of the common arguments used across most of the models in the exa
 |                        | data'     |                                |
 |                        |           |                                |
 
-**NOTE:  If you receive an "HTTP error" message on any of the
-following commands, run the command again. Such errors (e.g 503) are
-commonly an intermittent failure to download a dataset.**
 
 Run these commands:
 
@@ -64,7 +61,6 @@ Run these commands:
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
-srun python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 To use Slurm sbatch, create submit-lenet-job.sh with the following
@@ -76,7 +72,6 @@ contents:
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 python lenet.py test --pef="pef/lenet/lenet.pef"
 python lenet.py run --pef="pef/lenet/lenet.pef"
-python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 Then
@@ -141,34 +136,6 @@ pef/lenet/lenet.pef
 
 Log ID initialized to: [ALCFUserID][python][53607] at
 /var/log/sambaflow/runtime/sn.log
-```
-
-Please note that there is no measure-performance command handled
-currently in lenet.py and some of the other files in the pytorch starter
-code. Hence if you run measure-performance on lenet.py, it will not
-display anything. One way to run performance measure for lenet is, add
-the following in the main function:
-
-```text
-elif args.command == "measure-performance":
-        common_app_driver(args, model, inputs, optimizer, name='ffn_mnist_torch', app_dir=utils.get_file_dir(__file__))
-```
-
-## LeNet3D
-
-Change directory (if necessary)
-
-```bash
-cd ~/apps/starters/
-```
-
-LeNet3D does compile but its "run" command is missing data at this
-time.
-
-```bash
-srun python lenet3d.py compile --pef-name=lenet3d --output-folder="pef"
-srun python lenet3d.py test -p pef/lenet3d/lenet3d.pef
-srun python lenet3d.py measure-performance -p pef/lenet3d/lenet3d.pef
 ```
 
 ## MNIST - Feed Forward Network
