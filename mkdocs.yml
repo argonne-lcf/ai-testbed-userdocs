@@ -60,13 +60,13 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
-repo_name: 'argonne-lcf/alcf-userguide'
-repo_url: 'https://github.com/argonne-lcf/alcf-userguide'
+repo_name: 'argonne-lcf/ai-testbed-userdocs'
+repo_url: 'https://github.com/argonne-lcf/ai-testbed-userdocs'
 
 extra:
   social:
     - icon: 'fontawesome/brands/github-alt'
-      link: 'https://github.com/argonne-lcf/alcf-userguide'
+      link: 'https://github.com/argonne-lcf/ai-testbed-userdocs'
 
 plugins:
   - search
