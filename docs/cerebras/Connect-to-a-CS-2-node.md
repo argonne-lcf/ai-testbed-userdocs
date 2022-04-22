@@ -35,13 +35,13 @@ Alternatively, this maybe done in one command line (two passcodes required):
 <br>
 ## Copying files
 
-To copy a file to your CS-2 home dir, replacing ALCFUserID with your ALCF user id:
+To copy a file to your CS-2 home dir, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id*:
 
 |                                                                                  |
 |----------------------------------------------------------------------------------------------------------------------|
 | **scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/** |
 
-To copy a file from your CS-2 home dir to the current local directory, replacing ALCFUserID with your ALCF user id::
+To copy a file from your CS-2 home dir to the current local directory, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id:
 
 |                                                                                  |
 |----------------------------------------------------------------------------------|

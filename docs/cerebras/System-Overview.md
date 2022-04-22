@@ -12,7 +12,8 @@ Release 1.1 includes a preview of the PyTorch support.
 Keras models can be converted to TF Estimator and to Cerebras Estimator.  See <https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator>
 
 The public Cerebras documentation is at:<br>
-<https://docs.cerebras.net/en/latest/index.html>
+<https://docs.cerebras.net/en/latest/index.html><br>
+Instructions for viewing the release 1.1.0 documentation are at [viewing-the-cerebras-v-11-documenation](Miscellaneous.md#viewing-the-cerebras-v-11-documenation)
 
 An ANL CS-2 cluster will look similar to the following diagram (but with 8 worker nodes). The worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
 [TODO say something about filesystems when we have at least one stable system.]	
