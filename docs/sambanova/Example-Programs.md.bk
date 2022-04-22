@@ -23,7 +23,7 @@ Arguments
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
-| --b                    | 1         | Batch size for training        |
+| -b                     | 1         | Batch size for training        |
 |                        |           |                                |
 | -n,                    | 100       | Number of iterations to run    |
 | --num-iterations       |           | the pef for                    |

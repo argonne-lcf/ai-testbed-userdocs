@@ -21,7 +21,7 @@ Below are some of the common arguments used across most of the models in the exa
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
-| --b                    | 1         | Batch size for training        |
+| -b                     | 1         | Batch size for training        |
 |                        |           |                                |
 | -n,                    | 100       | Number of iterations to run    |
 | --num-iterations       |           | the pef for                    |
@@ -53,7 +53,6 @@ Below are some of the common arguments used across most of the models in the exa
 | --data-folder          | 'mnist_   | Folder containing mnist data   |
 |                        | data'     |                                |
 |                        |           |                                |
-
 
 Run these commands:
 

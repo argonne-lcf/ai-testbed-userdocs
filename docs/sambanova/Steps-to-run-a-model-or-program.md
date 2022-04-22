@@ -40,6 +40,13 @@ Example:
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 ```
 
+Where
+
+| Argument               | Default   | Help                           |
+|------------------------|-----------|--------------------------------|
+| -b                     | 1         | Batch size for training        |
+|                        |           |                                |
+
 ## Run
 
 This will run the application on SN nodes.
