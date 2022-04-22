@@ -54,9 +54,6 @@ Below are some of the common arguments used across most of the models in the exa
 |                        | data'     |                                |
 |                        |           |                                |
 
-**NOTE:  If you receive an "HTTP error" message on any of the
-following commands, run the command again. Such errors (e.g 503) are
-commonly an intermittent failure to download a dataset.**
 
 Run these commands:
 
