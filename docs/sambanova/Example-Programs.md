@@ -145,10 +145,12 @@ Change directory (if necessary)
 cd ~/apps/starters/
 ```
 
-Copy data files:
+commands to run MNIST example:
 
 ```bash
-cp -r /software/sambanova/dataset/mnist_data/ .
+srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
 ```
 
 ## Logistic Regression
@@ -186,7 +188,6 @@ Run these commands:
 srun python logreg.py compile --pef-name="logreg" --output-folder="pef"
 srun python logreg.py test --pef="pef/logreg/logreg.pef"
 srun python logreg.py run --pef="pef/logreg/logreg.pef"
-srun python logreg.py measure-performance --pef="pef/logreg/logreg.pef"
 ```
 
 To use Slurm, create submit-logreg-job.sh with the following contents:
@@ -197,7 +198,6 @@ To use Slurm, create submit-logreg-job.sh with the following contents:
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
 python logreg.py run --pef="pef/logreg/logreg.pef"
-python logreg.py measure-performance --pef="pef/logreg/logreg.pef"
 ```
 
 Then
@@ -268,8 +268,7 @@ srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-
 srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
-Run these commands for inference (compile + test +
-measure-performance):
+Run these commands for inference (compile + test):
 
 ```bash
 srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef-name=unet_inf --default-par-factors --output-folder=${OUTDIR}
