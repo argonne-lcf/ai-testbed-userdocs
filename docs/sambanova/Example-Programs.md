@@ -161,6 +161,10 @@ srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
 ```
 
+```bash
+sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
+```
+
 ## Logistic Regression
 
 Change directory (if necessary)
