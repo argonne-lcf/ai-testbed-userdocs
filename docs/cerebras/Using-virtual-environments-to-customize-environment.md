@@ -3,7 +3,7 @@
 It is considered good practice to create and use a python virtual environment for python projects with dependencies not satisfied by the base environment.
 This prevents dependency conflicts between projects.
 
-```bash
+```console
 python3 -m venv ~/testp3env
 source ~/testp3env/bin/activate
 pip install --upgrade pip
@@ -14,7 +14,7 @@ deactivate
 ```
 
 To use this virtual env, e.g. in a script started with csrun_wse or csrun_cpu, or in a singularity shell:
-```bash
+```console
 source testp3env/bin/activate
 ```
 
