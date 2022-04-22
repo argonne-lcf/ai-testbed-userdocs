@@ -51,7 +51,7 @@ This BERT-large msl128 example uses a single sample dataset for both training an
 The BraggNN model has two versions:<br>
 1) Convolution only - this version does not include the non-local attention block<br>
 2) Nonlocal - This version includes the nonlocal attention block as described in  <br>
-   https://arxiv.org/pdf/1711.07971.pdf
+[https://arxiv.org/pdf/1711.07971.pdf](https://arxiv.org/pdf/1711.07971.pdf)
 <table>
 <tbody>
 <tr class="odd">
