@@ -152,7 +152,7 @@ If there is a port conflict, use a different port number in either the second an
 <tr class="odd">
 <td>
 <strong>
-ssh -t -L localhost:8089:localhost:8089 arnoldw@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
+ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
 </strong>
 </td>
 </tr>
