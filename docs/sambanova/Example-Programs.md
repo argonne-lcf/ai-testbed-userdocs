@@ -280,14 +280,6 @@ srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-
 srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
-Run these commands for inference (compile + test):
-
-```bash
-srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef-name=unet_inf --default-par-factors --output-folder=${OUTDIR}
-srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef --log-dir mylogs
-srun python unet.py measure-performance --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size=1 --inference --pef=${OUTDIR}/unet_inf/unet_inf.pef
-```
-
 Using SLURM :To use Slurm, create submit-unet-job.sh with the following
 contents:
 
