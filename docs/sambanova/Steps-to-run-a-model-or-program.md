@@ -55,4 +55,12 @@ This will run the application on SN nodes.
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
 
+## Test (Optional)
+
+This commands is used to run the model on both the host CPU and the SambaNova node.  It compares the answers from the CPU and SambaNova RDU and will raise errors if any discrepancies are found. Pass the pef file generated as part of the compile step as the input to this command.
+```bash
+srun python lenet.py test --pef="pef/lenet/lenet.pef"
+```
+
+
 For more information, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)
