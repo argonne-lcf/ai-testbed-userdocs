@@ -3,6 +3,12 @@
 ## Use a local copy of the model zoo
 If you have not yet made a local copy of the Cerebras modelzoo,
 
+```bash
+mkdir ~/R1.1.0/
+cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
+cd ~/R1.1.0/modelzoo
+```
+
 <table>
 <tbody>
 <tr class="odd">
