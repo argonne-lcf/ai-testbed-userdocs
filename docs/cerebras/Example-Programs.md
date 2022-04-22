@@ -51,39 +51,22 @@ Change the max steps for the training run command line to something smaller than
 This illustrates how to create a singularity container.
 The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 The current directory in the container will be the same as the current directory immediately prior to creating the container.
-<table>
-<tbody>
-<tr class="odd">
-<td><strong>cd ~/R1.1.0/modelzoo/fc_mnist/tf<br />
-.../tf/$ singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif<br />
-Singularity&gt; pwd<br />
-/home/&lt;ALCFUserID&gt;/R1.1.0/modelzoo//fc_mnist/tf
-</strong></td>
-</tr>
-</tbody>
-</table>
+```bash
+cd ~/R1.1.0/modelzoo/fc_mnist/tf
+singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif
+```
 
 At the shell prompt for the container, 
-<table>
-<tbody>
-<tr class="odd">
-<td><strong>
-Singularity&gt; rm -r model_dir<br />
-Singularity&gt; # compile and train on the CPUs<br />
-Singularity&gt; python run.py --mode train --max_steps 1000<br />
-...<br />
-Singularity&gt; python run.py --mode eval --eval_steps 1000 # may be broken<br />
-...<br />
-Singularity&gt; # validate_only is the first portion of a compile<br />
-Singularity&gt; python run.py --mode train --validate_only<br />
-...<br />
-Singularity&gt; # remove the existing compile and training artifacts<br />
-Singularity&gt; rm -r model_dir<br />
-Singularity&gt; # compile_only does a compile but no training<br />
-Singularity&gt; python run.py --mode train --compile_only<br />
-...<br />
-exit</strong></td>
-</tr>
-</tbody>
-</table>
+```bash
+rm -r model_dir
+# compile and train on the CPUs
+python run.py --mode train --max_steps 1000
+python run.py --mode eval --eval_steps 1000
+# validate_only is the first portion of a compile
+python run.py --mode train --validate_only
+# remove the existing compile and training artifacts
+rm -r model_dir
+# compile_only does a compile but no training
+python run.py --mode train --compile_only
+```
 
