@@ -33,19 +33,6 @@ source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
 This will add some CS2 scripts to the path, and set the CS_IP environment variable. 
 
-## Copying files
-
-To copy a file to your CS-2 home dir, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id*:
-```bash
-scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/
-```
-
-To copy a file from your CS-2 home dir to the current local directory, *replacing <strong>both instances</strong> of ALCFUserID* with your ALCF user id:
-```bash
-scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
-```
-
-
 
 
 
