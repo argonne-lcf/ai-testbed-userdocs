@@ -12,6 +12,12 @@ SN PDF docs copy them locally. and then view them.  VV has a tar file also.
 
 - [ ] just fyi, here's how to serve html from the bastion node (e.g. cerebras.alcf.anl.gov):
 
+
+
+
+- [ ] System Overview:  Remove sntiles to misc and do something like Cerebras.  More textual info in System Overview.
+- [ ] In How to change "sambanova" to an actual node.  Move sntiles.
+
 ```bash
 ssh -t -L localhost:8089:localhost:8089 arnoldw@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
 ```

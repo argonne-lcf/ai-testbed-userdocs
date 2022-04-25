@@ -16,9 +16,9 @@ This tutorial uses four boilerplate files:
 4. sn\_boilerplate\_other.py.
     1. Contains train(), test(), and more
 
-These boilerplate files are located at /software/sambanova/tutorial/  **sambanova_starter**.
+These boilerplate files are located at /software/sambanova/apps/tutorials/sambanova_starter.
 
-These completed files are located at /software/sambanova/tutorial/  **sambanova_dataparallel**.
+These completed files are located at /software/sambanova/apps/tutorials/sambanova_dataparallel.
 
 To copy the boilerplate files, log in to sm-01.  See [How to Setup Your Base Environment](How-to-setup-your-base-environment.md).
 
@@ -26,11 +26,12 @@ Then
 
 ```bash
 cd ~
-cp /software/sambanova/tutorial/  **sambanova_starter** .
-mv sambanova_starter sambanova_dataparallel
+cp -r /software/sambanova/apps/tutorials/sambanova_dataparallel .
 ```
 
 You are now ready to follow this tutorial.
+
+**NOTE: The steps for this tutorial have already been completed.**
 
 ## Model Overview
 
@@ -69,8 +70,7 @@ print(f'DataParallel run: {args.data_parallel}')
 
 if args.data_parallel:
     # Sampler defines the strategy to draw samples from the dataset.
-    # If specified, shuffle must not be specified.
-    https://pytorch.org/docs/stable/data.html
+    # If specified, shuffle must not be specified.  https://pytorch.org/docs/stable/data.html
     train_sampler = DistributedSampler(train_dataset)
     shuffle = False
 else:
@@ -109,11 +109,14 @@ Also add drop\_last=True for the test\_loader.
 
 ### Train Method
 
-This is very, very simple. all we have done is we have added these two
-lines.  Very straightforward copy and paste.  We have
-data\_parallel=args.data\_parallel.  And
-reduce\_on\_rdu=args.reduce\_on\_rdu.  These arguments are added
-automatically.  You do not need to modify your args file.
+Add these two lines:
+
+```python
+                                                data_parallel=args.data_parallel,
+                                                reduce_on_rdu=args.reduce_on_rdu)
+```
+
+to get:
 
 ```python
             loss, outputs = samba.session.run(  input_tensors=[sn_images, sn_labels],
@@ -123,11 +126,13 @@ automatically.  You do not need to modify your args file.
                                                 reduce_on_rdu=args.reduce_on_rdu)
 ```
 
+These arguments are added automatically.  You do not need to modify your args file.
+
 ### DataParallel
 
-So where do we actually use nn.DataParallel?  The answer is we don't. 
+So where do we actually use **nn.DataParallel**?  The answer is we don't.
 SambaNova has taken care of all of this in the background.  All we have
-to do is use DistributedSampler and everything else is automatic.
+to do is use **DistributedSampler** and everything else is automatic.
 
 The other three files do not need to be modified.
 
@@ -151,6 +156,7 @@ source /opt/sambaflow/venv/bin/activate
 SECONDS=0
 
 echo "COMPILE"
+# -b is the batch size.
 python sn_boilerplate_main.py compile --data-parallel -ws 2 -b=1 --pef-name=sn_boilerplate --output-folder="pef"
 
 echo "Duration: " $SECONDS
@@ -160,10 +166,10 @@ Let's take a look at the second line here.  We're setting
 OMP\_NUM\_THREADS equals to eight.  So this is done so that we have more
 threads so that the compilation of the script occurs more quickly.
 
-On line number nine, we're going to use the compile argument to compile
+On line number thirteen, we're going to use the compile argument to compile
 the model.
 
-On line number 11, we're going to go ahead and echo how long the compile
+On line number fifteen, we're going to go ahead and echo how long the compile
 took.
 
 #### Run Script
@@ -179,14 +185,15 @@ not use data parallel or the distributed sampler.
 # sbatch run.sh
 #######################
 
+# -b is the batch size.
 python sn_boilerplate_main.py compile -b=1 --pef-name="sn_boilerplate" --output-folder="pef"
 python sn_boilerplate_main.py run --pef="pef/sn_boilerplate/sn_boilerplate.pef"
 ```
 
 #### Slurm
 
-When you start Slurm and you're using more than one RDU, you should tell
-Slurm how many RDUs you are using.  Do this by using the **gres** CLI
+When you start Slurm and you want to use more than one RDU, you should tell
+Slurm how many RDUs you desire.  Do this by using the **gres** CLI
 argument.  Then the number of RDUs that you want to use.
 
 Here we are requesting two RDUs.  This number should match the mpirun
@@ -200,7 +207,7 @@ sbatch --gres=rdu:2 run_dataparallel.sh
 
 There is more information in here than in the previous scripts.
 
-We're going to go ahead and name the model on line ten.
+We're going to go ahead and name the model on line thirteen.
 
 |                                |
 | ------------------------------ |
@@ -238,12 +245,10 @@ echo "Model: ${MODEL_NAME}"
 echo "Date: " $(date +%m/%d/%y)
 echo "Time: " $(date +%H:%M)
 
-# Change the fully qualified directory path as necessary.
-
-echo "COMPILE Separately!!"
+echo "COMPILE separately using compile_dataparallel.sh!!"
 
 echo "RUN"
-/opt/mpich-3.3.2/bin/mpirun -np 2 python /homes/wilsonb/sambanova_starter_ANL/sn_boilerplate_main.py run --data-parallel --reduce-on-rdu --pef=/homes/wilsonb/sambanova_starter_ANL/pef/sn_boilerplate/sn_boilerplate.pef
+/opt/mpich-3.3.2/bin/mpirun -np 2 python sn_boilerplate_main.py run --data-parallel --reduce-on-rdu --pef=pef/sn_boilerplate/sn_boilerplate.pef
 
 echo "Duration: " $SECONDS
 ```
@@ -251,7 +256,7 @@ echo "Duration: " $SECONDS
 ### Tile Affinity
 
 The correct place to use the tile affinity would be on the command
-line.  If you were to use the tile affinity within slurm, if somebody
+line.  If you were to use the tile affinity within Slurm, if somebody
 else was already using those RDUs, your job would fail.
 
 Here we are specifying tiles six and seven.  They are zero index.
