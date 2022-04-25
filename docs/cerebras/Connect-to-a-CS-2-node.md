@@ -32,7 +32,7 @@ Alternatively, this maybe done in one command line from the local machine. (two 
 ## Setup the environment
 After sshing to the CS-02 chief node,
 ```bash
-source /software/cerebras/cs2-02/envs/cs_env.sh<br>
+source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
 This will add some CS2 scripts to the path, and set the CS_IP environment variable. 
 
