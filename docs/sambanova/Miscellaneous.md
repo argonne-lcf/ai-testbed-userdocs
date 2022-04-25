@@ -1,5 +1,16 @@
 # Miscellaneous
 
+## SambaNova Documentation
+
+From your development machine:
+
+```bash
+cd <your docs destination>
+scp -r ALCFUserID@sambanova.alcf.anl.gov:/software/sambanova/docs/latest/* .
+```
+
+View the PDFs in your favorite viewer or web browser.
+
 ## Resources
 
 - <https://docs.ai.alcf.anl.gov/sambanova/>

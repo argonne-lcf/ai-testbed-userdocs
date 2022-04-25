@@ -2,16 +2,18 @@
 
 - [ ] SN provide indexing for their docs. From training
 
+- [ ] SN PDF docs copy them locally. and then view them.  VV has a tar file also.
+
 - [X] ModelZoo to /software/sambanova/apps/ and also use symbolic link for latest.
 
 - [X] How to do DataParallel.  add page.  See Confluence and maybe video and its .pptx
 
-How to spec 2 or more RDUs on SN?  Queue and Sub also.  can do in compile phase v. run can be different.
-SN PDF docs copy them locally. and then view them.  VV has a tar file also.
+- [X] How to spec 2 or more RDUs on SN?  Queue and Sub also.  
+- [ ] can do in compile phase v. run can be different.
 
-- [ ] Move SN starter code to /software/sambanova/tutorials
+- [X] Move SN starter code to /software/sambanova/tutorials
 
-- [ ] just fyi, here's how to serve html from the bastion node (e.g. cerebras.alcf.anl.gov):
+- [OK] just fyi, here's how to serve html from the bastion node (e.g. cerebras.alcf.anl.gov):
 
 ```bash
 ssh -t -L localhost:8089:localhost:8089 arnoldw@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"

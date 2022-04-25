@@ -90,6 +90,14 @@ Then
 sbatch --output=pef/lenet/output.log submit-lenet-job.sh
 ```
 
+One may use more that one RDU.  The command would be similar to:
+
+```bash
+sbatch --gres=rdu:2 your_script.sh
+```
+
+See [DataParallel](DataParallel.md) and search for **--gres=rdu:2**.
+
 Squeue will give you the queue status.
 
 ```bash
