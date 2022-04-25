@@ -11,23 +11,20 @@ The first step requires a MFA passcode for authentication - either a 8 digit pas
 <!---[TODO testbed-cs2-01-med8.ai.alcf.anl.gov is not currently accessible]<br>--->
 To connect to a CS-2 ("chief") node:<br>
 
-(1) From the local machine, ssh to the login node first: <br>
+(1) From the local machine, ssh to the login node first: 
+```bash
+ssh ALCFUserID@cerebras.alcf.anl.gov
+```
 
-|                                                                             |
-|-----------------------------------------------------------------------------|
-| **ssh ALCFUserID@cerebras.alcf.anl.gov** |
-
-(2) From the login node, ssh to the destination CS-2 chief node:<br>
-
-|                                                                             |
-|-----------------------------------------------------------------------------|
-| **ssh cs2-02-med8** |
+(2) From the login node, ssh to the destination CS-2 chief node:
+```bash
+ssh cs2-02-med8
+```
 
 Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
-
-|                                                                             |
-|-----------------------------------------------------------------------------|
-| **ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8 ** |
+```bash
+ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8
+```
 
 ## Setup the environment
 After sshing to the CS-02 chief node,
