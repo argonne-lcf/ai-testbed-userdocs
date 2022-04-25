@@ -8,55 +8,29 @@ These notes may be helpful for downloading kaggle datasets
 
 Inside a singularity shell (e.g. singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif )
 
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-virtualenv env<br>
-source env/bin/activate</br>
-pip3 install kaggle</br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```bash
+virtualenv env
+source env/bin/activate
+pip3 install kaggle
+```
 
 
 Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
 
 put the json in ~/.kaggle/kaggle.json</br>
 e.g. single quote the json text and echo it</br>
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
-echo '{"username":"REDACTED","key":"REDACTED"}'' &gt; ~/.kaggle/kaggle.json</br>
+```console
+echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
 chmod 600 ~/.kaggle/kaggle.json
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
-
+```
 On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
 
 In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
 
 Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
+```bash
 kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
-
+```
 
 It will download as a zip file. ('unzip' is available testbed-cs2-02-med8)
 
@@ -100,20 +74,12 @@ if you used port 9999. 
 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong> 
-...$ cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$<br>
-...$ rm -r model_dir/<br>
-...$ csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml <br>
-...$ csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000<br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```bash
+cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$
+rm -r model_dir/
+csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml
+csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000
+```
 
 ## Determining the CS-2 version
 
@@ -123,11 +89,7 @@ The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 
 Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
 --->
 [TODO could use CS_IP environment variable if set.]
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
+```console
 ...$ # Query the firmware level<br>
 ...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion<br>
 "FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",<br>
@@ -136,29 +98,36 @@ Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
 ...$ singularity sif dump 1 /lambda_stor/slurm/cbcore_images/cbcore_latest.sif | grep "from"<br>
 from: cbcore:1.1.1-202203171919-5-6e2dbf07<br>
 ...$ <br>
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```
 
 
-## Viewing the Cerebras V 1.1 documenation
-The Cerebras V 1.1 documentation is stored on the cerebras systems and can be served to be viewed with a local browser by running to following in a command prompt on your workstation/laptop.<br>
+## Viewing the Cerebras V 1.1 documentation
+The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running to following in a command prompt on your workstation/laptop.<br>
 *Change the ALCFUserID to your id.*<br>
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
-<table>
-<tbody>
-<tr class="odd">
-<td>
-<strong>
+```console
 ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
-</strong>
-</td>
-</tr>
-</tbody>
-</table>
+```
 To view, view url localhost:8089 with your browser.
 
-This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
+This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
 
+## Porting applications to the CS-2
+Cerebras has guides for porting TensorFlow and PyTorch models:<br>
+[Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
+[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)
+
+When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
+A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
+Both the README.md files and source code in the modelzoo can be quite helpful. 
+
+## Copying files
+To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
+```bash
+scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/
+```
+
+To copy a file from your CS-2 home dir to the current local directory, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
+```bash
+scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
+```
