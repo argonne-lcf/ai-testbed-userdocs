@@ -6,7 +6,7 @@ Copy starters to your personal directory structure:
 
 ```bash
 cd ~/
-cp -r /opt/sambaflow/apps/ .
+cp -r /software/sambanova/apps/ .
 ```
 
 ## LeNet
