@@ -36,7 +36,9 @@ ssh sm-01
 
 ### SDK setup
 
-On the sambanova system,  it has a bash shell script to setup the required software environment. This sets up the SambaFlow software stack, the associated environmental variables and activates a pre-configured virtual environment. 
+On the SambaNova system, it has a bash shell script to setup the required software environment.
+This sets up the SambaFlow software stack, the associated environmental variables and activates
+a pre-configured virtual environment. 
 
 Use
 
@@ -44,7 +46,9 @@ Use
 ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
 (venv) ALCFUserID@sm-01:~$
 ```
-The contents of the sn_env.sh script is shown below for convenience. 
+
+The contents of the sn_env.sh script is shown below for convenience.
+
 ```bash
 alias snpath='export PATH=$PATH:/opt/sambaflow/bin' # This is the path to SambaFlow which is the software stack that is running on SambaNova systems. This stack includes the Runtime, the compilers, and the SambaFlow Python SDK which is used to create and run models.
 
