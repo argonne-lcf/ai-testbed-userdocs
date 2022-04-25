@@ -1,4 +1,4 @@
-# How to Setup Your Base Environment
+# Logging into a SambaNova Node
 
 ## On-Boarding
 
@@ -65,15 +65,3 @@ You may deactivate the environment if finished.
 ```bash
 deactivate
 ```
-
-### OMP_NUM_THREADS 
-
-The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
-
-The value of this environment variable must be a list of positive integer values. The values of the list set the number of threads to use for parallel regions at the corresponding nested levels.
-
-For the SambaNova system it is usually set to one.  However, there are
-are times when it is beneficial to set the number of threads to a
-larger number.  There are some libraries used by runtime that react to OMP_NUM_THREADS.
-If profiling reveals a lot of time on the host either in loading or say a custom loss
-calculation you may want to do a sweep varying OMP_NUM_THREADS.

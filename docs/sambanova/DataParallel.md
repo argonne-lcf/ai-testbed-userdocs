@@ -27,6 +27,7 @@ Then
 ```bash
 cd ~
 cp -r /software/sambanova/apps/tutorials/sambanova_dataparallel .
+cd sambanova_dataparallel
 ```
 
 You are now ready to follow this tutorial.
@@ -140,7 +141,39 @@ The other three files do not need to be modified.
 
 Let's take a look at the shell scripts that we will be using.
 
-#### Compile Script
+#### Run Script
+
+Here is the run script, **run.sh**.  It does a compile and run.
+This script just does a standard run.  It does
+not use data parallel or the distributed sampler.
+
+```bash
+#!/bin/sh
+#######################
+# Run script
+# sbatch run.sh
+#######################
+
+# -b is the batch size.
+python sn_boilerplate_main.py compile -b=1 --pef-name="sn_boilerplate" --output-folder="pef"
+python sn_boilerplate_main.py run --pef="pef/sn_boilerplate/sn_boilerplate.pef"
+```
+
+Run the script with the following command:
+
+```bash
+sbatch run.sh
+```
+
+You may view the Slurm output using:
+
+```bash
+cat slurm-ddddd.out
+```
+
+where **ddddd** is the batch number.
+
+#### DataParallel Compile Script
 
 Here we have the compile script, **compile_dataparallel.sh**.
 
@@ -164,7 +197,7 @@ echo "Duration: " $SECONDS
 
 Let's take a look at the second line here.  We're setting
 OMP\_NUM\_THREADS equals to eight.  So this is done so that we have more
-threads so that the compilation of the script occurs more quickly.
+threads so that the compilation of the script runs more quickly.
 
 On line number thirteen, we're going to use the compile argument to compile
 the model.
@@ -172,36 +205,19 @@ the model.
 On line number fifteen, we're going to go ahead and echo how long the compile
 took.
 
-#### Run Script
-
-Here is the run script, **run.sh**.  It does compile and run.
-This script just does a standard run.  It does
-not use data parallel or the distributed sampler.
+Run the script with the following command:
 
 ```bash
-#!/bin/sh
-#######################
-# Run script
-# sbatch run.sh
-#######################
-
-# -b is the batch size.
-python sn_boilerplate_main.py compile -b=1 --pef-name="sn_boilerplate" --output-folder="pef"
-python sn_boilerplate_main.py run --pef="pef/sn_boilerplate/sn_boilerplate.pef"
+sbatch compile_dataparallel.sh
 ```
 
-#### Slurm
-
-When you start Slurm and you want to use more than one RDU, you should tell
-Slurm how many RDUs you desire.  Do this by using the **gres** CLI
-argument.  Then the number of RDUs that you want to use.
-
-Here we are requesting two RDUs.  This number should match the mpirun
-argument np.  In run\_dataparallel.sh below, np is also two.
+You may view the Slurm output using:
 
 ```bash
-sbatch --gres=rdu:2 run_dataparallel.sh
+cat slurm-ddddd.out
 ```
+
+where **ddddd** is the batch number.
 
 #### Run DataParallel Script
 
@@ -218,10 +234,6 @@ number of processors as two, and then we go ahead and execute our
 script.  Use **run**, it is used for training, with the **data-parallel**
 argument, and also the **reduce-on-rdu** argument.  Then specify the
 location of the pef file
-
-Let's take a look at the next command.  So the next command is pretty
-much the same, except for we're going to use measure-performance
-command.
 
 ```bash
 #!/bin/bash
@@ -253,6 +265,29 @@ echo "RUN"
 echo "Duration: " $SECONDS
 ```
 
+#### Slurm
+
+When you start Slurm and you want to use more than one RDU, you should tell
+Slurm how many RDUs you desire.  Do this by using the **gres** CLI
+argument.  Then the number of RDUs that you want to use.
+
+Here we are requesting two RDUs.  This number should match the **mpirun**
+argument **np**.  In **run\_dataparallel.sh** below, **np** is also two.
+
+Run the script with the following command:
+
+```bash
+sbatch --gres=rdu:2 run_dataparallel.sh
+```
+
+You may view the Slurm output using:
+
+```bash
+cat slurm-ddddd.out
+```
+
+where **ddddd** is the batch number.
+
 ### Tile Affinity
 
 The correct place to use the tile affinity would be on the command
@@ -264,18 +299,3 @@ Here we are specifying tiles six and seven.  They are zero index.
 ```bash
 export SF_RNT_TILE_AFFINITY=0xff000000
 ```
-
-## Slurm
-
-### Data-Parallel
-
-```bash
-sbatch compile_dataparallel.sh
-sbatch --gres=rdu:2 run_dataparallel.sh
-```
-
-### Regular Run
-
-|               |
-| ------------- |
-| sbatch run.sh |
