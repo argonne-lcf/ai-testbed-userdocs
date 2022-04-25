@@ -223,7 +223,7 @@ where **ddddd** is the batch number.
 
 There is more information in here than in the previous scripts.
 
-We're going to go ahead and name the model on line thirteen.
+We're going to go ahead and name the model on line ten.
 
 |                                |
 | ------------------------------ |
