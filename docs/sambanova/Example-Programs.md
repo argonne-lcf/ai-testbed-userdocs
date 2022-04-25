@@ -1,6 +1,6 @@
 # Example Programs
 
-Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. These are located on the Sambanova Compute node sm-01. Make a copy of this to your home directory:
+Sambanova provides examples of some well known AI applications under the path: /opt/sambaflow/apps/. These are located on the Sambanova Compute node `sm-01`. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
