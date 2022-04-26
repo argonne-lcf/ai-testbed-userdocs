@@ -30,7 +30,7 @@ Verify that the connection was successful with
 ```bash
 uname -a
 ```
-and by making sure the output message contains says `testbed-cs2-02-med8` and <strong>not</strong> `cs-login`.
+and by making sure the output message contains `testbed-cs2-02-med8` and <strong>not</strong> `cs-login`.
 
 ## Setup the environment
 After sshing to the CS-02 chief node,

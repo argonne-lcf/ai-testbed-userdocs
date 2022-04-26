@@ -2,7 +2,7 @@
 
 ```bash
 After sshing to the CS-02 chief node,
-source /software/cerebras/cs2-02/envs/cs_env.sh<br>
+source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
 
 No other steps are required.
