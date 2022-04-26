@@ -1,7 +1,7 @@
 site_name: AI Testbed User Guide
 nav:
   - Home: index.md
-   - Cerebras:
+  - Cerebras:
     - System Overview: cerebras/System-Overview.md
     - Connect to a CS-2 node: cerebras/Connect-to-a-CS-2-node.md
     - Steps to run a model or program: cerebras/Steps-to-run-a-model-or-program.md
