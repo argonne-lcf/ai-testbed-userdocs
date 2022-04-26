@@ -21,5 +21,6 @@ scancel JOBID
 
 You can find a detailed documentation for slurm
 [here](https://slurm.schedmd.com/documentation.html) or use `--help` to see a
-summary of options for slurm [commands](https://slurm.schedmd.com/quickstart.html#commands), i.e. `squeue --help`.
+summary of options for slurm [commands](https://slurm.schedmd.com/quickstart.html#commands), i.e. `squeue --help`.<br>
+See some examples of how these commands are used to submit and queue jobs [here](Steps-to-run-a-model-or-program.md).
 
