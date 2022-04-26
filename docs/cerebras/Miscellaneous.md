@@ -6,7 +6,7 @@
 
 These notes may be helpful for downloading kaggle datasets
 
-Inside a singularity shell (e.g. singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif )
+Inside a singularity shell (e.g. `singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
 
 ```bash
 virtualenv env
@@ -46,9 +46,9 @@ Note: the kaggle download shown above included two identical copies of the datas
 
 if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-02-med8 terminal and you will see the output as given below.<br/>
 TODO this doesn't actually work; test/fix when CS-2 is working again. 
-|                                                                                                                                                                                                                                                             |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
+|                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/> |
 **# this fails too: singularity exec -B ~/data:/data --net --network-args "portmap=9999:9999/tcp" /lambda_stor/slurm/cbcore_images/cbcore_latest.sif  tensorboard --bind\_all --logdir model\_dir --port 9999**<br/>
  **W0813 12:38:24.674294 140736110290688 plugin\_event\_accumulator.py:323\] Found more than one graph event per run, or there was a metagraph containing a graph\_def, as well as one or more graph events.  Overwriting the graph with the newest event.**  
                                                                                                                                                                                                                                                               
@@ -58,12 +58,12 @@ TODO this doesn't actually work; test/fix when CS-2 is working again.
 
 To load the tensorboard, you can use the standard port forwarding mechanism using the below commands on two different terminals
 
-|                                                                                                                                                                                               |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                |
+| ------------------------------------------------------------------------------ |
 | **...% ssh [&lt;ALCFUserID&gt;@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
 
-|                                                                                                                                                                                                                                                            |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------- |
 | **...% ssh -L 9999:localhost:9999 [&lt;ALCFUserID&gt;](ALCFUserID)[@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
 
 if you used port 9999. 
