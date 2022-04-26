@@ -6,9 +6,9 @@
 
 These notes may be helpful for downloading kaggle datasets
 
-Inside a singularity shell (e.g. singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif )
+Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
 
-```bash
+```console
 virtualenv env
 source env/bin/activate
 pip3 install kaggle
@@ -46,9 +46,9 @@ Note: the kaggle download shown above included two identical copies of the datas
 
 if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-02-med8 terminal and you will see the output as given below.<br/>
 TODO this doesn't actually work; test/fix when CS-2 is working again. 
-|                                                                                                                                                                                                                                                             |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/>
+|                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/> |
 **# this fails too: singularity exec -B ~/data:/data --net --network-args "portmap=9999:9999/tcp" /lambda_stor/slurm/cbcore_images/cbcore_latest.sif  tensorboard --bind\_all --logdir model\_dir --port 9999**<br/>
  **W0813 12:38:24.674294 140736110290688 plugin\_event\_accumulator.py:323\] Found more than one graph event per run, or there was a metagraph containing a graph\_def, as well as one or more graph events.  Overwriting the graph with the newest event.**  
                                                                                                                                                                                                                                                               
@@ -58,12 +58,12 @@ TODO this doesn't actually work; test/fix when CS-2 is working again.
 
 To load the tensorboard, you can use the standard port forwarding mechanism using the below commands on two different terminals
 
-|                                                                                                                                                                                               |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                |
+| ------------------------------------------------------------------------------ |
 | **...% ssh [&lt;ALCFUserID&gt;@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
 
-|                                                                                                                                                                                                                                                            |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------- |
 | **...% ssh -L 9999:localhost:9999 [&lt;ALCFUserID&gt;](ALCFUserID)[@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
 
 if you used port 9999. 
@@ -74,8 +74,8 @@ if you used port 9999. 
 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
-```bash
-cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$
+```console
+cd ~/modelzoo-R1.1.0/fc_mnist/pytorch
 rm -r model_dir/
 csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml
 csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000
@@ -123,11 +123,11 @@ Both the README.md files and source code in the modelzoo can be quite helpful.
 
 ## Copying files
 To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
-```bash
+```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/
 ```
 
 To copy a file from your CS-2 home dir to the current local directory, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
-```bash
+```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
 ```

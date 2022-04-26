@@ -23,7 +23,7 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 --->
 
 #### Worker hostnames:<br>
-<!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-8].ai.alcf.anl.gov<br>--->
+<!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-7].ai.alcf.anl.gov<br>--->
 The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
@@ -34,14 +34,14 @@ The CS_IP environment variable is set to this value by the /software/cerebras/cs
 
 #### csrun_cpu and csrun_wse
 Cerebras includes two scripts for running slurm jobs.<br>
-csrun_cpu is for running cpu-only jobs. By default it reserves a single entire worker node.<br>
-csrun_wse is for running training jobs. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
+csrun_cpu is for running Cerebras compilation. By default it reserves a single entire worker node.<br>
+csrun_wse is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
 ```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.
 
 ## Running a training job
-Follow these instructions to train, evaluate and validate the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
+Follow these instructions to compile and train the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
 
-```bash
+```console
 cd ~/
 mkdir ~/R1.1.0/
 cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
@@ -49,7 +49,7 @@ cd ~/R1.1.0/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 ```
 
-You should see a very fast training rate, e.g. 1400 steps per second, and output that finishes with something similar to this:
+You should see a training rate of about 1400 steps per second, and output that finishes with something similar to this:
 
 <table>
 <tbody>
@@ -62,7 +62,7 @@ INFO:tensorflow:Loss for final step: 0.0.</strong></td>
 </tbody>
 </table>
 
-To separately compile and run,
+To separately compile and train,
 ```bash
 # delete any existing compile artifacts and checkpoints
 rm -r model_dir
