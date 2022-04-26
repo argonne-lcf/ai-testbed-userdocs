@@ -6,7 +6,7 @@
 
 These notes may be helpful for downloading kaggle datasets
 
-Inside a singularity shell (e.g. `singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
+Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
 
 ```console
 virtualenv env
@@ -75,7 +75,7 @@ if you used port 9999. 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
 ```console
-cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$
+cd ~/modelzoo-R1.1.0/fc_mnist/pytorch
 rm -r model_dir/
 csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml
 csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000

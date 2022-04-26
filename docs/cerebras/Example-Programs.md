@@ -15,7 +15,7 @@ To run Unet with the <a href="https://www.kaggle.com/c/severstal-steel-defect-de
 
 ```console
 cd ~/R1.1.0/modelzoo/unet/tf
-rm -r model_dir_unet_base_severstal
+#rm -r model_dir_unet_base_severstal
 csrun_cpu python run.py --mode=train --compile_only --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50
 csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.yaml --model_dir model_dir_unet_base_severstal --cs_ip 192.168.220.50
 ```
@@ -23,7 +23,7 @@ csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.
 This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in source directory for details on how to build a dataset from text input.
 ```console
 cd ~/R1.1.0/modelzoo/transformers/tf/bert
-rm -r model_dir_bert_large_msl128
+#rm -r model_dir_bert_large_msl128
 csrun_cpu python run.py --mode=train --compile_only --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50
 csrun_wse python run.py --mode=train --params configs/params_bert_large_msl128_sampleds.yaml --model_dir model_dir_bert_large_msl128 --cs_ip 192.168.220.50
 ```
@@ -36,7 +36,7 @@ The BraggNN model has two versions:<br>
 
 ```console
 cd ~/R1.1.0/anl_shared/braggnn/tf
-rm -r model_dir_braggnn
+#rm -r model_dir_braggnn
 csrun_cpu python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --compile_only --cs_ip 192.168.220.50
 csrun_wse python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --cs_ip 192.168.220.50
 ```
@@ -58,7 +58,7 @@ singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.si
 
 At the shell prompt for the container, 
 ```console
-rm -r model_dir
+#rm -r model_dir
 # compile and train on the CPUs
 python run.py --mode train --max_steps 1000
 python run.py --mode eval --eval_steps 1000
