@@ -49,7 +49,7 @@ cd ~/R1.1.0/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 ```
 
-You should see a training rate of about 1400 steps per second, and output that finishes with something similar to this:
+You should see a training rate of about 1800 steps per second, and output that finishes with something similar to this:
 
 <table>
 <tbody>
