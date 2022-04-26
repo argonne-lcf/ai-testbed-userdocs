@@ -32,7 +32,7 @@ You may occasionally need to log into a specific worker node for debugging purpo
 The CS-2 uses CS_IP 192.168.220.50<br>
 The CS_IP environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and may be used in scripts.
 
-#### csrun_cpu and csrun_wse
+#### Running slurm jobs:<br>
 Cerebras includes two scripts for running slurm jobs.<br>
 csrun_cpu is for running cpu-only jobs. By default it reserves a single entire worker node.<br>
 csrun_wse is for running training jobs. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>

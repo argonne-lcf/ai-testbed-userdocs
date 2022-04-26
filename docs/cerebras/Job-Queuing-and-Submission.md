@@ -19,5 +19,6 @@ squeue -a
 scancel JOBID
 ```
 
-Add *"--help"* to see basic help for a slurm command.
+Add *"--help"* to see basic help for a slurm command.<br>
+See some examples of how these commands are used to submit and queue jobs [here](Steps-to-run-a-model-or-program.md).
 
