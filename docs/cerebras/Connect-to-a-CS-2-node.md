@@ -31,8 +31,12 @@ After sshing to the CS-02 chief node,
 ```console
 source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
-This will add some CS2 scripts to the path, and set the CS_IP environment variable. 
+The contents of the cs_env.sh script is shown below.
 
+```bash
+export PATH=$PATH:/software/cerebras/cs2-02/bin
+export CS_IP=192.168.220.50
+```
 
 
 
