@@ -67,11 +67,12 @@ Sambanova provides examples of some well known AI applications under the path: /
 cd ~/
 mkdir apps
 cp -r /software/sambanova/apps/1.10.3-11/starters apps/starters
+cd apps/starters
 ```
 
 ## Running with Slurm
 
-Run these commands:
+As an example of using the SLURM scheduling system and workload manager for running jobs, run these commands:
 
 ```bash
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
@@ -79,6 +80,7 @@ srun python lenet.py test --pef="pef/lenet/lenet.pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 srun python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
+More details on the above commands is provided [here](Steps-to-run-a-model-or-program.md).
 
 To use Slurm sbatch, create submit-lenet-job.sh with the following
 contents:
