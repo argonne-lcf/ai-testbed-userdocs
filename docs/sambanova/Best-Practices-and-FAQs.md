@@ -138,7 +138,7 @@ squeue
 
 ## Select RDU and Node
 
-You can tell Slurm what node to use. To specify a tile you can set an
+You can tell Slurm what node to use. To specify a tile you can set and
 environment variable.
 Use the 32-bit **SF\_RNT\_TILE\_AFFINITY** environment variable to hint
 scheduler to choose the physical RDU/TILE, where your graph should be
