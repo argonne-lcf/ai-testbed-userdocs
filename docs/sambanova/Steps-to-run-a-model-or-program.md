@@ -71,4 +71,4 @@ This command is used to run the model on both the host CPU and the SambaNova nod
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 ```
 
-For more information, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)
+For an example of the compile, test and run workflow, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)

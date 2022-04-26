@@ -32,7 +32,7 @@ cd sambanova_dataparallel
 
 You are now ready to follow this tutorial.
 
-**NOTE: The steps for this tutorial have already been completed.**
+**NOTE: The steps for this tutorial have already been completed.** You can skip to the description of the shell scripts and how to run the example.
 
 ## Model Overview
 
