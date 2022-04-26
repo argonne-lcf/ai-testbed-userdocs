@@ -9,6 +9,25 @@ python -m venv --system-site-packages my_env
 source my_env/bin/activate
 ```
 
+### System Site Packages
+
+There are many packages available on the system.
+Run the following Python script to retrieve the
+location of the packages:
+
+```python
+import sys
+site_packages = next(p for p in sys.path if 'site-packages' in p)
+print(site_packages)
+```
+
+Given the location of the packages, one may list the packages.
+For example:
+
+```bash
+ls -al /opt/sambaflow/venv/lib/python3.7/site-packages
+```
+
 ## Installing Packages
 
 Install packages in the normal manner such as:
