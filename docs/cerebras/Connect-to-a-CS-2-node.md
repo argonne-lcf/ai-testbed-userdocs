@@ -22,13 +22,13 @@ ssh cs2-02-med8
 ```
 
 Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
-```bash
+```console
 ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8
 ```
 
 ## Setup the environment
 After sshing to the CS-02 chief node,
-```bash
+```console
 source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
 This will add some CS2 scripts to the path, and set the CS_IP environment variable. 

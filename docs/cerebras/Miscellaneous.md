@@ -8,7 +8,7 @@ These notes may be helpful for downloading kaggle datasets
 
 Inside a singularity shell (e.g. `singularity shell -B ~/opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
 
-```bash
+```console
 virtualenv env
 source env/bin/activate
 pip3 install kaggle
@@ -74,7 +74,7 @@ if you used port 9999. 
 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
-```bash
+```console
 cd ~/modelzoo-R1.1.0/fc_mnist/pytorch$
 rm -r model_dir/
 csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml
@@ -123,11 +123,11 @@ Both the README.md files and source code in the modelzoo can be quite helpful.
 
 ## Copying files
 To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
-```bash
+```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/
 ```
 
 To copy a file from your CS-2 home dir to the current local directory, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
-```bash
+```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
 ```
