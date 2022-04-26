@@ -26,7 +26,7 @@ Everything is encapsulated essentially by topic.
 3. sn_boilerplate_model.py
     1. Contains the model.
 4. sn_boilerplate_other.py
-    1. Contains the train and test methods and a littile more.
+    1. Contains the train and test methods and a little more.
 
 ### sn_boilerplate_main.py
 
@@ -454,7 +454,7 @@ very important.
 **These must be right.**
 
 The method is set up as a static method
-so it isn't necessary to instantiated the class.
+so it isn't necessary to instantiate the class.
 
 For X_randn, call **samba.randn(...)** with these
 various arguments, e.g., args.batch_size and args.num_features.
@@ -479,7 +479,7 @@ lower bound of the random numbers and
 this number is inclusive.
 
 Then as the
-second parameter it takes the the high
+second parameter it takes the high
 integer that is the desired exclusive.
 
 So if this high number is ten it
@@ -697,15 +697,14 @@ Samba tensors.
 
 Call **samba.session.run(...)**.
 Pass it
-the the various inputs.
+the various inputs.
 
 Convert the **loss** and the **outputs** to
 Torch tensors.
 
 Accumulate **avg_loss**.
 
-Then
-once every 10,000 epics, print the status.
+Then once every 10,000 epochs, print the status.
 
 ```python
         samba.session.to_cpu(model)
