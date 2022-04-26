@@ -231,13 +231,13 @@ Also, run --inference works.
 If the code is correct(distributed loader) the compile looks like:
 
 ```bash
-python unet_main.py compile - --batch-size=48 --data-parallel -ws 2 --pef-name=dillon_2k_b48_dp
+python unet_main.py compile --batch-size=48 --data-parallel -ws 2 --pef-name=dillon_2k_b48_dp
 ```
 
 The run command looks like:
 
 ```bash
-python unet_main.py run - -p ${SOFTWARE_HOME}/out/dillon_2k_b48_dp/dillon_2k_b48_dp.pef --data-parallel --reduce-on-rdu
+python unet_main.py run -p ${SOFTWARE_HOME}/out/dillon_2k_b48_dp/dillon_2k_b48_dp.pef --data-parallel --reduce-on-rdu
 ```
 
 You put the run command in a script and use **mpirun** to run the script.
@@ -253,7 +253,7 @@ watch sntilestat
 
 ## What are Spatial Batches ?
 
---spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculating across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
+--spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculated across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
 
 ## Finding Hung Tiles
 
