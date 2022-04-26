@@ -41,32 +41,4 @@ csrun_cpu python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_
 csrun_wse python run.py -p configs/params_bragg_nonlocal.yaml --model_dir model_dir_braggnn --mode train --cs_ip 192.168.220.50
 ```
 
-## Training in CPU-mode (move this someplace else?)
-
-The examples in the modelzoo<!--- [TODO And PyTorch?]--> will run in CPU mode as either csrun_cpu jobs, or in a singularity shell as shown below.<br>
-<i>If no cs_ip is specified, a training run will be in cpu mode. </i>
-
-Change the max steps for the training run command line to something smaller than the default so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for many examples.)
-
-This illustrates how to create a singularity container.
-The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
-The current directory in the container will be the same as the current directory immediately prior to creating the container.
-```console
-cd ~/R1.1.0/modelzoo/fc_mnist/tf
-singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif
-```
-
-At the shell prompt for the container, 
-```console
-#rm -r model_dir
-# compile and train on the CPUs
-python run.py --mode train --max_steps 1000
-python run.py --mode eval --eval_steps 1000
-# validate_only is the first portion of a compile
-python run.py --mode train --validate_only
-# remove the existing compile and training artifacts
-rm -r model_dir
-# compile_only does a compile but no training
-python run.py --mode train --compile_only
-```
 

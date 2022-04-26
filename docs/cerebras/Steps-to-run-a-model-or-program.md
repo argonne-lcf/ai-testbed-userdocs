@@ -38,7 +38,7 @@ csrun_cpu is for running Cerebras compilation. By default it reserves a single e
 csrun_wse is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
 ```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.
 
-## Running a training job
+## Running a training job on the wafer
 Follow these instructions to compile and train the fc\_mnist TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
 
 ```console
@@ -75,3 +75,46 @@ See also the current Cerebras quickstart documentation, that uses a clone of Cer
 [https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html](https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html)<br>
 [https://github.com/Cerebras/cerebras_reference_implementations/](https://github.com/Cerebras/cerebras_reference_implementations/)
 
+
+## Running a training job on the CPU
+
+The examples in the modelzoo<!--- [TODO And PyTorch?]--> will run in CPU mode as either csrun_cpu jobs, or in a singularity shell as shown below.<br>
+
+### Using csrun_cpu
+
+To separately compile and train,
+```console
+# delete any existing compile artifacts and checkpoints
+rm -r model_dir
+csrun_cpu python run.py --mode train --compile_only
+csrun_cpu python run.py --mode train --max_steps 400
+```
+
+<i>Note: If no cs_ip is specified, a training run will be in cpu mode. </i>
+
+Change the max steps for the training run command line to something smaller than the default so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for many examples.)
+
+### Using a singularity shell
+This illustrates how to create a singularity container.
+The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
+The current directory in the container will be the same as the current directory immediately prior to creating the container.
+```console
+cd ~/R1.1.0/modelzoo/fc_mnist/tf
+singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif
+```
+
+At the shell prompt for the container,
+```console
+#rm -r model_dir
+# compile and train on the CPUs
+python run.py --mode train --max_steps 1000
+python run.py --mode eval --eval_steps 1000
+# validate_only is the first portion of a compile
+python run.py --mode train --validate_only
+# remove the existing compile and training artifacts
+rm -r model_dir
+# compile_only does a compile but no training
+python run.py --mode train --compile_only
+```
+
+Type `exit` at the shell prompt to exit the container.
