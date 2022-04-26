@@ -1,8 +1,9 @@
 name: update-livesite
 on:
-	push:
-		branches:
-			- master
+  push:
+    branches:
+      - master
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
