@@ -15,9 +15,6 @@ View the PDFs in your favorite viewer or web browser.
 
 - <https://docs.ai.alcf.anl.gov/sambanova/>
 
-- [Argonne
-  SambaNova-Training-June2021](https://anl.app.box.com/s/5rtxss0avxyflg8e19xumxinm485y135/folder/13988691568)
-
 - [Argonne SambaNova Training
   11/20](https://anl.app.box.com/s/bqc101mvt3r7rpxbd2yxjsf623ea3gpe)
 
