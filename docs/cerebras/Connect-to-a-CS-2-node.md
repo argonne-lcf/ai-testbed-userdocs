@@ -5,7 +5,7 @@
 
 ![CS-2 connection diagram](./Cerebras-connectivity-diagram.png)
 Connection to a CS-2 node is a two step process. <br>
-The first step requires a MFA passcode for authentication - either a 8 digit passcode generted by an app on your mobile device (e.g. mobilePASS+) or a CRYPTOCard-generated passcode prefixed by a 4 digit pin.<br>
+The first step requires a MFA passcode for authentication - either a 8 digit passcode generted by an app on your mobile device (e.g. mobilePASS+) or a CRYPTOCard-generated passcode prefixed by a 4 digit pin. This is the same passcode used to authenticate into other ALCF systems, such as Theta and Cooley. <br>
 *In the examples below, <strong>replace ALCFUserID with your ALCF user id.</strong>*<br>
 <!---[TODO the need for the second authentication step may be eliminated soon.]<br>--->
 <!---[TODO testbed-cs2-01-med8.ai.alcf.anl.gov is not currently accessible]<br>--->
@@ -25,6 +25,12 @@ Alternatively, this maybe done in one command line from the local machine. (two 
 ```bash
 ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8
 ```
+
+Verify that the connection was successful with
+```bash
+uname -a
+```
+and by making sure the output message contains says `testbed-cs2-02-med8` and <strong>not</strong> `cs-login`.
 
 ## Setup the environment
 After sshing to the CS-02 chief node,
