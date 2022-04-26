@@ -23,7 +23,7 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 --->
 
 #### Worker hostnames:<br>
-<!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-8].ai.alcf.anl.gov<br>--->
+<!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-7].ai.alcf.anl.gov<br>--->
 The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
@@ -34,8 +34,8 @@ The CS_IP environment variable is set to this value by the /software/cerebras/cs
 
 #### csrun_cpu and csrun_wse
 Cerebras includes two scripts for running slurm jobs.<br>
-csrun_cpu is for running cpu-only jobs. By default it reserves a single entire worker node.<br>
-csrun_wse is for running training jobs. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
+csrun_cpu is for running Cerebras compilation. By default it reserves a single entire worker node.<br>
+csrun_wse is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
 ```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.
 
 ## Running a training job

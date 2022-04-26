@@ -7,9 +7,9 @@ Your job will be blocked until there are available resources.<br>
 Scheduling is in simple job request order.
 ```bash
 # csrun_cpu [--help] [--alloc_node] [--mount_dirs] command_to_execute
-csrun_cpu ...
+csrun_cpu --help
 # csrun_wse [--nodes] [--tasks_per_node] [--cpus_per_task] [--mount_dirs] command_for_cs_execution
-csrun_wse ...
+csrun_wse --help
 #
 # squeue is used to inspect the job queue
 # squeue [OPTIONS]
