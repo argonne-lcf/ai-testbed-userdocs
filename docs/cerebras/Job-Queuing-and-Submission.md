@@ -19,5 +19,7 @@ squeue -a
 scancel JOBID
 ```
 
-Add *"--help"* to see basic help for a slurm command.
+You can find a detailed documentation for slurm
+[here](https://slurm.schedmd.com/documentation.html) or use `--help` to see a
+summary of options for slurm [commands](https://slurm.schedmd.com/quickstart.html#commands), i.e. `squeue --help`.
 

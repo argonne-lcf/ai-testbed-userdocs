@@ -49,7 +49,7 @@ The examples in the modelzoo<!--- [TODO And PyTorch?]--> will run in CPU mode as
 Change the max steps for the training run command line to something smaller than the default so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for many examples.)
 
 This illustrates how to create a singularity container.
-The "-B /opt:/opt" is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
+The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 The current directory in the container will be the same as the current directory immediately prior to creating the container.
 ```bash
 cd ~/R1.1.0/modelzoo/fc_mnist/tf
