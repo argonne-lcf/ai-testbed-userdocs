@@ -9,9 +9,12 @@ on the system.**
 
 ## Introduction
 
-The SambaNova workflow includes the following main steps to run a model.
+The SambaNova workflow includes the following main steps to run a model. 
 
-For additional information, see [Example Programs](Example-Programs.md).
+The system uses the [SLURM job
+scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manange the workload on the system. For more information on slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
+
+[Example Programs](Example-Programs.md) lists the different example applications with corresponding commands for each of the above steps.
 
 ## Compile
 
@@ -27,12 +30,6 @@ model graph changes, including the batch size.
 
 Compile times can be significant.  
 Unet for example, when using images of size 32x32 pixels takes 358 (s), while a 256x256 image takes 1844 (s).
-
-**Using the SLURM scheduling system and workload manager for running
-jobs**
-
-The system uses the [SLURM job
-scheduler](https://slurm.schedmd.com/quickstart.html) to run jobs.
 
 Example:
 
@@ -70,5 +67,3 @@ This command is used to run the model on both the host CPU and the SambaNova nod
 ```bash
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 ```
-
-For an example of the compile, test and run workflow, see [Job Queueing and Submission](Job-Queuing-and-Submission.md)
