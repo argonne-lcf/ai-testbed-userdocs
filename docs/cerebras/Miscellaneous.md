@@ -1,76 +1,21 @@
 # Miscellaneous
 
+## Porting applications to the CS-2
 
+Cerebras’s Python support is built around [Cerebras Estimator](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/example-walk-through-cs-estimator.html?highlight=estimator), which inherits from [TensorFlow Estimator](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator).<br>
+A Keras model can be converted to TF Estimator, and hence to a Cerebras Estimator. See [https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator](https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator) for more information on conversion of Keras models.<br>
+The testbed CS-2 is currently running Cerebras’s Release 1.1 software and firmware, which includes a limited preview of the PyTorch support.</br>
+Release 1.2 will provide (early) support for PyTorch.
 
-## Downloading a dataset from www.kaggle.com to a CS-2 node using the command line
+Cerebras has guides for porting TensorFlow and PyTorch models:<br>
+[Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
+[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)<br>
+This is Cerebras's list of the TensorFlow layers that they support (for version 1.2): 
+[https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html](https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html)
 
-These notes may be helpful for downloading kaggle datasets
-
-Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
-
-```console
-virtualenv env
-source env/bin/activate
-pip3 install kaggle
-```
-
-
-Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
-
-put the json in ~/.kaggle/kaggle.json</br>
-e.g. single quote the json text and echo it</br>
-```console
-echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
-chmod 600 ~/.kaggle/kaggle.json
-```
-On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
-
-In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
-
-Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
-```bash
-kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
-```
-
-It will download as a zip file. ('unzip' is available testbed-cs2-02-med8)
-
-exit the singularity container to unzip the dataset zip file
-
-Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
-
-<!---
-## Running Tensorboard from testbed-cs2-02-med8
---------------------------------
-
-[TODO remove this when Tunneling and fowarding ports is one]
-
-if you are trying to run the tensorboard from cs2, launch the command from the testbed-cs2-02-med8 terminal and you will see the output as given below.<br/>
-TODO this doesn't actually work; test/fix when CS-2 is working again. 
-|                                                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **\[&lt;ALCFid&gt;@testbed-cs2-02-med8 simple\_model\]$ ./srun\_singularity tensorboard --bind\_all --logdir iris/model\_dir --port 9999**<br/> |
-**# this fails too: singularity exec -B ~/data:/data --net --network-args "portmap=9999:9999/tcp" /lambda_stor/slurm/cbcore_images/cbcore_latest.sif  tensorboard --bind\_all --logdir model\_dir --port 9999**<br/>
- **W0813 12:38:24.674294 140736110290688 plugin\_event\_accumulator.py:323\] Found more than one graph event per run, or there was a metagraph containing a graph\_def, as well as one or more graph events.  Overwriting the graph with the newest event.**  
-                                                                                                                                                                                                                                                              
- **W0813 12:38:24.674624 140736110290688 plugin\_event\_accumulator.py:335\] Found more than one metagraph event per run. Overwriting the metagraph with the newest event.**                                                                                  
-                                                                                                                                                                                                                                                              
- **TensorBoard 2.2.2 at <http://cerebras.alcf.anl.gov:9999/> (Press CTRL+C to quit)**                                                                                                                                                                         |
-
-To load the tensorboard, you can use the standard port forwarding mechanism using the below commands on two different terminals
-
-|                                                                                |
-| ------------------------------------------------------------------------------ |
-| **...% ssh [&lt;ALCFUserID&gt;@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
-
-|                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------- |
-| **...% ssh -L 9999:localhost:9999 [&lt;ALCFUserID&gt;](ALCFUserID)[@cerebras.alcf.anl.gov](cerebras.alcf.anl.gov)** |
-
-if you used port 9999. 
---->
-
-<embed src="media/image1.tmp" width="468" height="239" />
-=========================================================
+When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
+A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
+Both the `README.md` files and source code in the modelzoo can be quite helpful.
 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
@@ -114,15 +59,6 @@ To view the documentation, copy the url into your browser as indicated in the ou
 
 This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
 
-## Porting applications to the CS-2
-Cerebras has guides for porting TensorFlow and PyTorch models:<br>
-[Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
-[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)
-
-When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
-A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
-Both the README.md files and source code in the modelzoo can be quite helpful. 
-
 ## Copying files
 To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
 ```console
@@ -133,3 +69,44 @@ To copy a file from your CS-2 home dir to the current local directory, replacing
 ```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
 ```
+
+## Downloading a Kaggle dataset to a CS-2 node using the command line
+
+These notes may be helpful for downloading Kaggle datasets
+
+Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
+
+```console
+virtualenv env
+source env/bin/activate
+pip3 install kaggle
+```
+
+Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
+
+put the json in `~/.kaggle/kaggle.json`</br>
+e.g. single quote the json text and echo it</br>
+```console
+echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
+chmod 600 ~/.kaggle/kaggle.json
+```
+
+On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
+
+In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
+
+Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
+```bash
+kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
+```
+
+It will download as a zip file. (`unzip` is available on `testbed-cs2-02-med8`)
+
+exit the singularity container to unzip the dataset zip file
+
+Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
+
+
+
+
+

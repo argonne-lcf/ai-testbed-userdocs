@@ -1,4 +1,4 @@
 # Tunneling and  forwarding ports
-[TODO when we have a stable final configuration.]<br>
-The SambaNova section has a section for ssh tunneling that could be adapted or directly linked; the ssh access paths are very similar.<br>
-
+[TODO a Cerebras-specific example.]<br>
+See ALCF's [Jupyter Instructions](https://github.com/argonne-lcf/ThetaGPU-Docs/blob/master/doc_staging/jupyter.md), and
+[Tunneling and forwarding ports](../sambanova/Tunneling-and-forwarding-ports.md) in the SambaNova documentation.

@@ -2,6 +2,7 @@
 ## Using a virtual python environment to customize an environment
 It is considered good practice to create and use a python virtual environment for python projects with dependencies not satisfied by the base environment.
 This prevents dependency conflicts between projects.
+Cerebras does not support conda, but python virtualenvs can be used instead.
 
 ```console
 python3 -m venv ~/testp3env

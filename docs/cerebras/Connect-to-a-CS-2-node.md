@@ -1,4 +1,5 @@
-# Connecting to a CS-2 node
+<!---# Connecting to a CS-2 node--->
+# Getting Started
 
 <!---These instructions presume that you have completed steps 1 and 2 on ALCFs
 <a href="https://www.alcf.anl.gov/support-center/get-started">Get Started - Follow these steps to get your research project up and running on ALCF computing resources</a>--->
@@ -11,15 +12,14 @@ The first step requires a MFA passcode for authentication - either a 8 digit pas
 <!---[TODO testbed-cs2-01-med8.ai.alcf.anl.gov is not currently accessible]<br>--->
 To connect to a CS-2 ("chief") node:<br>
 
-(1) From the local machine, ssh to the login node first: 
-```bash
-ssh ALCFUserID@cerebras.alcf.anl.gov
-```
-
-(2) From the login node, ssh to the destination CS-2 chief node:
-```bash
-ssh cs2-02-med8
-```
+1. From the local machine, ssh to the login node first: 
+    ```bash
+    ssh ALCFUserID@cerebras.alcf.anl.gov
+    ```
+2. From the login node, ssh to the destination CS-2 chief node:
+    ```bash
+    ssh cs2-02-med8
+    ```
 
 Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
 ```console
@@ -37,7 +37,7 @@ After sshing to the CS-02 chief node,
 ```console
 source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
-The contents of the cs_env.sh script is shown below.
+The contents of the `cs_env.sh script` is shown below.
 
 ```bash
 export PATH=$PATH:/software/cerebras/cs2-02/bin
