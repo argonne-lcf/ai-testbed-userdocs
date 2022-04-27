@@ -1,4 +1,4 @@
-# Logging into a SambaNova Node
+# Getting Started
 
 ## On-Boarding
 
