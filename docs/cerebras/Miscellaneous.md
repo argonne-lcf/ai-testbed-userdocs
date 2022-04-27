@@ -9,47 +9,13 @@ Release 1.2 will provide (early) support for PyTorch.
 
 Cerebras has guides for porting TensorFlow and PyTorch models:<br>
 [Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
-[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)
+[Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)<br>
+This is Cerebras's list of the TensorFlow layers that they support (for version 1.2): 
+[https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html](https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html)
 
 When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
 A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
-Both the README.md files and source code in the modelzoo can be quite helpful. 
-
-## Downloading a dataset from www.kaggle.com to a CS-2 node using the command line
-
-These notes may be helpful for downloading kaggle datasets
-
-Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
-
-```console
-virtualenv env
-source env/bin/activate
-pip3 install kaggle
-```
-
-
-Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
-
-put the json in ~/.kaggle/kaggle.json</br>
-e.g. single quote the json text and echo it</br>
-```console
-echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
-chmod 600 ~/.kaggle/kaggle.json
-```
-On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
-
-In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
-
-Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
-```bash
-kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
-```
-
-It will download as a zip file. ('unzip' is available testbed-cs2-02-med8)
-
-exit the singularity container to unzip the dataset zip file
-
-Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
+Both the `README.md` files and source code in the modelzoo can be quite helpful.
 
 ## PyTorch Support
 The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
@@ -103,3 +69,44 @@ To copy a file from your CS-2 home dir to the current local directory, replacing
 ```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
 ```
+
+## Downloading a Kaggle dataset to a CS-2 node using the command line
+
+These notes may be helpful for downloading Kaggle datasets
+
+Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
+
+```console
+virtualenv env
+source env/bin/activate
+pip3 install kaggle
+```
+
+Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
+
+put the json in `~/.kaggle/kaggle.json`</br>
+e.g. single quote the json text and echo it</br>
+```console
+echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
+chmod 600 ~/.kaggle/kaggle.json
+```
+
+On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
+
+In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
+
+Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
+```bash
+kaggle datasets download -d mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
+```
+
+It will download as a zip file. (`unzip` is available on `testbed-cs2-02-med8`)
+
+exit the singularity container to unzip the dataset zip file
+
+Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.
+
+
+
+
+

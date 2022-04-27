@@ -20,7 +20,7 @@ Compute Utilization:          52%
 In this example, the wafer utilization estimate is 32 percent (0.62*0.52).<br>
 There is no sharing of the wafer by different jobs, so Cerebras users should strive to maximize their jobs' use of the wafer. <br>
 For more details, see the Cerebras documentation: [Compile Report](https://docs.cerebras.net/en/latest/compiler-reports/compile-report.html)<br>
-Consider using multiple model replicas if the model is only filling a small part of the wafer. The Cerebras software makes this straightforward; in the best case, simply add(or set) "multireplica: True" to the config yaml.<br>
+Consider using multiple model replicas if the model is only filling a small part of the wafer. The Cerebras software can make this straightforward; in the best case, simply add(or set) "multireplica: True" to the config yaml.<br>
 See
 [https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
 
@@ -37,6 +37,6 @@ Search the compile console output for any WARNING lines with the substring "inpu
 [https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html](https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html)
 
 ## Cerebra's Input Analyzer
-In version 1.2, Cerebras introduces the "cs_input_analyzer" script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
+In version 1.2, Cerebras introduces the `cs_input_analyzer` script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
 [https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html](https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html)
 
