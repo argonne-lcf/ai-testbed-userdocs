@@ -8,7 +8,7 @@ The public Cerebras documentation is at:<br>
 Instructions for viewing the release 1.1.0 documentation are at [viewing-the-cerebras-v-11-documenation](Miscellaneous.md#viewing-the-cerebras-v-11-documenation)
 
 An ANL CS-2 cluster will look similar to the following diagram. The worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
-The /homes and /projects trees are shared across AI testbed platforms. 
+The `/homes` and `/projects` trees are shared across AI testbed platforms. 
 
 ![CS-2 cluster diagram](./cs-getting-started.png)
 (diagram from
