@@ -5,9 +5,3 @@
 The SambaNova DataScale system is architected around the next-generation Reconfigurable Dataflow Unit (RDU) processor for optimal dataflow processing and acceleration. The SambaNova is a half-rack system consisting of two nodes, each of which features eight RDUs interconnected to enable model and data parallelism. SambaFlow, its software stack, extracts, optimizes, and maps dataflow graphs to the RDUs from standard machine learning frameworks, like PyTorch.
 
 Here is the link to the sambanova white paper: https://sambanova.ai/wp-content/uploads/2021/06/SambaNova_RDA_Whitepaper_English.pdf
-
-## Chip and Architecture
-
-This is an RDU level view.
-
-![Chip and Architecture Overview](Chip_and_Architecture_Overview.png "Chip and Architecture Overview")
