@@ -87,28 +87,30 @@ csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 19
 <!---
 [TODO should this API/auth string be made public? Alternative supplied that inspects the singularity container.]
 Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
+[TODO could use CS_IP environment variable if set.]<br>
+[balin: I was not able to make the `curl` command below run, even removing the `<br>` characters. Bill Arnold - checked with cerebras and this isn't working with the cs2-02 (does on cs2-01) that we're going live with, so commenting out.<br>
 --->
-[TODO could use CS_IP environment variable if set.]
 ```console
-...$ # Query the firmware level<br>
-...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion<br>
-"FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",<br>
-...$ <br>
-...$ # Query the software level in the singularity image<br>
-...$ singularity sif dump 1 /lambda_stor/slurm/cbcore_images/cbcore_latest.sif | grep "from"<br>
-from: cbcore:1.1.1-202203171919-5-6e2dbf07<br>
-...$ <br>
+...$ # Query the software level in the singularity image
+...$ singularity sif dump 1 /lambda_stor/slurm/cbcore_images/cbcore_latest.sif | grep "from"
+from: cbcore:1.1.1-202203171919-5-6e2dbf07
+...$
 ```
-
+<!---
+...$ # Query the firmware level
+...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion
+"FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",
+...$
+--->
 
 ## Viewing the Cerebras V 1.1 documentation
-The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running to following in a command prompt on your workstation/laptop.<br>
+The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
 *Change the ALCFUserID to your id.*<br>
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
 ```console
 ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
 ```
-To view, view url localhost:8089 with your browser.
+To view the documentation, copy the url into your browser as indicated in the output of the above command (e.g., `http://0.0.0.0:8089/`).
 
 This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
 

@@ -1,20 +1,6 @@
 site_name: AI Testbed User Guide
 nav:
-  - Home: README.md
-  - SambaNova:
-    - System Overview: sambanova/System-Overview.md
-    - Logging into a SambaNova Node: sambanova/Logging-into-a-SambaNova-Node.md
-    - Using virtual environments to customize environment: sambanova/Using-virtual-environments-to-customize-environment.md
-    - Steps to run a model/program: sambanova/Steps-to-run-a-model-or-program.md
-    - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
-    - Example Programs: sambanova/Example-Programs
-    - Performance Tools: sambanova/Performance-Tools
-    - Best Practices and FAQs: sambanova/Best-Practices-and-FAQs.md
-    - Tunneling and forwarding ports: sambanova/Tunneling-and-forwarding-ports.md
-    - System and Storage Policies: sambanova/System-and-Storage-Policies.md
-    - Miscellaneous: sambanova/Miscellaneous.md
-    - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy-of-SambaNova-PyTorch-Models.md
-    - DataParallel: sambanova/DataParallel.md
+  - Home: index.md
   - Cerebras:
     - System Overview: cerebras/System-Overview.md
     - Connect to a CS-2 node: cerebras/Connect-to-a-CS-2-node.md
@@ -26,3 +12,55 @@ nav:
     - Tunneling and forwarding ports: cerebras/Tunneling-and-forwarding-ports.md
     - System and Storage Policies: cerebras/System-and-Storage-Policies.md
     - Miscellaneous: cerebras/Miscellaneous.md
+  - SambaNova:
+    - System Overview: sambanova/System-Overview.md
+    - How to setup your base environment: sambanova/How-to-setup-your-base-environment.md
+    - Using virtual environments to customize environment: sambanova/Using-virtual-environments-to-customize-environment.md
+    - Steps to run a model/program: sambanova/Steps-to-run-a-model-or-program.md
+    - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
+    - Example Programs: sambanova/Example-Programs
+    - Performance Tools: sambanova/Performance-Tools
+    - Best Practices and FAQs: sambanova/Best-Practices-and-FAQs.md
+    - Tunneling and forwarding ports: sambanova/Tunneling-and-forwarding-ports.md
+    - System and Storage Policies: sambanova/System-and-Storage-Policies.md
+   # - Miscellaneous: sambanova/Miscellaneous.md
+    - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy-of-SambaNova-PyTorch-Models.md
+ 
+
+theme:
+  name: 'material'
+  custom_dir: overrides
+  language: 'en'
+  palette:
+    scheme: alcf
+  font:
+    text: proxima-nova
+  features:
+    - tabs
+    - instant
+    - search.highlight
+    - search.suggest
+  logo: 'images/Argonne_wireframe_white_transparent.png'
+  favicon: 'images/alcf_favicon.ico'
+
+extra_css:
+  - stylesheets/alcf-extra.css
+
+extra_javascript:
+  - javascripts/alcf-extra.js
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+
+repo_name: 'argonne-lcf/ALCF-AI-Testbed'
+repo_url: 'https://github.com/argonne-lcf/ALCF-AI-Testbed'
+
+extra:
+  social:
+    - icon: 'fontawesome/brands/github-alt'
+      link: 'https://github.com/argonne-lcf/ALCF-AI-Testbed'
+
+plugins:
+  - search
