@@ -1,6 +1,8 @@
 <!---# Connecting to a CS-2 node--->
 # Getting Started
 
+## Connection to a CS-2 node
+
 <!---These instructions presume that you have completed steps 1 and 2 on ALCFs
 <a href="https://www.alcf.anl.gov/support-center/get-started">Get Started - Follow these steps to get your research project up and running on ALCF computing resources</a>--->
 
@@ -39,7 +41,7 @@ source /software/cerebras/cs2-02/envs/cs_env.sh
 ```
 The contents of the `cs_env.sh script` is shown below.
 
-```bash
+```console
 export PATH=$PATH:/software/cerebras/cs2-02/bin
 export CS_IP=192.168.220.50
 ```
