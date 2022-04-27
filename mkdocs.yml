@@ -5,8 +5,8 @@ nav:
     - System Overview: cerebras/System-Overview.md
     - Getting Started: cerebras/Connect-to-a-CS-2-node.md
     - Steps to run a model or program: cerebras/Steps-to-run-a-model-or-program.md
-    - Example Programs: cerebras/Example-Programs.md
     - Job Queuing and Submission: cerebras/Job-Queuing-and-Submission.md
+    - Example Programs: cerebras/Example-Programs.md
     - Customizing environments: cerebras/Using-virtual-environments-to-customize-environment.md
     - Performance Tools: cerebras/Performance-Tools.md
     - Tunneling and forwarding ports: cerebras/Tunneling-and-forwarding-ports.md

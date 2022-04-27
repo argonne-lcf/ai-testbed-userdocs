@@ -19,6 +19,8 @@ squeue -a
 scancel JOBID
 ```
 
+Note: slurm jobs using the wafer (started using `csrun_wse`) will show with two parts in the `squeue -a` output. The jobids will be the base ID plus 0 or 1, e.g. 555+0 and 555+1. To cancel using `scancel`, give just the base ID as the argument, e.g. `scancel 555`. 
+
 You can find a detailed documentation for slurm
 [here](https://slurm.schedmd.com/documentation.html) or use `--help` to see a
 summary of options for slurm [commands](https://slurm.schedmd.com/quickstart.html#commands), i.e. `squeue --help`.<br>

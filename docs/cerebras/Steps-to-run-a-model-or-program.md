@@ -36,7 +36,9 @@ The `CS_IP` environment variable is set to this value by the /software/cerebras/
 Cerebras includes two scripts for running slurm jobs.<br>
 `csrun_cpu` is for running Cerebras compilation. By default it reserves a single entire worker node.<br>
 `csrun_wse` is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
-```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.
+```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.<br>
+See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more details.
+
 
 ## Running a training job on the wafer
 Follow these instructions to compile and train the `fc_mnist` TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>

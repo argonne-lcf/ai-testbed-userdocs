@@ -37,7 +37,7 @@ Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
 --->
 ```console
 ...$ # Query the software level in the singularity image
-...$ singularity sif dump 1 /lambda_stor/slurm/cbcore_images/cbcore_latest.sif | grep "from"
+...$ singularity sif dump 1 /software/cerebras/cs2-02/container/cbcore_latest.sif | grep "from"
 from: cbcore:1.1.1-202203171919-5-6e2dbf07
 ...$
 ```
@@ -50,7 +50,7 @@ from: cbcore:1.1.1-202203171919-5-6e2dbf07
 
 ## Viewing the Cerebras V 1.1 documentation
 The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
-*Change the ALCFUserID to your id.*<br>
+*Change the <strong>ALCFUserID</strong> to your id.*<br>
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
 ```console
 ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
