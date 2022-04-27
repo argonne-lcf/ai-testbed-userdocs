@@ -20,7 +20,7 @@ These boilerplate files are located at /software/sambanova/apps/tutorials/samban
 
 These completed files are located at /software/sambanova/apps/tutorials/sambanova_dataparallel.
 
-To copy the boilerplate files, log in to sm-01.  See [How to Setup Your Base Environment](How-to-setup-your-base-environment.md).
+To copy the boilerplate files, log in to sm-01.  See [Getting Started](How-to-setup-your-base-environment.md).
 
 Then
 
