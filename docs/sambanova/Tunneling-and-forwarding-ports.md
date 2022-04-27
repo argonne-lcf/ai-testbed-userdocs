@@ -20,6 +20,7 @@ ssh ALCFUserID@sambanova.alcf.anl.gov
 Password: < MobilPass+ code >
 ```
 
+replacing *ALCFUserID* with your ALCF User ID.
 ### From **sambanova.alcf.anl.gov**
 
 Run
