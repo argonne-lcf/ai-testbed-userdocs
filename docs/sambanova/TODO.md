@@ -1,8 +1,15 @@
 # TODO
 
+- [...] SN provide indexing for their docs. From training
+- [X] We need to include in the documentation where the SN docs are located,
+- [X] what the contents are,
+- [X] and how to view them.
+- [X] As part of what the contents are, we need some readme.md with the PDFs listed
+- [X] SN PDF docs copy them locally. and then view them.  VV has a tar file also.
 
-- [ ] SN provide indexing for their docs. From training
-- [ ] SN PDF docs copy them locally. and then view them.  VV has a tar file also.
+- [X] Move snconfig from overview to Miscellaneous
+- [X] Ask SN for a diagram.
+- [X] Use SN diagram.
 
 ```text
 ## [SambaNova](https://github.com/argonne-lcf/ai-testbed-userdocs/tree/main/docs/sambanova)
