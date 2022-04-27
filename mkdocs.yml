@@ -15,7 +15,7 @@ nav:
   - SambaNova:
     - System Overview: sambanova/System-Overview.md
     - Logging into a SambaNova Node: sambanova/Logging-into-a-SambaNova-Node.md
-    - Using virtual environments to customize environment: sambanova/Using-virtual-environments-to-customize-environment.md
+    - Using virtual environments to customize environment: sambanova/virtual-environment.md
     - Steps to run a model/program: sambanova/Steps-to-run-a-model-or-program.md
     - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
     - Example Programs: sambanova/Example-Programs
