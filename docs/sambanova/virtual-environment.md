@@ -1,4 +1,4 @@
-# Using Virtual Environments to Customize Environment
+# Virtual Environments to Customize Environment
 
 ## Using Virtualenv
 
