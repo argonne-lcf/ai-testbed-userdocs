@@ -3,7 +3,7 @@ nav:
   - Home: index.md
   - Cerebras:
     - System Overview: cerebras/System-Overview.md
-    - Connect to a CS-2 node: cerebras/Connect-to-a-CS-2-node.md
+    - Getting Started: cerebras/Connect-to-a-CS-2-node.md
     - Steps to run a model or program: cerebras/Steps-to-run-a-model-or-program.md
     - Example Programs: cerebras/Example-Programs.md
     - Job Queuing and Submission: cerebras/Job-Queuing-and-Submission.md

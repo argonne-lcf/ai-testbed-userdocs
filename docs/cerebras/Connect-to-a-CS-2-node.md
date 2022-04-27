@@ -1,4 +1,5 @@
-# Connecting to a CS-2 node
+<!---# Connecting to a CS-2 node--->
+# Getting Started
 
 <!---These instructions presume that you have completed steps 1 and 2 on ALCFs
 <a href="https://www.alcf.anl.gov/support-center/get-started">Get Started - Follow these steps to get your research project up and running on ALCF computing resources</a>--->

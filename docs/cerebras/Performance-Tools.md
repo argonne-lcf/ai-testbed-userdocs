@@ -1,7 +1,7 @@
 # Performance Tools
 
 ## Compile Report
-After a compile, see the generated compile_report.txt. The product of "Active PEs" and "Compute Utilization" is the effective wafer utilization as estimated by the compiler when the application is not I/O bound. [TODO verify this]
+After a compile, see the generated compile_report.txt. The product of "Active PEs" and "Compute Utilization" is the effective wafer utilization as estimated by the compiler when the application is not I/O bound. Note: these two percentages are rounded to the nearest percent in the compile_report.txt, and e.g. can be displayed as "0%". 
 
 ```console
 ...$ find . -name "compile_report.txt"
