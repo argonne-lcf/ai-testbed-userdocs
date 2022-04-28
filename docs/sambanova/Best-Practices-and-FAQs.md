@@ -1,12 +1,9 @@
 # Best Practices and FAQs
 
-We can link here to the vendor docs as well
 
-## Useful Commands
+## SambaNova Daemon Service
 
-### SambaNova Daemon Service
-
-Check if SambaNova daemon service is running.
+The following command checks if SambaNova daemon service is running.
 
 ```bash
 systemctl status snd
@@ -53,7 +50,8 @@ In order to run the model on CPU, you can simply use the pytorch model
 as if there is no RDU.
 In order to run the model on RDU, you would need to use **session.run()**.
 
-## Computing Loss on Host
+<!---
+## Computing Loss on Host - to be removed. 
 
 From Engineering:
 
@@ -73,7 +71,7 @@ sm-02."
 
 4. Run backward and optimizer sections on RDU.
 
-## Slurm
+## Slurm -- to be moved as part as Job queueing 
 
 **NOTE:  Please be mindful of how you are using the system.
 For example, run larger jobs in the evening or on weekends.**
@@ -113,7 +111,7 @@ Squeue will give you the queue status.
 squeue
 ```
 
-## MPI
+## MPI -- TODO -- this needs to be redone - may be part of data parallel page. 
 
 1. How are MPI ranks mapped to RDU?
 
@@ -136,7 +134,7 @@ squeue
 
     - For both, we support ring and hierarchical algorithms.
 
-## Select RDU and Node
+## Select RDU and Node -- no use case for this
 
 You can tell Slurm what node to use. To specify a tile you can set and
 environment variable.
@@ -158,11 +156,8 @@ RDU6= 0xf000000 all of 6
 RDU7= 0xf0000000 all of 7
 ```
 
-## Can the forward() method take more than two parameters?
 
-Yes per Rick Weisner.  It has been done at ANL.
-
-## FFTs
+## FFTs -- to be removed - may be obsolete. 
 
 Here is an update from SambaNova about the FFT.  They can already do
 1dfft on **n** in array **[bs, n, m]** (bs: batch size). The maximum
@@ -205,7 +200,7 @@ at.
      torch.manual_seed(seed)
      np.random.seed(seed)```
 ```
-
+--->
 ## How busy is the system?
 
 Use one of
@@ -214,8 +209,8 @@ Use one of
 top
 htop
 ```
-
-## How to Use Inference Arg
+<!---
+## How to Use Inference Arg - TODO - this needs to be redone - we are not sure what changes with or without inference - should be done with a use case.
 
 Bruce: just add --inference both to compile and run commands. See here: https://docs.sambanova.ai/sambanova-docs/1.8/developer/getting-started.html#_options
 
@@ -226,7 +221,7 @@ It sounds like --inference is supposed to work with every CLI command.
 So, compile --inference and measure-performance --inference work.
 Also, run --inference works.
 
-## Data Parallel
+## Data Parallel -- This should be part of Dataparallel page anyway
 
 If the code is correct(distributed loader) the compile looks like:
 
@@ -243,17 +238,19 @@ python unet_main.py run -p ${SOFTWARE_HOME}/out/dillon_2k_b48_dp/dillon_2k_b48_d
 You put the run command in a script and use **mpirun** to run the script.
 
 Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
+--->
 
-## SambaNova Accelerator Performance
+## Tile status
 
 ```bash
 sntilestat
 watch sntilestat
 ```
-
+<!---
 ## What are Spatial Batches ?
 
 --spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculated across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
+--->
 
 ## Finding Hung Tiles
 
