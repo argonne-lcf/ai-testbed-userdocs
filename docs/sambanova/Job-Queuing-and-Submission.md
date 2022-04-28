@@ -13,7 +13,7 @@ Jobs should be run using either *srun* or *sbatch*.**
 
 ## Introduction
 
-SambaNova uses slurm for job submission and queueing. Below are some of the important commands for using Slurm. For more information refer to https://slurm.schedmd.com/
+SambaNova uses slurm for job submission and queueing. Below are some of the important commands for using Slurm. For more information refer to <a href="https://slurm.schedmd.com/">Slurm Documentation</a> 
 
 Note: Though program tend to run on Sambanova without the srun commands, it is always advisible to run the python scripts using the slurm framework to ensure that any two jobs does not interfere with each other in a multi-user environment. 
 
