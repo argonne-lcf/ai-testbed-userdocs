@@ -316,6 +316,44 @@ Warning: Journal has been rotated since unit was started. Log output is incomple
 sntilestat
 watch sntilestat
 ```
+The output shown below is when the system is completely idle.
+
+```text
+TILE                 %idle %exec %pload %aload %chkpt %quiesce    PID     USER COMMAND
+/XRDU_0/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+```
+
 <!---
 ## What are Spatial Batches ?
 
