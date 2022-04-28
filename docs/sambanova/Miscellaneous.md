@@ -15,7 +15,7 @@ snconfig-userguide.pdf		    # Tool to display, query, configure and manage syste
 sntilestat-manpage.pdf		    # Display SambaNova tile status and utilization 
 slurm-sambanova.pdf			    # Slum Installation and configuration
 runtime-faq.pdf                 # FAQ’s 
-release-notes.pdf			# Provides new feature and bug fixes updates for each release version. 
+release-notes.pdf			    # Provides new feature and bug fixes updates for each release version. 
 
 ```
 
