@@ -1,76 +1,23 @@
-# Job Queueing and Submission
+# Job Queueing and Submission - TODO - wip
 
+<!---
 **NOTE:  Please be mindful of how you use the systems.
 For example, run larger jobs in the evening or on weekends.**
 
 **NOTE:  Jobs on AI Accelerators *SHOULD NOT* be run interactively.
 Jobs should be run using either *srun* or *sbatch*.**
+--->
 
-## Tile Status
 
-Check to see if there is resources, use one of the following commands:
 
-```bash
-sntilestat
-watch sntilestat
-```
-
-The output below shows that the system is completely idle.
-
-```text
-TILE                 %idle %exec %pload %aload %chkpt %quiesce    PID     USER COMMAND
-/XRDU_0/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_0/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_1/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_2/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
-/XRDU_3/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
-```
 
 ## Introduction
 
-Here are example commands for using Slurm.
+SambaNova uses slurm for job submission and queueing. Below are some of the important commands for using Slurm. For more information refer to <a href="https://slurm.schedmd.com/">Slurm Documentation</a> 
 
-**NOTE:  If you receive an "HTTP error" message on any of the
-following commands, run the command again. Such errors (e.g. 503) are
-commonly an intermittent failure to download a dataset.**
+Note: Though program tend to run on Sambanova without the srun commands, it is always advisible to run the python scripts using the slurm framework to ensure that any two jobs does not interfere with each other in a multi-user environment. 
 
-Sambanova provides examples of some well known AI applications under the path: /software/sambanova/apps/1.10.3-11/starters. These are located on the Sambanova Compute node sm-01. Make a copy of this to your home directory:
-
-```bash
-cd ~/
-mkdir apps
-cp -r /software/sambanova/apps/1.10.3-11/starters apps/starters
-cd apps/starters
-```
-
-## Running with Slurm
+## srun
 
 As an example of using the SLURM scheduling system and workload manager for running jobs, run these commands:
 
@@ -78,11 +25,11 @@ As an example of using the SLURM scheduling system and workload manager for runn
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
-srun python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 More details on the above commands is provided [here](Steps-to-run-a-model-or-program.md).
 
+## sbatch
 To use Slurm sbatch, create submit-lenet-job.sh with the following
 contents:
 
@@ -92,7 +39,6 @@ contents:
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 python lenet.py test --pef="pef/lenet/lenet.pef"
 python lenet.py run --pef="pef/lenet/lenet.pef"
-python lenet.py measure-performance --pef="pef/lenet/lenet.pef"
 ```
 
 Then
@@ -109,12 +55,14 @@ sbatch --gres=rdu:2 your_script.sh
 
 See [DataParallel](DataParallel.md) and search for **--gres=rdu:2**.
 
+## squeue
 Squeue will give you the queue status.
 
 ```bash
 squeue
 ```
 
+## scancel
 Scancel is used to signal or cancel jobs, job arrays or job steps.
 
 ```bash
