@@ -2,7 +2,7 @@
 
 ## SambaNova Documentation
 
-SambaNova has provided the following documentation:
+SambaNova has provided the following documentation: TODO - reorder and describe each document. 
 
 ```text
 compiler-options.pdf
@@ -20,14 +20,14 @@ using-layernorm.pdf
 using-venvs.pdf
 ```
 
-From your development machine:
+The documentation can be viewed on your local system by copying the files from the login node.
 
 ```bash
 cd <your docs destination>
 scp -r ALCFUserID@sambanova.alcf.anl.gov:/software/sambanova/docs/latest/* .
 ```
 
-View the PDFs in your favorite viewer or web browser.
+View the PDFs in your favorite viewer or web browser on your local machine. 
 
 <!--- 
 ALL THESE NEED TO GO 
