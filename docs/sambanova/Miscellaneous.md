@@ -2,7 +2,7 @@
 
 ## SambaNova Documentation
 
-SambaNova has provided the following documentation: TODO - reorder and describe each document. 
+The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node. TODO - reorder and describe each document. 
 
 ```text
 compiler-options.pdf
