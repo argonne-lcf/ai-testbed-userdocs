@@ -15,7 +15,7 @@ Jobs should be run using either *srun* or *sbatch*.**
 
 Here are example commands for using Slurm.
 
-## Running with Slurm
+## srun
 
 As an example of using the SLURM scheduling system and workload manager for running jobs, run these commands:
 
@@ -27,6 +27,7 @@ srun python lenet.py run --pef="pef/lenet/lenet.pef"
 
 More details on the above commands is provided [here](Steps-to-run-a-model-or-program.md).
 
+## sbatch
 To use Slurm sbatch, create submit-lenet-job.sh with the following
 contents:
 
@@ -52,12 +53,14 @@ sbatch --gres=rdu:2 your_script.sh
 
 See [DataParallel](DataParallel.md) and search for **--gres=rdu:2**.
 
+## squeue
 Squeue will give you the queue status.
 
 ```bash
 squeue
 ```
 
+## scancel
 Scancel is used to signal or cancel jobs, job arrays or job steps.
 
 ```bash
