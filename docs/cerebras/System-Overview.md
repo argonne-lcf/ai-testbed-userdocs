@@ -8,11 +8,11 @@ The public Cerebras documentation is available [here](https://docs.cerebras.net/
 
 Instructions for viewing the release 1.1.0 documentation are at [viewing-the-cerebras-v-11-documentation](Miscellaneous.md#viewing-the-cerebras-v-11-documentation)
 
-A typical CS-2 cluster is as shown in the figure. On the Argonne CS-2 cluster, The worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
+A typical CS-2 cluster is as shown in the figure. On the Argonne CS-2 cluster, the worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
 The `/home` and `/projects` trees are shared across AI testbed platforms. 
 
-![CS-2 cluster diagram](./cs-getting-started.png)
-(diagram from
+![CS-2 cluster figure](./cs-getting-started.png)
+(Figure from
 [https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html](https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html))
 
 
@@ -23,4 +23,4 @@ All the supporting tasks such as compiling the model, preprocessing the input da
 
 ![Programming model](./compile-vs-run.png)
 <!---https://docs.cerebras.net/en/latest/_images/compile-vs-run.png-->
-(diagram from [https://docs.cerebras.net/en/latest/cerebras-basics/how-cerebras-works.html](https://docs.cerebras.net/en/latest/cerebras-basics/how-cerebras-works.html))
+(Figure from [https://docs.cerebras.net/en/latest/cerebras-basics/how-cerebras-works.html](https://docs.cerebras.net/en/latest/cerebras-basics/how-cerebras-works.html))
