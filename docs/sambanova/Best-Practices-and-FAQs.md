@@ -1,28 +1,5 @@
 # Miscellaneous
 
-
-## SambaNova Daemon Service
-
-The following command checks if SambaNova daemon service is running.
-
-```bash
-systemctl status snd
-```
-
-The output should look something like:
-
-```text
-* snd.service - SN Devices Service
-   Loaded: loaded (/usr/lib/systemd/system/snd.service; enabled; vendor preset: enabled)
-   Active: active (running) since Fri 2022-02-18 11:45:15 CST; 1 months 25 days ago
- Main PID: 3550 (snd)
-    Tasks: 10 (limit: 19660)
-   CGroup: /system.slice/snd.service
-           `-3550 /opt/sambaflow/bin/snd
-
-Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
-```
-
 ## OMP_NUM_THREADS
 
 The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
@@ -236,10 +213,8 @@ Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
 ### SN Configuration
 
 ```bash
-sntilestat
+snconfig
 ```
-SambaNova node can be accessed as sm-01.ai.alcf.anl.gov.
-
 The snconfig utility shows the static configuration of the system. The configuration on sm-01 for the first RDU is as follows:
 
 ```text
@@ -311,6 +286,28 @@ res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
 /XRDU_3/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
 /XRDU_3/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
 /XRDU_3/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+```
+
+### SambaNova Daemon Service
+
+The following command checks if SambaNova daemon service is running.
+
+```bash
+systemctl status snd
+```
+
+The output should look something like:
+
+```text
+* snd.service - SN Devices Service
+   Loaded: loaded (/usr/lib/systemd/system/snd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2022-02-18 11:45:15 CST; 1 months 25 days ago
+ Main PID: 3550 (snd)
+    Tasks: 10 (limit: 19660)
+   CGroup: /system.slice/snd.service
+           `-3550 /opt/sambaflow/bin/snd
+
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
 ```
 
 ### Tile status
