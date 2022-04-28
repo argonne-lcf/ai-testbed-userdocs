@@ -1,6 +1,6 @@
 # Documentation
 
-The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node. TODO - reorder and describe each document. 
+The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node.
 
 ```text
 getting-started.pdf			    # Getting started with Sambaflow and run your first example program (LogReg). 
