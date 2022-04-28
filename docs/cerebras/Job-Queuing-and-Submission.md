@@ -4,7 +4,7 @@ The CS-2 systems use slurm for job submission and queueing.<br>
 **`csrun_wse`** is used to run a job on both the wafer scale engine and one or more worker nodes.
 
 Your job will be blocked until there are available resources.<br>
-Scheduling is in simple job request order.
+Scheduling is in first in, first out (FIFO) order.
 ```bash
 # csrun_cpu [--help] [--alloc_node] [--mount_dirs] command_to_execute
 csrun_cpu --help
