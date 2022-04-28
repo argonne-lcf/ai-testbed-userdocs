@@ -53,6 +53,20 @@ markdown_extensions:
   - admonition
   - codehilite
   - pymdownx.superfences
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 repo_name: 'argonne-lcf/ALCF-AI-Testbed'
 repo_url: 'https://github.com/argonne-lcf/ALCF-AI-Testbed'

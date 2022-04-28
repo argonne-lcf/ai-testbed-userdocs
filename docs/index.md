@@ -1,70 +1,38 @@
 # ALCF AI Testbed
 
-ALCF provides an infrastructure for the next-generation of AI-accelerator
-machines. 
+<figure markdown>
+  ![Cerebras and SambaNova detail photos](images/home-cerebras-sambanova.png){ width="700" }
+</figure>
 
-The AI Testbed aims to help evaluate the usability and performance of machine learning-based high-performance computing applications running on these accelerators. The goal is to better understand how to integrate with existing and upcoming supercomputers at the facility to accelerate science insights.
+The [ALCF AI Testbed](https://www.alcf.anl.gov/alcf-ai-testbed) houses some of the most advanced AI accelerators for scientific research. 
 
-You can find more information about the available systems on this [link](https://www.alcf.anl.gov/alcf-ai-testbed). Here you can find the documentation on how to use these systems. The
-documentation is based on [MkDocs](https://www.mkdocs.org/) and source files are
-on [GitHub](https://github.com/argonne-lcf/ai-testbed-userdocs). You can
-contribute to the documentation by creating a pull request.
+The goal of the testbed is to enable explorations into next-generation machine learning applications and workloads, enabling the ALCF and its user community to help define the role of AI accelerators in scientific computing and how to best integrate such technologies with supercomputing resources.
 
+The AI accelerators complement the ALCF's current and next-generation supercomputers to provide a state-of-the-art computing environment that supports pioneering research at the intersection of AI, big data, and high performance computing (HPC). 
 
-### Git
+The platforms are equipped with architectural features that support AI and data-centric workloads, making them well suited for research tasks involving the growing deluge of scientific data produced by powerful tools, such as supercomputers, light sources, telescopes, particle accelerators, and sensors. In addition, the testbed will allow researchers to explore novel workflows that combine AI methods with simulation and experimental science to accelerate the pace of discovery.
 
-Using Git ssh. Make sure you add ssh public key to your profile.
+## How to Get Access
+Researchers interested in using the AI Testbed’s `Cerebras CS-2` and `SambaNova DataScale` platforms can now submit project proposals via the ALCF’s Director’s Discretionary program. Access to additional testbed resources, including `Graphcore`, `Groq`, and `Habana` accelerators, will be announced at a later date. 
 
-Https cloning can be used with a Personal Access Token.
+[Allocation Request](https://accounts.alcf.anl.gov/allocationRequests){:target="_blank"}
 
-```
-$ git clone git@github.com:argonne-lcf/ai-testbed-userdocs.git
-```
+## Getting Started
+1. Request a Director's Discretionary project on SambaNova/Cerebras.
 
-### Installing Mkdocs
+2. Apply for an ALCF account after the project request is approved. Choose the SambaNova/Cerebras project that your PI has created at ALCF. If you have an active ALCF account, request to [join the project](https://accounts.alcf.anl.gov/joinProject){:target="_blank"} after your project is approved.
 
-To install `mkdocs` in the current environment: 
+3. Transfer data to ALCF using Globus after your account has been created.
 
-```
-$ cd ai-testbed-userdocs
-$ make install-dev
-```
+    a. The endpoint for your data in ALCF is ``` alcf#ai_testbed_projects ``` with the path to your project being  ``` /<project name> ```. 
 
-### Preview the Docs Locally
+    b. The endpoint for your home directory on the AI Testbeds in ALCF is ``` alcf#ai_testbed_home ```.
 
-This launches a server.  Do this in a seperate terminal.
+4. Add/invite team members to your ALCF project on SambaNova/Cerebras. 
 
-Run `mkdocs serve` or `make serve` to auto-build and serve the docs for preview in your web browser.
+## How to Contribute to Documentation
+The documentation is based on [MkDocs](https://www.mkdocs.org/){:target="_blank"} and source files are
+on [GitHub](https://github.com/argonne-lcf/ai-testbed-userdocs). You can contribute to the documentation by creating a pull request. 
+ 
+ [Learn more on how to contribute to documentation.](https://github.com/argonne-lcf/ai-testbed-userdocs/blob/main/docs/HOWTO_CONTRIBUTE.md)
 
-```
-$ make serve
-```
-
-### Working on documentation
-
-* All commits must have the commit comment
-* Create your own branch from the main branch.  For this writing we are using YOURBRANCH as an example.
-
-```
-$ cd ai-testbed-userdocs
-$ git fetch --all
-$ git checkout main
-$ git pull origin main
-$ git checkout -b YOURBRANCH
-$ git push -u origin YOURBRANCH
-```
-* Commit your changes to the remote repo
-```
-$ cd ai-testbed-userdocs
-$ git status                         # check the status of the files you have editted
-$ git commit -a -m "Updated docs"    # preferably one issue per commit
-$ git status                         # should say working tree clean
-$ git push origin YOURBRANCH         # push YOURBRANCH to origin
-$ git checkout main                  # move to the local main
-$ git pull origin main               # pull the remote main to your local machine
-$ git checkout YOURBRANCH            # move back to your local branch
-$ git merge main                     # merge the local develop into **YOURBRANCH** and
-                                     # make sure NO merge conflicts exist
-$ git push origin YOURBRANCH         # push the changes from local branch up to your remote branch
-```
-* Create pull request from https://github.com/argonne-lcf/ai-testbed-userdocs from YOURBRANCH to main branch.
