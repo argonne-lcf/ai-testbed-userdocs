@@ -18,7 +18,7 @@ nav:
     - Steps to Run a Model/Program: sambanova/Steps-to-Run-a-Model-or-Program.md
     - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
     - Example Programs: sambanova/Example-Programs
-    - Best Practices and FAQs: sambanova/Best-Practices-and-FAQs.md
+    - Miscellaneous: sambanova/Best-Practices-and-FAQs.md
     - Tunneling and forwarding ports: sambanova/Tunneling-and-forwarding-ports.md
     - Documentation: sambanova/Miscellaneous.md
     - Anatomy of SambaNova PyTorch Models: sambanova/Anatomy-of-SambaNova-PyTorch-Models.md
