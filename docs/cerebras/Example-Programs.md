@@ -1,7 +1,7 @@
 # Example Programs
 
 ## Use a local copy of the model zoo
-Make a local copy of the Cerebras modelzoo and anl_shared repository if not done before using,  
+Make a local copy of the Cerebras modelzoo and anl_shared repository, if not previously done, as follows.
 
 ```bash
 mkdir ~/R1.1.0/
@@ -22,7 +22,7 @@ csrun_wse python run.py --mode=train --params configs/params_severstal_sharedds.
 ```
 ## Bert
 An implementation of this: [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)<br>
-This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in source directory for details on how to build a dataset from text input.
+This BERT-large msl128 example uses a single sample dataset for both training and evaluation. See the README.md in the source directory for details on how to build a dataset from text input.
 ```console
 cd ~/R1.1.0/modelzoo/transformers/tf/bert
 #rm -r model_dir_bert_large_msl128
