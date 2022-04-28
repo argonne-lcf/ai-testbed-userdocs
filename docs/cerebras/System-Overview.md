@@ -1,14 +1,15 @@
 # System Overview
-The Cerebras CS-2 is a wafer-scale deep learning accelerator comprising 850,000 processing cores, each providing 48KB of dedicated SRAM memory for an on-chip total of 40GB and interconnected to optimize bandwidth and latency. Its software platform integrates popular machine learning frameworks such as TensorFlow and PyTorch.<br>
-For more details, see this whitepaper:
+The Cerebras CS-2 is a wafer-scale deep learning accelerator comprising 850,000 processing cores, each providing 48KB of dedicated SRAM memory for an on-chip total of 40GB and interconnected to optimize bandwidth and latency. Its software platform integrates popular machine learning frameworks such as TensorFlow and PyTorch.
+
+For an overview of the Cerebras CS-2 system, see this whitepaper:
 <a href="https://f.hubspotusercontent30.net/hubfs/8968533/Cerebras-CS-2-Whitepaper.pdf">Cerebras Systems: Achieving Industry Best AI Performance Through A Systems Approach</a>
 
-The public Cerebras documentation is at:<br>
-<https://docs.cerebras.net/en/latest/index.html><br>
+The public Cerebras documentation is available [here](https://docs.cerebras.net/en/latest/index.html)
+
 Instructions for viewing the release 1.1.0 documentation are at [viewing-the-cerebras-v-11-documentation](Miscellaneous.md#viewing-the-cerebras-v-11-documentation)
 
-An ANL CS-2 cluster will look similar to the following diagram. The worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
-The `/homes` and `/projects` trees are shared across AI testbed platforms. 
+A typical CS-2 cluster is as shown in the figure. On the Argonne CS-2 cluster, The worker nodes and the chief node each have Intel(R) Xeon(R) Gold 6248 CPU processors totaling 80 cores and 200GB memory.<br>
+The `/home` and `/projects` trees are shared across AI testbed platforms. 
 
 ![CS-2 cluster diagram](./cs-getting-started.png)
 (diagram from
