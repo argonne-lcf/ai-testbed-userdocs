@@ -10,12 +10,12 @@ run-examples-language.pdf	    # Run BERT on RDU
 run-examples-pytorch.pdf	  	# Run Power PCA and micro models like GEMM on RDU
 using-layernorm.pdf			    # Example to use LayerNorm instead of BatchNorm 
 compiler-options.pdf            # Provides advanced compiler options for the compile command. 
-using-venvs.pdf				      # Python Virtual Environment. 
+using-venvs.pdf				    # Python Virtual Environment. 
 snconfig-userguide.pdf		    # Tool to display, query, configure and manage system resources on SN 
-sntilestat-manpage.pdf		# Display SambaNova tile status and utilization 
-slurm-sambanova.pdf			  # Slum Installation and configuration
-runtime-faq.pdf           # FAQ’s 
-release-notes.pdf				  # Provides new feature and bug fixes updates for each release version. 
+sntilestat-manpage.pdf		    # Display SambaNova tile status and utilization 
+slurm-sambanova.pdf			    # Slum Installation and configuration
+runtime-faq.pdf                 # FAQ’s 
+release-notes.pdf			# Provides new feature and bug fixes updates for each release version. 
 
 ```
 
