@@ -201,14 +201,7 @@ at.
      np.random.seed(seed)```
 ```
 --->
-## How busy is the system?
 
-Use one of
-
-```bash
-top
-htop
-```
 <!---
 ## How to Use Inference Arg - TODO - this needs to be redone - we are not sure what changes with or without inference - should be done with a use case.
 
@@ -239,8 +232,88 @@ You put the run command in a script and use **mpirun** to run the script.
 
 Look at /var/tmp/Additional/slurm/Models/ANL_Acceptance_RC1_8_1/bert_lrg_8.sh
 --->
+## Useful Commands 
+### SN Configuration
 
-## Tile status
+```bash
+sntilestat
+```
+SambaNova node can be accessed as sm-01.ai.alcf.anl.gov.
+
+The snconfig utility shows the static configuration of the system. The configuration on sm-01 for the first RDU is as follows:
+
+```text
+Platform Name: DataScale SN10-8
+Node Name: NODE
+Number of XRDUS: 4
+XRDU Name: XRDU_0
+Number of RDUS: 2
+RDU name: RDU_0
+Number of TILES: 4
+TILE Name: TILE_0
+Serial Number : N/A
+...
+Number of PCIES: 4
+PCIE Name: PCIE_0
+Bandwidth : 32 GB/s
+Speed : 16 GT/s
+Width : 16
+Serial Number : N/A
+...
+Number of DDRCHs: 6
+DDR CH Name: DDRCH_0
+Number of DIMMS: 2
+DIMM Name: DIMM_C0
+Size : 64.0 GB
+DIMM Name: DIMM_C1
+Size : 0.0 GB
+Serial Number : N/A
+Current utilization can be seen with sntilestat. In this example, only
+four tiles in one RDU are in use.
+TILE %idle %exec %pload %aload %chkpt %quiesce PID USER COMMAND
+/XRDU_0/RDU_0/TILE_0 80.4 7.0 10.4 2.2 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_1 80.5 6.9 11.3 1.3 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_2 82.1 4.7 11.4 1.8 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_3 80.1 6.3 11.7 1.9 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+```
+
+### Tile status
 
 ```bash
 sntilestat
@@ -252,8 +325,17 @@ watch sntilestat
 --spatial_train argument is used for training in "spatial mapping mode" for applications like Uno, where the loss is calculated across the entire spatial batch size. This mode aggregates many minibatches of training inputs (aka samples) and performs multiple iterations of fwd->bwd->param_update in one single execution context. Here a minibatch really means a batch, i.e. how many samples of data you need to perform fwd->bwd to calculate weight gradients and make a weight update. This means in a single execution context, the number weight-updates happened is equal to the number of minibatches inputs provided, and that is what minibatch_count is referring to. In the Uno specific config, minibatch_count=2000 per each execution context, and minibatch_size=16. In 1 epoch, it performs 1 execution context -> train with 2000 batches or 2000 * 16 samples. Why is it done this way? In “spatial mapping”, we do not fetch/dump the (updated)parameters from/to the off-chip memory or host, therefore saving the overhead of memory load/store and host<->device transfers, which significantly helps the performance/throughput.
 --->
 
-## Finding Hung Tiles
+### Finding Hung Tiles
 
 ```bash
 snconfig show Node dynamic | grep perfect
+```
+
+### How busy is the system?
+
+Use one of
+
+```bash
+top
+htop
 ```
