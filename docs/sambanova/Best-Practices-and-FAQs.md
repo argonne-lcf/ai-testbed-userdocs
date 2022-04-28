@@ -1,4 +1,4 @@
-# Best Practices and FAQs
+# Miscellaneous
 
 
 ## SambaNova Daemon Service
