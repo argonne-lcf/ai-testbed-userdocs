@@ -267,6 +267,7 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 Change directory
 
 ```bash
+cp -r /software/sambanova/apps/1.10.3-11/image apps/image
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
@@ -281,7 +282,7 @@ srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-
 srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
 ```
 
-Using SLURM:  To use Slurm, create submit-unet-job.sh with the following
+Using Slurm:  To use Slurm, create submit-unet-job.sh with the following
 contents:
 
 ```bash

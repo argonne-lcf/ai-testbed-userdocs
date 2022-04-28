@@ -9,10 +9,11 @@ on the system.**
 
 ## Introduction
 
-The SambaNova workflow includes the following main steps to run a model. <br>
-1. Compile <br>
-2. Run <br>
-3. Test (optional) <br>
+The SambaNova workflow includes the following main steps to run a model.
+
+1. Compile
+2. Run
+3. Test (optional)
 
 The system uses the [SLURM job
 scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manange the workload on the system. For more information on slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
@@ -21,7 +22,7 @@ scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and 
 
 ## Compile
 
-Compiles the model and generates a Plasticine Executable Format `(.pef)` file. This file contains
+Compiles the model and generates a `(.pef)` file. This file contains
 information on how to reconfigure the hardware, as to how many compute and
 memory resources are required and how it will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the

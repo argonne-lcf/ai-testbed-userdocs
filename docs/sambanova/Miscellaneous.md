@@ -1,6 +1,6 @@
 # Documentation
 
-The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node. TODO - reorder and describe each document. 
+The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node.
 
 ```text
 getting-started.pdf			    # Getting started with Sambaflow and run your first example program (LogReg). 
@@ -15,7 +15,7 @@ snconfig-userguide.pdf		    # Tool to display, query, configure and manage syste
 sntilestat-manpage.pdf		    # Display SambaNova tile status and utilization 
 slurm-sambanova.pdf			    # Slum Installation and configuration
 runtime-faq.pdf                 # FAQ’s 
-release-notes.pdf			# Provides new feature and bug fixes updates for each release version. 
+release-notes.pdf			    # Provides new feature and bug fixes updates for each release version. 
 
 ```
 
