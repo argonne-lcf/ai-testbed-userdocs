@@ -10,9 +10,8 @@ Follow the instructions in section [Connect to a CS-2 node](./Connect-to-a-CS-2-
 <!---
 #### Cerebras SIF container:<br>
 The Cerebras Singularity container (SIF) is used for all work with the Cerebras software, and includes the Cerebras Graph Compiler (CGC) and other necessary software.</br>
-Its path is /lambda_stor/slurm/cbcore_images/cbcore_latest.sif<br>
+Its path is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
-[TODO update that lamba_store path when ALCF conversion is complete.]
 --->
 
 #### Slurm:<br>
@@ -102,7 +101,7 @@ This illustrates how to create a singularity container.
 The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 ```console
 cd ~/R1.1.0/modelzoo/fc_mnist/tf
-singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif
+singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif
 ```
 
 At the shell prompt for the container,
