@@ -9,7 +9,7 @@ on the system.**
 
 ## Introduction
 
-The SambaNova workflow includes the following main steps to run a model.
+The SambaNova workflow includes the following main steps to run a model. <br>
 1. Compile <br>
 2. Run <br>
 3. Test (optional) <br>
