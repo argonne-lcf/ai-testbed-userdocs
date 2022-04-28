@@ -74,7 +74,7 @@ scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/fil
 
 These notes may be helpful for downloading Kaggle datasets
 
-Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /lambda_stor/slurm/cbcore_images/cbcore_latest.sif` )
+Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif` )
 
 ```console
 virtualenv env
@@ -92,8 +92,6 @@ chmod 600 ~/.kaggle/kaggle.json
 ```
 
 On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
-
-In the singularity shell with the virtual env activated, switch dir to some place with plenty of space, e.g. /data/shared/ALCFUserID [TODO fix when filesystem/mounts are stable]
 
 Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
 ```bash
