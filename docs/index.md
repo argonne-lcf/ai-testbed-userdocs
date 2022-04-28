@@ -15,7 +15,7 @@ The platforms are equipped with architectural features that support AI and data-
 ## How to Get Access
 Researchers interested in using the AI Testbed’s `Cerebras CS-2` and `SambaNova DataScale` platforms can now submit project proposals via the [ALCF’s Director’s Discretionary program](https://www.alcf.anl.gov/science/directors-discretionary-allocation-program). Access to additional testbed resources, including `Graphcore`, `Groq`, and `Habana` accelerators, will be announced at a later date. 
 
-Allocation Request Page(https://accounts.alcf.anl.gov/allocationRequests){:target="_blank"}
+Submit your proposal requests at: [Allocation Request Page](https://accounts.alcf.anl.gov/allocationRequests){:target="_blank"}
 
 ## Getting Started
 1. Request a Director's Discretionary project on SambaNova/Cerebras.
