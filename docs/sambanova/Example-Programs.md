@@ -243,7 +243,7 @@ trimmed according to requires_grad to save computation.
 [Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
 according to requires_grad to save computation.
 [info ] [PLASMA] Launching plasma compilation! See log file:
-/lambda_stor/homes/ALCFUserID/apps/starters/pytorch/pef/logreg//logreg.plasma_compile.log
+/home/ALCFUserID/apps/starters/pytorch/pef/logreg//logreg.plasma_compile.log
 ...
 
 [Warning][SAMBA][Default] # The dtype of "targets" to
