@@ -28,8 +28,8 @@ You may occasionally need to log into a specific worker node for debugging purpo
 
 #### CS_IP address of the CS system:<br>
 <!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
-The CS-2 uses `CS_IP` `192.168.220.50`<br>
-The `CS_IP` environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and may be used in other scripts.
+The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`<br>
+The `CS_IP` environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
 
 #### Running slurm jobs:<br>
 Cerebras includes two scripts for running slurm jobs.<br>

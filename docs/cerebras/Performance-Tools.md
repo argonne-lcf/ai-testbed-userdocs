@@ -21,11 +21,11 @@ Compute Utilization:          52%
 In this example, the wafer utilization estimate is 32 percent (0.62*0.52).<br>
 There is no sharing of the wafer by different jobs, so Cerebras users should strive to maximize their jobs' use of the wafer. <br>
 For more details, see the Cerebras documentation: [Compile Report](https://docs.cerebras.net/en/latest/compiler-reports/compile-report.html)<br>
-Consider using multiple model replicas if the model is only filling a small part of the wafer. The Cerebras software can make this straightforward; in the best case, simply add(or set) "multireplica: True" to the config yaml.<br>
+Consider using multiple model replicas if the model is only filling a small part of the wafer.<br>
 See
 [https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
+For code samples with multireplica support, see `/software/cerebras/model_zoo/anl_shared-R1.1.0/braggnn/tf/` and `/software/cerebras/model_zoo/modelzoo-R1.1.0/fc_mnist/tf/`.
 
-[TODO With v 1.1, for the fc_mist example, this has no apparent effect. Determine why, and document.]<br>
 <!---[TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]--->
 
 ## Cerebras's guidance on sharding and shuffling datasets
