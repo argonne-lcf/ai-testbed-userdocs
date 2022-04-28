@@ -1,4 +1,4 @@
-# Miscellaneous
+# Documentation
 
 ## SambaNova Documentation
 
