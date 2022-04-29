@@ -1,6 +1,6 @@
 # Example Programs
 
-Sambanova provides examples of some well known AI applications under the path: /software/sambanova/apps/1.10.3-11/starters. These are located on the Sambanova Compute node sm-01. Make a copy of this to your home directory:
+Sambanova provides examples of some well known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the Sambanova compute node sm-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -151,7 +151,7 @@ commands to run MNIST example:
 ```bash
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
+srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
 
@@ -159,7 +159,7 @@ To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.
 #!/bin/sh
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef=pef/ffn_mnist/ffn_mnist.pef --data-path mnist_data
+srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 
 ```bash
