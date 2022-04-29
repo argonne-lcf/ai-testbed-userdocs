@@ -8,7 +8,7 @@ Note: Run the python scripts using srun or sbatch, to ensure that concurrent job
 
 ## srun
 
-The Slurm command `srun` can be used to run individual python scripts in parallel on a cluster managed by Slurm. In this case `srun` creates a resource allocation to run the job in parallel. Usage of `srun` examples are shown below.
+The Slurm command `srun` can be used to run individual python scripts in parallel with other scripts on a cluster managed by Slurm. Examples of `srun` usage are shown below.
 
 ```bash
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
@@ -18,7 +18,7 @@ srun python lenet.py run --pef="pef/lenet/lenet.pef"
 
 ## sbatch
 
-Alternatively, these jobs can be submitted to the Slurm through a batch script by using `sbatch` command. To do this, create a bash script (submit-lenet-job.sh here as an example) with the following contents.
+Alternatively, these jobs can be submitted to the Slurm workload manager through a batch script by using `sbatch` command. To do this, create a bash script (submit-lenet-job.sh here as an example) with the commands that you want to execute.
 
 ```bash
 #!/bin/sh
