@@ -1,5 +1,8 @@
 # TODO
 
+- [ ]  docs/sambanova/Best-Practices-and-FAQs.md ## MPI -- TODO -- this needs to be redone - may be part of data parallel page.
+- [ ] Edit Anatomy... to be a technical doc
+- [ ] Edit DataParallel.md to be a technical doc
 - [...] SN provide indexing for their docs. From training
 - [X] We need to include in the documentation where the SN docs are located,
 - [X] what the contents are,

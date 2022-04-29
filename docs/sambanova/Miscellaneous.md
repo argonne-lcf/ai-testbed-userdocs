@@ -1,73 +1,191 @@
-# Documentation
+# Miscellaneous
 
-The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node.
+## OMP_NUM_THREADS
 
-```text
-getting-started.pdf			    # Getting started with Sambaflow and run your first example program (LogReg). 
-intro-tutorial-pytorch.pdf		# A peek into the code of the above example program. 
-run-examples-vision.pdf		    # Run UNET on RDU. 
-run-examples-language.pdf	    # Run BERT on RDU
-run-examples-pytorch.pdf	  	# Run Power PCA and micro models like GEMM on RDU
-using-layernorm.pdf			    # Example to use LayerNorm instead of BatchNorm 
-compiler-options.pdf            # Provides advanced compiler options for the compile command. 
-using-venvs.pdf				    # Python Virtual Environment. 
-snconfig-userguide.pdf		    # Tool to display, query, configure and manage system resources on SN 
-sntilestat-manpage.pdf		    # Display SambaNova tile status and utilization 
-slurm-sambanova.pdf			    # Slum Installation and configuration
-runtime-faq.pdf                 # FAQ’s 
-release-notes.pdf			    # Provides new feature and bug fixes updates for each release version. 
+The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.
 
-```
+The value of this environment variable must be a list of positive integer values. The values of the list set the number of threads to use for parallel regions at the corresponding nested levels.
 
-The documentation can be viewed on your local system by copying the files from the login node.
+For the SambaNova system it is usually set to one.
 
 ```bash
-cd <your docs destination>
-scp -r ALCFUserID@sambanova.alcf.anl.gov:/software/sambanova/docs/latest/* .
+export OMP_NUM_THREADS=1
 ```
 
-View the PDFs in your favorite viewer or web browser on your local machine. 
+## Where is the Model?
 
-<!--- 
-ALL THESE NEED TO GO 
-## Resources
-
-- <https://docs.ai.alcf.anl.gov/sambanova/>
-
-- [Argonne SambaNova Training
-  11/20](https://anl.app.box.com/s/bqc101mvt3r7rpxbd2yxjsf623ea3gpe)
-
-- [https://docs.sambanova.ai](https://docs.sambanova.ai/) Create a
-  SambaNova account if you do not have one.
-
-- [Getting Started with
-  SambaFlow](https://docs.sambanova.ai/sambanova-docs/1.6/developer/getting-started.html)
-  Skip this one.
-
-- [Tutorial: Creating Models with
-  SambaFlow](https://docs.sambanova.ai/sambanova-docs/1.6/developer/intro-tutorial.html)
-
-- Administrators
--- @ryade
-
-## Further Information
-
-[Human Decisions Files notes](/display/AI/Human+Decisions+Files+notes)
-
-## PyTorch Mirrors
-
-See <https://github.com/pytorch/examples> .
-
-There are two mirrors (in the python docs) used for downloading the
-mnist dataset.
+Two copies of model are maintained.  One in CPU memory and one in RDU
+memory. They do not interfere with each other unless you explicitly sync
+the model/parameter in between using:
 
 ```text
-mirrors = [
-        'http://yann.lecun.com/exdb/mnist/',
-        'https://ossci-datasets.s3.amazonaws.com/mnist/']
+SambaTensor.rdu() # Moves the CPU model to the RDU
+SambaTensor.cpu() # Moves the RDU model to the CPU
 ```
 
-[yann.lecun.com](http://yann.lecun.com) appears to be intermittently
-broken (503 errors).
+In order to run the model on CPU, you can simply use the pytorch model
+as if there is no RDU.
+In order to run the model on RDU, you would need to use **session.run()**.
 
---->
+## Useful Commands
+
+### SN Configuration
+
+```bash
+snconfig
+```
+
+The snconfig utility shows the static configuration of the system. The configuration on sm-01 for the first RDU is as follows:
+
+```text
+Platform Name: DataScale SN10-8
+Node Name: NODE
+Number of XRDUS: 4
+XRDU Name: XRDU_0
+Number of RDUS: 2
+RDU name: RDU_0
+Number of TILES: 4
+TILE Name: TILE_0
+Serial Number : N/A
+...
+Number of PCIES: 4
+PCIE Name: PCIE_0
+Bandwidth : 32 GB/s
+Speed : 16 GT/s
+Width : 16
+Serial Number : N/A
+...
+Number of DDRCHs: 6
+DDR CH Name: DDRCH_0
+Number of DIMMS: 2
+DIMM Name: DIMM_C0
+Size : 64.0 GB
+DIMM Name: DIMM_C1
+Size : 0.0 GB
+Serial Number : N/A
+Current utilization can be seen with sntilestat. In this example, only
+four tiles in one RDU are in use.
+TILE %idle %exec %pload %aload %chkpt %quiesce PID USER COMMAND
+/XRDU_0/RDU_0/TILE_0 80.4 7.0 10.4 2.2 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_1 80.5 6.9 11.3 1.3 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_2 82.1 4.7 11.4 1.8 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_0/TILE_3 80.1 6.3 11.7 1.9 0.0 0.0 49880 arnoldw python
+res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
+--num-epochs 100
+/XRDU_0/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_0/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_1/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_2/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_0/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_0 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_1 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_2 100.0 0.0 0.0 0.0 0.0 0.0
+/XRDU_3/RDU_1/TILE_3 100.0 0.0 0.0 0.0 0.0 0.0
+```
+
+### SambaNova Daemon Service
+
+The following command checks if SambaNova daemon service is running.
+
+```bash
+systemctl status snd
+```
+
+The output should look something like:
+
+```text
+* snd.service - SN Devices Service
+   Loaded: loaded (/usr/lib/systemd/system/snd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2022-02-18 11:45:15 CST; 1 months 25 days ago
+ Main PID: 3550 (snd)
+    Tasks: 10 (limit: 19660)
+   CGroup: /system.slice/snd.service
+           `-3550 /opt/sambaflow/bin/snd
+
+Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+```
+
+### Tile status
+
+```bash
+sntilestat
+watch sntilestat
+```
+
+The output shown below is when the system is completely idle.
+
+```text
+TILE                 %idle %exec %pload %aload %chkpt %quiesce    PID     USER COMMAND
+/XRDU_0/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_0/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_1/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_2/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_0/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_0 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_1 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_2 100.0   0.0    0.0    0.0    0.0      0.0
+/XRDU_3/RDU_1/TILE_3 100.0   0.0    0.0    0.0    0.0      0.0
+```
+
+### Finding Hung Tiles
+
+```bash
+snconfig show Node dynamic | grep perfect
+```
+
+### How busy is the system?
+
+Use one of
+
+```bash
+top
+htop
+```

@@ -18,9 +18,9 @@ nav:
     - Steps to Run a Model/Program: sambanova/Steps-to-Run-a-Model-or-Program.md
     - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
     - Example Programs: sambanova/Example-Programs
-    - Miscellaneous: sambanova/Best-Practices-and-FAQs.md
+    - Miscellaneous: sambanova/Miscellaneous.md
     - Tunneling and forwarding ports: sambanova/Tunneling-and-forwarding-ports.md
-    - Documentation: sambanova/Miscellaneous.md
+    - Documentation: sambanova/Documentation.md
   - Storage: common/storage.md
   - Publication Policy: common/pub-policy.md
 
