@@ -34,12 +34,11 @@ ssh ALCFUserID@sm-01
 
 ### On **sm-01**
 
-Run the next three steps.
+Execute the following command:
 
 ```bash
-export PATH=$PATH:/opt/sambaflow/bin
-export OMP_NUM_THREADS=1
-source /opt/sambaflow/venv/bin/activate
+ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
+(venv) ALCFUserID@sm-01:~$
 ```
 
 Navigate to the appropriate directory for your model.
@@ -52,12 +51,15 @@ sbatch --output=pef/my_model/output.log submit-my_model-job.sh
 
 ### On Another sm-01 Terminal Window
 
-The next three steps will be automatically run in the future.
+The SambaNova system has a bash shell script to setup the required software environment.
+This sets up the SambaFlow software stack, the associated environmental variables and activates
+a pre-configured virtual environment.
+
+Use
 
 ```bash
-export PATH=$PATH:/opt/sambaflow/bin
-export OMP_NUM_THREADS=1
-source /opt/sambaflow/venv/bin/activate
+ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
+(venv) ALCFUserID@sm-01:~$
 ```
 
 Navigate to the appropriate directory for your model.
@@ -69,7 +71,7 @@ tensorboard --logdir /logs --port 6006
 
 ### Browser on Local Machine
 
-Then, navigate \[in your browser\] to (in this example) http://localhost:16006 on your local machine.
+Then, navigate in your browser to, in this example, [http://localhost:16006](http://localhost:16006) on your local machine.
 
 ## Notes
 
