@@ -16,7 +16,7 @@ The SambaNova workflow includes the following main steps to run a model.
 3. Test (optional)
 
 The system uses the [SLURM job
-scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manange the workload on the system. For more information on slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
+scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manange the workload on the system. For more information on Slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
 
 [Example Programs](Example-Programs.md) lists the different example applications with corresponding commands for each of the above steps.
 
@@ -51,15 +51,17 @@ Where
 ## Run
 
 This will run the application on SN nodes.
+
 ```bash
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
-The location of the **pef** file generated in the compile step is passed as an argument to run command.
 
+The location of the **pef** file generated in the compile step is passed as an argument to run command.
 
 ## Test (Optional)
 
 This command is used to run the model on both the host CPU and the SambaNova node.  It compares the answers from the CPU and SambaNova RDU and will raise errors if any discrepancies are found. Pass the pef file generated as part of the compile step as the input to this command.
+
 ```bash
 srun python lenet.py test --pef="pef/lenet/lenet.pef"
 ```
