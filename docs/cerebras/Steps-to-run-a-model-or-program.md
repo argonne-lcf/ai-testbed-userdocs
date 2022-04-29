@@ -15,8 +15,9 @@ Its path is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
 --->
 
-#### Slurm:<br>
-Slurm is installed and running on all the CPU nodes. The coordination between the CS system and the nodes in the CS cluster is performed by Slurm. See section
+#### Slurm:
+
+Slurm is installed and running on all the CPU nodes. The coordination between the Cerebras system and the nodes in the Cerebras cluster is performed by Slurm. See section
 [Job Queueing and Submission](Job-Queuing-and-Submission.md) for more details.</br>
 <!---
 [TODO Verify that a csrun_wse job locks the CS-2 wafer for exclusive use; if not, then it will need to be fixed. (Even with a hack like exclusively reserving >50% of the worker nodes by default)]
@@ -27,7 +28,8 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
-#### CS_IP address of the CS system:<br>
+#### CS_IP address of the Cerebras system:
+
 <!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
 The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`<br>
 The `CS_IP` environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
