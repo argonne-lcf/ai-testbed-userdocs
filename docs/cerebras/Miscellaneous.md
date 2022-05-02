@@ -64,7 +64,7 @@ from: cbcore:1.1.1-202203171919-5-6e2dbf07
 
 The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.
 
-*Change the* ***ALCFUserID</strong> to your id.***
+*Change the* ***ALCFUserID*** *to your id.*
 
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
 

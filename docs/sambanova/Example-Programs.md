@@ -153,6 +153,7 @@ srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
+
 To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
 
 ```bash

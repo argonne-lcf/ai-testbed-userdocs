@@ -14,7 +14,7 @@ cp -r /software/cerebras/model_zoo/anl_shared-R1.1.0/ ~/R1.1.0/anl_shared
 
 An implementation of this: [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/pdf/1505.04597.pdf), Ronneberger et.  al 2015
 
-To run Unet with the <a href="https://www.kaggle.com/c/severstal-steel-defect-detection">Severstal: Steel Defect Detection</a> kaggle dataset, using a pre-downloaded copy of the dataset,
+To run Unet with the [Severstal: Steel Defect Detection](https://www.kaggle.com/c/severstal-steel-defect-detection) kaggle dataset, using a pre-downloaded copy of the dataset,
 
 ```console
 cd ~/R1.1.0/modelzoo/unet/tf
