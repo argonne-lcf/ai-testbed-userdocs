@@ -1,5 +1,35 @@
 # TODO
 
+- [ ] slurm manages the GRES resource that you pass to sbatch. If your model actually uses two RDUs and you tell it one then yes slurm will think you are using fewer RDUs than you actually are using. That is why I recommend slurm_feeder as it reads the PEF to determine the number of RDUs.
+
+```text
+`    /opt/sambaflow/diag/python/slurm_feeder.py
+    usage: slurm_feeder.py [-h] [-a PYTHON_APP] -c {srun,sbatch} [-n NJOBS] -p P    EF_FILE [--python-arg PYTHON_ARG] [-s SCRIPT] [-t TIME] [-w NODE]
+    optional arguments:
+    -a PYTHON_APP, --python-app PYTHON_APP
+                            Path to python app to run
+    -c {srun,sbatch}, --command {srun,sbatch}
+                            Slurm command srun or sbatch
+    -n NJOBS, --njobs NJOBS
+                            Instances of job to run
+    RCW: I have not tried the njobs option
+    -p PEF_FILE, --pef-file PEF_FILE
+                            Path to pef file to execute
+    --python-arg PYTHON_ARG
+                            Python app args
+    rcw: I generally use a script
+    -s SCRIPT, --script SCRIPT
+                            Path to script to run
+    --single-tile         Specify single-tile GRES requirement
+    RCW: Your slurm is per RDU not per tile
+    -t TIME, --time TIME  Minutes to run before job times out
+    : I usually specify 60 minutes, the default is 10
+    276   -w NODE, --node NODE  Which node to dispatch the job
+    I do not care which node
+    I like to write scripts so
+    /opt/sambaflow/diag/python/slurm_feeder.py -c {srun,sbatch} -p PEF_FILE  -s SCRIPT  [-t TIME]
+````
+
 - [ ]  docs/sambanova/Best-Practices-and-FAQs.md ## MPI -- TODO -- this needs to be redone - may be part of data parallel page.
 - [ ] Edit Anatomy... to be a technical doc
 - [ ] Edit DataParallel.md to be a technical doc

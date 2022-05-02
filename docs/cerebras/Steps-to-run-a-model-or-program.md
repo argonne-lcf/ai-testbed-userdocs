@@ -2,20 +2,24 @@
 
 ## Getting Started
 
-[This subsection is an adaption of <br>
+[This subsection is an adaption of
 [https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html](https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html)]
 
-<!---#### Login steps:<br>
+<!---#### Login steps
+
 Follow the instructions in section [Connect to a CS-2 node](./Connect-to-a-CS-2-node.md)--->
 
 <!---
-#### Cerebras SIF container:<br>
+#### Cerebras SIF container
+
 The Cerebras Singularity container (SIF) is used for all work with the Cerebras software, and includes the Cerebras Graph Compiler (CGC) and other necessary software.</br>
-Its path is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
-It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
+Its path is /software/cerebras/cs2-02/container/cbcore_latest.sif
+
+It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.
+
 --->
 
-#### Slurm:
+#### Slurm
 
 Slurm is installed and running on all the CPU nodes. The coordination between the Cerebras system and the nodes in the Cerebras cluster is performed by Slurm. See section
 [Job Queueing and Submission](Job-Queuing-and-Submission.md) for more details.</br>
@@ -23,28 +27,35 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 [TODO Verify that a csrun_wse job locks the CS-2 wafer for exclusive use; if not, then it will need to be fixed. (Even with a hack like exclusively reserving >50% of the worker nodes by default)]
 --->
 
-#### Worker hostnames:<br>
+#### Worker hostnames
+
 <!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-7].ai.alcf.anl.gov<br>--->
-The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].<br>
+The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].
+
 You may occasionally need to log into a specific worker node for debugging purposes.
 
-#### CS_IP address of the Cerebras system:
+#### CS_IP address of the Cerebras system
 
 <!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
-The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`<br>
+The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`
+
 The `CS_IP` environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
 
-#### Running slurm jobs:<br>
+#### Running slurm jobs
 
-Cerebras includes two scripts for running slurm jobs.<br>
-`csrun_cpu` is for running Cerebras compilation. By default it reserves a single entire worker node.<br>
-`csrun_wse` is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
-```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.<br>
+Cerebras includes two scripts for running slurm jobs.
+
+`csrun_cpu` is for running Cerebras compilation. By default it reserves a single entire worker node.
+
+`csrun_wse` is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.
+
+```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.
+
 See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more details.
 
 ## Running a training job on the wafer
 
-Follow these instructions to compile and train the `fc_mnist` TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU. <br>
+Follow these instructions to compile and train the `fc_mnist` TensorFlow estimator example. This model is a couple of fully connected layers plus dropout and RELU.
 
 ```console
 cd ~/
@@ -54,7 +65,7 @@ cd ~/R1.1.0/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 ```
 
-You should see a training rate of about 1800 steps per second, and output that finishes with something similar to this:
+You should see a training rate of about 1800 steps per second, and output that finishes with something similar to this
 
 <table>
 <tbody>
@@ -78,13 +89,15 @@ csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 
 The training will reuse an existing compilation if no changes were made that force a recompile, and will start from the newest checkpoint file if any. Compiles may be done while another job is using the wafer.
 
-See also the current Cerebras quickstart documentation, that uses a clone of Cerebras's abbreviated public "reference implementations" github repo rather than the full modelzoo.<br>
-[https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html](https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html)<br>
+See also the current Cerebras quickstart documentation, that uses a clone of Cerebras's abbreviated public "reference implementations" github repo rather than the full modelzoo.
+
+[https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html](https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html)
+
 [https://github.com/Cerebras/cerebras_reference_implementations/](https://github.com/Cerebras/cerebras_reference_implementations/)
 
 ## Running a training job on the CPU
 
-The examples in the modelzoo<!--- [TODO And PyTorch?]--> will run in CPU mode, either using the csrun_cpu script, or in a singularity shell as shown below.<br>
+The examples in the modelzoo<!--- [TODO And PyTorch?]--> will run in CPU mode, either using the csrun_cpu script, or in a singularity shell as shown below.
 
 ### Using csrun_cpu
 
@@ -97,7 +110,7 @@ csrun_cpu python run.py --mode train --compile_only
 csrun_cpu python run.py --mode train --max_steps 400
 ```
 
-<i>Note: If no cs_ip is specified, a training run will be in cpu mode. </i>
+*Note: If no cs_ip is specified, a training run will be in cpu mode.*
 
 Change the max steps for the training run command line to something smaller than the default so that the training completes in a reasonable amount of time. (CPU mode is &gt;2 orders of magnitude slower for many examples.)
 
