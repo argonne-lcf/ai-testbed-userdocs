@@ -1,6 +1,10 @@
 # TODO
 
 - [ ] Simple how to run data parallel on SN.
+- [X] On first glance, It would be good to include information of what model is being run here.
+- [X] Can users just take an existing compiled model and run? No, they need to recompile here for this, right? Users coming from the GPU land would falter here otherwise.
+- [X] How is data parallel implemented in a single sentence would be good.
+
 - [ ] docs/sambanova/Best-Practices-and-FAQs.md ## MPI -- TODO -- this needs to be redone - may be part of data parallel page.
 - [ ] Edit Anatomy... to be a technical doc
 - [ ] Edit DataParallel.md to be a technical doc
