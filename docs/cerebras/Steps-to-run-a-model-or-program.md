@@ -56,16 +56,10 @@ csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 
 You should see a training rate of about 1870 steps per second, and output that finishes with something similar to this:
 
-<table>
-<tbody>
-<tr class="odd">
-<td>
-INFO:tensorflow:Training finished with 25600000 samples in 53.424 seconds, 358417.08 samples/second.<br />
-INFO:tensorflow:Loss for final step: 0.0.</strong></td>
-</td>
-</tr>
-</tbody>
-</table>
+```text
+INFO:tensorflow:Training finished with 25600000 samples in 53.424 seconds, 479188.55 samples/second.
+INFO:tensorflow:Loss for final step: 0.0.
+```
 
 To separately compile and train,
 
