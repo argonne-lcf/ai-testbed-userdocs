@@ -34,6 +34,12 @@ DataParallel is accomplished by running multiple copies of the model graph on 2 
 
 A model must be compiled with the **--data-parallel** argument to run as DataParallel.
 
+The **ws** argument is an abbreviation of **workspace**. Setting it to '2',
+makes the compiler aware of using multiple workspaces and hence creates a pef file
+that can be run on multiple RDU’s in parallel.
+The number of RDU’s to be run in parallel is set by --np in the run command
+in the run_dataparallel.sh script.
+
 ```bash
 #!/bin/bash
 export OMP_NUM_THREADS=8
