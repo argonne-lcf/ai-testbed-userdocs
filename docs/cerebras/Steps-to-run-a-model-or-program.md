@@ -32,13 +32,13 @@ You may occasionally need to log into a specific worker node for debugging purpo
 
 <!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
 The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`<br>
-The `CS_IP` environment variable is set to this value by the /software/cerebras/cs2-02/envs/cs_env.sh script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
+The `CS_IP` environment variable is set to this value by the `/software/cerebras/cs2-02/envs/cs_env.sh` script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
 
 #### Running slurm jobs:<br>
 
 Cerebras includes two scripts for running slurm jobs.<br>
-`csrun_cpu` is for running Cerebras compilation. By default it reserves a single entire worker node.<br>
-`csrun_wse` is for running a job on the wafer scale engine. By default it reserves 5 entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
+`csrun_cpu` is for running a Cerebras compilation. By default it reserves a single entire worker node.<br>
+`csrun_wse` is for running a job on the wafer scale engine. By default it reserves five entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
 ```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.<br>
 See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more details.
 
@@ -54,13 +54,13 @@ cd ~/R1.1.0/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
 ```
 
-You should see a training rate of about 1800 steps per second, and output that finishes with something similar to this:
+You should see a training rate of about 1870 steps per second, and output that finishes with something similar to this:
 
 <table>
 <tbody>
 <tr class="odd">
 <td>
-INFO:tensorflow:Training finished with 25600000 samples in 71.425 seconds, 358417.08 samples/second.<br />
+INFO:tensorflow:Training finished with 25600000 samples in 53.424 seconds, 358417.08 samples/second.<br />
 INFO:tensorflow:Loss for final step: 0.0.</strong></td>
 </td>
 </tr>
