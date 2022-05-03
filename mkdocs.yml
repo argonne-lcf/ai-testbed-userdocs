@@ -21,6 +21,7 @@ nav:
     - Miscellaneous: sambanova/Miscellaneous.md
     - Tunneling and Forwarding Ports: sambanova/Tunneling-and-forwarding-ports.md
     - Documentation: sambanova/Documentation.md
+    - DataParallel: sambanova/DataParallel.md
   - Storage: common/storage.md
   - Publication Policy: common/pub-policy.md
 
