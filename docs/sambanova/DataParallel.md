@@ -28,15 +28,11 @@ ALCFUserID@sm-01:~/sambanova_dataparallel$
 
 ## DataParallel Implementation
 
-DataParallel is implemented on this system by copying a model to
-N RDUs then splitting the data across the N RDUs.
+DataParallel is accomplished by running multiple copies of the model graph on 2 or more RDUS and intelligently splitting the data pipeline across the copies.
 
 ## Compile_dataparallel.sh
 
 A model must be compiled with the **--data-parallel** argument to run as DataParallel.
-
-**NOTE: The value of the argument** ***-ws 2*** **must match the value of the argument**
-***-np 2*** **in the** ***mpirun*** **command in the run script.  In this example '2'.**
 
 ```bash
 #!/bin/bash
