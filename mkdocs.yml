@@ -18,10 +18,10 @@ nav:
     - Steps to Run a Model/Program: sambanova/Steps-to-Run-a-Model-or-Program.md
     - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
     - Example Programs: sambanova/Example-Programs.md
-    - Miscellaneous: sambanova/Miscellaneous.md
     - Tunneling and Forwarding Ports: sambanova/Tunneling-and-forwarding-ports.md
-    - Documentation: sambanova/Documentation.md
     - DataParallel: sambanova/DataParallel.md
+    - Miscellaneous: sambanova/Miscellaneous.md
+    - Documentation: sambanova/Documentation.md
   - Storage: common/storage.md
   - Publication Policy: common/pub-policy.md
 
