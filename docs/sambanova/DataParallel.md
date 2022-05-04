@@ -26,19 +26,35 @@ ALCFUserID@sm-01:~$ cd sambanova_dataparallel/
 ALCFUserID@sm-01:~/sambanova_dataparallel$ 
 ```
 
+## GPUs vs. RDUs
+
+GPUs do not require a compile step.  RDUs do have a compile step.
+
+**NOTE: RDUs require a** ***compile*** **step.**
+
 ## DataParallel Implementation
 
-DataParallel is accomplished by running multiple copies of the model graph on 2 or more RDUS and intelligently splitting the data pipeline across the copies.
+DataParallel is accomplished by running multiple copies of the model graph on
+two or more RDUS and intelligently splitting the data pipeline across the copies.
 
 ## Compile_dataparallel.sh
+
+The **compile_dataparallel.sh** script is an example of how to compile
+a model for DataParallel execution.
 
 A model must be compiled with the **--data-parallel** argument to run as DataParallel.
 
 The **ws** argument is an abbreviation of **workspace**. Setting it to '2',
 makes the compiler aware of using multiple workspaces and hence creates a pef file
-that can be run on multiple RDU’s in parallel.
-The number of RDU’s to be run in parallel is set by --np in the run command
-in the run_dataparallel.sh script.
+that can be run on multiple RDUs in parallel.
+
+
+
+The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel
+regions. The value of this environment variable must be a list of positive integer values.
+The values of the list set the number of threads to use for parallel regions at the
+corresponding nested levels.  Using '8' can make the compile faster and doesn't hurt anything
+as compared to using '1'.
 
 ```bash
 #!/bin/bash
@@ -59,6 +75,22 @@ echo "Duration: " $SECONDS
 ```
 
 ### Run_dataparallel.sh
+
+The number of RDUs to be run in parallel is set by **mpirun**'s **--np** argument.
+The run_dataparallel.sh script below uses **--np 2**.  This uses two RDUs with
+a copy of the model on each RDU.
+
+**NOTE: This example uses** ***MPI*** **so the value of** ***--np***
+**must be equal to the value of** ***--gres=rdu:***.  **This example uses
+'2' for both values.**
+
+Run your model that was compiled with the **--data-parallel** argument.
+The **run** command also requires the **--data-parallel** argument.
+
+The **--reduce-on-rdu** argument causes the gradients to be reduced on the RDUs.
+This is different from a GPU which must sync gradients on the host which takes longer.
+
+**NOTE: The value of** ***-np*** **must be greater than or equal to** ***-ws.***
 
 ```bash
 #!/bin/bash
