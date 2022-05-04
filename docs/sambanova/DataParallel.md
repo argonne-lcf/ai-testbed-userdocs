@@ -44,11 +44,9 @@ a model for DataParallel execution.
 
 A model must be compiled with the **--data-parallel** argument to run as DataParallel.
 
-The **ws** argument is an abbreviation of **workspace**. Setting it to '2',
+The **ws** argument is an abbreviation of **world size**. Setting it to '2',
 makes the compiler aware of using multiple workspaces and hence creates a pef file
 that can be run on multiple RDUs in parallel.
-
-
 
 The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel
 regions. The value of this environment variable must be a list of positive integer values.
@@ -68,7 +66,7 @@ source /opt/sambaflow/venv/bin/activate
 SECONDS=0
 
 echo "COMPILE"
-# -b is the batch size.
+# -b is the local batch size.
 python sn_boilerplate_main.py compile --data-parallel -ws 2 -b=1 --pef-name=sn_boilerplate --output-folder="pef"
 
 echo "Duration: " $SECONDS
@@ -91,6 +89,9 @@ The **--reduce-on-rdu** argument causes the gradients to be reduced on the RDUs.
 This is different from a GPU which must sync gradients on the host which takes longer.
 
 **NOTE: The value of** ***-np*** **must be greater than or equal to** ***-ws.***
+
+The global batch size is the value of **-b** from above times
+the value of **--gres=rdu:**.  In this example it is 1 * 2.
 
 ```bash
 #!/bin/bash
