@@ -35,7 +35,7 @@ GPUs do not require a compile step.  RDUs do have a compile step.
 ## DataParallel Implementation
 
 DataParallel is accomplished by running multiple copies of the model graph on
-two or more RDUS and intelligently splitting the data pipeline across the copies.
+two or more RDUs.  This is similar to how it is done on a GPU.
 
 ## Compile_dataparallel.sh
 
