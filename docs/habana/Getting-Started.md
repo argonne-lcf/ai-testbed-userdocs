@@ -24,7 +24,7 @@ ssh ALCFUserID@sambanova.alcf.anl.gov
 ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
 ```
 
-Note: Use the ssh "-v" option inorder to debug any ssh problems.
+Note: Use the ssh "-v" option in order to debug any ssh problems.
 
 ### Login to SambaNova Node
 
