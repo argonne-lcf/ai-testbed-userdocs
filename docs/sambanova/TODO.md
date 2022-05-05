@@ -1,6 +1,18 @@
 # TODO
 
-- [ ]  docs/sambanova/Best-Practices-and-FAQs.md ## MPI -- TODO -- this needs to be redone - may be part of data parallel page.
+- [ ] Simple how to run data parallel on SN.
+- [X] On first glance, It would be good to include information of what model is being run here.
+- [X] Can users just take an existing compiled model and run? No, they need to recompile here for this, right? Users coming from the GPU land would falter here otherwise.
+- [X] How is data parallel implemented in a single sentence would be good.
+- [ ] What does intelligently split data mean? Is there a special or particular way it is done or can be done that is different from what is done, say, on a GPU or other systems today?
+- [ ] What happens if I set ws = 3
+- [X] Why are we setting OMP_NUM_THREADS=8? What happens if we set it lower. If this is important, we should highlight it
+- [X] Mention that MPI is used to do data-parallel training. Number of MPI ranks should be equal to RDUs requested
+- [X] What does reduce on rdu imply. Please provide more details here.
+- [ ] How does someone who has worked with Horovod or DDP move to use data parallel on SN?
+- [ ] Does bs=1 mean local batch.
+
+- [ ] docs/sambanova/Best-Practices-and-FAQs.md ## MPI -- TODO -- this needs to be redone - may be part of data parallel page.
 - [ ] Edit Anatomy... to be a technical doc
 - [ ] Edit DataParallel.md to be a technical doc
 - [...] SN provide indexing for their docs. From training
