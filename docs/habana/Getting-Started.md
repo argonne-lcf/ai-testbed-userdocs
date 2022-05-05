@@ -19,8 +19,10 @@ In the examples below, replace ALCFUserID with your ALCF user id.
 
 Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated everytime you login to the system. This is the same passcode used to authenticate into other ALCF systems, such as Theta and Cooley.
 
+ssh -J wilsonb@homes.cels.anl.gov arnoldw@habana-01.ai.alcf.anl.gov
+
 ```bash
-ssh ALCFUserID@sambanova.alcf.anl.gov
+ssh ALCFUserID@homes.cels.anl.gov
 ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
 ```
 
