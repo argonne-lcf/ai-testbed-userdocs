@@ -16,6 +16,7 @@ processor.  And, it is programmable, providing the user flexibility.
 The **TPC** natively supports the following data types: FP32, BF16, INT32, INT16,
 INT8, UINT32, UINT16 and UINT8.
 
+Each Gaudi has 32 GB HBM, High Bandwidth Memory.
 Here is the **Gaudi** processor high-level architecture.
 
 ![Gaudi Processor High-level Architecture](Gaudi-Architecture.png "Gaudi Processor High-level Architecture")
