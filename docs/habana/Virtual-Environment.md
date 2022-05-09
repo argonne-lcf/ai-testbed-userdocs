@@ -17,7 +17,7 @@ location of the packages:
 
 ```python
 import sys
-site_packages = next(p for p in sys.path if 'site-packages' in p)
+site_packages = next(p for p in sys.path if 'dist-packages' in p)
 print(site_packages)
 ```
 
@@ -25,7 +25,7 @@ Given the location of the packages, one may list the packages.
 For example:
 
 ```bash
-ls -al /opt/sambaflow/venv/lib/python3.7/site-packages
+ls -al /usr/local/lib/python3.8/dist-packages
 ```
 
 ## Installing Packages
@@ -43,4 +43,5 @@ To install a different version of a package that is already installed in one's e
 ```bash
 pip install --ignore-installed  ... # or -I
 ```
-Note: Conda is not supported on the Sambanova system.
+
+Note: Conda is not supported on this system.
