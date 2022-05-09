@@ -39,7 +39,8 @@ In case of the need to use multiple RDU's (2 in the example shown below), the `s
 ```bash
 sbatch --gres=rdu:2 <your_script.sh>
 ```
-<!--- See [DataParallel](DataParallel.md) for additional information. --->
+
+<!--- TODOBRW See [DataParallel](DataParallel.md) for additional information. --->
 
 ## Squeue
 
