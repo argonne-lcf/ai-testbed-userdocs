@@ -25,7 +25,14 @@ In the examples below, replace **ALCFUserID** with your ALCF user id.
 **NOTE: These are not the final log in directions.
 They are temporary until Go Live for this system.**
 
-ssh -J wilsonb@homes.cels.anl.gov wilsonb@habana-01.ai.alcf.anl.gov
+I am using this command couresy of Bill.  You may skip the other
+steps for now.
+
+```bash
+ssh -J ALCFUserID@homes.cels.anl.gov ALCFUserID@habana-01.ai.alcf.anl.gov
+```
+
+<!-- ssh -J wilsonb@homes.cels.anl.gov wilsonb@habana-01.ai.alcf.anl.gov -->
 
 ```bash
 ssh ALCFUserID@homes.cels.anl.gov
