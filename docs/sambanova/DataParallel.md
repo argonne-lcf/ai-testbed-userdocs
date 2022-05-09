@@ -4,6 +4,12 @@
 
 Login by following the steps at [Getting Started](Logging-into-a-SambaNova-Node.md).
 
+## Horovod and DDP Conversion
+
+One will find running DataParallel on the SambaNova cluster much
+simpler than using Horovod or DDP.  The DataParallel on SambaNova
+is distributed even though it is not in the name.
+
 ## Tutorial Files
 
 ALCF provides a DataParallel tutorial at `/software/sambanova/apps/tutorials/sambanova_dataparallel`.  It is available from any Sambanova node.
