@@ -32,7 +32,9 @@ steps for now.
 ssh -J ALCFUserID@homes.cels.anl.gov ALCFUserID@habana-01.ai.alcf.anl.gov
 ```
 
-<!-- ssh -J wilsonb@homes.cels.anl.gov wilsonb@habana-01.ai.alcf.anl.gov -->
+```bash
+ssh -J wilsonb@homes.cels.anl.gov wilsonb@habana-01.ai.alcf.anl.gov
+```
 
 ```bash
 ssh ALCFUserID@homes.cels.anl.gov

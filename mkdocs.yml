@@ -16,7 +16,6 @@ nav:
     - Getting Started: habana/Getting-Started.md
     - Virtual Environment: habana/Virtual-Environment.md
     - Steps to Run a Model/Program: habana/Steps-to-Run-a-Model-or-Program.md
-    - Job Queuing and Submission: habana/Job-Queuing-and-Submission.md
     - Example Programs: habana/Example-Programs.md
     - Miscellaneous: habana/Miscellaneous.md
     - Tunneling and Forwarding Ports: habana/Tunneling-and-forwarding-ports.md

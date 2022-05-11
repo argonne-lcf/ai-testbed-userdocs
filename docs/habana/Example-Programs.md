@@ -1,265 +1,106 @@
 # Example Programs
 
-Sambanova provides examples of some well known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the Sambanova compute node sm-01. Make a copy of this to your home directory:
+Example programs are provided below for your use.
+
+## Set PYTHONPATH
+
+Find the Python path using the command:
+
+```bash
+which python
+```
+
+The output will look something like:
+
+```bash
+/usr/bin/python
+
+# Or inside a birtual environment
+/lambda_stor/homes/ALCFUserID/my_env/bin/python
+```
+
+Set PYTHONPATH
+
+```bash
+export PYTHONPATH=/path/to/python
+```
+
+## Copy Examples
+
+Habana provides examples of some well known AI applications under the path: `/software/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
-mkdir apps
-cp -r /software/sambanova/apps/1.10.3-11/starters apps/starters
+cp -r /software/habana/apps/1.4.1/Model-References .
 ```
 
-## LeNet
-
-Change directory
-
-```bash
-cd ~/apps/starters/
-```
-
-### Common Arguments
+## Common Arguments
 
 Below are some of the common arguments used across most of the models in the example code.
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
 | -b                     | 1         | Batch size for training        |
+| -batch-size            |           |                                |
 |                        |           |                                |
-| -n,                    | 100       | Number of iterations to run    |
-| --num-iterations       |           | the pef for                    |
+| --epochs               | 1         | Number epochs for training     |
 |                        |           |                                |
-| -e,                    | 1         | Number epochs for training     |
-| --num-epochs           |           |                                |
+| --world_size           | 1         | --world_size                   |
 |                        |           |                                |
-| --log-path             | 'check    | Log path                       |
-|                        | points'   |                                |
+| --distributed          |           | Distribute training            |
 |                        |           |                                |
-| --num-workers          | 0         | Number of workers              |
+| --hpu                  |           | Gaudi training                 |
 |                        |           |                                |
-| --measure-train-       | None      | Measure training performance   |
-| performance            |           |                                |
+| --data_type            |           | Specify data type to be either bf16 or fp32. |
+|                        |           |                                |
+| --distributed          |           | whether to enable distributed mode |
+|                        |           | and run on multiple devices        |
 |                        |           |                                |
 
-### LeNet Arguments
+## MNIST
+
+Change directory
+
+```bash
+cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
+```
+
+### Demo_mnist Arguments
 
 | Argument               | Default   | Help                           |
 |------------------------|-----------|--------------------------------|
-| --lr                   | 0.01      | Learning rate for training     |
+| --lr                   | 1.0       | Learning rate for training     |
 |                        |           |                                |
-| --momentum             | 0.0       | Momentum value for training    |
+| --gamma                | 0.7       | Learning rate step gamma       |
 |                        |           |                                |
-| --weight-decay         | 0.01      | Weight decay for training      |
-|                        |           |                                |
-| --data-path            | './data'  | Data path                      |
-|                        |           |                                |
-| --data-folder          | 'mnist_   | Folder containing mnist data   |
-|                        | data'     |                                |
+| --data-path            | '../data' | input data path for train and test |
 |                        |           |                                |
 
 Run these commands:
 
 ```bash
-srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
-srun python lenet.py test --pef="pef/lenet/lenet.pef"
-srun python lenet.py run --pef="pef/lenet/lenet.pef"
+srun $PYTHON demo_mnist.py --hpu
 ```
 
-To use Slurm sbatch, create submit-lenet-job.sh with the following
+To use Slurm sbatch, create submit-demo-mnist-job.sh with the following
 contents:
 
 ```bash
 #!/bin/sh
 
-python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
-python lenet.py test --pef="pef/lenet/lenet.pef"
-python lenet.py run --pef="pef/lenet/lenet.pef"
+$PYTHON demo_mnist.py --hpu
 ```
 
 Then
 
 ```bash
-sbatch --output=pef/lenet/output.log submit-lenet-job.sh
+sbatch submit-demo-mnist-job.sh
 ```
 
 Squeue will give you the queue status.
 
 ```bash
 squeue
-```
-
-The output file, pef/lenet/output.log, will look something like:
-
-```text
-[Info][SAMBA][Default] # Placing log files in
-pef/lenet/lenet.samba.log
-
-[Info][MAC][Default] # Placing log files in
-pef/lenet/lenet.mac.log
-
-[Warning][SAMBA][Default] #
-
---------------------------------------------------
-
-Using patched version of torch.cat and torch.stack
-
---------------------------------------------------
-
-[Warning][SAMBA][Default] # The dtype of "targets" to
-CrossEntropyLoss is torch.int64, however only int16 is currently
-supported, implicit conversion will happen
-
-[Warning][MAC][GraphLoweringPass] # lenet__reshape skip
-set_loop_to_air
-
-[Warning][MAC][GraphLoweringPass] # lenet__reshape_bwd skip
-set_loop_to_air
-
-...
-
-Epoch [1/1], Step [59994/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59995/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59996/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59997/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59998/60000], Loss: 0.1712
-
-Epoch [1/1], Step [59999/60000], Loss: 0.1712
-
-Epoch [1/1], Step [60000/60000], Loss: 0.1712
-
-Test Accuracy: 98.06 Loss: 0.0628
-
-2021-6-10 10:52:28 : [INFO][SC][53607]: SambaConnector: PEF File:
-pef/lenet/lenet.pef
-
-Log ID initialized to: [ALCFUserID][python][53607] at
-/var/log/sambaflow/runtime/sn.log
-```
-
-## MNIST - Feed Forward Network
-
-Change directory (if necessary)
-
-```bash
-cd ~/apps/starters/
-```
-
-commands to run MNIST example:
-
-```bash
-srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
-```
-To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
-
-```bash
-#!/bin/sh
-srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
-```
-
-```bash
-sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
-```
-
-## Logistic Regression
-
-Change directory (if necessary)
-
-```bash
-cd ~/apps/starters/
-```
-
-### Logistic Regression Arguments
-
-This is not an exhaustive list of arguments.
-
-Arguments
-
-| Argument            | Default     | Help                         | Step     |
-|---------------------|-------------|------------------------------|----------|
-| --lr                | 0.001       | Learning rate for training   | Compile  |
-|                     |             |                              |          |
-| --momentum          | 0.0         | Momentum value for training  | Compile  |
-|                     |             |                              |          |
-| --weight-decay      | 1e-4        | Weight decay for training    | Compile  |
-|                     |             |                              |          |
-| --num-features      | 784         | Number features for training | Compile  |
-|                     |             |                              |          |
-| --num-classes       | 10          | Number classes for training  | Compile  |
-|                     |             |                              |          |
-| --weight-norm       | na          | Enable weight normalization  | Compile  |
-|                     |             |                              |          |
-
-Run these commands:
-
-```bash
-srun python logreg.py compile --pef-name="logreg" --output-folder="pef"
-srun python logreg.py test --pef="pef/logreg/logreg.pef"
-srun python logreg.py run --pef="pef/logreg/logreg.pef"
-```
-
-To use Slurm, create submit-logreg-job.sh with the following contents:
-
-```bash
-#!/bin/sh
-
-python logreg.py compile --pef-name="logreg" --output-folder="pef"
-python logreg.py test --pef="pef/logreg/logreg.pef"
-python logreg.py run --pef="pef/logreg/logreg.pef"
-```
-
-Then
-
-```bash
-sbatch --output=pef/logreg/output.log submit-logreg-job.sh
-```
-
-The output file, pef/logreg/output.log, will look something like:
-
-```text
-pef/logreg/output.log
-
-[Info][SAMBA][Default] # Placing log files in
-pef/logreg/logreg.samba.log
-[Info][MAC][Default] # Placing log files in
-pef/logreg/logreg.mac.log
-[Warning][SAMBA][Default] #
---------------------------------------------------
-Using patched version of torch.cat and torch.stack
---------------------------------------------------
-
-[Warning][SAMBA][Default] # The dtype of "targets" to
-CrossEntropyLoss is torch.int64, however only int16 is currently
-supported, implicit conversion will happen
-[Warning][MAC][MemoryOpTransformPass] # Backward graph is trimmed
-according to requires_grad to save computation.
-[Warning][MAC][WeightShareNodeMergePass] # Backward graph is
-trimmed according to requires_grad to save computation.
-[Warning][MAC][ReduceCatFaninPass] # Backward graph is trimmed
-according to requires_grad to save computation.
-[info ] [PLASMA] Launching plasma compilation! See log file:
-/home/ALCFUserID/apps/starters/pytorch/pef/logreg//logreg.plasma_compile.log
-...
-
-[Warning][SAMBA][Default] # The dtype of "targets" to
-CrossEntropyLoss is torch.int64, however only int16 is currently
-supported, implicit conversion will happen
-Epoch [1/1], Step [10000/60000], Loss: 0.4763
-Epoch [1/1], Step [20000/60000], Loss: 0.4185
-Epoch [1/1], Step [30000/60000], Loss: 0.3888
-Epoch [1/1], Step [40000/60000], Loss: 0.3721
-Epoch [1/1], Step [50000/60000], Loss: 0.3590
-Epoch [1/1], Step [60000/60000], Loss: 0.3524
-Test Accuracy: 90.07 Loss: 0.3361
-2021-6-11 8:38:49 : [INFO][SC][99185]: SambaConnector: PEF File:
-pef/logreg/logreg.pef
-Log ID initialized to: [ALCFUserID][python][99185] at
-/var/log/sambaflow/runtime/sn.log
 ```
 
 ## **UNet**
@@ -298,3 +139,86 @@ Then
 ```bash
 sbatch submit-unet-job.sh
 ```
+
+junk
+more junk
+
+### Model Overview
+
+The base model used is from [GitHub: nnUNet](https://github.com/NVIDIA/DeepLearningExamples/tree/2b20ca80cf7f08585e90a11c5b025fa42e4866c8/PyTorch/Segmentation/nnUNet). As in the base scripts, Pytorch Lightning is used.
+
+### Setup
+
+Follow the instructions at [Virtual Environment](Virtual-Environment.md) and create a
+virtual environment named **unet-venv**.  Activate the virtual environment.
+
+The base training and modelling scripts for training are based on a clone of
+[nnUNet](https://github.com/NVIDIA/DeepLearningExamples/tree/2b20ca80cf7f08585e90a11c5b025fa42e4866c8/PyTorch/Segmentation/nnUNet)
+with certain changes in training scripts.
+Please refer to later sections on training script and model modifications for a summary of
+modifications to the original files.
+
+Change directory
+
+```bash
+cd ~/Model-References/PyTorch/computer_vision/segmentation/Unet
+```
+
+Note: If **Model-References** is not in the PYTHONPATH, make sure you update it.
+
+```bash
+export PYTHONPATH=/path/to/Model-References:$PYTHONPATH
+```
+
+#### Install the Requirements
+
+It is necessary to install the required packages in `requirements.txt` to run
+the model and download dataset.
+
+```bash
+pip install -r ./requirements.txt
+```
+
+#### Set up BraTS Dataset
+
+TODOBRW: Put this in a central location such as
+/software/habana/datasets/brats or
+/datasets/brats
+
+TODOBRW: There will be two sub-directories `01_2d` for Unet2D and `01_3d`
+for Unet3D model.
+
+Create a /data directory if not present:
+
+```bash
+mkdir /data
+```
+
+To download the dataset run:
+
+```python
+$PYTHON download.py --task 01
+```
+
+NOTE: The script downloads the dataset in /data directory by default.
+
+To preprocess it for Unet2D run:
+
+parser.add_argument("--data", type=str, default="/data", help="Path to data directory")
+parser.add_argument("--results", type=str, default="/data", help="Path for saving results directory")
+
+<!-- TODOBRW fix these paths -->
+
+```bash
+$PYTHON preprocess.py --task 01 --dim 2 --data /path/to/data --results /path/to/results
+```
+
+To process it for Unet3D run:
+
+```bash
+$PYTHON preprocess.py --task 01 --dim 3 --data /path/to/data --results /path/to/results
+```
+
+NOTE: The script preprocess the dataset downloaded in above step from
+the specified data directory and creates directory `01_2d` for Unet2D and directory `01_3d`
+for Unet3D model inside the specified data directory.
