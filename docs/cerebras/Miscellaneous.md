@@ -70,9 +70,9 @@ To copy a file from your CS-2 home dir to the current local directory, replacing
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8:~/filename .
 ```
 
-## Downloading a Kaggle dataset to a CS-2 node using the command line
+## Downloading a Kaggle competition dataset to a CS-2 node using the command line
 
-These notes may be helpful for downloading Kaggle datasets
+These notes may be helpful for downloading some Kaggle datasets
 
 Inside a singularity shell (e.g. `singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif` )
 
@@ -82,16 +82,18 @@ source env/bin/activate
 pip3 install kaggle
 ```
 
-Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account, there is a button (scroll down) to "Create New API Token". Click it. It will produce a one-line json.
+Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account tab, there is a button (scroll down) to "Create New API Token". Click it. It will open a download window for a one line json. 
 
 put the json in `~/.kaggle/kaggle.json`</br>
-e.g. single quote the json text and echo it</br>
+e.g. scp the downloaded file, or single quote the json text and echo it as shown</br>
 ```console
+mkdir ~/.kaggle
 echo '{"username":"REDACTED","key":"REDACTED"}' > ~/.kaggle/kaggle.json
 chmod 600 ~/.kaggle/kaggle.json
 ```
 
-On www.kaggle.com, one can get the kaggle api command for download of a dataset by navigating to the dataset page, then the vertical "..." to the right of the Download button, then "Copy API command". This will copy the API command to the local clipboard.
+On www.kaggle.com, the kaggle api command for download of a dataset is displayed in the data tab. It can be selected and copied to the local clipboard, or copied with the "Copy API command to clipboard" icon.<br>
+Before attempting a download, if there is a button on the kaggle download page to agree to any terms and conditions, e.g. agreement to the competition rules, click on it (after reading them); downloads with your access token will fail with a 403 error until you agree to those T&Cs.
 
 Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
 ```bash

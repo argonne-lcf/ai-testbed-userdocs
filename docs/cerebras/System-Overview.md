@@ -16,7 +16,7 @@ The `/home` and `/projects` trees are shared across AI testbed platforms.
 (Figure from
 [https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html](https://docs.cerebras.net/en/latest/getting-started/checklist-before-you-start.html))
 
-The Cerebras system is responsible only for running and accelerating the actual training and predictions with the model.
+As indicated in the figures, the CS system is responsible only for running and accelerating the actual training and predictions with the model.
 
 All the supporting tasks such as compiling the model, preprocessing the input data, running the input function, streaming the data, and managing the training loop, are executed in the Cerebras CPU cluster by the Cerebras software running on these nodes.
 
