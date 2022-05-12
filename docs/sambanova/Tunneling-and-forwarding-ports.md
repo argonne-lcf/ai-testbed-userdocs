@@ -4,26 +4,28 @@ Port forwarding is covered here.  This is specifically for TensorBoard.
 
 ## TensorBoard Port-Forwarding
 
-This section describes the steps to be followed to set up port forwarding for applications, like tensorboard, that run on the sambanova system and bind to one or more ports.
-This example uses 6006 and 16006 as port numbers. Using port numbers other than these may avoid collisions with other users.
+This section describes the steps to be followed to set up port forwarding for applications,
+like TensorBoard, that run on this system and bind to one or more ports.
+This example uses 6006 and 16006 as port numbers. Using port numbers other than these may
+avoid collisions with other users.
 
 ### From your local machine
 
 Run
 
 ```bash
-ssh -v -N -f -L localhost:16006:localhost:16006 ALCFUserID@sambanova.alcf.anl.gov
+ssh -v -N -f -L localhost:16006:localhost:16006 ALCFUserID@habana.alcf.anl.gov
 ...
 Password: < MobilPass+ code >
 
-ssh ALCFUserID@sambanova.alcf.anl.gov
+ssh ALCFUserID@habana.alcf.anl.gov
 ...
 Password: < MobilPass+ code >
 ```
 
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
 
-### From **sambanova.alcf.anl.gov**
+### From **habana.alcf.anl.gov**
 
 Run
 
