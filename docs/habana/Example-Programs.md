@@ -116,31 +116,33 @@ $PYTHON demo_mnist.py --hpu --hmp --use_lazy_mode
 
 #### Multi-HPU run commands
 
-8 Gaudi FP32 eager mode run command:
+There are six Gaudi cards on the system.
+
+6 Gaudi FP32 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type fp32 --world_size 8
+$PYTHON demo_mnist.py --hpu --data_type fp32 --world_size 6
 ```
 
-8 Gaudi BF16 eager mode run command:
+6 Gaudi BF16 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type bf16 --world_size 8
+$PYTHON demo_mnist.py --hpu --data_type bf16 --world_size 6
 ```
 
-8 Gaudi FP32 lazy mode run command:
+6 Gaudi FP32 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 8
+$PYTHON demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 6
 ```
 
-8 Gaudi BF16 lazy mode run command:
+6 Gaudi BF16 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 8
+$PYTHON demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 6
 ```
 
-## UNet
+## UNet --> Broken <--
 
 Change directory
 
