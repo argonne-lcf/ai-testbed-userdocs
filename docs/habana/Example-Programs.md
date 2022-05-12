@@ -25,6 +25,18 @@ Set PYTHONPATH
 export PYTHONPATH=/path/to/python
 ```
 
+Then
+
+```bash
+export PYTHONPATH=/path/to/Model-References:$PYTHONPATH
+```
+
+If **Model-References** is in your root directory, the command would be
+
+```bash
+export PYTHONPATH=~/Model-References:$PYTHONPATH
+```
+
 ## Copy Examples
 
 Habana provides examples of some well known AI applications under the path: `/software/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
@@ -76,34 +88,59 @@ cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
 | --data-path            | '../data' | input data path for train and test |
 |                        |           |                                |
 
-Run these commands:
+#### Single Gaudi Run Commands
+
+Single Gaudi FP32 eager mode run command:
 
 ```bash
-srun $PYTHON demo_mnist.py --hpu
-```
-
-To use Slurm sbatch, create submit-demo-mnist-job.sh with the following
-contents:
-
-```bash
-#!/bin/sh
-
 $PYTHON demo_mnist.py --hpu
 ```
 
-Then
+Single Gaudi BF16 eager mode run command:
 
 ```bash
-sbatch submit-demo-mnist-job.sh
+$PYTHON demo_mnist.py --hpu --hmp
 ```
 
-Squeue will give you the queue status.
+Single Gaudi FP32 lazy mode run command:
 
 ```bash
-squeue
+$PYTHON demo_mnist.py --hpu --use_lazy_mode
 ```
 
-## **UNet**
+Single Gaudi BF16 lazy mode run command:
+
+```bash
+$PYTHON demo_mnist.py --hpu --hmp --use_lazy_mode
+```
+
+#### Multi-HPU run commands
+
+8 Gaudi FP32 eager mode run command:
+
+```bash
+$PYTHON demo_mnist.py --hpu --data_type fp32 --world_size 8
+```
+
+8 Gaudi BF16 eager mode run command:
+
+```bash
+$PYTHON demo_mnist.py --hpu --data_type bf16 --world_size 8
+```
+
+8 Gaudi FP32 lazy mode run command:
+
+```bash
+$PYTHON demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 8
+```
+
+8 Gaudi BF16 lazy mode run command:
+
+```bash
+$PYTHON demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 8
+```
+
+## UNet
 
 Change directory
 

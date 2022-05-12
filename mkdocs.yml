@@ -18,7 +18,7 @@ nav:
     - Steps to Run a Model/Program: habana/Steps-to-Run-a-Model-or-Program.md
     - Example Programs: habana/Example-Programs.md
     - Miscellaneous: habana/Miscellaneous.md
-    - Tunneling and Forwarding Ports: habana/Tunneling-and-forwarding-ports.md
+    - Tunneling and Forwarding Ports: habana/Tunneling-and-Forwarding-Ports.md
     - Documentation: habana/Documentation.md
   - SambaNova:
     - System Overview: sambanova/System-Overview.md

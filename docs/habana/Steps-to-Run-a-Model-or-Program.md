@@ -3,24 +3,50 @@
 **NOTE:  Please be mindful of how you are using the system.
 For example, consider running larger jobs in the evening or on weekends.**
 
-**NOTE: Please use only Slurm commands, i.e., srun and sbatch, to run your code.
-If you run your code directly using the python command, it may cause conflicts
-on the system.**
-
 ## Introduction
-
-The system uses the [SLURM job
-scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manage
-the workload on the system. For more information on Slurm, see [Job Queueing and
-Submission](Job-Queuing-and-Submission.md).
 
 [Example Programs](Example-Programs.md) lists the different example applications with
 corresponding commands for each of the above steps.
 
-## Run
+## Set PYTHONPATH
 
-This will run the application on Habana node.
+Find the Python path using the command:
 
 ```bash
-srun $PYTHON demo_mnist.py --hpu
+which python
+```
+
+The output will look something like:
+
+```bash
+/usr/bin/python
+
+# Or inside a virtual environment
+/lambda_stor/homes/ALCFUserID/my_env/bin/python
+```
+
+Set PYTHONPATH
+
+```bash
+export PYTHONPATH=/path/to/python
+```
+
+Then
+
+```bash
+export PYTHONPATH=/path/to/Model-References:$PYTHONPATH
+```
+
+If **Model-References** is in your root directory, the command would be
+
+```bash
+export PYTHONPATH=~/Model-References:$PYTHONPATH
+```
+
+## Run
+
+This will run the application on a Habana node.
+
+```bash
+$PYTHON demo_mnist.py --hpu
 ```

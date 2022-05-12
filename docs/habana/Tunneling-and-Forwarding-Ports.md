@@ -1,10 +1,13 @@
 # Tunneling and Forwarding Ports
 
 Port forwarding is covered here.  This is specifically for TensorBoard.
+
 ## TensorBoard Port-Forwarding
 
-This section describes the steps to be followed to set up port forwarding for applications, like tensorboard, that run on the sambanova system and bind to one or more ports.
-This example uses 6006 and 16006 as port numbers. Using port numbers other than these may avoid collisions with other users.
+This section describes the steps to be followed to set-up port forwarding for applications,
+like tensorboard, that run on the Habana system and bind to one or more ports.
+This example uses 6006 and 16006 as port numbers. Using port numbers other than these may
+avoid collisions with other users.
 
 ### From your local machine
 
@@ -21,6 +24,7 @@ Password: < MobilPass+ code >
 ```
 
 replacing *ALCFUserID* with your ALCF User ID.
+
 ### From **sambanova.alcf.anl.gov**
 
 Run
@@ -87,5 +91,4 @@ Explanation of **ssh** command:
 The full command line will forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
 ```
 
-Adapted from:  https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server
-
+Adapted from:  [Run TensorBoard on a Remote Server](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
