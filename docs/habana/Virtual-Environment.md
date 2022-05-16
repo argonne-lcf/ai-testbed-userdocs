@@ -5,6 +5,7 @@
 To create a virtual environment, one can use the --system-site-packages flag:
 
 ```bash
+cd ~
 python -m venv --system-site-packages my_env
 source my_env/bin/activate
 ```

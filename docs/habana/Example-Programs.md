@@ -93,53 +93,53 @@ cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
 Single Gaudi FP32 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu
+python demo_mnist.py --hpu
 ```
 
 Single Gaudi BF16 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --hmp
+python demo_mnist.py --hpu --hmp
 ```
 
 Single Gaudi FP32 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --use_lazy_mode
+python demo_mnist.py --hpu --use_lazy_mode
 ```
 
 Single Gaudi BF16 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --hmp --use_lazy_mode
+python demo_mnist.py --hpu --hmp --use_lazy_mode
 ```
 
 #### Multi-HPU run commands
 
-There are six Gaudi cards on the system.
+There are eight Gaudi cards on the system.
 
-6 Gaudi FP32 eager mode run command:
+8 Gaudi FP32 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type fp32 --world_size 6
+python demo_mnist.py --hpu --data_type fp32 --world_size 8
 ```
 
-6 Gaudi BF16 eager mode run command:
+8 Gaudi BF16 eager mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type bf16 --world_size 6
+python demo_mnist.py --hpu --data_type bf16 --world_size 8
 ```
 
-6 Gaudi FP32 lazy mode run command:
+8 Gaudi FP32 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 6
+python demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 8
 ```
 
-6 Gaudi BF16 lazy mode run command:
+8 Gaudi BF16 lazy mode run command:
 
 ```bash
-$PYTHON demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 6
+python demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 8
 ```
 
 ## UNet --> Broken <--
@@ -236,7 +236,7 @@ mkdir /data
 To download the dataset run:
 
 ```python
-$PYTHON download.py --task 01
+python download.py --task 01
 ```
 
 NOTE: The script downloads the dataset in /data directory by default.
@@ -249,13 +249,13 @@ parser.add_argument("--results", type=str, default="/data", help="Path for savin
 <!-- TODOBRW fix these paths -->
 
 ```bash
-$PYTHON preprocess.py --task 01 --dim 2 --data /path/to/data --results /path/to/results
+python preprocess.py --task 01 --dim 2 --data /path/to/data --results /path/to/results
 ```
 
 To process it for Unet3D run:
 
 ```bash
-$PYTHON preprocess.py --task 01 --dim 3 --data /path/to/data --results /path/to/results
+python preprocess.py --task 01 --dim 3 --data /path/to/data --results /path/to/results
 ```
 
 NOTE: The script preprocess the dataset downloaded in above step from
