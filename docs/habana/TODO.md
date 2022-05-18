@@ -1,5 +1,14 @@
 # TODO
 
+## TensorBoard
+
+Can we build an example and doc with using tensorboard?
+[Profiling](https://docs.habana.ai/en/latest/Profiling/index.html)
+
+## Notes
+
+From a software perspective, Gaudi scaling with data parallelism in the PyTorch framework is achieved with torch.distributed package using DDP - Distributed Data Parallel [Pytorch Scaling Guide](https://docs.habana.ai/en/latest/PyTorch/PyTorch_Scaling_Guide/Overview.html)
+
 ## System Overview
 
 - [X] First draft
