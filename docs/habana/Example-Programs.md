@@ -116,27 +116,31 @@ python demo_mnist.py --hpu --hmp --use_lazy_mode
 
 #### Multi-HPU run commands
 
+**NOTE: These run examples use data parallelism. This is accomplished by using model replica,
+splitting of data, and averaging the gradient through allreduce.
+The HCCL, Habana Collective Communication Library, is used to perform these operations.***
+
 There are eight Gaudi cards on the system.
 
-8 Gaudi FP32 eager mode run command:
+Eight Gaudi FP32 eager mode run command:
 
 ```bash
 python demo_mnist.py --hpu --data_type fp32 --world_size 8
 ```
 
-8 Gaudi BF16 eager mode run command:
+Eight Gaudi BF16 eager mode run command:
 
 ```bash
 python demo_mnist.py --hpu --data_type bf16 --world_size 8
 ```
 
-8 Gaudi FP32 lazy mode run command:
+Eight Gaudi FP32 lazy mode run command:
 
 ```bash
 python demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 8
 ```
 
-8 Gaudi BF16 lazy mode run command:
+Eight Gaudi BF16 lazy mode run command:
 
 ```bash
 python demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 8
