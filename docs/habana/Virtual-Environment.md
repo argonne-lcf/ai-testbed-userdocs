@@ -10,6 +10,21 @@ python -m venv --system-site-packages my_env
 source my_env/bin/activate
 ```
 
+### Framework Packages
+
+#### TensorFlow
+
+```bash
+cd /home/ALCFUserID/path/to/project
+PYTHON=`which python` /software/habana/scripts/tensorflow_venv_installation.sh --pip_user false
+source ~/.bashrc
+source ~/my_env/bin/activate
+```
+
+#### PyTorch
+
+Try without any additional steps.
+
 ### System Site Packages
 
 There are many packages available on the system.

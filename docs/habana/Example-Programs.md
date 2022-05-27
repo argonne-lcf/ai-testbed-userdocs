@@ -116,7 +116,8 @@ python demo_mnist.py --hpu --hmp --use_lazy_mode
 
 #### Multi-HPU run commands
 
-**NOTE: These run examples use data parallelism. This is accomplished by using model replica,
+**NOTE: These run examples use PyTorch DDP, Distributed Data Parallel.
+This is accomplished by using model replica,
 splitting of data, and averaging the gradient through allreduce.
 The HCCL, Habana Collective Communication Library, is used to perform these operations.***
 

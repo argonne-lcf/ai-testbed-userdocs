@@ -4,8 +4,8 @@ Port forwarding is covered here.  This is specifically for TensorBoard.
 
 ## TensorBoard Port-Forwarding
 
-This section describes the steps to be followed to set-up port forwarding for applications,
-like tensorboard, that run on the Habana system and bind to one or more ports.
+This section describes the steps to be followed to set up port forwarding for applications,
+like TensorBoard, that run on this system and bind to one or more ports.
 This example uses 6006 and 16006 as port numbers. Using port numbers other than these may
 avoid collisions with other users.
 
@@ -14,26 +14,28 @@ avoid collisions with other users.
 Run
 
 ```bash
-ssh -v -N -f -L localhost:16006:localhost:16006 ALCFUserID@sambanova.alcf.anl.gov
-...
-Password: < MobilPass+ code >
+ssh -v -N -f -L localhost:16006:localhost:16006 wilsonb@homes.cels.anl.gov
+```
 
-ssh ALCFUserID@sambanova.alcf.anl.gov
+```text
+ssh wilsonb@homes.cels.anl.gov
+
 ...
 Password: < MobilPass+ code >
 ```
 
-replacing *ALCFUserID* with your ALCF User ID.
+*replacing* ***ALCFUserID*** *with your ALCF User ID.*
 
-### From **sambanova.alcf.anl.gov**
+### From **homes.cels.anl.gov**
 
 Run
 
-**NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**
+**NOTE:  The full name is xxxsm-01.ai.alcf.anl.gov and it may also be used.**
 
 ```bash
-ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@sm-01
-ssh ALCFUserID@sm-01
+ssh -N -f -L localhost:16006:localhost:6006 wilsonb@habana-01.ai.alcf.anl.gov
+password
+ssh wilsonb@habana-01.ai.alcf.anl.gov
 ```
 
 ### On **sm-01**
@@ -70,7 +72,7 @@ Navigate to the appropriate directory for your model.
 
 ```bash
 cd /path/to/your/project
-tensorboard --logdir /logs --port 6006
+tensorboard --logdir ./runs --port 6006
 ```
 
 ### Browser on Local Machine
@@ -91,4 +93,4 @@ Explanation of **ssh** command:
 The full command line will forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
 ```
 
-Adapted from:  [Run TensorBoard on a Remote Server](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
+Adapted from:  [How can I run Tensorboard on a remote server?](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
