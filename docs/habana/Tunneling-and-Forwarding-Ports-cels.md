@@ -6,7 +6,7 @@ Port forwarding is covered here.  This is specifically for TensorBoard.
 
 This section describes the steps to be followed to set up port forwarding for applications,
 like TensorBoard, that run on this system and bind to one or more ports.
-This example uses 6006 and 16006 as port numbers. Using port numbers other than these may
+This example uses 6008 and 16008 as port numbers. Using port numbers other than these may
 avoid collisions with other users.
 
 ### From your local machine
@@ -14,7 +14,7 @@ avoid collisions with other users.
 Run
 
 ```bash
-ssh -v -N -f -L localhost:16006:localhost:16006 wilsonb@homes.cels.anl.gov
+ssh -v -N -f -L localhost:16008:localhost:16008 wilsonb@homes.cels.anl.gov
 ```
 
 ```text
@@ -33,7 +33,7 @@ Run
 **NOTE:  The full name is xxxsm-01.ai.alcf.anl.gov and it may also be used.**
 
 ```bash
-ssh -N -f -L localhost:16006:localhost:6006 wilsonb@habana-01.ai.alcf.anl.gov
+ssh -N -f -L localhost:16008:localhost:6008 wilsonb@habana-01.ai.alcf.anl.gov
 password
 ssh wilsonb@habana-01.ai.alcf.anl.gov
 ```
@@ -57,27 +57,23 @@ sbatch --output=pef/my_model/output.log submit-my_model-job.sh
 
 ### On Another sm-01 Terminal Window
 
-The SambaNova system has a bash shell script to setup the required software environment.
-This sets up the SambaFlow software stack, the associated environmental variables and activates
-a pre-configured virtual environment.
-
-Use
-
-```bash
-ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
-(venv) ALCFUserID@sm-01:~$
-```
+The 
 
 Navigate to the appropriate directory for your model.
 
+```console
+cd ~/DL/ai-testbed-tutorials/habana/habana_starter
+tensorboard --logdir ./runs --port 6008
+```
+
 ```bash
 cd /path/to/your/project
-tensorboard --logdir ./runs --port 6006
+tensorboard --logdir ./runs --port 6008
 ```
 
 ### Browser on Local Machine
 
-Then, navigate in your browser to, in this example, [http://localhost:16006](http://localhost:16006) on your local machine.
+Then, navigate in your browser to, in this example, [http://localhost:16008](http://localhost:16008) on your local machine.
 
 ## Notes
 
