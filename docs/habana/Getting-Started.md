@@ -18,35 +18,20 @@ The second step is to login to a **Habana** node from the login node.
 
 ### Login to Login Node
 
-Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated everytime you login to the system. This is the same passcode used to authenticate into other ALCF systems, such as Theta and Cooley.
+Login to the **homes** login node from your local machine using the below command. This uses your public key everytime you login to the system.
 
 In the examples below, replace **ALCFUserID** with your ALCF user id.
 
-**NOTE: These are not the final log in directions.
-They are temporary until Go Live for this system.**
-
-I am using this command courtesy of Bill.
-You may skip the other steps for now.
-
-```bash
-ssh -J ALCFUserID@homes.cels.anl.gov ALCFUserID@habana-01.ai.alcf.anl.gov
-```
-
-```bash
-ssh -J wilsonb@homes.cels.anl.gov wilsonb@habana-01.ai.alcf.anl.gov
-```
-
 ```bash
 ssh ALCFUserID@homes.cels.anl.gov
-ALCFUserID@habana.alcf.anl.govs password: < Your cels password MobilPass+ code >
 ```
 
 Note: Use the ssh "-v" option in order to debug any ssh problems.
 
 ### Login to a Habana Node
 
-Once you are on the login node, the **Habana** system can be accessed using the alias “hb-01” that resolves to hostname hb-01.ai.alcf.anl.gov.
+Once you are on the login node, the **Habana** system can be accessed using this command:
 
 ```bash
-ssh ALCFUserID@@habana-01.ai.alcf.anl.gov
+ssh ALCFUserID@habana-01.ai.alcf.anl.gov
 ```

@@ -2,6 +2,15 @@
 
 Example programs are provided below for your use.
 
+## Copy Examples
+
+Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
+
+```bash
+cd ~/
+cp -r /lambda_stor/habana/apps/1.4.1/Model-References .
+```
+
 ## Set PYTHONPATH
 
 Find the Python path using the command:
@@ -15,7 +24,7 @@ The output will look something like:
 ```bash
 /usr/bin/python
 
-# Or inside a birtual environment
+# Or inside a virtual environment
 /lambda_stor/homes/ALCFUserID/my_env/bin/python
 ```
 
@@ -35,15 +44,6 @@ If **Model-References** is in your root directory, the command would be
 
 ```bash
 export PYTHONPATH=~/Model-References:$PYTHONPATH
-```
-
-## Copy Examples
-
-Habana provides examples of some well known AI applications under the path: `/software/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
-
-```bash
-cd ~/
-cp -r /software/habana/apps/1.4.1/Model-References .
 ```
 
 ## Common Arguments

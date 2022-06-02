@@ -14,7 +14,7 @@ The **TPC** is a **VLIW SIMD**, Very Long Instruction Word Single Instruction Mu
 processor.  And, it is programmable, providing the user flexibility.
 
 The **TPC** natively supports the following data types: FP32, BF16, INT32, INT16,
-INT8, UINT32, UINT16 and UINT8.
+INT8, UINT32, UINT16, and UINT8.
 
 Each Gaudi has 32 GB HBM, High Bandwidth Memory.
 Here is the **Gaudi** processor high-level architecture.

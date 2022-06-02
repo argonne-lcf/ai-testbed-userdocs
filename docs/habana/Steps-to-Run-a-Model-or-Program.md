@@ -6,7 +6,16 @@ For example, consider running larger jobs in the evening or on weekends.**
 ## Introduction
 
 [Example Programs](Example-Programs.md) lists the different example applications with
-corresponding commands for each of the above steps.
+corresponding commands.
+
+## Copy Examples
+
+Habana provides examples of some well known AI applications under the path: `/software/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
+
+```bash
+cd ~/
+cp -r /software/habana/apps/1.4.1/Model-References .
+```
 
 ## Set PYTHONPATH
 

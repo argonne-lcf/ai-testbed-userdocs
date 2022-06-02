@@ -2,28 +2,34 @@
 
 ## Using Virtualenv
 
-To create a virtual environment, one can use the --system-site-packages flag:
-
-```bash
-cd ~
-python -m venv --system-site-packages my_env
-source my_env/bin/activate
-```
-
 ### Framework Packages
 
 #### TensorFlow
 
+To create a virtual environment, one can use the **--system-site-packages** flag:
+
+```bash
+cd ~
+python3 -m venv --system-site-packages ~/TF_venv
+source ~/TF_venv/bin/activate
+```
+
 ```bash
 cd /home/ALCFUserID/path/to/project
-PYTHON=`which python` /software/habana/scripts/tensorflow_venv_installation.sh --pip_user false
+PYTHON=`which python` /lambda_stor/habana/scripts/tensorflow_venv_installation.sh --pip_user false
 source ~/.bashrc
-source ~/my_env/bin/activate
+source ~/TF_venv1/bin/activate
 ```
 
 #### PyTorch
 
-Try without any additional steps.
+To create a virtual environment, one can use the **--system-site-packages** flag:
+
+```bash
+cd ~
+python3 -m venv --system-site-packages ~/PT_venv
+source ~/PT_venv/bin/activate
+```
 
 ### System Site Packages
 
