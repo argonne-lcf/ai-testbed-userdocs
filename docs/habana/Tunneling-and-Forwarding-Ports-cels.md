@@ -19,13 +19,13 @@ Run
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:16008 wilsonb@homes.cels.anl.gov
+ssh -N -f -L localhost:16008:localhost:16008 ALCFUserID@homes.cels.anl.gov
 ```
 
 Now **ssh** to the login node:
 
 ```bash
-ssh wilsonb@homes.cels.anl.gov
+ssh ALCFUserID@homes.cels.anl.gov
 ```
 
 ### From **homes.cels.anl.gov**
@@ -35,15 +35,14 @@ Forward **habana-01.ai.alcf.anl.gov:6008** to **homes.cels.anl.gov:16008**.
 Run
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:6008 wilsonb@habana-01.ai.alcf.anl.gov
-password
-ssh wilsonb@habana-01.ai.alcf.anl.gov
+ssh -N -f -L localhost:16008:localhost:6008 ALCFUserID@habana-01.ai.alcf.anl.gov
+ALCFUserID@habana-01 password:
 ```
 
 Now **ssh** to habana-01:
 
 ```bash
-ssh wilsonb@habana-01.ai.alcf.anl.gov
+ssh ALCFUserID@habana-01.ai.alcf.anl.gov
 ```
 
 ### On **habana-01**
