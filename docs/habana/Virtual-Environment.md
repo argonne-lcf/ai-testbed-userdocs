@@ -39,8 +39,8 @@ location of the packages:
 
 ```python
 import sys
-site_packages = next(p for p in sys.path if 'dist-packages' in p)
-print(site_packages)
+site_packages_dir = next(p for p in sys.path if 'dist-packages' in p)
+print(site_packages_dir)
 ```
 
 Given the location of the packages, one may list the packages.
