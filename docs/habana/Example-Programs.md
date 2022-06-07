@@ -125,7 +125,7 @@ python demo_mnist.py --hpu --hmp --use_lazy_mode
 **NOTE: These run examples use PyTorch DDP, Distributed Data Parallel.
 This is accomplished by using model replica,
 splitting of data, and averaging the gradient through allreduce.
-The HCCL, Habana Collective Communication Library, is used to perform these operations.***
+The HCCL, Habana Collective Communication Library, is used to perform these operations.**
 
 There are eight Gaudi cards on the system.
 

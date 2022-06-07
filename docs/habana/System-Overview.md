@@ -8,7 +8,7 @@ Each node has eight Gaudi processors.
 The system supports **PyTorch** and **TensorFlow** frameworks.
 
 The **Gaudi** architecture includes a cluster of fully programmable **TPCs**, Tensor Processing Cores.
-Along with development tools and libraries, and a configurable Matrix Math engine.
+Along with development tools and libraries, and a configurable Matrix Math Engine.
 
 The **TPC** is a **VLIW SIMD**, Very Long Instruction Word Single Instruction Multiple Data,
 processor.  And, it is programmable, providing the user flexibility.

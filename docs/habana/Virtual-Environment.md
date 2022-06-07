@@ -4,12 +4,13 @@
 
 ### Framework Packages
 
+**NOTE: The [Example Programs](Example-Programs.md) use PyTorch.**
+
 #### TensorFlow
 
 To create a virtual environment, one can use the **--system-site-packages** flag:
 
 ```bash
-cd ~
 python3 -m venv --system-site-packages ~/TF_venv
 source ~/TF_venv/bin/activate
 ```
@@ -26,7 +27,6 @@ source ~/TF_venv1/bin/activate
 To create a virtual environment, one can use the **--system-site-packages** flag:
 
 ```bash
-cd ~
 python3 -m venv --system-site-packages ~/PT_venv
 source ~/PT_venv/bin/activate
 ```
@@ -66,4 +66,4 @@ To install a different version of a package that is already installed in one's e
 pip install --ignore-installed  ... # or -I
 ```
 
-Note: Conda is not supported on this system.
+**Note: Conda is not supported on this system.**

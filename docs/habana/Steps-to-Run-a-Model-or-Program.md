@@ -57,5 +57,6 @@ export PYTHONPATH=~/Model-References:$PYTHONPATH
 This will run the application on a Habana node.
 
 ```bash
-$PYTHON demo_mnist.py --hpu
+cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
+python demo_mnist.py --hpu
 ```

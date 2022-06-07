@@ -11,7 +11,7 @@ Note: Run the python scripts using srun or sbatch, to ensure that concurrent job
 The Slurm command `srun` can be used to run individual python scripts in parallel with other scripts on a cluster managed by Slurm. Examples of `srun` usage are shown below.
 
 ```bash
-srun $PYTHON demo_mnist.py --hpu
+srun python demo_mnist.py --hpu
 ```
 
 ## sbatch
@@ -21,7 +21,7 @@ Alternatively, jobs can be submitted to the Slurm workload manager through a bat
 ```bash
 #!/bin/sh
 
-srun $PYTHON demo_mnist.py --hpu
+srun python demo_mnist.py --hpu
 ```
 
 Then pass the bash script as an input to the `sbatch` command as shown below.

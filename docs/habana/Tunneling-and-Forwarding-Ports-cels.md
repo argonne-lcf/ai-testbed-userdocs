@@ -6,12 +6,12 @@ Port forwarding is covered here.  This is specifically for TensorBoard.
 
 This section describes the steps to be followed to set-up port forwarding for applications,
 like TensorBoard, that run on this system and bind to one or more ports.
-This example uses 6008 and 16008 as port numbers. Using port numbers other than these may
+This example uses 6006 and 16006 as port numbers. Using port numbers other than these may
 avoid collisions with other users.
 
 ### From your local machine
 
-In the next command, there is **localhost:16008:localhost:16008**.
+In the next command, there is **localhost:16006:localhost:16006**.
 Think of this as **here:there**.  The first half is **here** on your local machine.
 The second half is **there** on the remote machine.
 
@@ -19,7 +19,7 @@ Run
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:16008 ALCFUserID@homes.cels.anl.gov
+ssh -N -f -L localhost:16006:localhost:16006 ALCFUserID@homes.cels.anl.gov
 ```
 
 Now **ssh** to the login node:
@@ -30,16 +30,16 @@ ssh ALCFUserID@homes.cels.anl.gov
 
 ### From **homes.cels.anl.gov**
 
-Forward **habana-01.ai.alcf.anl.gov:6008** to **homes.cels.anl.gov:16008**.
+Forward **habana-01.ai.alcf.anl.gov:6006** to **homes.cels.anl.gov:16006**.
 
 Run
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:6008 ALCFUserID@habana-01.ai.alcf.anl.gov
+ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@habana-01.ai.alcf.anl.gov
 ALCFUserID@habana-01 password:
 ```
 
-Now **ssh** to habana-01:
+Now **ssh** to **habana-01**:
 
 ```bash
 ssh ALCFUserID@habana-01.ai.alcf.anl.gov
@@ -68,17 +68,17 @@ Navigate to the appropriate directory for your model:
 
 ```console
 cd ~/DL/ai-testbed-tutorials/habana/habana_starter
-tensorboard --logdir ./runs --port 6008
+tensorboard --logdir ./runs --port 6006
 ```
 
 ```bash
 cd /path/to/your/project
-tensorboard --logdir ./runs --port 6008
+tensorboard --logdir ./runs --port 6006
 ```
 
 ### Browser on Local Machine
 
-Then, navigate in your browser to, in this example, [http://localhost:16008](http://localhost:16008) on your local machine.
+Then, navigate in your browser to, in this example, [http://localhost:16006](http://localhost:16006) on your local machine.
 
 ## Notes
 

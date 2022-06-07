@@ -4,12 +4,10 @@
 
 ### Card Usage
 
-One may check the card usage status with "hl-smi" or "dmesg -wH".
+One may check the card usage status with "hl-smi".
 
 ```bash
 hl-smi
-# Or
-dmesg -wH
 ```
 
 The **hl-smi** will display a report. Look at the bottom box.
