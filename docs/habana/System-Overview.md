@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Habana system has two nodes, i.e., habana01 and habana02.
+The Habana system has two nodes, i.e., habana-01 and habana-02.
 Each node has eight Gaudi processors.
 
 The system supports **PyTorch** and **TensorFlow** frameworks.
