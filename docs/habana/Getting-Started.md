@@ -1,10 +1,5 @@
 # Getting Started
 
-## On-Boarding
-
-See [Get Started](https://www.alcf.anl.gov/support-center/get-started)
-to request an acccount and additional information.
-
 ## Setup
 
 ### System View
@@ -20,10 +15,10 @@ The second step is to login to a **Habana** node from the login node.
 
 Login to the **homes** login node from your local machine using the below command. This uses your public key everytime you login to the system.
 
-In the examples below, replace **ALCFUserID** with your ALCF user id.
+In the examples below, replace **CELSUserID** with your CELS user id.
 
 ```bash
-ssh ALCFUserID@homes.cels.anl.gov
+ssh CELSUserID@homes.cels.anl.gov
 ```
 
 Note: Use the ssh "-v" option in order to debug any ssh problems.
@@ -33,5 +28,5 @@ Note: Use the ssh "-v" option in order to debug any ssh problems.
 Once you are on the login node, the **Habana** system can be accessed using this command:
 
 ```bash
-ssh ALCFUserID@habana-01.ai.alcf.anl.gov
+ssh CELSUserID@habana-01.ai.alcf.anl.gov
 ```

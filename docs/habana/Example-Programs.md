@@ -31,7 +31,7 @@ The output will look something like:
 /usr/bin/python
 
 # Or inside a virtual environment
-/lambda_stor/homes/ALCFUserID/my_env/bin/python
+/lambda_stor/homes/CELSUserID/my_env/bin/python
 ```
 
 Set PYTHONPATH
