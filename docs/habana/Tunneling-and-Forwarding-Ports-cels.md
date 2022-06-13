@@ -16,16 +16,16 @@ Think of this as **here:there**.  The first half is **here** on your local machi
 The second half is **there** on the remote machine.
 
 Run
-*replacing* ***ALCFUserID*** *with your ALCF User ID.*
+*replacing* ***CELSGCEUserID*** *with your CELS GCE User ID.*
 
 ```bash
-ssh -N -f -L localhost:16006:localhost:16006 ALCFUserID@homes.cels.anl.gov
+ssh -N -f -L localhost:16006:localhost:16006 CELSGCEUserID@homes.cels.anl.gov
 ```
 
 Now **ssh** to the login node:
 
 ```bash
-ssh ALCFUserID@homes.cels.anl.gov
+ssh CELSGCEUserID@homes.cels.anl.gov
 ```
 
 ### From **homes.cels.anl.gov**
@@ -35,14 +35,14 @@ Forward **habana-01.ai.alcf.anl.gov:6006** to **homes.cels.anl.gov:16006**.
 Run
 
 ```bash
-ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@habana-01.ai.alcf.anl.gov
-ALCFUserID@habana-01 password:
+ssh -N -f -L localhost:16006:localhost:6006 CELSGCEUserID@habana-01.ai.alcf.anl.gov
+CELSGCEUserID@habana-01 password:
 ```
 
 Now **ssh** to **habana-01**:
 
 ```bash
-ssh ALCFUserID@habana-01.ai.alcf.anl.gov
+ssh CELSGCEUserID@habana-01.ai.alcf.anl.gov
 ```
 
 ### On **habana-01**
@@ -50,8 +50,8 @@ ssh ALCFUserID@habana-01.ai.alcf.anl.gov
 Activate your virtual environment:
 
 ```bash
-ALCFUserID@habana-01:~$ source ~/path/to/my_env/bin/activate
-(my_env) ALCFUserID@habana-01:~$
+CELSGCEUserID@habana-01:~$ source ~/path/to/my_env/bin/activate
+(my_env) CELSGCEUserID@habana-01:~$
 ```
 
 Navigate to the appropriate directory for your model.

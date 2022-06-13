@@ -12,11 +12,9 @@ corresponding commands.
 
 Habana provides examples of some well known AI applications under the path: `/software/habana/apps/1.4.1/Model-References`, on the Habana compute node hb-01. Make a copy of this to your home directory:
 
-May have to use **/lambda_stor/software/...** instead of **/software**.
-
 ```bash
 cd ~/
-cp -r /software/habana/apps/1.4.1/Model-References .
+cp -r /lambda_stor/habana/apps/1.4.1/Model-References .
 ```
 
 ## Set PYTHONPATH

@@ -16,7 +16,7 @@ source ~/TF_venv/bin/activate
 ```
 
 ```bash
-cd /home/ALCFUserID/path/to/project
+cd /home/CELSGCEUserID/path/to/project
 PYTHON=`which python` /lambda_stor/habana/scripts/tensorflow_venv_installation.sh --pip_user false
 source ~/.bashrc
 source ~/TF_venv1/bin/activate
