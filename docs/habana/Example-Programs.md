@@ -4,7 +4,7 @@ Example programs are provided below for your use.
 
 ## Copy Examples
 
-Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.4.1/Model-References`, on the Habana compute node **habana1**. Make a copy of this to your home directory:
+Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.4.1/Model-References`, on the Habana compute node **habana1** or  **habana2**. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -22,22 +22,22 @@ git clone https://github.com/HabanaAI/Model-References.git
 Find the Python path using the command:
 
 ```bash
-which python
+which python3
 ```
 
 The output will look something like:
 
 ```bash
-/usr/bin/python
+/usr/bin/python3
 
 # Or inside a virtual environment
-/lambda_stor/homes/CELSUserID/my_env/bin/python
+/lambda_stor/homes/CELSUserID/my_env/bin/python3
 ```
 
 Set PYTHONPATH
 
 ```bash
-export PYTHONPATH=/path/to/python
+export PYTHONPATH=/path/to/python3
 ```
 
 Then

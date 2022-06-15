@@ -9,7 +9,7 @@ First step is to ssh to a CELS "login node", e.g., **homes**.
 
 The second step is to login to a **Habana** node from the login node.
 
-![Habana System View](Log_in_CELS.png "Habana System View")
+![Habana System View](Log_in_CELS.jpg "Habana System View")
 
 ### Login to Login Node
 
@@ -25,10 +25,12 @@ Note: Use the ssh "-v" option in order to debug any ssh problems.
 
 ### Login to a Habana Node
 
-Once you are on the login node, the **Habana** system can be accessed using this command:
+Once you are on the login node, the **Habana** system can be accessed using one of these commands:
 
 ```bash
 ssh CELSGCEUserID@habana-01.ai.alcf.anl.gov
+# Or
+ssh CELSGCEUserID@habana-02.ai.alcf.anl.gov
 ```
 
 Note: Even though the hostname is ALCF, we will use our **CELSGCEUserID**

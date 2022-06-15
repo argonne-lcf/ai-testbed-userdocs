@@ -24,11 +24,25 @@ source ~/TF_venv1/bin/activate
 
 #### PyTorch
 
+**NOTE:  The instructions are different for habana1 and habana2.**
+
+##### habana1
+
 To create a virtual environment, one can use the **--system-site-packages** flag:
 
 ```bash
 python3 -m venv --system-site-packages ~/PT_venv
 source ~/PT_venv/bin/activate
+```
+
+##### habana2
+
+To create a virtual environment:
+
+```bash
+python3 -m venv ~/PT_venv
+source ~/PT_venv/bin/activate
+PYTHON=`which python` /lambda_stor/habana/scripts/pytorch_venv_installation.sh -sys
 ```
 
 ### System Site Packages
