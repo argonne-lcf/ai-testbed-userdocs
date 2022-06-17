@@ -31,7 +31,7 @@ The output will look something like:
 /usr/bin/python3
 
 # Or inside a virtual environment
-/lambda_stor/homes/CELSUserID/my_env/bin/python3
+/home/CELSGCEUserID/my_env/bin/python3
 ```
 
 Set PYTHONPATH

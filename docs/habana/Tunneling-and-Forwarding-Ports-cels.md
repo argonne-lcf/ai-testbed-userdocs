@@ -43,6 +43,7 @@ Now **ssh** to **habana-01**:
 
 ```bash
 ssh CELSGCEUserID@habana-01.ai.alcf.anl.gov
+CELSGCEUserID@habana-01.ai.alcf.anl.gov's password:
 ```
 
 ### On **habana-01**
@@ -50,8 +51,8 @@ ssh CELSGCEUserID@habana-01.ai.alcf.anl.gov
 Activate your virtual environment:
 
 ```bash
-CELSGCEUserID@habana-01:~$ source ~/path/to/my_env/bin/activate
-(my_env) CELSGCEUserID@habana-01:~$
+CELSGCEUserID@habana-01:~$ source ~/PT_venv/bin/activate
+(PT_venv) CELSGCEUserID@habana-01:~$
 ```
 
 Navigate to the appropriate directory for your model.

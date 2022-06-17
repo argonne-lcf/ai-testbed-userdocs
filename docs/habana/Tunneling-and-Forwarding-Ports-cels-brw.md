@@ -6,20 +6,20 @@ Port forwarding is covered here.  This is specifically for TensorBoard.
 
 This section describes the steps to be followed to set-up port forwarding for applications,
 like TensorBoard, that run on this system and bind to one or more ports.
-This example uses 6008 and 16008 as port numbers. Using port numbers other than these may
+This example uses 6057 and 16057 as port numbers. Using port numbers other than these may
 avoid collisions with other users.
 
 ### From your local machine
 
-In the next command, there is **localhost:16008:localhost:16008**.
+In the next command, there is **localhost:16057:localhost:16057**.
 Think of this as **here:there**.  The first half is **here** on your local machine.
 The second half is **there** on the remote machine.
 
 Run
-*replacing* ***ALCFUserID*** *with your ALCF User ID.*
+*replacing* ***CELSGCEUserID*** *with your CELS GCE User ID.*
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:16008 wilsonb@homes.cels.anl.gov
+ssh -N -f -L localhost:16057:localhost:16057 wilsonb@homes.cels.anl.gov
 ```
 
 Now **ssh** to the login node:
@@ -30,20 +30,20 @@ ssh wilsonb@homes.cels.anl.gov
 
 ### From **homes.cels.anl.gov**
 
-Forward **habana-01.ai.alcf.anl.gov:6008** to **homes.cels.anl.gov:16008**.
+Forward **habana-01.ai.alcf.anl.gov:6057** to **homes.cels.anl.gov:16057**.
 
 Run
 
 ```bash
-ssh -N -f -L localhost:16008:localhost:6008 wilsonb@habana-01.ai.alcf.anl.gov
+ssh -N -f -L localhost:16057:localhost:6057 wilsonb@habana-01.ai.alcf.anl.gov
 password
-ssh wilsonb@habana-01.ai.alcf.anl.gov
 ```
 
-Now **ssh** to habana-01:
+Now **ssh** to **habana-01**:
 
 ```bash
 ssh wilsonb@habana-01.ai.alcf.anl.gov
+wilsonb@habana-01.ai.alcf.anl.gov's password:
 ```
 
 ### On **habana-01**
@@ -51,8 +51,8 @@ ssh wilsonb@habana-01.ai.alcf.anl.gov
 Activate your virtual environment:
 
 ```bash
-ALCFUserID@habana-01:~$ source ~/path/to/my_env/bin/activate
-(my_env) ALCFUserID@habana-01:~$
+CELSGCEUserID@habana-01:~$ source ~/PT_venv4/bin/activate
+(PT_venv4) CELSGCEUserID@habana-01:~$
 ```
 
 Navigate to the appropriate directory for your model.
@@ -69,17 +69,14 @@ Navigate to the appropriate directory for your model:
 
 ```console
 cd ~/DL/ai-testbed-tutorials/habana/habana_starter
-tensorboard --logdir ./runs --port 6008
-```
-
-```bash
-cd /path/to/your/project
-tensorboard --logdir ./runs --port 6008
+tensorboard --logdir ./runs --port 6057
 ```
 
 ### Browser on Local Machine
 
-Then, navigate in your browser to, in this example, [http://localhost:16008](http://localhost:16008) on your local machine.
+Then, navigate in your browser to, in this example, [http://localhost:16057](http://localhost:16057) on your local machine.
+
+Your run should now be displayed in the browser.
 
 ## Notes
 
