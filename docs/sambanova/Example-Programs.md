@@ -1,6 +1,6 @@
 # Example Programs
 
-Sambanova provides examples of some well known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the Sambanova compute node sm-01. Make a copy of this to your home directory:
+SambaNova provides examples of some well known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
