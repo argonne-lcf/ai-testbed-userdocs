@@ -107,4 +107,4 @@ for access. **
 If you plan to publish, say to a conference, workshop or journal, we
 have a review process wherein you share the draft with us
 (pre-submission) at <ai@alcf.anl.gov> and we
-will work with Sambanova for the requisite approvals.
+will work with SambaNova for the requisite approvals.
