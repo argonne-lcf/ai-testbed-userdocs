@@ -1,6 +1,6 @@
 # Example Programs
 
-SambaNova provides examples of some well known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
+SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
@@ -86,7 +86,7 @@ Squeue will give you the queue status.
 squeue
 ```
 
-The output file, pef/lenet/output.log, will look something like:
+The output file, pef/lenet/output.log, will look something like this:
 
 ```text
 [Info][SAMBA][Default] # Placing log files in
