@@ -6,7 +6,7 @@ The OMP_NUM_THREADS environment variable sets the number of threads to use for p
 
 The value of this environment variable must be a list of positive integer values. The values of the list set the number of threads to use for parallel regions at the corresponding nested levels.
 
-For the SambaNova system it is usually set to one.
+For the SambaNova system it, is usually set to one.
 
 ```bash
 export OMP_NUM_THREADS=1
@@ -14,7 +14,7 @@ export OMP_NUM_THREADS=1
 
 ## Where is the Model?
 
-Two copies of model are maintained.  One in CPU memory and one in RDU
+Two copies of the model are maintained.  One in CPU memory and one in RDU
 memory. They do not interfere with each other unless you explicitly sync
 the model/parameter in between using:
 
@@ -23,7 +23,7 @@ SambaTensor.rdu() # Moves the CPU model to the RDU
 SambaTensor.cpu() # Moves the RDU model to the CPU
 ```
 
-In order to run the model on CPU, you can simply use the pytorch model
+In order to run the model on the CPU, you can simply use the PyTorch model
 as if there is no RDU.
 In order to run the model on RDU, you would need to use **session.run()**.
 
@@ -110,13 +110,13 @@ res_ffn_mnist.py run --pef=pef/res_ffn_mnist/res_ffn_mnist.pef
 
 ### SambaNova Daemon Service
 
-The following command checks if SambaNova daemon service is running.
+The following command checks if the SambaNova daemon service is running.
 
 ```bash
 systemctl status snd
 ```
 
-The output should look something like:
+The output should look something like this:
 
 ```text
 * snd.service - SN Devices Service
@@ -127,7 +127,7 @@ The output should look something like:
    CGroup: /system.slice/snd.service
            `-3550 /opt/sambaflow/bin/snd
 
-Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.
+Warning: Journal has been rotated since the unit was started. Log output is incomplete or unavailable.
 ```
 
 ### Tile status

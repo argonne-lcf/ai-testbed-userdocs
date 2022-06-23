@@ -1,11 +1,11 @@
 # Example Programs
 
-SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.10.3-11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
+SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
 mkdir apps
-cp -r /software/sambanova/apps/1.10.3-11/starters apps/starters
+cp -r /software/sambanova/apps/1.11/starters apps/starters
 ```
 
 ## LeNet
@@ -13,7 +13,7 @@ cp -r /software/sambanova/apps/1.10.3-11/starters apps/starters
 Change directory
 
 ```bash
-cd ~/apps/starters/
+cd ~/apps/starters/lenet
 ```
 
 ### Common Arguments
@@ -86,7 +86,7 @@ Squeue will give you the queue status.
 squeue
 ```
 
-The output file, pef/lenet/output.log, will look something like this:
+The output file will look something like this:
 
 ```text
 [Info][SAMBA][Default] # Placing log files in
@@ -143,16 +143,17 @@ Log ID initialized to: [ALCFUserID][python][53607] at
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/
+cd ~/apps/starters/ffn_mnist/
 ```
 
-commands to run MNIST example:
+Commands to run MNIST example:
 
 ```bash
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
 srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
+
 To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
 
 ```bash
@@ -171,7 +172,7 @@ sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
 Change directory (if necessary)
 
 ```bash
-cd ~/apps/starters/
+cd ~/apps/starters/logreg
 ```
 
 ### Logistic Regression Arguments
@@ -219,7 +220,7 @@ Then
 sbatch --output=pef/logreg/output.log submit-logreg-job.sh
 ```
 
-The output file, pef/logreg/output.log, will look something like:
+The output will look something like this:
 
 ```text
 pef/logreg/output.log
@@ -262,12 +263,13 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
-## **UNet**
+## UNet
 
-Change directory
+Change directory and copy image files.
 
 ```bash
-cp -r /software/sambanova/apps/1.10.3-11/image apps/image
+cd ~
+cp -r /software/sambanova/apps/image apps/image
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m

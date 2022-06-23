@@ -16,7 +16,7 @@ The second step is to log in to a SambaNova node from the **login node**.
 
 ![SambaNova System View](Log_in.png "SambaNova System View")
 
-### Login to Login Node
+### Log in to Login Node
 
 Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated every time you log in to the system. This is the same passcode used to authenticate into other ALCF systems, such as Theta and Cooley.
 
@@ -29,7 +29,7 @@ ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
 
 Note: Use the ssh "-v" option in order to debug any ssh problems.
 
-### Login to SambaNova Node
+### Log in to SambaNova Node
 
 Once you are on the login node, the SambaNova system can be accessed using the alias “sm-01” which resolves to hostname sm-01.ai.alcf.anl.gov.
 
