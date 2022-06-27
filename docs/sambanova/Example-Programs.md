@@ -2,10 +2,19 @@
 
 SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
 
++ ALCF
+
 ```bash
 cd ~/
 mkdir apps
 cp -r /software/sambanova/apps/1.11/starters apps/starters
+```
+
++ CELS
+
+```bash
+cd ~/
+cp -r /opt/sambaflow/apps/ .
 ```
 
 ## LeNet
@@ -154,7 +163,7 @@ srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 
-To the run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
+To run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
 
 ```bash
 #!/bin/sh
@@ -267,12 +276,24 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 Change directory and copy image files.
 
++ ALCF
+
 ```bash
 cd ~
 cp -r /software/sambanova/apps/image apps/image
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
+```
+
++ CELS
+
+```bash
+cp -r /lambda_stor/software/sambanova/apps/1.11/image apps/image
+cd ~/apps/image/unet
+cp /homes/ac.rick.weisner/tmp/unet_test/*.sh .
+export OUTDIR=~/apps/image/pytorch/unet
+export DATADIR=/lambda_stor/software/sambanova/dataset/kaggle_3m
 ```
 
 Export the path to the dataset which is required for the training.
