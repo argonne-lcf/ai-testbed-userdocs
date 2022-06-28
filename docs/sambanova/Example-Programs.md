@@ -2,6 +2,8 @@
 
 SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.11/starters`, on the SambaNova compute node sm-01. Make a copy of this to your home directory:
 
+Copy starters to your personal directory structure:
+
 + ALCF
 
 ```bash
@@ -63,6 +65,10 @@ Below are some of the common arguments used across most of the models in the exa
 | --data-folder          | 'mnist_   | Folder containing mnist data   |
 |                        | data'     |                                |
 |                        |           |                                |
+
+**NOTE:  If you receive an \"HTTP error\" message on any of the
+following commands, run the command again. Such errors (e.g 503) are
+commonly an intermittent failure to download a dataset.**
 
 Run these commands:
 
@@ -149,7 +155,7 @@ Log ID initialized to: [ALCFUserID][python][53607] at
 
 ## MNIST - Feed Forward Network
 
-Change directory (if necessary)
+Change directory
 
 ```bash
 cd ~/apps/starters/ffn_mnist/
@@ -178,7 +184,7 @@ sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
 
 ## Logistic Regression
 
-Change directory (if necessary)
+Change directory
 
 ```bash
 cd ~/apps/starters/logreg
@@ -274,13 +280,13 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 ## UNet
 
-Change directory and copy image files.
+Change directory and copy files.
 
 + ALCF
 
 ```bash
 cd ~
-cp -r /software/sambanova/apps/image apps/image
+cp -r /software/sambanova/apps/1.11/image apps/image
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
@@ -289,11 +295,12 @@ export DATADIR=/software/sambanova/dataset/kaggle_3m
 + CELS
 
 ```bash
+cd ~
+export OUTDIR=~/apps/image/pytorch/unet
+export DATADIR=/lambda_stor/software/sambanova/dataset/kaggle_3m
 cp -r /lambda_stor/software/sambanova/apps/1.11/image apps/image
 cd ~/apps/image/unet
 cp /homes/ac.rick.weisner/tmp/unet_test/*.sh .
-export OUTDIR=~/apps/image/pytorch/unet
-export DATADIR=/lambda_stor/software/sambanova/dataset/kaggle_3m
 ```
 
 Export the path to the dataset which is required for the training.
@@ -301,23 +308,31 @@ Export the path to the dataset which is required for the training.
 Run these commands for training (compile + train):
 
 ```bash
-srun python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
-srun python unet.py run --do-train --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --data-dir $DATADIR --log-dir ${OUTDIR} --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
+sbatch unet_compile_run_inf_rl.sh compile 32 1
+sbatch unet_compile_run_inf_rl.sh test 32 1
+sbatch unet_compile_run_inf_rl.sh run 32 1
 ```
 
-Using Slurm:  To use Slurm, create submit-unet-job.sh with the following
+Using SLURM:  To use Slurm, create submit-unet-job.sh with the following
 contents:
 
 ```bash
 #!/bin/sh
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
-python unet.py compile --in-channels=3 --in-width=32 --in-height=32 --init-features 32 --batch-size 1 --pef-name="unet_train" --output-folder=${OUTDIR}
-python unet.py run --do-train  --in-channels=3  --in-width=32  --in-height=32 --init-features 32 --batch-size=1 --data-dir $DATADIR --log-dir ${OUTDIR}/log_dir_unet32_train --epochs 5 --pef=${OUTDIR}/unet_train/unet_train.pef
+unet_compile_run_inf_rl.sh compile 32 1
+unet_compile_run_inf_rl.sh test 32 1
+unet_compile_run_inf_rl.sh run 32 1
 ```
 
 Then
 
 ```bash
 sbatch submit-unet-job.sh
+```
+
+Squeue will give you the queue status.
+
+```bash
+squeue
 ```
