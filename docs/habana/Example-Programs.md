@@ -2,13 +2,21 @@
 
 Example programs are provided below for your use.
 
+## Environment Variable
+
+Set this:
+
+```bash
+export HABANA_LOGS=~/.habana_logs
+```
+
 ## Copy Examples
 
-Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.4.1/Model-References`, on the Habana compute node **habana1** or  **habana2**. Make a copy of this to your home directory:
+Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.5.0/Model-References`, on the Habana compute node **habana1** or  **habana2**. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
-cp -r /lambda_stor/habana/apps/1.4.1/Model-References .
+cp -r /lambda_stor/habana/apps/1.5.0/Model-References .
 ```
 
 One can access the latest version by
@@ -99,25 +107,25 @@ cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
 Single Gaudi FP32 eager mode run command:
 
 ```bash
-python demo_mnist.py --hpu
+python mnist.py --hpu
 ```
 
 Single Gaudi BF16 eager mode run command:
 
 ```bash
-python demo_mnist.py --hpu --hmp
+python mnist.py --hpu --hmp
 ```
 
 Single Gaudi FP32 lazy mode run command:
 
 ```bash
-python demo_mnist.py --hpu --use_lazy_mode
+python mnist.py --hpu --use_lazy_mode
 ```
 
 Single Gaudi BF16 lazy mode run command:
 
 ```bash
-python demo_mnist.py --hpu --hmp --use_lazy_mode
+python mnist.py --hpu --hmp --use_lazy_mode
 ```
 
 #### Multi-HPU run commands
@@ -129,26 +137,26 @@ The HCCL, Habana Collective Communication Library, is used to perform these oper
 
 There are eight Gaudi cards on the system.
 
-Eight Gaudi FP32 eager mode run command:
+On 8 HPU, 1 HLS and in FP32 eager mode, run the following command:
 
 ```bash
-python demo_mnist.py --hpu --data_type fp32 --world_size 8
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu
 ```
 
-Eight Gaudi BF16 eager mode run command:
+On 8 HPU, 1 HLS and in BF16 eager mode, run the following command:
 
 ```bash
-python demo_mnist.py --hpu --data_type bf16 --world_size 8
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt
 ```
 
-Eight Gaudi FP32 lazy mode run command:
+On 8 HPU, 1 HLS and in FP32 lazy mode, run the following command:
 
 ```bash
-python demo_mnist.py --hpu --data_type fp32 --use_lazy_mode --world_size 8
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --use_lazy_mode
 ```
 
-Eight Gaudi BF16 lazy mode run command:
+On 8 HPU, 1 HLS and in BF16 lazy mode, run the following command:
 
 ```bash
-python demo_mnist.py --hpu --data_type bf16 --use_lazy_mode --world_size 8
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt --use_lazy_mode
 ```
