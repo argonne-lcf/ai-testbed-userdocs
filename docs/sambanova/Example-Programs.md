@@ -4,19 +4,10 @@ SambaNova provides examples of some well-known AI applications under the path: `
 
 Copy starters to your personal directory structure:
 
-+ ALCF
-
 ```bash
 cd ~/
 mkdir apps
 cp -r /software/sambanova/apps/1.11/starters apps/starters
-```
-
-+ CELS
-
-```bash
-cd ~/
-cp -r /opt/sambaflow/apps/ .
 ```
 
 ## LeNet
@@ -282,11 +273,9 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 Change directory and copy files.
 
-+ ALCF
-
 ```bash
 cd ~
-cp -r /software/sambanova/apps/1.11/image apps/image
+cp -r /software/sambanova/apps/image apps/image
 cd ~/apps/image/pytorch/unet
 export OUTDIR=~/apps/image/pytorch/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m

@@ -1,6 +1,6 @@
 # Virtual Environments to Customize Environment
 
-## Using Virtualenv
+## Using a Virtual Venv
 
 To create a virtual environment, one can use the --system-site-packages flag:
 

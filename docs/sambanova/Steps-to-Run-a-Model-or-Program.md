@@ -22,7 +22,7 @@ scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and 
 
 ## Compile
 
-Compiles the model and generates a `(.pef)` file. This file contains
+Compiles the model and generates a **.pef** file. This file contains
 information on how to reconfigure the hardware, how many compute and
 memory resources are required and how they will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
