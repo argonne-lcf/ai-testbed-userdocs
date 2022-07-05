@@ -5,8 +5,6 @@ BS=$3
 export OMP_NUM_THREADS=8
 
 source /opt/sambaflow/venv/bin/activate
-UNET=/homes/ac.rick.weisner/tmp/unet_test/unet
-UNET=/opt/sambaflow/apps/image/unet
 NP=0
 
 #export SAMBA_CCL_USE_PCIE_TRANSPORT=1
@@ -21,15 +19,15 @@ echo "Time: " $(date +%H:%M)
 if [ "${1}" == "compile" ] ; then
 echo "COMPILE" 
 
-python ${UNET}/unet.py compile -b ${BS} --in-channels=3 --in-width=${2} --in-height=${2} --enable-conv-tiling --mac-v2 --compiler-configs-file ${UNET}/jsons/compiler_configs/unet_compiler_configs_no_inst.json --pef-name="unet_train_${BS}_${2}" --mac-human-decision ${UNET}/jsons/hd_files/hd_unet_256.json
+python unet.py compile -b ${BS} --in-channels=3 --in-width=${2} --in-height=${2} --enable-conv-tiling --mac-v2 --compiler-configs-file jsons/compiler_configs/unet_compiler_configs_no_inst.json --pef-name="unet_train_${BS}_${2}" --mac-human-decision jsons/hd_files/hd_unet_256.json
 
 elif [ "${1}" == "test" ] ; then
 echo "TEST"
-python ${UNET}/unet.py  test --in-channels=3 --in-width=${2} --in-height=${2} --init-features 32 --batch-size=${BS} --pef="out/unet_train_${BS}_${2}/unet_train_${BS}_${2}.pef" 
+python unet.py  test --in-channels=3 --in-width=${2} --in-height=${2} --init-features 32 --batch-size=${BS} --pef="out/unet_train_${BS}_${2}/unet_train_${BS}_${2}.pef" 
 
 elif [ "${1}" == "run" ] ; then
 echo "RUN"
-python ${UNET}/unet_hook.py  run --num-workers=3 --do-train --in-channels=3 --in-width=${2} --in-height=${2} --init-features 32 --batch-size=${BS} --epochs 50  --data-dir /var/tmp/kaggle_3m  --log-dir log_dir_unet${NP}_train_kaggle --pef=out/unet_train_${BS}_${2}/unet_train_${BS}_${2}.pef > run_${2}_${BS}.log 2>&1
+python unet_hook.py  run --num-workers=3 --do-train --in-channels=3 --in-width=${2} --in-height=${2} --init-features 32 --batch-size=${BS} --epochs 50  --data-dir /var/tmp/kaggle_3m  --log-dir log_dir_unet${NP}_train_kaggle --pef=out/unet_train_${BS}_${2}/unet_train_${BS}_${2}.pef > run_${2}_${BS}.log 2>&1
 
 elif [ "${1}" == "mp" ] ; then
 echo "PERF"
