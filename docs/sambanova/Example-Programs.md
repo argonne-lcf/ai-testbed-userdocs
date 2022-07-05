@@ -277,22 +277,14 @@ Change directory and copy files.
 cd ~
 cp -r /software/sambanova/apps/image apps/image
 cd ~/apps/image/pytorch/unet
-export OUTDIR=~/apps/image/pytorch/unet
-export DATADIR=/software/sambanova/dataset/kaggle_3m
-```
-
-+ CELS
-
-```bash
-cd ~
-export OUTDIR=~/apps/image/pytorch/unet
-export DATADIR=/lambda_stor/software/sambanova/dataset/kaggle_3m
-cp -r /lambda_stor/software/sambanova/apps/1.11/image apps/image
-cd ~/apps/image/unet
-cp /homes/ac.rick.weisner/tmp/unet_test/*.sh .
 ```
 
 Export the path to the dataset which is required for the training.
+
+```bash
+export OUTDIR=~/apps/image/pytorch/unet
+export DATADIR=/software/sambanova/dataset/kaggle_3m
+```
 
 Run these commands for training (compile + train):
 
