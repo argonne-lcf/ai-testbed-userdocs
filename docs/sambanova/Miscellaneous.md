@@ -1,5 +1,20 @@
 # Miscellaneous
 
+## SDK Version
+
+To find the SDK version, run the following commands
+
+```console
+(venv) ALCFUserID@sm-01:~$ python
+Python 3.7.6 (default, Feb 18 2020, 21:28:31) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sambaflow
+>>> sambaflow.__version__
+'1.11.5'
+>>> 
+```
+
 ## OMP_NUM_THREADS
 
 The OMP_NUM_THREADS environment variable sets the number of threads to use for parallel regions.

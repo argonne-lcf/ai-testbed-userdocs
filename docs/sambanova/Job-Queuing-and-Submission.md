@@ -4,7 +4,10 @@
 
 SambaNova uses Slurm for job submission and queueing. Below are some of the important commands for using Slurm. For more information refer to [Slurm Documentation](https://slurm.schedmd.com/).
 
-Note: Run the python scripts using srun or sbatch, to ensure that concurrent jobs do not interfere with each other.
+**NOTE: Run the python scripts using srun or sbatch, to ensure that concurrent jobs do not interfere with each other.**
+
+**NOTE: sm-01 and sm-02 each have a separate scheduler.  If you have already
+ssh'd into one of those nodes, you are all set.**
 
 ## srun
 
