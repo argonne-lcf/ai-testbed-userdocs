@@ -15,34 +15,13 @@ python3 -m venv --system-site-packages ~/TF_venv
 source ~/TF_venv/bin/activate
 ```
 
-```bash
-cd /home/CELSGCEUserID/path/to/project
-PYTHON=`which python` /lambda_stor/habana/scripts/tensorflow_venv_installation.sh --pip_user false
-source ~/.bashrc
-source ~/TF_venv1/bin/activate
-```
-
 #### PyTorch
 
-**NOTE:  The instructions are different for habana1 and habana2.**
-
-##### habana1
-
-To create a virtual environment, one can use the **--system-site-packages** flag:
+To create a virtual environment, one uses the **--system-site-packages** flag:
 
 ```bash
 python3 -m venv --system-site-packages ~/PT_venv
 source ~/PT_venv/bin/activate
-```
-
-##### habana2
-
-To create a virtual environment:
-
-```bash
-python3 -m venv ~/PT_venv
-source ~/PT_venv/bin/activate
-PYTHON=`which python` /lambda_stor/habana/scripts/pytorch_venv_installation.sh -sys
 ```
 
 ### System Site Packages
@@ -51,7 +30,8 @@ There are many packages available on the system.
 Run the following Python script to retrieve the
 location of the packages:
 
-```python
+```console
+python
 import sys
 site_packages_dir = next(p for p in sys.path if 'dist-packages' in p)
 print(site_packages_dir)

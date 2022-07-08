@@ -10,11 +10,11 @@ corresponding commands.
 
 ## Copy Examples
 
-Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.4.1/Model-References`, on the Habana compute node **habana1** or **habana2**. Make a copy of this to your home directory:
+Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.5.0/Model-References`, on the Habana compute node **habana1** or **habana2**. Make a copy of this to your home directory:
 
 ```bash
 cd ~/
-cp -r /lambda_stor/habana/apps/1.4.1/Model-References .
+cp -r /lambda_stor/habana/apps/1.5.0/Model-References .
 ```
 
 ## Set PYTHONPATH
@@ -52,16 +52,11 @@ If **Model-References** is in your root directory, the command would be
 export PYTHONPATH=~/Model-References:$PYTHONPATH
 ```
 
-## Venv
-
-You will need to follow the directions in the Virtual-Environment.pdf for the
-next section to work.
-
 ## Run
 
 This will run the application on a Habana node.
 
 ```bash
 cd ~/Model-References/PyTorch/examples/computer_vision/hello_world
-python demo_mnist.py --hpu
+python mnist.py --hpu
 ```
