@@ -1,13 +1,13 @@
 # Example Programs
 
-SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/1.11/starters`, on both SambaNova compute nodes. Make a copy of this to your home directory:
+SambaNova provides examples of some well-known AI applications under the path: `/software/sambanova/apps/latest/starters`, on both SambaNova compute nodes. Make a copy of this to your home directory:
 
 Copy starters to your personal directory structure:
 
 ```bash
 cd ~/
 mkdir apps
-cp -r /software/sambanova/apps/1.11/starters apps/starters
+cp -r /software/sambanova/apps/latest/starters apps/starters
 ```
 
 ## LeNet
