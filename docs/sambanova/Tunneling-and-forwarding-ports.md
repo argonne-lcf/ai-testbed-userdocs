@@ -27,6 +27,8 @@ Password: < MobilPass+ code >
 
 ### From **sambanova.alcf.anl.gov**
 
+You may use **sm-02** instead of **sm-01** in the following examples.
+
 Run
 
 **NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**

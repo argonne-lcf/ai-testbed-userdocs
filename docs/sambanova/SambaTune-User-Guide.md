@@ -23,10 +23,11 @@ virtualenv --system-site-packages -p python3.7 ~/venv
 source ~/venv/bin/activate
 ```
 
-Then, a system administrator needs install the sambatune package:
+A system administrator should have already installed the following packages:
 
 ```bash
 sudo apt install sambanova-sambatune
+pip install termcolor openpyxl
 ```
 
 © 2022 SambaNova Systems, Inc. Proprietary and Confidential Information

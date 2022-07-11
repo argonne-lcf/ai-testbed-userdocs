@@ -15,7 +15,7 @@ The SambaNova workflow includes the following main steps to run a model.
 2. Run
 3. Test (optional)
 
-The system uses the [SLURM job
+The system uses the [Slurm job
 scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manage the workload on the system. For more information on Slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
 
 [Example Programs](Example-Programs.md) lists the different example applications with corresponding commands for each of the above steps.
