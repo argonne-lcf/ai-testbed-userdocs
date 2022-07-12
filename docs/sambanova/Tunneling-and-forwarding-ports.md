@@ -27,7 +27,7 @@ Password: < MobilPass+ code >
 
 ### From **sambanova.alcf.anl.gov**
 
-You may use **sm-02** instead of **sm-01** in the following examples.
+Below are the commands specific to sm-01. You may replace **sm-01** with **sm-02** when using the appropriate system.
 
 Run
 
