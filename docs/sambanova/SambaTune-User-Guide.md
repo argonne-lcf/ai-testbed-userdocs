@@ -81,6 +81,10 @@ configurations. Example using **linear_net.yaml**:
 
 ```bash
 sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark'
+sambatune app.yaml --artifact-root ARTIFACT_ROOT -m ‘benchmark’,‘instrument’,‘train’
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m ‘benchmark’,‘instrument’,‘train’
+
 ```
 
 © 2022 SambaNova Systems, Inc. Proprietary and Confidential Information
