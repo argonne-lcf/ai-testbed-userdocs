@@ -15,18 +15,18 @@ The SambaNova workflow includes the following main steps to run a model.
 2. Run
 3. Test (optional)
 
-The system uses the [SLURM job
+The system uses the [Slurm job
 scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and manage the workload on the system. For more information on Slurm, see [Job Queueing and Submission](Job-Queuing-and-Submission.md).
 
 [Example Programs](Example-Programs.md) lists the different example applications with corresponding commands for each of the above steps.
 
 ## Compile
 
-Compiles the model and generates a `(.pef)` file. This file contains
-information on how to reconfigure the hardware, as to how many compute and
-memory resources are required and how it will be used in all subsequent steps.
+Compiles the model and generates a **.pef** file. This file contains
+information on how to reconfigure the hardware, how many compute and
+memory resources are required and how they will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
-SambaNova documentation advises to save pef files in separate
+SambaNova documentation advises saving pef files in separate
 directories with the '--output-folder' option.
 
 It is necessary to re-compile only when the model changes, or parameters specific to the model graph change, including the batch size.  
@@ -55,7 +55,7 @@ This will run the application on SN nodes.
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
 
-The location of the **pef** file generated in the compile step is passed as an argument to run command.
+The location of the **pef** file generated in the compile step is passed as an argument to the run command.
 
 ## Test (Optional)
 

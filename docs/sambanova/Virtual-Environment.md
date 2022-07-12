@@ -1,6 +1,6 @@
 # Virtual Environments to Customize Environment
 
-## Using Virtualenv
+## Using a Virtual Venv
 
 To create a virtual environment, one can use the --system-site-packages flag:
 
@@ -44,4 +44,4 @@ To install a different version of a package that is already installed in one's e
 pip install --ignore-installed  ... # or -I
 ```
 
-Note: Conda is not supported on the Sambanova system.
+Note: Conda is not supported on the SambaNova system.
