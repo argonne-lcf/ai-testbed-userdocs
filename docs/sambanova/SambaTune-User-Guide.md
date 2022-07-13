@@ -160,7 +160,9 @@ and point your localhost browser to http://localhost:5050 and use the username a
 password printed on the console; keep your docker running so-long as you are using the
 SambaTune UI.
 
-**TODO: Insert picture here.**
+![SambaTune UI](ST_UI.jpg "SambaTune UI")
+
+![SambaTune Console](ST_console.jpg "SambaTune Console")
 
 ### Python Wheel Package Installation
 
