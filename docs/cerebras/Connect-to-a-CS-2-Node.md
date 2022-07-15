@@ -20,10 +20,18 @@ To connect to a CS-2 ("chief") node:<br>
     ```
 2. From the login node, ssh to the destination CS-2 chief node:
     ```bash
+    ssh cs2-01-med1
+    ```
+    or
+    ```bash
     ssh cs2-02-med8
     ```
 
 Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
+```console
+ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-01-med1
+```
+or
 ```console
 ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8
 ```
@@ -32,11 +40,12 @@ Verify that the connection was successful with
 ```bash
 uname -a
 ```
-and by making sure the output message contains `testbed-cs2-02-med8` and <strong>not</strong> `cs-login`.
+and by making sure the output message contains `testbed-cs2-01-med1` or `testbed-cs2-02-med8`, and <strong>not</strong> `cs-login`.
 
+<!---
 ## Setup the environment
 
-After ssh'ing to the CS-02 chief node,
+After ssh'ing to a CS-02 chief node,
 
 ```console
 source /software/cerebras/cs2-02/envs/cs_env.sh
@@ -48,3 +57,4 @@ The contents of the `cs_env.sh script` is shown below.
 export PATH=$PATH:/software/cerebras/cs2-02/bin
 export CS_IP=192.168.220.50
 ```
+--->

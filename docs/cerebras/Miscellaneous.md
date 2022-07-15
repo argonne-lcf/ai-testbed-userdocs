@@ -48,16 +48,16 @@ from: cbcore:1.1.1-202203171919-5-6e2dbf07
 ...$
 --->
 
-## Viewing the Cerebras V 1.1 documentation
-The Cerebras V 1.1 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
+## Viewing the Cerebras V 1.3 documentation
+The Cerebras V 1.3 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
 *Change the <strong>ALCFUserID</strong> to your id.*<br>
 If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
 ```console
-ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.1/;python3 -m http.server 8089"
+ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  "cd /software/cerebras/docs/V1.3/;python3 -m http.server 8089"
 ```
 To view the documentation, copy the url into your browser as indicated in the output of the above command (e.g., `http://0.0.0.0:8089/`).
 
-This v 1.1 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.1.tar
+This v 1.3 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.3.tar
 
 ## Copying files
 To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:

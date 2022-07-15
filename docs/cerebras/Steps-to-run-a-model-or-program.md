@@ -11,13 +11,14 @@ Follow the instructions in section [Connect to a CS-2 node](./Connect-to-a-CS-2-
 <!---
 #### Cerebras SIF container:<br>
 The Cerebras Singularity container (SIF) is used for all work with the Cerebras software, and includes the Cerebras Graph Compiler (CGC) and other necessary software.</br>
-Its path is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
+Its path on cs2-01 is /software/cerebras/cs2-01/container/cbcore_latest.sif<br>
+Its path on cs2-02 is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
 --->
 
 #### Slurm:
 
-Slurm is installed and running on all the CPU nodes. The coordination between the Cerebras system and the nodes in the Cerebras cluster is performed by Slurm. See section
+Slurm is installed and running on all the CPU nodes. The coordination between a Cerebras system and the nodes in a Cerebras cluster is performed by Slurm. See section
 [Job Queueing and Submission](Job-Queuing-and-Submission.md) for more details.</br>
 <!---
 [TODO Verify that a csrun_wse job locks the CS-2 wafer for exclusive use; if not, then it will need to be fixed. (Even with a hack like exclusively reserving >50% of the worker nodes by default)]
@@ -25,14 +26,19 @@ Slurm is installed and running on all the CPU nodes. The coordination between th
 
 #### Worker hostnames:<br>
 <!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-7].ai.alcf.anl.gov<br>--->
-The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the CS-2 are cs2-02-med[2-7].<br>
+The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the cs2-01 cluster are cs2-01-med[2-9].<br>
+The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the cs2-02 cluster are cs2-02-med[2-7].<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
 #### CS_IP address of the Cerebras system:
 
-<!---The first CS-2 uses CS_IP 192.168.220.30<br>--->
-The CS-2 system can be accessed using the `CS_IP` `192.168.220.50`<br>
-The `CS_IP` environment variable is set to this value by the `/software/cerebras/cs2-02/envs/cs_env.sh` script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.
+The CS-2 systems can be accessed using the `CS_IP` environment variable. This is set automatically on login.<br>
+The CS_IP for cs2-01 is `192.168.220.30`<br>
+The CS_IP for cs2-02 is `192.168.220.50`<br>
+
+<!---The `CS_IP` environment variable is set to this value by the `/software/cerebras/cs2-02/envs/cs_env.sh` script, and the `$CS_IP` variable may be used by any user application that needs to access the CS-2 wafer.--->
+
+
 
 #### Running slurm jobs:<br>
 
@@ -51,7 +57,7 @@ cd ~/
 mkdir ~/R1.1.0/
 cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
 cd ~/R1.1.0/modelzoo/fc_mnist/tf
-csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
+csrun_wse python run.py --mode train --cs_ip $CS_IP --max_steps 100000
 ```
 
 You should see a training rate of about 1870 steps per second, and output that finishes with something similar to this:
@@ -66,8 +72,8 @@ To separately compile and train,
 ```bash
 # delete any existing compile artifacts and checkpoints
 rm -r model_dir
-csrun_cpu python run.py --mode train --compile_only --cs_ip 192.168.220.50
-csrun_wse python run.py --mode train --cs_ip 192.168.220.50 --max_steps 100000
+csrun_cpu python run.py --mode train --compile_only --cs_ip $CS_IP
+csrun_wse python run.py --mode train --cs_ip $CS_IP --max_steps 100000
 ```
 
 The training will reuse an existing compilation if no changes were made that force a recompile, and will start from the newest checkpoint file if any. Compiles may be done while another job is using the wafer.
