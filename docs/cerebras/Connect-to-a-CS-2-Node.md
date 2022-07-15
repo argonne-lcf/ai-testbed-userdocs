@@ -42,7 +42,7 @@ uname -a
 ```
 and by making sure the output message contains `testbed-cs2-01-med1` or `testbed-cs2-02-med8`, and <strong>not</strong> `cs-login`.
 
-<!---
+<!--- This is now all set automatically
 ## Setup the environment
 
 After ssh'ing to a CS-02 chief node,

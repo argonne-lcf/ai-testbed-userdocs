@@ -54,9 +54,9 @@ Follow these instructions to compile and train the `fc_mnist` TensorFlow estimat
 
 ```console
 cd ~/
-mkdir ~/R1.1.0/
-cp -r /software/cerebras/model_zoo/modelzoo-R1.1.0 ~/R1.1.0/modelzoo
-cd ~/R1.1.0/modelzoo/fc_mnist/tf
+mkdir ~/R1.3.0_2/
+cp -r /software/cerebras/model_zoo/modelzoo-R1.3.0_2 ~/R1.3.0_2/modelzoo
+cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip $CS_IP --max_steps 100000
 ```
 
@@ -107,8 +107,13 @@ This illustrates how to create a singularity container.
 The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 
 ```console
-cd ~/R1.1.0/modelzoo/fc_mnist/tf
+cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
 singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif
+```
+or, on cs2-01,
+```console
+cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
+singularity shell -B /opt:/opt /software/cerebras/cs2-01/container/cbcore_latest.sif
 ```
 
 At the shell prompt for the container,

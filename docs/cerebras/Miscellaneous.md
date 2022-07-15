@@ -17,17 +17,7 @@ When porting, it is often helpful to study a related example in the Cerebras mod
 A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo-R1.1.0/```<br>
 Both the `README.md` files and source code in the modelzoo can be quite helpful.
 
-## PyTorch Support
-The PyTorch samples in Cerebras release 1.1 are a preview of of the release 1.2 support. See below for the commands to run a basic sample.
-```console
-cd ~/modelzoo-R1.1.0/fc_mnist/pytorch
-rm -r model_dir/
-csrun_cpu python-pt run.py --mode train --compile_only --params configs/params.yaml
-csrun_cpu python-pt run.py --mode train --params configs/params.yaml  --cs_ip 192.168.220.50:9000
-```
-
 ## Determining the CS-2 version
-
 
 <!---
 [TODO should this API/auth string be made public? Alternative supplied that inspects the singularity container.]
@@ -39,15 +29,24 @@ Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
 ...$ # Query the software level in the singularity image
 ...$ singularity sif dump 1 /software/cerebras/cs2-02/container/cbcore_latest.sif | grep "from"
 from: cbcore:1.1.1-202203171919-5-6e2dbf07
+...# or singularity sif dump 1 /software/cerebras/cs2-01/container/cbcore_latest.sif | grep "from"
 ...$
+
+These queries will only work on cs2-01 due to networking idiosyncrasies:
 ```
-<!---
-...$ # Query the firmware level
+...$ # Query the firmware level for cs2-01
+...$ curl -k -X GET 'https://192.168.120.30/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion
+"FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",
+...$
+
+...$ # Query the firmware level for cs2-02 (from cs2-01)
 ...$ curl -k -X GET 'https://192.168.120.50/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion
 "FirmwareVersion": "1.1.1-202203171919-5-879ff4ef",
 ...$
---->
 
+```
+
+<!---
 ## Viewing the Cerebras V 1.3 documentation
 The Cerebras V 1.3 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
 *Change the <strong>ALCFUserID</strong> to your id.*<br>
@@ -64,6 +63,7 @@ To copy a file to your CS-2 home dir, replacing <strong>both instances</strong> 
 ```console
 scp -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" filename ALCFUserID@cs2-02-med8:~/
 ```
+--->
 
 To copy a file from your CS-2 home dir to the current local directory, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
 ```console
