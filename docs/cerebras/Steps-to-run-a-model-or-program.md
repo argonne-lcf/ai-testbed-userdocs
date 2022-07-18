@@ -27,7 +27,7 @@ Slurm is installed and running on all the CPU nodes. The coordination between a 
 #### Worker hostnames:<br>
 <!---The worker nodes for the 1st CS-2 are testbed-cs2-01-med[2-7].ai.alcf.anl.gov<br>--->
 The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the cs2-01 cluster are cs2-01-med[2-9].<br>
-The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the cs2-02 cluster are cs2-02-med[2-7].<br>
+The worker nodes (see the first diagram in [System Overview](System-Overview.md#system-overview)) for the cs2-02 cluster are cs2-02-med[1-7].<br>
 You may occasionally need to log into a specific worker node for debugging purposes.
 
 #### CS_IP address of the Cerebras system:
