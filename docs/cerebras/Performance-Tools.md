@@ -24,7 +24,7 @@ For more details, see the Cerebras documentation: [Compile Report](https://docs.
 Consider using multiple model replicas if the model is only filling a small part of the wafer.<br>
 See
 [https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
-For code samples with multireplica support, see `/software/cerebras/model_zoo/anl_shared-R1.1.0/braggnn/tf/` and `/software/cerebras/model_zoo/modelzoo-R1.1.0/fc_mnist/tf/`.
+For code samples with multireplica support, see `/software/cerebras/model_zoo/anl_shared/braggnn/tf/` and `/software/cerebras/model_zoo/modelzoo/fc_mnist/tf/`.
 
 <!---[TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]--->
 

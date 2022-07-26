@@ -20,20 +20,20 @@ To connect to a CS-2 ("chief") node:<br>
     ```
 2. From the login node, ssh to the destination CS-2 chief node:
     ```bash
-    ssh cs2-01-med1
+    ssh cs2-01-master
     ```
     or
     ```bash
-    ssh cs2-02-med8
+    ssh cs2-02-master
     ```
 
 Alternatively, this maybe done in one command line from the local machine. (two passcodes required):
 ```console
-ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-01-med1
+ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-01-master
 ```
 or
 ```console
-ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-med8
+ssh -o "ProxyJump ALCFUserID@cerebras.alcf.anl.gov" ALCFUserID@cs2-02-master
 ```
 
 Verify that the connection was successful with

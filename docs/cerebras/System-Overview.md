@@ -2,12 +2,10 @@
 
 The Cerebras CS-2 is a wafer-scale deep learning accelerator comprising 850,000 processing cores, each providing 48KB of dedicated SRAM memory for an on-chip total of 40GB and interconnected to optimize bandwidth and latency. Its software platform integrates popular machine learning frameworks such as TensorFlow and PyTorch.
 
-For an overview of the Cerebras CS-2 system, see this whitepaper:
-<a href="https://f.hubspotusercontent30.net/hubfs/8968533/Cerebras-CS-2-Whitepaper.pdf">Cerebras Systems: Achieving Industry Best AI Performance Through A Systems Approach</a>.
+For an overview of the Cerebras CS-2 system, see this whitepaper:<br>
+<a href="https://cerebras.net/wp-content/uploads/2021/04/Cerebras-CS-2-Whitepaper.pdf">Cerebras Systems: Achieving Industry Best AI Performance Through A Systems Approach</a>.
 
 The public Cerebras documentation is available [here](https://docs.cerebras.net/en/latest/index.html).
-
-Instructions for viewing the release 1.3.0 documentation are at [Viewing the Cerebras v 13 Documentation](Miscellaneous.md#viewing-the-cerebras-v-13-documentation).
 
 A typical CS-2 cluster is as shown in the figure.<br>
 On the first Argonne CS-2 cluster(cs2-01), the eight worker nodes and the chief node each have a AMD EPYC 7702P 64-Core Processor totalling 64 cores and 128 GB memory.<br>
