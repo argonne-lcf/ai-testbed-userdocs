@@ -1,5 +1,25 @@
 # SambaTune User Guide
 
+## Notes
+
+```text
+From Sid:
+Exact command on sm-02
+sambatune_ui --directory /home/sraskar/tune/sambatune_gen --port 8576
+Command used on laptop for port forward
+ssh -XL 8576:127.0.0.1:8576 sm-02.cels.anl.gov
+address used in browser on laptop localhost:8576
+```
+
+```text
+#TODOBRW
+On sm-02
+sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
+Command used on laptop for port forward
+ssh -XL 8580:127.0.0.1:8580 sm-02.cels.anl.gov
+address used in browser on laptop localhost:8580
+```
+
 ## About SambaTune
 
 SambaTune is a tool for profiling, debugging and tuning performance of applications
@@ -15,6 +35,12 @@ SambaTune is also planned for release to external customers to aid with performa
 bottleneck analysis and resolution.
 
 ## Installation
+
+```bash
+ssh wilsonb@sambanova.alcf.anl.gov
+MobilePass+ pwd
+ssh sm-01
+```
 
 First, enter the virtual environment on **sm-01** or **sm-02**:
 
@@ -53,7 +79,9 @@ version of sambatune and sambaflow.
 Let’s get started with a simple run:
 
 ```bash
-sambatune linear.yaml
+mkdir ~/tmp
+cd ~/tmp
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m benchmark
 ```
 
 where **linear.yaml** is a user-specified configuration file:
@@ -69,15 +97,15 @@ Once you have the sambaflow-apps package installed, you can use some pre-defined
 configurations. Example using **linear_net.yaml**:
 
 ```bash
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark'
+xsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml
+xsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark'
 xxsambatune app.yaml --artifact-root ARTIFACT_ROOT -m ‘benchmark’,‘instrument’,‘train’
 xxsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark','instrument','train'
 
 
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark'
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'instrument'
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'run'
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m benchmark
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m instrument
+sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m run
 
 ```
 
@@ -129,7 +157,7 @@ instance or bring it up as a python wheel package. Both assume sambatune_ui is
 installed on the **client** system where you don’t have direct access to RDU unlike the **host**
 system.
 
-### Docker Installation
+#### Docker Installation
 
 In your client OS pull the docker image from the SambaNova artifactory as follows,
 
@@ -164,15 +192,30 @@ SambaTune UI.
 
 ![SambaTune Console](ST_console.jpg "SambaTune Console")
 
-### Python Wheel Package Installation
+#### Python Wheel Package Installation
+
+If necessary,
+
+```bash
+sudo apt install python3-virtualenv
+```
 
 In your client OS (Unbuntu/Mac/Windows) system you are using to connect to the UI,
 install the pre-requisites like virtualenv and Python v3.7. Initialize the virtual
 environment,
 
 ```bash
+cd ~
 virtualenv --system-site-packages -p python3.7 venv
 source venv/bin/activate
+```
+
+```bash
+#TODOBRW
+cd ~
+mkdir -p ~/venvs/sambanova
+python3 -m virtualenv --system-site-packages -p python3.8 ~/venvs/sambanova/venv_st
+source ~/venvs/sambanova/venv_st/bin/activate
 ```
 
 Next install the **sambatune_client** wheel package to get the **sambatune_ui** command
