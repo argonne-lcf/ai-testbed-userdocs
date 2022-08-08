@@ -16,6 +16,11 @@ Its path on cs2-02 is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
 --->
 
+#### Weight Streaming mode:
+The cs2-02 system is in weight streaming mode. (See the [Weight Streaming Quickstart](https://docs.cerebras.net/en/latest/getting-started/weight-streaming-quickstart.html).)
+Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models than does pipelined mode. This mode is new, and the support is limited; only a limited number of mode model layers are supported.
+The cs2-01 system is in pipelined mode. This mode has more mature software support than does weight streaming mode.
+
 #### Slurm:
 
 Slurm is installed and running on all the CPU nodes. The coordination between a Cerebras system and the nodes in a Cerebras cluster is performed by Slurm. See section
@@ -54,9 +59,9 @@ Follow these instructions to compile and train the `fc_mnist` TensorFlow estimat
 
 ```console
 cd ~/
-mkdir ~/R1.3.0_2/
-cp -r /software/cerebras/model_zoo/modelzoo-R1.3.0_2 ~/R1.3.0_2/modelzoo
-cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
+mkdir ~/R1.4/
+cp -r /software/cerebras/model_zoo/modelzoo ~/R1.4/modelzoo
+cd ~/R1.4/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip $CS_IP --max_steps 100000
 ```
 
@@ -107,12 +112,12 @@ This illustrates how to create a singularity container.
 The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 
 ```console
-cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
+cd ~/R1.4/modelzoo/fc_mnist/tf
 singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif
 ```
 or, on cs2-01,
 ```console
-cd ~/R1.3.0_2/modelzoo/fc_mnist/tf
+cd ~/R1.4/modelzoo/fc_mnist/tf
 singularity shell -B /opt:/opt /software/cerebras/cs2-01/container/cbcore_latest.sif
 ```
 
