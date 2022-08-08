@@ -16,11 +16,6 @@ Its path on cs2-02 is /software/cerebras/cs2-02/container/cbcore_latest.sif<br>
 It is used by the csrun_cpu and csrun_wse scripts, and can also be used directly with singularity.<br>
 --->
 
-#### Weight Streaming mode:
-The cs2-02 system is in weight streaming mode. (See the [Weight Streaming Quickstart](https://docs.cerebras.net/en/latest/getting-started/weight-streaming-quickstart.html).)
-Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models than does pipelined mode. This mode is new, and the support is limited; only a limited number of mode model layers are supported.
-The cs2-01 system is in pipelined mode. This mode has more mature software support than does weight streaming mode.
-
 #### Slurm:
 
 Slurm is installed and running on all the CPU nodes. The coordination between a Cerebras system and the nodes in a Cerebras cluster is performed by Slurm. See section
@@ -52,6 +47,13 @@ Cerebras includes two scripts for running slurm jobs.<br>
 `csrun_wse` is for running a job on the wafer scale engine. By default it reserves five entire worker nodes, which are used to feed the dataset to the CS2 wafer.<br>
 ```csrun_cpu --help``` and ```csrun_wse --help``` will list the available options.<br>
 See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more details.
+
+#### Execution mode:</br>
+The cs2-02 system supports two modes of execution.<br>
+1. Pipeline mode (default mode)<br>
+2. Weight streaming mode.(See the Weight Streaming Quickstart.)<br>
+Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models than does pipelined mode. This mode is new, and the support is limited; only a limited number of model layers are supported.<br>
+The current cs2-01 system is in pipelined mode. This mode has more mature software support than does weight streaming mode. cs2-02 is configured for weight streaming mode, which is a work in progress. 
 
 ## Running a training job on the wafer
 
@@ -86,6 +88,34 @@ The training will reuse an existing compilation if no changes were made that for
 See also the current Cerebras quickstart documentation, that uses a clone of Cerebras's abbreviated public "reference implementations" github repo rather than the full modelzoo.<br>
 [https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html](https://docs.cerebras.net/en/latest/getting-started/cs-tf-quickstart.html)<br>
 [https://github.com/Cerebras/cerebras_reference_implementations/](https://github.com/Cerebras/cerebras_reference_implementations/)
+
+## Running a training job on the wafer in weight streaming mode
+Log into the chief node for cs2-02, which is configured for weight streaming.
+If not already done, copy the modelzoo tree:
+
+```console
+cd ~/
+mkdir ~/R1.4/
+cp -r /software/cerebras/model_zoo/modelzoo ~/R1.4/modelzoo
+```
+then change to the TensorFlow GPT2 directory:
+```
+cd ~/R1.4/modelzoo/transformers/tf/gpt2
+```
+then edit the two instances of data_dir in configs/params_gpt2_small_ws.yaml (or in a copy of that file) as follows:
+```
+<     data_dir: "./input/pile_pretraining_gpt/train_msl2048/"
+---
+>     data_dir: "/software/cerebras/dataset/transformers/owt/openwebtext/owt_tfrecords_gpt2_msl2048/train/"
+<     data_dir: "./input/pile_pretraining_gpt/val_msl2048/"
+---
+>     data_dir: "/software/cerebras/dataset/transformers/owt/openwebtext/owt_tfrecords_gpt2_msl2048/val/"
+```
+then
+```console
+csrun_wse --cyclic --total-nodes=4 --single-task-nodes=2 python-ws run.py  -p configs/params_gpt2_small.yaml  -m train --model_dir gpt2_small_owt_2048 --cs_ip $CS_IP
+```
+
 
 ## Running a training job on the CPU
 

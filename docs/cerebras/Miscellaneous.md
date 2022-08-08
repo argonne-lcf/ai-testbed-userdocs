@@ -36,7 +36,7 @@ from: cbcore:1.1.1-202203171919-5-6e2dbf07
 ```
 --->
 
-These queries will only work on cs2-01 due to networking idiosyncrasies:
+These queries will only work on cs2-01 due to networking constraints:
 ```
 ...$ # Query the firmware level for cs2-01
 ...$ curl -k -X GET 'https://192.168.120.30/redfish/v1/Managers/manager' --header 'Authorization: Basic YWRtaW46YWRtaW4=' 2> /dev/null  | python -m json.tool | grep FirmwareVersion
