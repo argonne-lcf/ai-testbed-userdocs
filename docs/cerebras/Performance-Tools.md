@@ -24,7 +24,7 @@ For more details, see the Cerebras documentation: [Compile Report](https://docs.
 Consider using multiple model replicas if the model is only filling a small part of the wafer.<br>
 See
 [https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html](https://docs.cerebras.net/en/latest/tensorflow-docs/multiple-models/multi-replica-data-parallel-training.html)<br>
-For code samples with multireplica support, see `/software/cerebras/model_zoo/anl_shared-R1.1.0/braggnn/tf/` and `/software/cerebras/model_zoo/modelzoo-R1.1.0/fc_mnist/tf/`.
+For code samples with multireplica support, see `/software/cerebras/model_zoo/anl_shared/braggnn/tf/` and `/software/cerebras/model_zoo/modelzoo/fc_mnist/tf/`.
 
 <!---[TODO are there other compilation artifacts in the model directory that are worth describing? What about checkpoint files (which need to be delete to rerun tests)?]--->
 
@@ -38,6 +38,6 @@ Search the compile console output for any WARNING lines with the substring "inpu
 [https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html](https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html)
 
 ## Cerebra's Input Analyzer
-In version 1.2, Cerebras introduces the `cs_input_analyzer` script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
+In version 1.2, Cerebras introduced the `cs_input_analyzer` script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
 [https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html](https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html)
 
