@@ -2,17 +2,20 @@
 
 ## Porting applications to the CS-2
 
-Cerebras’s Python support is built around [Cerebras Estimator](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/example-walk-through-cs-estimator.html?highlight=estimator), which inherits from [TensorFlow Estimator](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator).<br>
+Cerebras’s mature Python support is built around [Cerebras Estimator](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/example-walk-through-cs-estimator.html?highlight=estimator), which inherits from [TensorFlow Estimator](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator).<br>
 A Keras model can be converted to TF Estimator, and hence to a Cerebras Estimator. See [https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator](https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator) for more information on conversion of Keras models.<br>
+
+Cerebras has recently introduced PyTorch support. The PyTorch support is documented at [Cerebras Software Documentation](https://docs.cerebras.net/en/latest/) in the section DEVELOP WITH PYTORCH. 
 
 Cerebras has guides for porting TensorFlow and PyTorch models:<br>
 [Port TensorFlow to Cerebras](https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html)</br>
 [Porting PyTorch Model to CS](https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html)<br>
-This is Cerebras's list of the TensorFlow layers that they support (for version 1.2): 
-[https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html](https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html)
+This is Cerebras's list of the TensorFlow layers that they support (for the current version): [Supported TensorFlow Layers](https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html)<br>
+This is Cerebras's list of the PyTorch operations supported (for the current version): [Supported PyTorch Ops](https://docs.cerebras.net/en/latest/pytorch-docs/pytorch-ops.html)
+
 
 When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
-A copy of the modelzoo is at ```/software/cerebras/model_zoo/modelzoo/```<br>
+A copy of the modelzoo for the install release is at ```/software/cerebras/model_zoo/modelzoo/```<br>
 Both the `README.md` files and source code in the modelzoo can be quite helpful.
 
 ## Determining the CS-2 version

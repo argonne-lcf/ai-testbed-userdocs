@@ -38,6 +38,6 @@ Search the compile console output for any WARNING lines with the substring "inpu
 [https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html](https://docs.cerebras.net/en/latest/compiler-reports/input-function-report.html)
 
 ## Cerebra's Input Analyzer
-In version 1.2, Cerebras introduces the `cs_input_analyzer` script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
+In version 1.2, Cerebras introduced the `cs_input_analyzer` script, which compiles the code, analyses the input pipeline, then suggests a slurm configuration and estimates the input performance. <br>
 [https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html](https://docs.cerebras.net/en/latest/scripts-and-templates/cs-input-analyzer.html)
 
