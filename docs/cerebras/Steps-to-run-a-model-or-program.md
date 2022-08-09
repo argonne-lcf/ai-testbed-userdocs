@@ -49,11 +49,13 @@ Cerebras includes two scripts for running slurm jobs.<br>
 See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more details.
 
 #### Execution mode:</br>
-The cs2-02 system supports two modes of execution.<br>
+The cs2 system supports two modes of execution.<br>
 1. Pipeline mode (default mode)<br>
-2. Weight streaming mode.(See the Weight Streaming Quickstart.)<br>
-Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models than does pipelined mode. This mode is new, and the support is limited; only a limited number of model layers are supported.<br>
-The current cs2-01 system is in pipelined mode. This mode has more mature software support than does weight streaming mode. cs2-02 is configured for weight streaming mode, which is a work in progress. 
+The current cs2-01 system is in pipelined mode. This mode has more mature software support when compared to the weight streaming mode.<br>
+2. Weight streaming mode.(See the [Weight Streaming Quickstart](https://docs.cerebras.net/en/latest/getting-started/weight-streaming-quickstart.html?highlight=weight%20streaming).)<br>
+Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models compared to pipelined mode.<br>
+Weight streaming mode is newly introduced in Rel 1.4, and supports only a  limited number of model layers.<br>
+cs2-02 is configured for weight streaming mode.
 
 ## Running a training job on the wafer
 
