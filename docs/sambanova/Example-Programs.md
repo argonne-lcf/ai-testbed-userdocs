@@ -7,7 +7,7 @@ Copy starters to your personal directory structure:
 ```bash
 cd ~/
 mkdir apps
-cp -r /software/sambanova/apps/latest/starters apps/starters
+cp -r /opt/sambaflow/apps/starters apps/starters
 ```
 
 ## LeNet
@@ -90,6 +90,8 @@ Squeue will give you the queue status.
 
 ```bash
 squeue
+# One may also...
+watch squeue
 ```
 
 The output file will look something like this:
@@ -164,9 +166,9 @@ To run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh w
 
 ```bash
 #!/bin/sh
-srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
-srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
+python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
+python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
+python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 
 ```bash
@@ -214,7 +216,6 @@ To use Slurm, create submit-logreg-job.sh with the following contents:
 
 ```bash
 #!/bin/sh
-
 python logreg.py compile --pef-name="logreg" --output-folder="pef"
 python logreg.py test --pef="pef/logreg/logreg.pef"
 python logreg.py run --pef="pef/logreg/logreg.pef"
@@ -274,36 +275,38 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 Change directory and copy files.
 
 ```bash
-cd ~
-cp -r /software/sambanova/apps/image apps/image
-cd ~/apps/image/pytorch/unet
+cp -r /opt/sambaflow/apps/image ~/apps/image
+cd ~/apps/image/unet
+cp /software/sambanova/apps/image/pytorch/unet/*.sh .
 ```
 
 Export the path to the dataset which is required for the training.
 
 ```bash
-export OUTDIR=~/apps/image/pytorch/unet
+export OUTDIR=~/apps/image/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
 ```
 
 Run these commands for training (compile + train):
 
 ```bash
-sbatch unet_compile_run_inf_rl.sh compile 32 1
-sbatch unet_compile_run_inf_rl.sh test 32 1
-sbatch unet_compile_run_inf_rl.sh run 32 1
+sbatch unet_compile_run_inf_rl.sh compile 32 1  # Takes over 15 minutes.
+sbatch unet_compile_run_inf_rl.sh test 32 1     # Very fast.
+sbatch unet_compile_run_inf_rl.sh run 32 1      # 
 ```
+
+The output files are named **slurm-\<batch ID\>.out**.
 
 Using SLURM:  To use Slurm, create submit-unet-job.sh with the following
 contents:
 
 ```bash
 #!/bin/sh
-export OUTDIR=~/apps/image/pytorch/unet
+export OUTDIR=~/apps/image/unet
 export DATADIR=/software/sambanova/dataset/kaggle_3m
-unet_compile_run_inf_rl.sh compile 32 1
-unet_compile_run_inf_rl.sh test 32 1
-unet_compile_run_inf_rl.sh run 32 1
+./unet_compile_run_inf_rl.sh compile 32 1
+./unet_compile_run_inf_rl.sh test 32 1
+./unet_compile_run_inf_rl.sh run 32 1
 ```
 
 Then
