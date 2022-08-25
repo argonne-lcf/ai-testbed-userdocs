@@ -30,6 +30,12 @@ Username
 Password
 ```
 
+### Rick
+
+8/24/2022
+
+I have updated ~rweisner/tmp/sambatune with sambatune_ui 1.1 and updated the readme.
+
 ## About SambaTune
 
 SambaTune is a tool for profiling, debugging, and tuning performance of applications
