@@ -2,10 +2,17 @@
 
 ## Run
 
-To run
-sambatune configfile --artifact_root $(pwd)/artifact_root --modes benchmark instrument run
+### Running
 
-samples config file
+Run the following example on sm-01 or sm-02:
+
+```bash
+sambatune configfile --artifact_root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
+### Samples Config File
+
+```yaml
 small_vae.yaml:
 app: /opt/sambaflow/apps/private/anl/moleculevae.py
 
@@ -20,55 +27,95 @@ env:
      SF_RNT_FSM_POLL_BUSY_WAIT: 1
      SF_RNT_DMA_POLL_BUSY_WAIT: 1
      CONVFUNC_DEBUG_RUN: 0
+```
 
-To install sambatune UI:
+## Install SambaTune UI on Your Development Machine
 
-From your laptop:
-#old scp ac.rick.weisner@lambda0:tmp/sambatune/sambatune_1.0.1.tar
-scp ac.rick.weisner@lambda0:tmp/sambatune/sambatune_1.1.tar
+### Copy Conda Tar File on SambaNova
 
-On sambanova.alcf.anl.gov
+On sambanova.alcf.anl.gov:
+
+```bash
 mkdir /tmp
 cd /tmp
 cp /home/rweisner/tmp/sambatune/sambatune_1.1.tar .
+```
 
-On your dev machine
+### Copy Conda Tar File To Your Dev Machine
+
+On your dev machine:
+
+```bash
 mkdir /tmp
 cd /tmp
+scp ALCFUserID@sambanova:tmp/sambatune/sambatune_1.1.tar .
+# Or
+scp ac.rick.weisner@lambda0:tmp/sambatune/sambatune_1.1.tar .
+# Or
 scp wilsonb@sambanova:tmp/sambatune/sambatune_1.1.tar .
+```
 
-scp the artifact_root from your home directory.
+### Install Docker
 
-#Old docker image load -i sambatune_1.0.1.tar
+If necessary:
+
+```bash
+sudo apt-get install docker
+# Or
 sudo snap install docker
+```
+
+### Docker
+
+If you have changed directories:
+
+```bash
+cd /tmp
+```
+
+Load Docker image:
+
+```bash
 sudo docker image load -i sambatune_1.1.tar
+```
 
+List Docker images:
+
+```bash
 sudo docker image ls
+```
 
-on my laptop I get:
+Your output will look something like:
 
-rickw-mbp:sudo docker image ls
-
+```text
 REPOSITORY                                                                                      TAG       IMAGE ID       CREATED         SIZE
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 weeks ago     737MB
 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client   1.0.1     3001727bd003   4 months ago    664MB
-tutorial-environment_app                                                                        latest    30bbbed54304   18 months ago   25.1MB
-grafana/tns-db                                                                                  latest    b2ca96aa0d5f   19 months ago   25.8MB
-artifacts.sambanovasystems.com/sw-docker-prod/stable/ubuntu-stable                              latest    5bc8d0b14150   20 months ago   7.22GB
-grafana/grafana                                                                                 7.2.0     84537aac1f95   21 months ago   180MB
+```
 
 This is the image you want
-#old artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client   1.0.1     3001727bd003   4 months ago    664MB
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 months ago    737MB
+artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client   1.0.1     3001727bd003   4 months ago    664MB
 
+### Run the Docker Container
 
-My artifact root in in work.
-So...
+Make a work directory:
 
-#old docker container run --mount type=bind,source=/Users/rickw/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client:1.0.1
-sudo docker container run --mount type=bind,source=/Users/rickw/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
+```bash
+mkdir -p /path/to/work
+# Or
+mkdir -p /home/bwilson/sambatune/work
+```
 
-sudo docker container run --mount type=bind,source=/home/bwilson/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
+Run the container:
+
+```bash
+sudo docker container run --mount type=bind,source=/path/to/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
+# Or
+sudo docker container run --mount type=bind,source=/home/bwilson/sambatune/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
+# Or
+sudo docker container run --mount type=bind,source=/Users/rickw/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client:1.0.1
+```
+
+The first time you run the above command, you will see many layers being loaded.  It will load immediate from then on.
 
 My artifact_root is in /Users/rickw/work/vae_tst/artifact_root.
 
