@@ -41,17 +41,87 @@ SambaTune is currently used by SN engineers involved in performance tuning effor
 SambaTune is also planned for release to external customers to aid with performance
 bottleneck analysis and resolution.
 
-## Run
+## Installation
+
+```bash
+ssh wilsonb@sambanova.alcf.anl.gov
+MobilePass+ pwd
+ssh sm-01
+```
+
+First, enter the virtual environment on **sm-01** or **sm-02**:
+
+```bash
+source /opt/sambaflow/venv/bin/activate
+```
+
+## Usage
+
+```console
+usage: sambatune [-h] [--artifact-root ARTIFACT_ROOT] [--disable-override]
+[--compile-only | -m MODES [MODES ...]]
+[--version]
+config
+positional arguments:
+config
+YAML file with model, compile, run configuration.
+optional arguments:
+-h, --help
+--artifact-root
+show this help message and exit
+ARTIFACT_ROOT
+Custom location to save compile/run artifacts;
+defaults to '$DUMP_ROOT/artifact_root'
+--disable-override Reuse the placement from the baseline compilation
+--compile-only Run compilation of PEFs for selected modes only
+-m MODES [MODES ...], --modes MODES [MODES ...]
+Select modes to execute from ['benchmark',
+'instrument', 'run'] default: ['benchmark']
+--version
+version of sambatune and sambaflow.
+```
+
+## Command Overview
+
+By default, it will run with the benchmarking mode enabled. Use the --modes flag to run
+modes individually or in any combination.
+Benchmark-Only:
+
+```bash
+sambatune small_vae.yaml --artifact_root $(pwd)/artifact_root --modes benchmark
+```
+
+Instrument-Only:
+
+```bash
+sambatune small_vae.yaml --artifact_root $(pwd)/artifact_root --modes instrument
+```
+
+All modes:
+
+```bash
+sambatune small_vae.yaml --artifact_root $(pwd)/artifact_root --modes instrument
+```
+
+## Command Example
 
 ### Running
 
-Run the following example on sm-01 or sm-02:
+Run the following example on **sm-01** or **sm-02**:
 
 ```bash
+mkdir ~/sambatune
+cd ~/sambatune
 sambatune small_vae.yaml --artifact_root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
+where **small_vae.yaml** is a user-specified configuration file:
+
 ### Samples Config File
+
+The current directory should be **~/sambatune**.
+
+Create **small_vae.yaml** with the following content using your favorite editor.
 
 ```yaml
 small_vae.yaml:
