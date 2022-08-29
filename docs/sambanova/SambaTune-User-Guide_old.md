@@ -3,6 +3,15 @@
 ## Notes
 
 ```text
+From Sid:
+Exact command on sm-02
+sambatune_ui --directory /home/sraskar/tune/sambatune_gen --port 8576
+Command used on laptop for port forward
+ssh -XL 8576:127.0.0.1:8576 sm-02.cels.anl.gov
+address used in browser on laptop localhost:8576
+```
+
+```text
 #TODOBRW
 ssh wilsonb@homes.cels.anl.gov
 ssh sm-02

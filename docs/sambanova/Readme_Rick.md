@@ -1,5 +1,46 @@
 # SambaTune
 
+## Notes
+
+```text
+#TODOBRW
+ssh wilsonb@homes.cels.anl.gov
+ssh sm-02
+MobilePass+ password
+On sm-02
+source /opt/sambaflow/venv/bin/activate
+sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
+#There will be a username and password displayed that you will use in your browser on your laptop.
+Command used on laptop for port forward
+ssh -XL 8580:127.0.0.1:8580 wilsonb@sm-02.cels.anl.gov
+MobilePass+ password
+# You will be logged into sm-02 but, you do not need to do anything.
+address used in browser on laptop localhost:8580
+#Use username and password from sambatune_ui.
+Username
+Password
+```
+
+### Rick
+
+8/24/2022
+
+I have updated ~rweisner/tmp/sambatune with sambatune_ui 1.1 and updated the readme.
+
+## About SambaTune
+
+SambaTune is a tool for profiling, debugging, and tuning performance of applications
+running on SN hardware.
+
+The tool automates collection of hardware performance counters, metrics aggregation,
+report generation, and visualization. It also automates benchmarking of the application
+to compute average throughput over a sufficient number of runs. The tool is designed to
+aid the user with performance bottleneck analysis and tuning.
+
+SambaTune is currently used by SN engineers involved in performance tuning efforts.
+SambaTune is also planned for release to external customers to aid with performance
+bottleneck analysis and resolution.
+
 ## Run
 
 ### Running
@@ -36,8 +77,8 @@ env:
 On sambanova.alcf.anl.gov:
 
 ```bash
-mkdir /tmp
-cd /tmp
+mkdir ~/tmp
+cd ~/tmp
 cp /home/rweisner/tmp/sambatune/sambatune_1.1.tar .
 ```
 
