@@ -7,7 +7,7 @@
 Run the following example on sm-01 or sm-02:
 
 ```bash
-sambatune configfile --artifact_root $(pwd)/artifact_root --modes benchmark instrument run
+sambatune small_vae.yaml --artifact_root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
 ### Samples Config File
@@ -89,11 +89,11 @@ Your output will look something like:
 
 ```text
 REPOSITORY                                                                                      TAG       IMAGE ID       CREATED         SIZE
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client   1.0.1     3001727bd003   4 months ago    664MB
+artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 months ago    737MB
 ```
 
 This is the image you want
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client   1.0.1     3001727bd003   4 months ago    664MB
+artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 months ago    737MB
 
 ### Run the Docker Container
 
@@ -111,8 +111,6 @@ Run the container:
 sudo docker container run --mount type=bind,source=/path/to/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
 # Or
 sudo docker container run --mount type=bind,source=/home/bwilson/sambatune/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
-# Or
-sudo docker container run --mount type=bind,source=/Users/rickw/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/basic-sambatune-client:1.0.1
 ```
 
 The first time you run the above command, you will see many layers being loaded.  It will load immediate from then on.
