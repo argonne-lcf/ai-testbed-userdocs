@@ -145,7 +145,7 @@ env:
      CONVFUNC_DEBUG_RUN: 0
 ```
 
-**NOTE:** The following takes several hours to run.
+**NOTE:** The following takes **4.5** hours to run.
 
 Run the following example:
 
@@ -239,16 +239,37 @@ sudo docker container run --mount type=bind,source=/path/to/work,target=/work -i
 sudo docker container run --mount type=bind,source=/home/bwilson/sambatune/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
 ```
 
-The first time you run the above command, you will see many layers being loaded.  It will load immediate from then on.
+The first time you run the above command, you will see many layers being loaded.  It will load immediately from then on.
 
-My artifact_root is in /Users/rickw/work/vae_tst/artifact_root.
+Your artifact_root on **sm-01** or **sm-02** should be at sambatune/artifact_root.
 
 Start the UI:
 It will tell you the port and password.
 
-sambatune_ui --directory /work/lincoln/vae_tst/artifact_root/sambatune_gen
+```bash
+sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen   sambatune/artifact_root/sambatune_gen
+```
 
 You will see something like:
+
+```console
+Welcome to SambaTune Client
+@fa65be938da7:/project$sambatune_ui --directory sambatune/artifact_root/sambatune_gen
+with the,
+   username: "admin", password: "4dde37d6-2872-11ed-9a4f-0242ac110002"
+[2022-08-30 07:44:51 -0700] [8] [INFO] Starting gunicorn 20.1.0
+[2022-08-30 07:44:51 -0700] [8] [INFO] Listening at: http://0.0.0.0:8576 (8)
+[2022-08-30 07:44:51 -0700] [8] [INFO] Using worker: sync
+[2022-08-30 07:44:51 -0700] [11] [INFO] Booting worker with pid: 11
+[2022-08-30 07:44:51 -0700] [12] [INFO] Booting worker with pid: 12
+```
+
+In your local browser, enter the url **localhost:5050**.
+
+Use the username and password above to log in.
+
+
+
 root@477a49bd9e55:/project# sambatune_ui --directory /work/lincoln/vae_tst/artifact_root/sambatune_gen
 Starting server on localhost:8576         with the following directory: /work/lincoln/vae_tst/artifact_root/sambatune_gen
 with the,
