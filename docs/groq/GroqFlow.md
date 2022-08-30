@@ -2,6 +2,15 @@
 
 The following describes how to install **GroqFlow**. These instructions enable users to build models for **Groq** hardware, as well as execute those builds in systems that have **GroqCard™** accelerators physically installed.
 
+## Connect to Groq
+
+Connect to a Groq system, i.e., groq1, groq2, groq3, and groq4, using your CELS GCE account information.
+
+```console
+ssh CELS-GCE-UserID@groq1.cels.anl.gov
+CELS-GCE-UserID@groq1.cels.anl.gov's password:
+```
+
 ## Prerequisites
 
 - Download and install the **GroqWare™** Suite version 0.9.0.
@@ -13,19 +22,21 @@ The following describes how to install **GroqFlow**. These instructions enable u
 -Clone the **GroqFlow** GitHub repo using the following command:
 
 ```bash
+cd ~
 git clone https://github.com/groq/groqflow.git
 ```
 
-## Step 1: Create and activate a virtual environment
+## Step 1: Create and Activate a Miniconda Virtual Environment
 
 The following example demonstrates downloading, installing, and creating a Miniconda virtual environment.
 
 ```bash
+cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
-conda create -n groqflow python=3.8.13
-conda activate groqflow
+conda create -n groqflow_env python=3.8.13
+conda activate groqflow_env
 ```
 
 ## Step 2: Pip install GroqFlow
