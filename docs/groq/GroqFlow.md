@@ -4,7 +4,7 @@ The following describes how to install **GroqFlow**. These instructions enable u
 
 ## Connect to Groq
 
-Connect to a Groq system, i.e., groq1, groq2, groq3, and groq4, using your CELS GCE account information.
+From your development machine, connect to a Groq system, i.e., groq1, groq2, groq3, and groq4, using your CELS GCE account information.
 
 ```console
 ssh CELS-GCE-UserID@groq1.cels.anl.gov
