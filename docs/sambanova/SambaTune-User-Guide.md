@@ -172,13 +172,24 @@ cp /home/rweisner/tmp/sambatune/sambatune_1.1.tar .
 On your dev machine:
 
 ```bash
-mkdir /tmp
-cd /tmp
-scp ALCFUserID@sambanova:tmp/sambatune/sambatune_1.1.tar .
+mkdir -p ~/sambatune/work/
+cd ~/sambatune/work/
+scp ALCFUserID@sambanova.alcf.anl.gov:tmp/sambatune_1.1.tar .
 # Or
 scp ac.rick.weisner@lambda0:tmp/sambatune/sambatune_1.1.tar .
 # Or
-scp wilsonb@sambanova:tmp/sambatune/sambatune_1.1.tar .
+scp wilsonb@sambanova.alcf.anl.gov:tmp/sambatune_1.1.tar .
+```
+
+### Copy Artifact File to Your Dev Machine
+
+On your dev machine:
+
+```bash
+cd ~/sambatune/work/
+scp -r wilsonb@sambanova.alcf.anl.gov:sambatune/artifact_root .
+# Or
+rsync -a --ignore-existing ./ wilsonb@sambanova.alcf.anl.gov:sambatune/artifact_root/
 ```
 
 ### Install Docker
@@ -247,7 +258,13 @@ Start the UI:
 It will tell you the port and password.
 
 ```bash
-sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen   sambatune/artifact_root/sambatune_gen
+sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen   xxxsambatune/artifact_root/sambatune_gen
+```
+
+Do
+
+```bash
+sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
 ```
 
 You will see something like:
