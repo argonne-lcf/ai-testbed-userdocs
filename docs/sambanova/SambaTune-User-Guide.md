@@ -150,12 +150,6 @@ env:
   CONVFUNC_DEBUG_RUN": 0
 ```
 
-You might want to delete **artifact_root** if you have prior runs that you might not want to copy to your dev machine.  If so:
-
-```bash
-rm -rf artifact_root
-```
-
 **NOTE:** The following takes 45 minutes to run.
 
 Run the following example:
@@ -166,152 +160,132 @@ sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
 
 where **linear_net.yaml** is a user-specified configuration file you created above.
 
-## Install SambaTune UI on Your Development Machine
+## Start SambaTune UI on Login Node
 
-### Copy Conda Tar File on SambaNova
-
-On sambanova.alcf.anl.gov:
+Exit from **sm-01** or **sm-02**:
 
 ```bash
-mkdir ~/tmp
-cd ~/tmp
-cp /home/rweisner/tmp/sambatune/sambatune_1.1.tar .
+exit
 ```
 
-### Copy Conda Tar File To Your Dev Machine
-
-On your dev machine:
+Enter the virtual environment:
 
 ```bash
-mkdir -p ~/sambatune/work/
-cd ~/sambatune/work/
-scp ALCFUserID@sambanova.alcf.anl.gov:tmp/sambatune_1.1.tar .
-# Or
-scp ac.rick.weisner@lambda0:tmp/sambatune/sambatune_1.1.tar .
-# Or
-scp wilsonb@sambanova.alcf.anl.gov:tmp/sambatune_1.1.tar .
+source /opt/sambaflow/venv/bin/activate
 ```
 
-### Copy Artifact File to Your Dev Machine
-
-On your dev machine:
+Update path:
 
 ```bash
-cd ~/sambatune/work/
-scp -r wilsonb@sambanova.alcf.anl.gov:sambatune/artifact_root .
-# Or
-rsync -a --ignore-existing ./ wilsonb@sambanova.alcf.anl.gov:sambatune/artifact_root/
+export PATH=/opt/sambaflow/bin:$PATH
 ```
 
-### Install Docker
-
-If necessary:
-
-```bash
-sudo apt-get install docker
-# Or
-sudo snap install docker
-```
-
-### Docker
-
-If you have changed directories:
-
-```bash
-cd /tmp
-```
-
-Load Docker image:
-
-```bash
-sudo docker image load -i sambatune_1.1.tar
-```
-
-List Docker images:
-
-```bash
-sudo docker image ls
-```
-
-Your output will look something like:
-
-```text
-REPOSITORY                                                                                      TAG       IMAGE ID       CREATED         SIZE
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 months ago    737MB
-```
-
-This is the image you want
-artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client         1.1       bf1d5834776d   3 months ago    737MB
-
-### Run the Docker Container
-
-Make a work directory:
-
-```bash
-mkdir -p /path/to/work
-# Or
-mkdir -p /home/bwilson/sambatune/work
-```
-
-Run the container:
-
-```bash
-sudo docker container run --mount type=bind,source=/path/to/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
-# Or
-sudo docker container run --mount type=bind,source=/home/bwilson/sambatune/work,target=/work -it  -p 5050:8576 artifacts.sambanovasystems.com/sustaining-docker-lincoln-dev/sambatune/sambatune-client:1.1
-```
-
-The first time you run the above command, you will see many layers being loaded.  It will load immediately from then on.
-
-Your artifact_root on **sm-01** or **sm-02** should be at sambatune/artifact_root.
+Your artifact_root should be at ~/sambatune/artifact_root.
 
 Start the UI:
-It will tell you the port and password.
+
+It will tell you the **username** and **password**.
+
+**NOTE:** It is recommended to use a port other than **8576** in case someone else is using it.  Select another port close to **8576**.
+
+Next
 
 ```bash
-sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen   xxxsambatune/artifact_root/sambatune_gen
+sambatune_ui --directory ~/sambatune/artifact_root --port 8576
 ```
 
-Do
-
 ```bash
-sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
+#TODOBRW
+sambatune_ui --directory ~/sambatune/artifact_root --port 8580
 ```
 
 You will see something like:
 
 ```console
-Welcome to SambaTune Client
-@fa65be938da7:/project$sambatune_ui --directory sambatune/artifact_root/sambatune_gen
 with the,
-   username: "admin", password: "4dde37d6-2872-11ed-9a4f-0242ac110002"
-[2022-08-30 07:44:51 -0700] [8] [INFO] Starting gunicorn 20.1.0
-[2022-08-30 07:44:51 -0700] [8] [INFO] Listening at: http://0.0.0.0:8576 (8)
-[2022-08-30 07:44:51 -0700] [8] [INFO] Using worker: sync
-[2022-08-30 07:44:51 -0700] [11] [INFO] Booting worker with pid: 11
-[2022-08-30 07:44:51 -0700] [12] [INFO] Booting worker with pid: 12
+    username: "admin", password: "05c63938-2941-11ed-93a3-f7ef9c6e5d46"
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Starting gunicorn 20.1.0
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Listening at: http://0.0.0.0:8576 (1344959)
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Using worker: sync
+[2022-08-31 15:24:36 +0000] [1345092] [Info] Booting worker with pid: 1345092
+[2022-08-31 15:24:36 +0000] [1345093] [Info] Booting worker with pid: 1345093
 ```
 
-In your local browser, enter the url **localhost:5050**.
+## Use Port-Forwarding
 
-Use the username and password above to log in.
+This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
+like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
+This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
+avoid collisions with other users.**
+
+### From your local machine
+
+Run
+
+```bash
+ssh -N -f -L localhost:18576:localhost:18576 ALCFUserID@sambanova.alcf.anl.gov
+...
+Password: < MobilPass+ code >
+
+ssh ALCFUserID@sambanova.alcf.anl.gov
+...
+Password: < MobilPass+ code >
+```
+
+```bash
+#TODOBRW
+ssh -v -N -f -L localhost:18580:localhost:18580 wilsonb@sambanova.alcf.anl.gov
+```
+
+*replacing* ***ALCFUserID*** *with your ALCF User ID.*
+
+
+```bash
+#TODOBRW
+ssh wilsonb@sambanova.alcf.anl.gov
+```
+
+### From **sambanova.alcf.anl.gov**
+
+Below are the commands specific to sm-01. You may replace **sm-01** with **sm-02** when using that system.
+
+Run
+
+**NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**
+
+```bash
+ssh -N -f -L localhost:18576:localhost:8576 ALCFUserID@sm-01
+```
+
+```bash
+#TODOBRW
+ssh -N -f -L localhost:18580:localhost:8580 wilsonb@sm-01
+```
+
+### Browser on Local Machine
+
+Then, navigate in your browser to, in this example, [http://localhost:18576](http://localhost:18576) on your local machine.
+
+Use the username and password from **sm-01** to log in.
 
 
 
-root@477a49bd9e55:/project# sambatune_ui --directory /work/lincoln/vae_tst/artifact_root/sambatune_gen
-Starting server on localhost:8576         with the following directory: /work/lincoln/vae_tst/artifact_root/sambatune_gen
-with the,
-         username: "admin", password: "fd11af8a-edad-11ec-89c9-0242ac110002"
- * Serving Flask app 'sambatune.uiwebserver' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
- * Running on all addresses.
-   WARNING: This is a development server. Do not use it in a production deployment.
- * Running on http://172.17.0.2:8576/ (Press CTRL+C to quit)
-
-RCW: use localhost:8576 to connect
 
 
-Now connect via browser.
+
+
+## SSH Notes
+
+Explanation of **ssh** command:
+
+```text
+-N : no remote commands
+
+-f : put ssh in the background
+
+-L <machine1>:<portA>:<machine2>:<portB> :
+
+The full command line will forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
+```
+
+Adapted from:  [How can I run Tensorboard on a remote server?](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
