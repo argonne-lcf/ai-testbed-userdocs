@@ -101,19 +101,19 @@ modes individually or in any combination.
 Benchmark-Only:
 
 ```bash
-sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
 ```
 
 Instrument-Only:
 
 ```bash
-sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes instrument
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
 All modes:
 
 ```bash
-sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes instrument
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
 ## Command Example
@@ -127,33 +127,44 @@ mkdir ~/sambatune
 cd ~/sambatune
 ```
 
-Create **small_vae.yaml** with the following content using your favorite editor.
+Create **linear_net.yaml** with the following content using your favorite editor.
 
 ```yaml
-app: /opt/sambaflow/apps/private/anl/moleculevae.py
+app: /opt/sambaflow/apps/micros/linear_net.py
 
-model-args: -b 128 --in-width 512 --in-height 512
+model-args: >
+  -b 1024
+  -mb 64
+  --in-features 8192
+  --out-features 4096
+  --repeat 128
+  --inference
 
-compile-args: compile --plot --enable-conv-tiling --compiler-configs-file /opt/sambaflow/apps/private/anl/moleculevae/compiler_configs_conv.json --mac-v2 --mac-human-decision /opt/sambaflow/apps/private/anl/moleculevae/symmetric_human_decisions_tiled_v2.json
-
-run-args: --input-path /var/tmp/dataset/moleculevae/ras1_prot-pops.h5 --out-path ${HOME}/moleculevae_out --model-id 0 --epochs 10
+compile-args: >
+  --n-chips 2
+  --plot
 
 env:
-     OMP_NUM_THREADS: 16
-     SF_RNT_FSM_POLL_BUSY_WAIT: 1
-     SF_RNT_DMA_POLL_BUSY_WAIT: 1
-     CONVFUNC_DEBUG_RUN: 0
+  SF_RNT_FSM_POLL_BUSY_WAIT: 1
+  SF_RNT_DMA_POLL_BUSY_WAIT: 1
+  CONVFUNC_DEBUG_RUN": 0
 ```
 
-**NOTE:** The following takes **4.5** hours to run.
+You might want to delete **artifact_root** if you have prior runs that you might not want to copy to your dev machine.  If so:
+
+```bash
+rm -rf artifact_root
+```
+
+**NOTE:** The following takes 45 minutes to run.
 
 Run the following example:
 
 ```bash
-sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
-where **small_vae.yaml** is a user-specified configuration file you created above.
+where **linear_net.yaml** is a user-specified configuration file you created above.
 
 ## Install SambaTune UI on Your Development Machine
 
