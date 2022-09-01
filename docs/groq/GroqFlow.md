@@ -76,5 +76,6 @@ export PYTHONPATH="/opt/groq/runtime/site-packages:$PYTHONPATH"
 To confirm that you're setup correctly, navigate to the examples folder at **groqflow/examples/** and run the **hello_pytorch_world.py** example:
 
 ```bash
+cd examples/
 python hello_pytorch_world.py
 ```
