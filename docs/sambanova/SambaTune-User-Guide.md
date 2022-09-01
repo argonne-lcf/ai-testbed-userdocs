@@ -191,12 +191,12 @@ It will tell you the **username** and **password**.
 Next
 
 ```bash
-sambatune_ui --directory ~/sambatune/artifact_root --port 8576
+sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen/ --port 8576
 ```
 
 ```bash
 #TODOBRW
-sambatune_ui --directory ~/sambatune/artifact_root --port 8580
+sambatune_ui --directory /home/wilsonb/sambatune/artifact_root/sambatune_gen/ --port 8580
 ```
 
 You will see something like:
@@ -234,7 +234,13 @@ Password: < MobilPass+ code >
 
 ```bash
 #TODOBRW
-ssh -v -N -f -L localhost:18580:localhost:18580 wilsonb@sambanova.alcf.anl.gov
+ssh -v -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
+
+#here
+ssh -v -N -f -L localhost:8576:localhost:8576 wilsonb@sambanova.alcf.anl.gov
+
+
+ssh -XL localhost:18580:localhost:18580 wilsonb@sambanova.alcf.anl.gov
 ```
 
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
@@ -259,7 +265,8 @@ ssh -N -f -L localhost:18576:localhost:8576 ALCFUserID@sm-01
 
 ```bash
 #TODOBRW
-ssh -N -f -L localhost:18580:localhost:8580 wilsonb@sm-01
+ssh -N -f -L localhost:8576:localhost:8576 wilsonb@sm-01
+ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sm-01
 ```
 
 ### Browser on Local Machine
@@ -271,8 +278,9 @@ Use the username and password from **sm-01** to log in.
 
 
 
-
-
+7d9aa4d6-2963-11ed-93a3-f7ef9c6e5d46
+25bafb64-2966-11ed-93a3-f7ef9c6e5d46
+b89e4184-2966-11ed-93a3-f7ef9c6e5d46
 
 ## SSH Notes
 
