@@ -21,6 +21,31 @@ Username
 Password
 ```
 
+```text
+Bill Arnold
+The formatting in the Usage section does not match "sambatune -h"'s formatting.
+
+In the Command Overview section:
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
+results in
+FileNotFoundError: [Errno 2] No such file or directory: 'linear_net.yaml'
+(venv) arnoldw@sm-01:~$
+
+and same for other examples. I suppose people would realize that they are not meant to actually run those command lines.
+
+The order in the Start SambaTune UI section is wrong.
+Need to have the command line before the imperatives about saving the userid/password, and using another port than the default.
+
+The sections about setting up a ssh port forwarding chain should say what they do up front.
+Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
+
+e.g.
+This command sets up a port forward sambanova login node to your local machine.
+This command sets up a port forward from a sambanova node to the sambanova login machine.
+
+Another mistake I made was recording the password, then restarting sambatune on the sambanova node. When I tried the login on my laptop, I kept copy/pasting the old password, doing so about 3 times before checking.
+```
+
 ## About SambaTune
 
 SambaTune is a tool for profiling, debugging, and tuning performance of applications
@@ -66,26 +91,25 @@ export PATH=/opt/sambaflow/bin:$PATH
 
 ```console
 usage: sambatune [-h] [--artifact-root ARTIFACT_ROOT] [--disable-override]
-[--compile-only | -m MODES [MODES ...]]
-[--version]
-config
+                 [--compile-only | -m MODES [MODES ...]] [--version]
+                 config
+
 positional arguments:
-config
-YAML file with model, compile, run configuration.
+  config                YAML file with model, compile, run configuration.
+
 optional arguments:
--h, --help
---artifact-root
-show this help message and exit
-ARTIFACT_ROOT
-Custom location to save compile/run artifacts;
-defaults to '$DUMP_ROOT/artifact_root'
---disable-override Reuse the placement from the baseline compilation
---compile-only Run compilation of PEFs for selected modes only
--m MODES [MODES ...], --modes MODES [MODES ...]
-Select modes to execute from ['benchmark',
-'instrument', 'run'] default: ['benchmark']
---version
-version of sambatune and sambaflow.
+  -h, --help            show this help message and exit
+  --artifact-root ARTIFACT_ROOT
+                        Custom location to save compile/run artifacts;
+                        defaults to '$DUMP_ROOT/artifact_root' (default: None)
+  --disable-override    Reuse the placement from the baseline compilation
+                        (default: False)
+  --compile-only        Run compilation of PEFs for selected modes only
+                        (default: False)
+  -m MODES [MODES ...], --modes MODES [MODES ...]
+                        Select modes to execute from ['benchmark',
+                        'instrument', 'run'] (default: ['benchmark'])
+  --version             version of sambatune and sambaflow.
 ```
 
 ## Command Overview
@@ -95,19 +119,19 @@ modes individually or in any combination.
 Benchmark-Only:
 
 ```bash
-sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
 ```
 
 Instrument-Only:
 
 ```bash
-sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
 All modes:
 
 ```bash
-sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
 ## Command Example
@@ -164,8 +188,6 @@ It will tell you the **username** and **password**.
 
 **NOTE:** It is recommended to use a port other than **8576** in case someone else is using it.  Select another port close to **8576**.
 
-**NOTE:** Write down the username and password.
-
 Next
 
 ```bash
@@ -189,6 +211,8 @@ with the,
 [2022-08-31 15:24:36 +0000] [1345093] [Info] Booting worker with pid: 1345093
 ```
 
+**NOTE:** Write down the username and password.
+
 ## Use Port-Forwarding
 
 This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
@@ -196,7 +220,19 @@ like SambaTune UI, which runs on the SambaNova system and binds to one or more p
 This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
 avoid collisions with other users.**
 
+```text
+Bill A
+The sections about setting up a ssh port forwarding chain should say what they do up front.
+Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
+
+e.g.
+This command sets up a port forward sambanova login node to your local machine.
+This command sets up a port forward from a sambanova node to the sambanova login machine.
+```
+
 ### From your local machine
+
+This command sets up a port forward SambaNova login node to your local machine.
 
 Run
 
@@ -223,6 +259,8 @@ ssh wilsonb@sambanova.alcf.anl.gov
 ```
 
 ### From **sambanova.alcf.anl.gov**
+
+This command sets up a port forward from a SambaNova node to the sambanova login machine.
 
 Below are the commands specific to sm-01. You may replace **sm-01** with **sm-02** when using that system.
 

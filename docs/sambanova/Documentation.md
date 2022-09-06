@@ -3,32 +3,32 @@
 The SambaNova documentation is housed at `/software/sambanova/docs/latest/` accessible via login node.
 
 ```text
-getting-started.pdf             # Getting started with Sambaflow and running your first example program (LogReg).
+getting-started.pdf             # Getting Started with SambaFlow
+accuracy-debugging-tools.pdf    # Introduction to the model accuracy debugging tools.
+compiler-options.pdf            # Provides advanced compiler options for the compile command.
+conversion-to-sambaflow.pdf     # Converting existing models to SambaFlow
+intermediate-tutorial.pdf       # SambaFlow intermediate model
 intro-tutorial-pytorch.pdf      # A peek into the code of the above example program.
-run-examples-vision.pdf         # Run UNET on RDU.
+release-notes.pdf               # Provide new feature and bug fixes updates for each release version.
 run-examples-language.pdf       # Run BERT on RDU
 run-examples-pytorch.pdf        # Run Power PCA and micro models like GEMM on RDU
+run-examples-vision.pdf         # Run UNET on RDU.
 using-layernorm.pdf             # Example to use LayerNorm instead of BatchNorm
-compiler-options.pdf            # Provides advanced compiler options for the compile command.
 using-venvs.pdf                 # Python Virtual Environment.
-snconfig-userguide.pdf          # Tool to display, query, configure and manage system resources on SN
-sntilestat-manpage.pdf          # Display SambaNova tile status and utilization
-slurm-sambanova.pdf             # Slum Installation and configuration
-runtime-faq.pdf                 # FAQ’s
-release-notes.pdf               # Provide new feature and bug fixes updates for each release version.
 
-sambatune\
-    user-guide.pdf            
-    paths-report.pdf
-    pmu-bandwidth-report.pdf
-    pmu-stalls-report.pdf
-    Readme
+latest\
+    accuracy-debugging-tools.pdf
+    compiler-options.pdf
+    conversion-to-sambaflow.pdf
+    getting-started.pdf
+    intermediate-tutorial.pdf
+    intro-tutorial-pytorch.pdf
     release-notes.pdf
-    sambatune-faq.pdf
-    section-report.pdf        
-    schema.pdf
-    stage-latency-report.pdf  
-
+    run-examples-language.pdf
+    run-examples-pytorch.pdf
+    run-examples-vision.pdf
+    using-layernorm.pdf
+    using-venvs.pdf
 ```
 
 The documentation can be viewed on your local system by copying the files from the login node.
