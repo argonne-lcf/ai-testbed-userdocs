@@ -1,15 +1,6 @@
-# SambaTune User Guide
+# SambaTune
 
 ## Notes
-
-```text
-From Sid:
-Exact command on sm-02
-sambatune_ui --directory /home/sraskar/tune/sambatune_gen --port 8576
-Command used on laptop for port forward
-ssh -XL 8576:127.0.0.1:8576 sm-02.cels.anl.gov
-address used in browser on laptop localhost:8576
-```
 
 ```text
 #TODOBRW
@@ -30,6 +21,31 @@ Username
 Password
 ```
 
+```text
+Bill Arnold
+The formatting in the Usage section does not match "sambatune -h"'s formatting.
+
+In the Command Overview section:
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
+results in
+FileNotFoundError: [Errno 2] No such file or directory: 'linear_net.yaml'
+(venv) arnoldw@sm-01:~$
+
+and same for other examples. I suppose people would realize that they are not meant to actually run those command lines.
+
+The order in the Start SambaTune UI section is wrong.
+Need to have the command line before the imperatives about saving the userid/password, and using another port than the default.
+
+The sections about setting up a ssh port forwarding chain should say what they do up front.
+Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
+
+e.g.
+This command sets up a port forward sambanova login node to your local machine.
+This command sets up a port forward from a sambanova node to the sambanova login machine.
+
+Another mistake I made was recording the password, then restarting sambatune on the sambanova node. When I tried the login on my laptop, I kept copy/pasting the old password, doing so about 3 times before checking.
+```
+
 ## About SambaTune
 
 SambaTune is a tool for profiling, debugging, and tuning performance of applications
@@ -44,11 +60,18 @@ SambaTune is currently used by SN engineers involved in performance tuning effor
 SambaTune is also planned for release to external customers to aid with performance
 bottleneck analysis and resolution.
 
-## Installation
+## Run SambaTune
 
 ```bash
+ssh ALCFUserID@sambanova.alcf.anl.gov
+# Enter MobilePass+ pass code
+ssh sm-01
+```
+
+```bash
+#TODOBRW
 ssh wilsonb@sambanova.alcf.anl.gov
-MobilePass+ pwd
+# Enter MobilePass+ pass code
 ssh sm-01
 ```
 
@@ -58,199 +81,222 @@ First, enter the virtual environment on **sm-01** or **sm-02**:
 source /opt/sambaflow/venv/bin/activate
 ```
 
+Update path:
+
+```bash
+export PATH=/opt/sambaflow/bin:$PATH
+```
+
 ## Usage
 
 ```console
 usage: sambatune [-h] [--artifact-root ARTIFACT_ROOT] [--disable-override]
-[--compile-only | -m MODES [MODES ...]]
-[--version]
-config
+                 [--compile-only | -m MODES [MODES ...]] [--version]
+                 config
+
 positional arguments:
-config
-YAML file with model, compile, run configuration.
+  config                YAML file with model, compile, run configuration.
+
 optional arguments:
--h, --help
---artifact-root
-show this help message and exit
-ARTIFACT_ROOT
-Custom location to save compile/run artifacts;
-defaults to '$DUMP_ROOT/artifact_root'
---disable-override Reuse the placement from the baseline compilation
---compile-only Run compilation of PEFs for selected modes only
--m MODES [MODES ...], --modes MODES [MODES ...]
-Select modes to execute from ['benchmark',
-'instrument', 'run'] default: ['benchmark']
---version
-version of sambatune and sambaflow.
+  -h, --help            show this help message and exit
+  --artifact-root ARTIFACT_ROOT
+                        Custom location to save compile/run artifacts;
+                        defaults to '$DUMP_ROOT/artifact_root' (default: None)
+  --disable-override    Reuse the placement from the baseline compilation
+                        (default: False)
+  --compile-only        Run compilation of PEFs for selected modes only
+                        (default: False)
+  -m MODES [MODES ...], --modes MODES [MODES ...]
+                        Select modes to execute from ['benchmark',
+                        'instrument', 'run'] (default: ['benchmark'])
+  --version             version of sambatune and sambaflow.
 ```
 
-### Example
-
-Let’s get started with a simple run:
-
-```bash
-mkdir ~/tmp
-cd ~/tmp
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m benchmark
-```
-
-where **linear.yaml** is a user-specified configuration file:
-
-```yaml
-app: /path/to/linear.py
-model-args: -b 128 -mb 64 --in-features 512 --out-features 128
-compile-args: compile --plot
-run-args: -n 10000
-```
-
-Once you have the sambaflow-apps package installed, you can use some pre-defined
-configurations. Example using **linear_net.yaml**:
-
-```bash
-xsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml
-xsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark'
-xxsambatune app.yaml --artifact-root ARTIFACT_ROOT -m ‘benchmark’,‘instrument’,‘train’
-xxsambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m 'benchmark','instrument','train'
-
-
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m benchmark
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m instrument
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --artifact-root . -m run
-
-```
+## Command Overview
 
 By default, it will run with the benchmarking mode enabled. Use the --modes flag to run
 modes individually or in any combination.
 Benchmark-Only:
 
 ```bash
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --mode benchmark#
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
 ```
 
 Instrument-Only:
 
 ```bash
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --mode instrument#
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
 All modes:
 
 ```bash
-sambatune /opt/sambaflow/sambatune/configs/linear_net.yaml --mode benchmark instrument run#
+sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes instrument
 ```
 
-To learn about valid input configuration fields, please see Input Configuration Options (schema.pdf).
+## Command Example
 
-SambaTune will compile the **app** with the user-specified **model-args**, **compile-args**
-and SambaFlow-supported instrumentation flags in order to enable programmable
-hardware counters to collect performance data when the application executes on the
-RDU.
+### Running
 
-After successful compile, SambaTune will run the application on the RDU and collect
-performance counter data. It will also run the application in benchmark mode with user-
-specified **run-args** to collect latency, throughput, and hardware utilization statistics.
-
-At the end of a successful run, SambaTune will collate compile-time and run-time
-statistics to generate performance reports. A web-based GUI will render the reports
-contextually to help the user identify potential hotspots. To learn more about the
-generated reports, please go to **Understanding the Reports** (reports-index.pdf).
-
-## User Interface
-
-The SambaTune UI provides a simple web-browser based interface to read the reports
-generated by one or more SambaTune runs.
-
-### Installation UI
-
-There are two ways to use the SambaTune UI; you can bring it up from a Docker
-instance or bring it up as a python wheel package. Both assume sambatune_ui is
-installed on the **client** system where you don’t have direct access to RDU unlike the **host**
-system.
-
-#### Docker Installation
-
-In your client OS pull the docker image from the SambaNova artifactory as follows,
+Create a directory for your work.
 
 ```bash
-docker pull sambanova-sambatune-client:1.0
+mkdir ~/sambatune
+cd ~/sambatune
 ```
 
-Launch docker image, (usually you also want to attach NFS or external partition to the
-docker to mount the data generated from the
+Create **linear_net.yaml** with the following content using your favorite editor.
+
+```yaml
+app: /opt/sambaflow/apps/micros/linear_net.py
+
+model-args: >
+  -b 1024
+  -mb 64
+  --in-features 8192
+  --out-features 4096
+  --repeat 128
+  --inference
+
+compile-args: >
+  --n-chips 2
+  --plot
+
+env:
+  SF_RNT_FSM_POLL_BUSY_WAIT: 1
+  SF_RNT_DMA_POLL_BUSY_WAIT: 1
+  CONVFUNC_DEBUG_RUN": 0
+```
+
+**NOTE:** The following takes 45 minutes to run.
+
+Run the following example:
 
 ```bash
-docker container run -it -p 5050:8576 basic-sambatune-client:1.0
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
-To mount the sambatune_gen on your client system use the command,
+where **linear_net.yaml** is a user-specified configuration file you created above.
+
+## Start SambaTune UI
+
+Your artifact_root should be at ~/sambatune/artifact_root.
+
+Start the UI:
+
+It will tell you the **username** and **password**.
+
+**NOTE:** It is recommended to use a port other than **8576** in case someone else is using it.  Select another port close to **8576**.
+
+Next
 
 ```bash
-docker container run --mount type=bind,source=/path/to/sambatune_gen,target =/project -it -p 5050:8576 basic-sambatune-client:1.0
-```
-
-The UI can then be invoked with the following command (within docker):
-
-```docker
-root@CLIENT:/project# sambatune_ui --directory /project
-```
-
-and point your localhost browser to http://localhost:5050 and use the username and
-password printed on the console; keep your docker running so-long as you are using the
-SambaTune UI.
-
-![SambaTune UI](ST_UI.jpg "SambaTune UI")
-
-![SambaTune Console](ST_console.jpg "SambaTune Console")
-
-#### Python Wheel Package Installation
-
-If necessary,
-
-```bash
-sudo apt install python3-virtualenv
-```
-
-In your client OS (Unbuntu/Mac/Windows) system you are using to connect to the UI,
-install the pre-requisites like virtualenv and Python v3.7. Initialize the virtual
-environment,
-
-```bash
-cd ~
-virtualenv --system-site-packages -p python3.7 venv
-source venv/bin/activate
+sambatune_ui --directory ~/sambatune/artifact_root/sambatune_gen/ --port 8576
 ```
 
 ```bash
 #TODOBRW
-cd ~
-mkdir -p ~/venvs/sambanova
-python3 -m virtualenv --system-site-packages -p python3.8 ~/venvs/sambanova/venv_st
-source ~/venvs/sambanova/venv_st/bin/activate
+sambatune_ui --directory ~/sambatune/artifact_root/sambatune_gen/ --port 8580
 ```
 
-Next install the **sambatune_client** wheel package to get the **sambatune_ui** command
+You will see something like:
+
+```console
+with the,
+    username: "admin", password: "05c63938-2941-11ed-93a3-f7ef9c6e5d46"
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Starting gunicorn 20.1.0
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Listening at: http://0.0.0.0:8576 (1344959)
+[2022-08-31 15:24:36 +0000] [1344959] [Info] Using worker: sync
+[2022-08-31 15:24:36 +0000] [1345092] [Info] Booting worker with pid: 1345092
+[2022-08-31 15:24:36 +0000] [1345093] [Info] Booting worker with pid: 1345093
+```
+
+**NOTE:** Write down the username and password.
+
+## Use Port-Forwarding
+
+This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
+like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
+This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
+avoid collisions with other users.**
+
+```text
+Bill A
+The sections about setting up a ssh port forwarding chain should say what they do up front.
+Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
+
+e.g.
+This command sets up a port forward sambanova login node to your local machine.
+This command sets up a port forward from a sambanova node to the sambanova login machine.
+```
+
+### From your local machine
+
+This command sets up a port forward SambaNova login node to your local machine.
+
+Run
 
 ```bash
-sudo pip install --prefix=/usr/local/ sambatune_client-1.0-py3-none-any.whl
-chmod +x /usr/local/bin/sambatune_ui
+ssh -N -f -L localhost:18576:localhost:18576 ALCFUserID@sambanova.alcf.anl.gov
+...
+Password: < MobilPass+ code >
+
+ssh ALCFUserID@sambanova.alcf.anl.gov
+...
+Password: < MobilPass+ code >
 ```
 
-Upon successful installation we expect your output like following,
-
-```console
-which sambatune_ui
-/usr/local/bin/sambatune_ui
+```bash
+#TODOBRW
+ssh -v -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
 ```
 
-### Usage UI
+*replacing* ***ALCFUserID*** *with your ALCF User ID.*
 
-```console
-usage: sambatune_ui [-h] [--port PORT] [--directory DIRECTORY]
-optional arguments:
-  -h, --help                show this help message and exit
-  --port PORT               port to be used (default: 8576)
-  --directory DIRECTORY
-                            path to your SambaTune output directory
+```bash
+#TODOBRW
+ssh wilsonb@sambanova.alcf.anl.gov
 ```
 
-© 2022 SambaNova Systems, Inc. Proprietary and Confidential Information
+### From **sambanova.alcf.anl.gov**
+
+This command sets up a port forward from a SambaNova node to the sambanova login machine.
+
+Below are the commands specific to sm-01. You may replace **sm-01** with **sm-02** when using that system.
+
+Run
+
+**NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**
+
+```bash
+ssh -N -f -L localhost:18576:localhost:8576 ALCFUserID@sm-01
+```
+
+```bash
+#TODOBRW
+ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sm-01
+```
+
+### Browser on Local Machine
+
+Then, navigate in your browser to, in this example, [http://localhost:18576](http://localhost:18576) on your local machine.
+
+Use the username and password from **sm-01** to log in.
+
+b89e4184-2966-11ed-93a3-f7ef9c6e5d46
+
+## SSH Notes
+
+Explanation of **ssh** command:
+
+```text
+-N : no remote commands
+
+-f : put ssh in the background
+
+-L <machine1>:<portA>:<machine2>:<portB> :
+
+The full command line will forward <machine1>:<portA> (local scope) to <machine2>:<portB> (remote scope)
+```
+
+Adapted from:  [How can I run Tensorboard on a remote server?](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)
