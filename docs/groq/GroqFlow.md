@@ -77,5 +77,10 @@ To confirm that you're setup correctly, navigate to the examples folder at **gro
 
 ```bash
 cd examples/
+python -m pip install PyNaCl
+tsp-ctl version
+dpkg -s groq-devtools
+dpkg -s groq-runtime
+export PYTHONPATH="/opt/groq/runtime/site-packages:$PYTHONPATH"
 python hello_pytorch_world.py
 ```
