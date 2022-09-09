@@ -21,31 +21,6 @@ Username
 Password
 ```
 
-```text
-Bill Arnold
-The formatting in the Usage section does not match "sambatune -h"'s formatting.
-
-In the Command Overview section:
-sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
-results in
-FileNotFoundError: [Errno 2] No such file or directory: 'linear_net.yaml'
-(venv) arnoldw@sm-01:~$
-
-and same for other examples. I suppose people would realize that they are not meant to actually run those command lines.
-
-The order in the Start SambaTune UI section is wrong.
-Need to have the command line before the imperatives about saving the userid/password, and using another port than the default.
-
-The sections about setting up a ssh port forwarding chain should say what they do up front.
-Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
-
-e.g.
-This command sets up a port forward sambanova login node to your local machine.
-This command sets up a port forward from a sambanova node to the sambanova login machine.
-
-Another mistake I made was recording the password, then restarting sambatune on the sambanova node. When I tried the login on my laptop, I kept copy/pasting the old password, doing so about 3 times before checking.
-```
-
 ## About SambaTune
 
 SambaTune is a tool for profiling, debugging, and tuning performance of applications
@@ -213,22 +188,14 @@ with the,
 
 **NOTE:** Write down the username and password.
 
+**NOTE:** The password only works with this one instance of sambatune_ui.  If you stop this instance of sambatune_ui and start another instance, it will have a new password.
+
 ## Use Port-Forwarding
 
 This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
 like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
 This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
 avoid collisions with other users.**
-
-```text
-Bill A
-The sections about setting up a ssh port forwarding chain should say what they do up front.
-Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
-
-e.g.
-This command sets up a port forward sambanova login node to your local machine.
-This command sets up a port forward from a sambanova node to the sambanova login machine.
-```
 
 ### From your local machine
 
@@ -242,8 +209,6 @@ ssh -N -f -L localhost:18576:localhost:18576 ALCFUserID@sambanova.alcf.anl.gov
 Password: < MobilPass+ code >
 
 ssh ALCFUserID@sambanova.alcf.anl.gov
-...
-Password: < MobilPass+ code >
 ```
 
 ```bash
