@@ -120,6 +120,30 @@ mkdir ~/sambatune
 cd ~/sambatune
 ```
 
+Create **small_vae.yaml** with the following content using your favorite editor.
+
+```yaml
+app: /opt/sambaflow/apps/private/anl/moleculevae.py
+
+model-args: -b 128 --in-width 512 --in-height 512
+
+compile-args: compile --plot --enable-conv-tiling --compiler-configs-file /opt/sambaflow/apps/private/anl/moleculevae/compiler_configs_conv.json --mac-v2 --mac-human-decision /opt/sambaflow/apps/private/anl/moleculevae/symmetric_human_decisions_tiled_v2.json
+
+run-args: --input-path /var/tmp/dataset/moleculevae/ras1_prot-pops.h5 --out-path ${HOME}/moleculevae_out --model-id 0 --epochs 10
+
+env:
+     OMP_NUM_THREADS: 16
+     SF_RNT_FSM_POLL_BUSY_WAIT: 1
+     SF_RNT_DMA_POLL_BUSY_WAIT: 1
+     CONVFUNC_DEBUG_RUN: 0
+```
+
+Run the following example:
+
+```bash
+sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
 Create **linear_net.yaml** with the following content using your favorite editor.
 
 ```yaml
