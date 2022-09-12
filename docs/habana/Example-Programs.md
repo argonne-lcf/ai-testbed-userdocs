@@ -12,17 +12,13 @@ export HABANA_LOGS=~/.habana_logs
 
 ## Copy Examples
 
-Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.5.0/Model-References`, on the Habana compute node **habana1** or  **habana2**. Make a copy of this to your home directory.  They may also be copied from https://github.com/HabanaAI/anl_virtual_env.
+Habana provides examples of some well known AI applications under the path. Clone the repository to your home directory.
 
 ```bash
 cd ~/
-cp -r /lambda_stor/habana/apps/1.5.0/Model-References .
-```
-
-One can access the latest version by
-
-```bash
 git clone https://github.com/HabanaAI/Model-References.git
+cd Model-References
+git checkout 1.6.0
 ```
 
 ## Set PYTHONPATH

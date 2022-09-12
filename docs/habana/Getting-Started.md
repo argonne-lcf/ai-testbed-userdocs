@@ -33,4 +33,4 @@ ssh CELSGCEUserID@habana-01.ai.alcf.anl.gov
 ssh CELSGCEUserID@habana-02.ai.alcf.anl.gov
 ```
 
-Note: Even though the hostname is ALCF, we will use our **CELSGCEUserID**
+Note: Even though the hostname is ALCF, we will use our **CELSGCEUserID**.
