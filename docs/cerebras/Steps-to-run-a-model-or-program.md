@@ -54,7 +54,7 @@ The cs2 system supports two modes of execution.<br>
 The current cs2-01 system is in pipelined mode. This mode has more mature software support when compared to the weight streaming mode.<br>
 2. Weight streaming mode.(See the [Weight Streaming Quickstart](https://docs.cerebras.net/en/latest/getting-started/weight-streaming-quickstart.html?highlight=weight%20streaming).)<br>
 Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models compared to pipelined mode.<br>
-Weight streaming mode is newly introduced in Rel 1.4, and supports only a  limited number of model layers.<br>
+Weight streaming mode is newly introduced in Rel 1.5, and supports only a  limited number of model layers.<br>
 cs2-02 is configured for weight streaming mode.
 
 ## Running a training job on the wafer
@@ -63,9 +63,9 @@ Follow these instructions to compile and train the `fc_mnist` TensorFlow estimat
 
 ```console
 cd ~/
-mkdir ~/R1.4/
-cp -r /software/cerebras/model_zoo/modelzoo ~/R1.4/modelzoo
-cd ~/R1.4/modelzoo/fc_mnist/tf
+mkdir ~/R1.5/
+cp -r /software/cerebras/model_zoo/modelzoo ~/R1.5/modelzoo
+cd ~/R1.5/modelzoo/fc_mnist/tf
 csrun_wse python run.py --mode train --cs_ip $CS_IP --max_steps 100000
 ```
 
@@ -97,12 +97,12 @@ If not already done, copy the modelzoo tree:
 
 ```console
 cd ~/
-mkdir ~/R1.4/
-cp -r /software/cerebras/model_zoo/modelzoo ~/R1.4/modelzoo
+mkdir ~/R1.5/
+cp -r /software/cerebras/model_zoo/modelzoo ~/R1.5/modelzoo
 ```
 then change to the TensorFlow GPT2 directory:
 ```
-cd ~/R1.4/modelzoo/transformers/tf/gpt2
+cd ~/R1.5/modelzoo/transformers/tf/gpt2
 ```
 then edit the two instances of data_dir in configs/params_gpt2_small_ws.yaml (or in a copy of that file) as follows:
 ```
@@ -144,12 +144,12 @@ This illustrates how to create a singularity container.
 The `-B /opt:/opt` is an illustrative example of how to bind a directory to a singularity container. (The singularity containers by default bind both one's home directory and /tmp, read/write.)
 
 ```console
-cd ~/R1.4/modelzoo/fc_mnist/tf
+cd ~/R1.5/modelzoo/fc_mnist/tf
 singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif
 ```
 or, on cs2-01,
 ```console
-cd ~/R1.4/modelzoo/fc_mnist/tf
+cd ~/R1.5/modelzoo/fc_mnist/tf
 singularity shell -B /opt:/opt /software/cerebras/cs2-01/container/cbcore_latest.sif
 ```
 
