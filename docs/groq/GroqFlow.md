@@ -1,15 +1,5 @@
 # GroqFlow™ Installation Guide
 
-## Notes
-
-```bash
-python3.8 -m pip install --upgrade pip
-#python3.8 -m pip install -r examples-requirements.txt
-export PYTHONPATH="/opt/groq/runtime/site-packages:$PYTHONPATH"
-# Replace /dev/groq[0-7.pci with /dev/groqA[0-7].pci if needed
-python3.8 yourcode.py
-```
-
 ## Introduction
 
 The following describes how to install **GroqFlow**. These instructions enable users to build models for **Groq** hardware, as well as execute those builds in systems that have **GroqCard™** accelerators physically installed.
