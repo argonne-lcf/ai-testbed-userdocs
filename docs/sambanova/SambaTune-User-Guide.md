@@ -9,6 +9,8 @@ ssh sm-02
 MobilePass+ password
 On sm-02
 source /opt/sambaflow/venv/bin/activate
+export PATH=/opt/sambaflow/bin:$PATH
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
 #There will be a username and password displayed that you will use in your browser on your laptop.
 Command used on laptop for port forward
@@ -19,31 +21,6 @@ address used in browser on laptop localhost:8580
 #Use username and password from sambatune_ui.
 Username
 Password
-```
-
-```text
-Bill Arnold
-The formatting in the Usage section does not match "sambatune -h"'s formatting.
-
-In the Command Overview section:
-sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark
-results in
-FileNotFoundError: [Errno 2] No such file or directory: 'linear_net.yaml'
-(venv) arnoldw@sm-01:~$
-
-and same for other examples. I suppose people would realize that they are not meant to actually run those command lines.
-
-The order in the Start SambaTune UI section is wrong.
-Need to have the command line before the imperatives about saving the userid/password, and using another port than the default.
-
-The sections about setting up a ssh port forwarding chain should say what they do up front.
-Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
-
-e.g.
-This command sets up a port forward sambanova login node to your local machine.
-This command sets up a port forward from a sambanova node to the sambanova login machine.
-
-Another mistake I made was recording the password, then restarting sambatune on the sambanova node. When I tried the login on my laptop, I kept copy/pasting the old password, doing so about 3 times before checking.
 ```
 
 ## About SambaTune
@@ -145,6 +122,30 @@ mkdir ~/sambatune
 cd ~/sambatune
 ```
 
+Create **small_vae.yaml** with the following content using your favorite editor.
+
+```yaml
+app: /opt/sambaflow/apps/private/anl/moleculevae.py
+
+model-args: -b 128 --in-width 512 --in-height 512
+
+compile-args: compile --plot --enable-conv-tiling --compiler-configs-file /opt/sambaflow/apps/private/anl/moleculevae/compiler_configs_conv.json --mac-v2 --mac-human-decision /opt/sambaflow/apps/private/anl/moleculevae/symmetric_human_decisions_tiled_v2.json
+
+run-args: --input-path /var/tmp/dataset/moleculevae/ras1_prot-pops.h5 --out-path ${HOME}/moleculevae_out --model-id 0 --epochs 10
+
+env:
+     OMP_NUM_THREADS: 16
+     SF_RNT_FSM_POLL_BUSY_WAIT: 1
+     SF_RNT_DMA_POLL_BUSY_WAIT: 1
+     CONVFUNC_DEBUG_RUN: 0
+```
+
+Run the following example:
+
+```bash
+sambatune small_vae.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
 Create **linear_net.yaml** with the following content using your favorite editor.
 
 ```yaml
@@ -213,22 +214,14 @@ with the,
 
 **NOTE:** Write down the username and password.
 
+**NOTE:** The password only works with this one instance of sambatune_ui.  If you stop this instance of sambatune_ui and start another instance, it will have a new password.
+
 ## Use Port-Forwarding
 
 This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
 like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
 This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
 avoid collisions with other users.**
-
-```text
-Bill A
-The sections about setting up a ssh port forwarding chain should say what they do up front.
-Also, at least for me the second mobilepass code is not needed (re-uses session from the first ssh).
-
-e.g.
-This command sets up a port forward sambanova login node to your local machine.
-This command sets up a port forward from a sambanova node to the sambanova login machine.
-```
 
 ### From your local machine
 
@@ -242,13 +235,12 @@ ssh -N -f -L localhost:18576:localhost:18576 ALCFUserID@sambanova.alcf.anl.gov
 Password: < MobilPass+ code >
 
 ssh ALCFUserID@sambanova.alcf.anl.gov
-...
-Password: < MobilPass+ code >
 ```
 
 ```bash
 #TODOBRW
 ssh -v -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
+ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
 ```
 
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
