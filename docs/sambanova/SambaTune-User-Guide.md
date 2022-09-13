@@ -9,6 +9,8 @@ ssh sm-02
 MobilePass+ password
 On sm-02
 source /opt/sambaflow/venv/bin/activate
+export PATH=/opt/sambaflow/bin:$PATH
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
 #There will be a username and password displayed that you will use in your browser on your laptop.
 Command used on laptop for port forward
@@ -238,6 +240,7 @@ ssh ALCFUserID@sambanova.alcf.anl.gov
 ```bash
 #TODOBRW
 ssh -v -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
+ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
 ```
 
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
