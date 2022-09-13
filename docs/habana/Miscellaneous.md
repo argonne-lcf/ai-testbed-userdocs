@@ -10,14 +10,20 @@ One may check the card usage status with "hl-smi".
 hl-smi
 ```
 
-The **hl-smi** will display a report. Look at the bottom box.
-Here it shows that HPU 1 is running a process.
-The other HPUs are not running.
+The **hl-smi** will display a report.
+
+The second and third line show the current version.  Here it is **1.6.0**.
+
+Look at the bottom box.
+Here it shows that HPU 1 is running your process.
+The other HPUs are not running a process of yours.
+
+It will not tell you if someone else is using one or more HPUs.
 
 ```text
 +-----------------------------------------------------------------------------+
-| HL-SMI Version:                            hl-1.4.1-rc-fw-35.0.2.0          |
-| Driver Version:                                      1.4.1-1f3054c          |
+| HL-SMI Version:                    hl-1.6.0-fw-36.3.2.0-1-gda631d8          |
+| Driver Version:                                      1.6.0-3c06a7c          |
 |-------------------------------+----------------------+----------------------+
 | AIP  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | AIP-Util  Compute M. |
@@ -51,7 +57,7 @@ The other HPUs are not running.
 |=============================================================================|
 |   0        N/A   N/A    N/A                                      N/A        |
 |   1       2006754     C   python
-                                 31742Mib   
+                                 31742Mib
 |   2        N/A   N/A    N/A                                      N/A        |
 |   3        N/A   N/A    N/A                                      N/A        |
 |   4        N/A   N/A    N/A                                      N/A        |

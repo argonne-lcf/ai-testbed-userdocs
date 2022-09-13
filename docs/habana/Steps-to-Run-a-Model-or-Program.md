@@ -10,11 +10,13 @@ corresponding commands.
 
 ## Copy Examples
 
-Habana provides examples of some well known AI applications under the path: `/lambda_stor/habana/apps/1.5.0/Model-References`, on the Habana compute node **habana1** or **habana2**. Make a copy of this to your home directory:
+Habana provides examples of some well known AI applications under the path. Clone the repository to your home directory.
 
 ```bash
 cd ~/
-cp -r /lambda_stor/habana/apps/1.5.0/Model-References .
+git clone https://github.com/HabanaAI/Model-References.git
+cd Model-References
+git checkout 1.6.0
 ```
 
 ## Set PYTHONPATH
