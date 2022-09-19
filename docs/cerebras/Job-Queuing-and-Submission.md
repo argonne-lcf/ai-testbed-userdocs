@@ -8,7 +8,7 @@ Scheduling is in first in, first out (FIFO) order.
 ```bash
 # csrun_cpu [--help] [--alloc_node] [--mount_dirs] command_to_execute
 csrun_cpu --help
-# csrun_wse [--nodes] [--tasks_per_node] [--cpus_per_task] [--mount_dirs] command_for_cs_execution
+# csrun_wse [--help] [--total-nodes] [--tasks_per_node] [--cpus_per_task] [--mount_dirs] command_for_cs_execution
 csrun_wse --help
 #
 # squeue is used to inspect the job queue
