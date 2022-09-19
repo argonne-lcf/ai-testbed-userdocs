@@ -134,7 +134,7 @@ python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --w
 
 
 ```text
-#TODOBRW
+#TODOBRW  This works.  9/19/22
 sm-01/home/wilsonb/tmp/uno_test/uno_ccle.yaml
 app: /opt/sambaflow/apps/private/anl/uno_full.py
 
@@ -153,6 +153,29 @@ Run the following example:
 
 ```bash
 sambatune uno_ccle.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
+```text
+#TODOBRW
+sm-01/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_brw_CCLE_1_12.yaml
+export OMP_NUM_THREADS=16
+app: /home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_full.py
+
+model-args: --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial
+
+compile-args: compile --plot --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+run-args: --measure-spatial --train-samba-spatial --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_500
+
+env:
+     OMP_NUM_THREADS: 16,
+     SF_RNT_NUMA_BIND: 2
+```
+
+Run the following example:
+
+```bash
+sambatune uno_brw_CCLE_1_12.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
 
@@ -276,6 +299,7 @@ sambatune_ui --directory /home/wilsonb/tmp/uno_test/artifact_root/sambatune_gen 
 username: "admin", password: "4f7cac2c-351e-11ed-93a3-f7ef9c6e5d46"
 username: "admin", password: "aaf1fc88-35c8-11ed-93a3-f7ef9c6e5d46"
 username: "admin", password: "bf64e4f8-3831-11ed-93a3-f7ef9c6e5d46"
+username: "admin", password: "8feca89e-384c-11ed-93a3-f7ef9c6e5d46"
 ```
 
 You will see something like:
