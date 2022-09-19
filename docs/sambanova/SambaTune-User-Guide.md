@@ -2,6 +2,10 @@
 
 ## Notes
 
+```bash
+cd /home/rweisner/tmp/uno_test
+```
+
 ```text
 #TODOBRW
 ssh wilsonb@homes.cels.anl.gov
@@ -25,10 +29,10 @@ Password
 
 ## About SambaTune
 
-SambaTune is a tool for profiling, debugging, and tuning performance of applications
+SambaTune is a tool for profiling, debugging, and tuning the performance of applications
 running on SN hardware.
 
-The tool automates collection of hardware performance counters, metrics aggregation,
+The tool automates the collection of hardware performance counters, metrics aggregation,
 report generation, and visualization. It also automates benchmarking of the application
 to compute average throughput over a sufficient number of runs. The tool is designed to
 aid the user with performance bottleneck analysis and tuning.
@@ -113,6 +117,45 @@ sambatune example_net.yaml --artifact-root $(pwd)/artifact_root --modes instrume
 
 ## Command Example
 
+```bash
+# From Bill
+python /opt/sambaflow/apps/private/anl/uno_full.py compile --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --pef-name=uno_16_4_500_ws --output-folder=/home/arnoldw//models_dir/1520847 --mac-v1
+
+python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial --pef=/home/arnoldw//models_dir/1520847/uno_16_4_500_ws/uno_16_4_500_ws.pef --in_dir /var/tmp/raw/ --mac-v1
+```
+
+```bash
+# From Bill --> Bruce
+python /opt/sambaflow/apps/private/anl/uno_full.py compile --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --pef-name=uno_16_4_500_ws --output-folder='.' --mac-v1
+
+export OMP_NUM_THREADS=1
+python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial --pef=./uno_16_4_500_ws/uno_16_4_500_ws.pef --in_dir /var/tmp/raw/ --mac-v1
+```
+
+
+```text
+#TODOBRW
+sm-01/home/wilsonb/tmp/uno_test/uno_ccle.yaml
+app: /opt/sambaflow/apps/private/anl/uno_full.py
+
+model-args: --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial
+
+compile-args: compile --plot --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+run-args: --multiprocess-pickle --use-pickle-train  --measure-spatial --train-samba-spatial --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_500 --converted-pickle
+
+env:
+     OMP_NUM_THREADS: 16,
+     SF_RNT_NUMA_BIND: 2
+```
+
+Run the following example:
+
+```bash
+sambatune uno_ccle.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
+
 ### Running
 
 Create a directory for your work.
@@ -177,11 +220,42 @@ Run the following example:
 sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
+```bash
+#TODOBRW
+cd ~/tmp/uno_test
+screen
+sambatune uno.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+```
+
 where **linear_net.yaml** is a user-specified configuration file you created above.
 
-## Start SambaTune UI
+## SambaTune UI
 
-Your artifact_root should be at ~/sambatune/artifact_root.
+### Port Availability
+
+It is recommended that you check if the port you want to use is available. You may check by:
+
+```bash
+ps -elf | grep desired_port
+```
+
+Example:
+
+```bash
+ps -elf | grep 8576
+```
+
+Alternatively, you may check for all ports in use by **sambatune_ui**:
+
+```bash
+ps -elf | grep sambatune_ui
+```
+
+If you need to free a port that you are finished with, you may use the **kill** command.
+
+### Start SambaTune UI
+
+If you followed the above directions, your artifact_root will be at ~/sambatune/artifact_root.
 
 Start the UI:
 
@@ -198,6 +272,10 @@ sambatune_ui --directory ~/sambatune/artifact_root/sambatune_gen/ --port 8576
 ```bash
 #TODOBRW
 sambatune_ui --directory ~/sambatune/artifact_root/sambatune_gen/ --port 8580
+sambatune_ui --directory /home/wilsonb/tmp/uno_test/artifact_root/sambatune_gen --port 8580
+username: "admin", password: "4f7cac2c-351e-11ed-93a3-f7ef9c6e5d46"
+username: "admin", password: "aaf1fc88-35c8-11ed-93a3-f7ef9c6e5d46"
+username: "admin", password: "bf64e4f8-3831-11ed-93a3-f7ef9c6e5d46"
 ```
 
 You will see something like:
@@ -216,9 +294,14 @@ with the,
 
 **NOTE:** The password only works with this one instance of sambatune_ui.  If you stop this instance of sambatune_ui and start another instance, it will have a new password.
 
+**NOTE:** You will need to **<CTRL + C>>** or use the **kill** command to stop sambatune_ui when you have finished.
+Not doing so will tie up the port.
+You can **ps -elf | grep the_port_you_used** to find the running processes.
+If you are not comfortable doing this, please ask for help.
+
 ## Use Port-Forwarding
 
-This sambatune_ui describes the steps to be followed to set up port-forwarding for applications,
+This describes the steps to set up port-forwarding for applications,
 like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
 This example uses 8576 and 18576 as port numbers. **Using port numbers other than these may
 avoid collisions with other users.**
@@ -241,14 +324,13 @@ ssh ALCFUserID@sambanova.alcf.anl.gov
 #TODOBRW
 ssh -v -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
 ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sambanova.alcf.anl.gov
+...
+Password: < MobilPass+ code >
+
+ssh wilsonb@sambanova.alcf.anl.gov
 ```
 
 *replacing* ***ALCFUserID*** *with your ALCF User ID.*
-
-```bash
-#TODOBRW
-ssh wilsonb@sambanova.alcf.anl.gov
-```
 
 ### From **sambanova.alcf.anl.gov**
 
@@ -274,8 +356,6 @@ ssh -N -f -L localhost:8580:localhost:8580 wilsonb@sm-01
 Then, navigate in your browser to, in this example, [http://localhost:18576](http://localhost:18576) on your local machine.
 
 Use the username and password from **sm-01** to log in.
-
-b89e4184-2966-11ed-93a3-f7ef9c6e5d46
 
 ## SSH Notes
 
