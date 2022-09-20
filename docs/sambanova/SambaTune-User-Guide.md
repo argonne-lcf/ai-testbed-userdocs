@@ -155,6 +155,26 @@ Run the following example:
 sambatune uno_ccle.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 ```
 
+```bash
+#TODOBRW
+# Stand-alone
+export UNO=.
+export NS=500
+srun python /opt/sambaflow/apps/private/anl/uno_full.py compile --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --pef-name=uno_16_4_${NS}_ws --output-folder='.' --mac-v1
+
+export OMP_NUM_THREADS=1
+srun python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS}
+
+export UNO=.
+export NS=500
+export OMP_NUM_THREADS=1
+srun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} > my.log 2>&1
+
+
+
+Ricks run python ${UNO}/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=“out/uno_16_4_${NS}/uno_16_4_${NS}.pef” --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE
+```
+
 ```text
 #TODOBRW
 sm-01/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_brw_CCLE_1_12.yaml
