@@ -323,9 +323,15 @@ echo "Duration: " $SECONDS
 pyinstrument --load-prev 2022-09-22T18-31-24 -r html
 stdout is a terminal, so saved profile output to /tmp/tmpeo5ehksn.html
 cp /tmp/tmpeo5ehksn.html .
+```
+
 On dev terminal
 
+```bash
+scp wilsonb@sambanova.alcf.anl.gov:tmp/uno_test/tmpeo5ehksn.html .
 ```
+
+View in local browser.
 
 ### Running
 
