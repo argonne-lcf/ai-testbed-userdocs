@@ -291,6 +291,14 @@ elif [ "${1}" == "run" ] ; then
   #python ${UNO}/uno_full.py run --acc-test --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE
   python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --epochs 1
   #python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef"
+
+elif [ "${1}" == "pyinstrument" ] ; then
+  echo "RUN ${DS}"
+  SF_RNT_NUMA_BIND=2
+  #python ${UNO}/uno_full.py run --acc-test --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE
+  pyinstrument ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --epochs 1
+  #python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef"
+
 elif [ "${1}" == "no_pickle" ] ; then
   echo "no_pickle ${DS}"
   SF_RNT_NUMA_BIND=2
@@ -308,9 +316,14 @@ fi
 echo "Duration: " $SECONDS
 ```
 
-
+```bash
 ./uno_pickl.sh compile 500
 ./uno_pickl.sh run 500
+./uno_pickl.sh pyinstrument 500
+pyinstrument --load-prev 2022-09-22T18-31-24 -r html
+stdout is a terminal, so saved profile output to /tmp/tmpeo5ehksn.html
+cp /tmp/tmpeo5ehksn.html .
+On dev terminal
 
 ```
 
