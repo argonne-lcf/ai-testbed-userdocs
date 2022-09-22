@@ -25,6 +25,9 @@ address used in browser on laptop localhost:8580
 #Use username and password from sambatune_ui.
 Username
 Password
+
+#TODOBRW
+/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/2022-09-21T19-21-05.html
 ```
 
 ## About SambaTune
@@ -176,7 +179,7 @@ Ricks run python ${UNO}/uno_full.py run --train-samba-spatial --weight-sharing -
 ```
 
 ```text
-#TODOBRW
+#TODOBRW Here
 sm-01/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_brw_CCLE_1_12.yaml
 export OMP_NUM_THREADS=16
 app: /home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_full.py
@@ -196,8 +199,16 @@ Run the following example:
 
 ```bash
 sambatune uno_brw_CCLE_1_12.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
-```
 
+export UNO=.
+export NS=500
+export OMP_NUM_THREADS=1
+
+srun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} --epochs 1 > my.log 2>&1
+
+cat my.log # Has pyinstrument run name.
+pyinstrument --load-prev 2022-09-21T19-21-05 -r html
+```
 
 ### Running
 
@@ -320,6 +331,7 @@ username: "admin", password: "4f7cac2c-351e-11ed-93a3-f7ef9c6e5d46"
 username: "admin", password: "aaf1fc88-35c8-11ed-93a3-f7ef9c6e5d46"
 username: "admin", password: "bf64e4f8-3831-11ed-93a3-f7ef9c6e5d46"
 username: "admin", password: "8feca89e-384c-11ed-93a3-f7ef9c6e5d46"
+username: "admin", password: "355222d6-3a88-11ed-93a3-f7ef9c6e5d46"
 ```
 
 You will see something like:
