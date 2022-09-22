@@ -1,0 +1,63 @@
+(base) wilsonb@groq1:~/groqflow$ conda create -n groqflow_env python=3.8.13
+WARNING: A conda environment already exists at '/home/wilsonb/miniconda3/envs/groqflow_env'
+Remove existing environment (y/[n])? y
+
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.12.0
+  latest version: 4.14.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/wilsonb/miniconda3/envs/groqflow_env
+
+  added / updated specs:
+    - python=3.8.13
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2022.07.19-h06a4308_0
+  certifi            pkgs/main/linux-64::certifi-2022.9.14-py38h06a4308_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
+  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  ncurses            pkgs/main/linux-64::ncurses-6.3-h5eee18b_3
+  openssl            pkgs/main/linux-64::openssl-1.1.1q-h7f8727e_0
+  pip                pkgs/main/linux-64::pip-22.1.2-py38h06a4308_0
+  python             pkgs/main/linux-64::python-3.8.13-h12debd9_0
+  readline           pkgs/main/linux-64::readline-8.1.2-h7f8727e_1
+  setuptools         pkgs/main/linux-64::setuptools-63.4.1-py38h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.39.2-h5082296_0
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
+  wheel              pkgs/main/noarch::wheel-0.37.1-pyhd3eb1b0_0
+  xz                 pkgs/main/linux-64::xz-5.2.5-h7f8727e_1
+  zlib               pkgs/main/linux-64::zlib-1.2.12-h5eee18b_3
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate groqflow_env
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
