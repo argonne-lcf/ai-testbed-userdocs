@@ -135,7 +135,6 @@ export OMP_NUM_THREADS=1
 python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial --pef=./uno_16_4_500_ws/uno_16_4_500_ws.pef --in_dir /var/tmp/raw/ --mac-v1
 ```
 
-
 ```text
 #TODOBRW  This works.  9/19/22
 sm-01/home/wilsonb/tmp/uno_test/uno_ccle.yaml
@@ -171,7 +170,7 @@ srun python /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatia
 export UNO=.
 export NS=500
 export OMP_NUM_THREADS=1
-srun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} > my.log 2>&1
+srun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} > pyinstrument_1.13.log 2>&1
 
 
 
@@ -179,7 +178,7 @@ Ricks run python ${UNO}/uno_full.py run --train-samba-spatial --weight-sharing -
 ```
 
 ```text
-#TODOBRW Here
+#TODOBRW
 sm-01/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_brw_CCLE_1_12.yaml
 export OMP_NUM_THREADS=16
 app: /home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_full.py
@@ -201,13 +200,118 @@ Run the following example:
 sambatune uno_brw_CCLE_1_12.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
 
 export UNO=.
-export NS=500
+export NS=50
 export OMP_NUM_THREADS=1
 
-srun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} --epochs 1 > my.log 2>&1
+srun python /opt/sambaflow/apps/private/anl/uno_full.py compile --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+xsrun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} --epochs 1 > my.log 2>&1
+
+srun python /opt/sambaflow/apps/private/anl/uno_full.py run --multiprocess-pickle  --measure-spatial --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./out/uno_full_16_47_${NS}/uno_full_16_47_${NS}.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_${NS} > pyinstrument_1.13.log 2>&1
 
 cat my.log # Has pyinstrument run name.
 pyinstrument --load-prev 2022-09-21T19-21-05 -r html
+
+
+1.13
+
+source /opt/sambaflow/venv/bin/activate
+cd ~/tmp/uno_test/
+export UNO=.
+export NS=500
+export OMP_NUM_THREADS=1
+export PATH=/opt/sambaflow/bin:$PATH
+sntilestat
+
+
+
+./uno_pickl.sh compile 500
+./uno_pickl.sh run 500
+
+```
+
+```bash
+sambatune uno_brw_CCLE_1_12.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+
+export UNO=.
+export NS=50
+export OMP_NUM_THREADS=1
+
+srun python /opt/sambaflow/apps/private/anl/uno_full.py compile --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+xsrun pyinstrument /opt/sambaflow/apps/private/anl/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./uno_16_4_${NS}_ws/uno_16_4_${NS}_ws.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --data-dir /software/sambanova/dataset/CCLE_16_${NS} --epochs 1 > my.log 2>&1
+
+srun python /opt/sambaflow/apps/private/anl/uno_full.py run --multiprocess-pickle  --measure-spatial --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=./out/uno_full_16_47_${NS}/uno_full_16_47_${NS}.pef --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_${NS} > pyinstrument_1.13.log 2>&1
+
+cat my.log # Has pyinstrument run name.
+pyinstrument --load-prev 2022-09-21T19-21-05 -r html
+
+
+1.13
+
+source /opt/sambaflow/venv/bin/activate
+cd ~/tmp/uno_test/
+export UNO=.
+export NS=500
+export OMP_NUM_THREADS=1
+export PATH=/opt/sambaflow/bin:$PATH
+sntilestat
+```
+
+uno_pickl.sh
+
+```bash
+#! /bin/bash -x
+#set -e
+source /opt/sambaflow/venv/bin/activate
+SECONDS=0
+NS=${2}
+UNO=/opt/sambaflow/apps/private/anl/
+DS="ALL"
+DS="CCLE"
+
+BS=$((NS*16))
+export OMP_NUM_THREADS=16
+
+echo "Model: UNO_SPA_TRN"
+echo "Date: " $(date +%m/%d/%y)
+echo "Time: " $(date +%H:%M)
+if [ "${1}" == "convert" ] ; then
+python3 ${UNO}/uno/uno_data_loaders_converted.py   --in_dir /var/tmp/raw/ --out_dir /software/sambanova/dataset/${DS}_16_${NS}  --batch-size ${BS} --train_sources ${DS} --file-write-frequency 10
+
+
+elif [ "${1}" == "compile" ] ; then
+  echo "COMPILE"
+  python ${UNO}/uno_full.py compile --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --mac-human-decision ${UNO}/samba_uno/human_decisions_spatial.json --pef-name="uno_16_4_${NS}" --mac-v1
+
+
+elif [ "${1}" == "run" ] ; then
+  echo "RUN ${DS}"
+  SF_RNT_NUMA_BIND=2
+  #python ${UNO}/uno_full.py run --acc-test --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE
+  python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --epochs 1
+  #python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef"
+elif [ "${1}" == "no_pickle" ] ; then
+  echo "no_pickle ${DS}"
+  SF_RNT_NUMA_BIND=2
+  python ${UNO}/uno_full.py run --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE
+
+elif [ "${1}" == "mp" ] ; then
+echo "Duration: " $SECONDS
+
+elif [ "${1}" == "mp" ] ; then
+echo "Duration: " $SECONDS
+echo "PERF"
+python uno_full.py measure-performance --measure-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef="out/uno_16_4_${NS}/uno_16_4_${NS}.pef" --num-iterations 20 --mac-v1
+fi
+
+echo "Duration: " $SECONDS
+```
+
+
+./uno_pickl.sh compile 500
+./uno_pickl.sh run 500
+
 ```
 
 ### Running
