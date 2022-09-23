@@ -1,0 +1,43 @@
+(groqflow_env) wilsonb@groq1:~/groqflow/examples/pytorch$ python hello_world.py
+
+Error: GroqFlow added a dependence on tensorflow and tf2onnx in version 2.1.2. You must install tensorflow and tf2onnx to continue.
+
+▄██████████████▄▐█▄▄▄▄█▌
+██████▌▄▌▄▐▐▌███▌▀▀██▀▀
+████▄█▌▄▌▄▐▐▌▀███▄▄█▌
+▄▄▄▄▄██████████████
+
+
+Traceback (most recent call last):
+  File "/home/wilsonb/groqflow/groqflow/justgroqit/export.py", line 18, in <module>
+    import tf2onnx
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/tf2onnx/__init__.py", line 11, in <module>
+    from tf2onnx import tfonnx, utils, graph, graph_builder, graph_matcher, shape_inference, schemas, convert  # pylint: disable=wrong-import-order
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/tf2onnx/tfonnx.py", line 16, in <module>
+    import tf2onnx.onnx_opset  # pylint: disable=unused-import
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/tf2onnx/onnx_opset/__init__.py", line 5, in <module>
+    from . import (
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/tf2onnx/onnx_opset/controlflow.py", line 15, in <module>
+    from tf2onnx import utils
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/tf2onnx/utils.py", line 16, in <module>
+    import requests
+  File "/home/wilsonb/.local/lib/python3.8/site-packages/requests/__init__.py", line 43, in <module>
+    import urllib3
+ModuleNotFoundError: No module named 'urllib3'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "hello_world.py", line 14, in <module>
+    from groqflow import groqit
+  File "/home/wilsonb/groqflow/groqflow/__init__.py", line 4, in <module>
+    from groqflow.justgroqit.groqit import (
+  File "/home/wilsonb/groqflow/groqflow/justgroqit/groqit.py", line 2, in <module>
+    import groqflow.justgroqit.ignition as ignition
+  File "/home/wilsonb/groqflow/groqflow/justgroqit/ignition.py", line 11, in <module>
+    import groqflow.justgroqit.export as export
+  File "/home/wilsonb/groqflow/groqflow/justgroqit/export.py", line 20, in <module>
+    raise exp.GroqitEnvError(
+groqflow.common.exceptions.GroqitEnvError
+(groqflow_env) wilsonb@groq1:~/groqflow/examples/pytorch$
+

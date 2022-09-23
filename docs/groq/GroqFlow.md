@@ -33,6 +33,10 @@ git clone https://github.com/groq/groqflow.git
 The following example demonstrates downloading, installing, and creating a Miniconda virtual environment.
 
 ```bash
+conda activate groqflow-11-21
+```
+
+```bash
 cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
@@ -88,6 +92,6 @@ export PYTHONPATH="/opt/groq/runtime/site-packages:$PYTHONPATH"
 To confirm that you're setup correctly, navigate to the examples folder at **groqflow/examples/** and run the **hello_pytorch_world.py** example:
 
 ```bash
-cd examples/
-python hello_pytorch_world.py
+cd examples/pytorch/
+python hello_world.py
 ```
