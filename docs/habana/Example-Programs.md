@@ -18,7 +18,7 @@ Habana provides examples of some well known AI applications under the path. Clon
 cd ~/
 git clone https://github.com/HabanaAI/Model-References.git
 cd Model-References
-git checkout 1.6.0
+git checkout 1.6.1
 ```
 
 ## Set PYTHONPATH
