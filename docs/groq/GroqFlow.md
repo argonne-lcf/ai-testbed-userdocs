@@ -39,7 +39,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
 mkdir ~/miniconda3/envs/
 cd ~/miniconda3/envs/
-ln -s /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21/ groqflow-11-21
+cp -r /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21/ .
 conda activate groqflow-11-21
 ```
 
