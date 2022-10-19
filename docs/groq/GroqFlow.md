@@ -28,22 +28,34 @@ cd ~
 git clone https://github.com/groq/groqflow.git
 ```
 
-## Step 1: Copy and Activate a Miniconda Virtual Environment
+## Step 1: Install Miniconda
 
-The following example demonstrates downloading, installing, and creating a Miniconda virtual environment.
+Run:
 
 ```bash
 cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
-mkdir ~/miniconda3/envs/
-cd ~/miniconda3/envs/
-cp -r /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21/ .
-conda activate groqflow-11-21
 ```
 
-## Step 2: Add GroqWare Suite to Python Path
+## Step 2: Clone Miniconda Environment
+
+Run:
+
+```bash
+cd ~
+conda activate base
+conda create --clone /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21 --prefix ~/miniconda3/envs/groqflow-11-21
+
+conda activate ~/miniconda3/envs/groqflow-11-21
+
+which python3
+# Output
+#/home/CELS-GCE-UserID/miniconda3/envs/groqflow-11-21/bin/python3
+```
+
+## Step 3: Add GroqWare Suite to Python Path
 
 This adds the **Groq** tools to your path:
 
@@ -51,7 +63,7 @@ This adds the **Groq** tools to your path:
 export PYTHONPATH="/opt/groq/runtime/site-packages:$PYTHONPATH"
 ```
 
-## Step 3: Rock-It with groqit()
+## Step 4: Rock-It with groqit()
 
 To confirm that you're setup correctly, navigate to the examples folder at **groqflow/examples/** and run the **hello_world.py** example:
 
