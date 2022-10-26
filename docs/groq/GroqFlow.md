@@ -39,16 +39,26 @@ bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-## Step 2: Clone Miniconda Environment
+## Step 2: Miniconda Environment
+
+You may use or clone a prebuilt environment.
+
+### Use Miniconda Environment
+
+Activate existing environment.
+
+```bash
+conda activate /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21
+```
+
+### Clone Miniconda Environment
 
 Run:
 
 ```bash
-cd ~
 conda activate base
 conda create --clone /lambda_stor/software/groq/groqit/0.9.0/miniconda3/envs/groqflow-11-21 --prefix ~/miniconda3/envs/groqflow-11-21
-
-conda activate ~/miniconda3/envs/groqflow-11-21
+conda activate groqflow-11-21
 
 which python3
 # Output
