@@ -24,7 +24,7 @@ Login to the SambaNova login node from your local machine using the below comman
 
 ```bash
 ssh ALCFUserID@sambanova.alcf.anl.gov
-ALCFUserID@sambanova.alcf.anl.govs password: < MobilPass+ code >
+Password: < MobilPass+ code >
 ```
 
 Note: Use the ssh "-v" option in order to debug any ssh problems.
