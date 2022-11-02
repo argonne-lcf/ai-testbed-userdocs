@@ -39,9 +39,6 @@ ssh sm-01
 ssh sm-02
 ```
 
-**NOTE: sm-01 and sm-02 each have a separate scheduler.  If you have already
-ssh'd into one of those nodes, you are all set.**
-
 ### SDK setup
 
 The SambaNova system has a bash shell script to set up the required software environment.

@@ -23,6 +23,11 @@ srun python lenet.py run --pef="pef/lenet/lenet.pef"
 
 You may specify which node/host on which to run a job.
 
+Reasons to specify a node list:
+
+- One wants to test a specific node to verify function of the HW and SW  (daily smoke tests do this)
+- The nodes are at different software levels and one wants to use a node that has the needed software level for one's application.
+
 Example:
 
 ```bash
