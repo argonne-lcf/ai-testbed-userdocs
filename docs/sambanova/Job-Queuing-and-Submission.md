@@ -60,11 +60,23 @@ sbatch --gres=rdu:2 <your_script.sh>
 
 ## Squeue
 
-The `Squeue` command provides information about jobs located in the Slurm scheduling queue.
+The `squeue` command provides information about jobs located in the Slurm scheduling queue.
 
 ```bash
 squeue
 ```
+
+## Sinfo
+
+Sinfo is used to view partition and node information for a system running Slurm.
+
+Here is a suggested command:
+
+```bash
+sinfo -O AllocNodes, GresUsed, Gres, NodeList
+```
+
+For more information, see [sinfo](https://slurm.schedmd.com/sinfo.html).
 
 ## Scancel
 
