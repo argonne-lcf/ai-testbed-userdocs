@@ -13,11 +13,9 @@ Connection to a Graphcore node is a two-step process.
 
 The first step is to **ssh** to the **login node**.
 
-
-
 The second step is to log in to a Graphcore node from the **login node**.
 
-![SambaNova System View](sambanxova_login.jpg "SambaNova System View")
+![Graphcore System View](graphcore_login.jpg "Graphcore System View")
 
 ### Log in to Login Node
 
@@ -33,7 +31,7 @@ Note: Use the ssh "-v" option in order to debug any ssh problems.
 
 ### Log in to a Graphcore Node
 
-Once you are on the login node, one of the four Graphcores node can be accessed using **ssh**.
+Once you are on the login node, one of the four Graphcore nodes can be accessed using **ssh**.
 
 ```bash
 ssh gc-poplar-01.ai.alcf.anl.gov
@@ -45,17 +43,5 @@ ssh gc-poplar-03.ai.alcf.anl.gov
 ssh gc-poplar-04.ai.alcf.anl.gov
 ```
 
-
-**NOTE: xxxxxxxxxxxxxxxxxxxx each have a separate scheduler.  If you have already
+**NOTE: Each system has a separate scheduler.  If you have already
 ssh'd into one of those nodes, you are all set.**
-
-### SDK setup
-
-The Graphcore system has a bash shell scripts to set up the required software environment.
-
-Use
-
-```bash
-source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/popart-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
-source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
-```

@@ -1,4 +1,17 @@
-# Virtual Environments to Customize Environment
+# Virtual Environments
+
+## SDK Setup
+
+The Graphcore system has bash shell scripts to set up the required software environment.
+
+Use
+
+```bash
+source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/popart-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
+source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
+```
+
+Ignore the error from the second command.
 
 ## Create a Virtual Environment
 
@@ -50,4 +63,4 @@ To install a different version of a package that is already installed in one's e
 pip install --ignore-installed  ... # or -I
 ```
 
-Note: Conda is not supported on the SambaNova system.
+Note: Conda is not supported on the Graphcore system.
