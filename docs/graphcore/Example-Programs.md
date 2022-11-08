@@ -42,7 +42,7 @@ use_bbox_info: true
 epoch: 100
 ```
 
-and change it to:
+and change them to:
 
 ```yaml
 use_bbox_info: false
@@ -93,13 +93,6 @@ The output will look something like:
 ```
 
 ### POD64
-
-Change directory
-
-```bash
-cd ~/graphcore/examples/vision/cnns/pytorch
-python -m pip install -r requirements.txt
-```
 
 #### Update rn50_pod64.sh
 
