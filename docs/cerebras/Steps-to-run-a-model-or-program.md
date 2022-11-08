@@ -51,11 +51,10 @@ See section [Job Queuing and Submission](Job-Queuing-and-Submission.md) for more
 #### Execution mode:</br>
 The cs2 system supports two modes of execution.<br>
 1. Pipeline mode (default mode)<br>
-The current cs2-01 system is in pipelined mode. This mode has more mature software support when compared to the weight streaming mode.<br>
+Both cs2-01 and cs2-02 are currently configured for pipelined mode. This mode has more mature software support when compared to the weight streaming mode.<br>
 2. Weight streaming mode.(See the [Weight Streaming Quickstart](https://docs.cerebras.net/en/latest/getting-started/weight-streaming-quickstart.html?highlight=weight%20streaming).)<br>
 Weight streaming mode uses the host memory of one or more dedicated worker nodes to store model weights, and supports larger models compared to pipelined mode.<br>
 Weight streaming mode is newly introduced in Rel 1.5, and supports only a  limited number of model layers.<br>
-cs2-02 is configured for weight streaming mode.
 
 ## Running a training job on the wafer
 
@@ -92,7 +91,8 @@ See also the current Cerebras quickstart documentation, that uses a clone of Cer
 [https://github.com/Cerebras/cerebras_reference_implementations/](https://github.com/Cerebras/cerebras_reference_implementations/)
 
 ## Running a training job on the wafer in weight streaming mode
-Log into the chief node for cs2-02, which is configured for weight streaming.
+No CS2-nodes are currently configured for weight streaming mode. This section is currently a placeholder.
+
 If not already done, copy the modelzoo tree:
 
 ```console
