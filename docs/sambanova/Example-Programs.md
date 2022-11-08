@@ -65,7 +65,6 @@ Run these commands:
 
 ```bash
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
-srun python lenet.py test --pef="pef/lenet/lenet.pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
 
@@ -76,7 +75,6 @@ contents:
 #!/bin/sh
 
 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
-python lenet.py test --pef="pef/lenet/lenet.pef"
 python lenet.py run --pef="pef/lenet/lenet.pef"
 ```
 
@@ -158,7 +156,6 @@ Commands to run MNIST example:
 
 ```bash
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-srun python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 
@@ -167,7 +164,6 @@ To run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh w
 ```bash
 #!/bin/sh
 python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-python ffn_mnist.py test --pef="pef/ffn_mnist/ffn_mnist.pef"
 python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
 ```
 
@@ -227,11 +223,9 @@ Then
 sbatch --output=pef/logreg/output.log submit-logreg-job.sh
 ```
 
-The output will look something like this:
+The output, pef/logreg/output.log, will look something like this:
 
 ```text
-pef/logreg/output.log
-
 [Info][SAMBA][Default] # Placing log files in
 pef/logreg/logreg.samba.log
 [Info][MAC][Default] # Placing log files in
@@ -292,7 +286,7 @@ Run these commands for training (compile + train):
 ```bash
 sbatch unet_compile_run_inf_rl.sh compile 32 1  # Takes over 15 minutes.
 sbatch unet_compile_run_inf_rl.sh test 32 1     # Very fast.
-sbatch unet_compile_run_inf_rl.sh run 32 1      # 
+sbatch unet_compile_run_inf_rl.sh run 32 1      #
 ```
 
 The output files are named **slurm-\<batch ID\>.out**.
