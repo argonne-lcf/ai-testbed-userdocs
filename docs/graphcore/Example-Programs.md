@@ -194,17 +194,9 @@ The ImageNet data path is now defined.
 ./rn50_pod16.sh
 ```
 
-The output will look something like:
-
-```console
-
-
-
-
-
-```
-
 #### POD64
+
+**NOTE:** One must complete the instructions on [Multi-node Setup](Multi-node-Setup.md) before running this example.
 
 ##### Update rn50_pod64.sh
 
@@ -234,14 +226,4 @@ The ImageNet data path is now defined.
 
 ```bash
 ./rn50_pod64.sh
-```
-
-The output will look something like:
-
-```console
-
-
-
-
-
 ```

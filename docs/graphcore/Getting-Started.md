@@ -27,7 +27,7 @@ Login to the SambaNova login node from your local machine using the below comman
 ssh CELSGCEUserID@homes.cels.anl.gov
 ```
 
-Note: Use the ssh "-v" option in order to debug any ssh problems.
+**NOTE: Use the ssh "-v" option in order to debug any ssh problems.**
 
 ### Log in to a Graphcore Node
 
