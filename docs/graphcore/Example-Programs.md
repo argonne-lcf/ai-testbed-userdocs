@@ -134,7 +134,6 @@ Change directory
 ```bash
 cd ~/graphcore/examples/vision/cnns/pytorch
 python -m pip install -r requirements.txt
-python -m pip install PyTurboJPEG
 ```
 
 #### Update configs.yml
