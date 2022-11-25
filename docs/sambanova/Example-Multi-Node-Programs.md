@@ -18,7 +18,7 @@ Copy files and change directory if you have not already done so.
 
 ```bash
 cp -r /opt/sambaflow/apps/image ~/apps/image
-cd ~/apps/image/unet
+cd ~/apps/image
 cp /software/sambanova/apps/image/pytorch/unet/*.sh .
 ```
 
@@ -81,12 +81,12 @@ echo "COMPILE"
 
 This section will compile the model for multiple RDUs if it does not exist.
 
-A log file will be created at **compile_${BS}_${IM}_NP.log**.
+A log file will be created at **compile_${BS}_${IM}_NN.log**.
 
 ```bash
 # Compile for parallel RDUs
-if [ ! -e out/unet_train_${BS}_${IM}_NP/unet_train_${BS}_${IM}_NP.pef ] ; then
-  python ${UNET}/unet.py compile -b ${BS} --in-channels=3 --in-width=${IM} --in-height=${IM} --enable-conv-tiling --mac-v2 --compiler-configs-file ${UNET}/jsons/compiler_configs/unet_compiler_configs_no_inst.json --pef-name="unet_train_${BS}_${IM}_NP"  --data-parallel -ws 2 > compile_${BS}_${IM}_NP.log 2>&1
+if [ ! -e out/unet_train_${BS}_${IM}_NN/unet_train_${BS}_${IM}_NN.pef ] ; then
+  python ${UNET}/unet.py compile -b ${BS} --in-channels=3 --in-width=${IM} --in-height=${IM} --enable-conv-tiling --mac-v2 --compiler-configs-file ${UNET}/jsons/compiler_configs/unet_compiler_configs_no_inst.json --pef-name="unet_train_${BS}_${IM}_NN"  --data-parallel -ws 2 > compile_${BS}_${IM}_NN.log 2>&1
 fi
 ```
 
