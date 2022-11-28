@@ -18,6 +18,8 @@ nav:
     - Steps to Run a Model/Program: sambanova/Steps-to-Run-a-Model-or-Program.md
     - Job Queuing and Submission: sambanova/Job-Queuing-and-Submission.md
     - Example Programs: sambanova/Example-Programs.md
+    - Example Multi-Node Programs: sambanova/Example-Multi-Node-Programs.md
+    - Steps to Run BERT Large on Sambanova DataScale SN10-8R: sambanova/Steps-to-Run-BERT-Large-on-Sambanova-DataScale-SN10-8R.md
     - Tunneling and Forwarding Ports: sambanova/Tunneling-and-forwarding-ports.md
     #- DataParallel: sambanova/DataParallel.md
     - Miscellaneous: sambanova/Miscellaneous.md
