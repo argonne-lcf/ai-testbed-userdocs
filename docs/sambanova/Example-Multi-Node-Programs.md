@@ -104,7 +104,7 @@ Sbatch argument definitions:
 
   - **--nodes 2**
 
-    The number of nodes to use.  Currently there are two nodes.  Soon there will be four.
+    The number of nodes to use.  Currently there are two nodes.
 
   - **--nodelist sm-02,sm-01**
 
@@ -135,7 +135,7 @@ echo "Duration: " $SECONDS
 
 ### Unet Batch
 
-Here is a description of **unet_batch.sh**.
+Here is a description of **unet_batch.sh**.  This script is automatically run by **unet_all.sh**.
 
 This block is the same as above.
 
