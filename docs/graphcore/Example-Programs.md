@@ -138,7 +138,7 @@ python -m pip install -r requirements.txt
 
 #### Update configs.yml
 
-If necessary change directory:
+Change directory:
 
 ```bash
 cd ~/graphcore/examples/vision/cnns/pytorch/train
@@ -146,27 +146,27 @@ cd ~/graphcore/examples/vision/cnns/pytorch/train
 
 Open **configs.yml** with your favorite editor.
 
-Find:
+Find in the **resnet50** section
 
 ```yaml
-use_bbox_info: true
-
 epoch: 100
+
+use_bbox_info: true
 ```
 
 and change them to:
 
 ```yaml
-use_bbox_info: false
-
 epoch: 20
+
+use_bbox_info: false
 ```
 
 #### POD16
 
 ##### Update rn50_pod16.sh
 
-Change directory
+Change directory if necessary.
 
 ```bash
 cd ~/graphcore/examples/vision/cnns/pytorch/train
@@ -190,8 +190,10 @@ The ImageNet data path is now defined.
 
 ##### Run rn50_pod16.sh
 
+You may want to use **screen** because this run can be long.
+
 ```bash
-./rn50_pod16.sh
+./rn50_pod16.sh > out 2>&1
 ```
 
 #### POD64
