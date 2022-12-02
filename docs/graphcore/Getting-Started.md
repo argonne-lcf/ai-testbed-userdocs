@@ -19,7 +19,7 @@ The second step is to log in to a Graphcore node from the **login node**.
 
 ### Log in to Login Node
 
-Login to the SambaNova login node from your local machine using the below command. This uses the MobilPass+ token generated every time you log in to the system. This is the same passcode used to authenticate into other ALCF systems, such as Theta and Cooley.
+Log in to **homes** from your local machine using the below command.
 
 *In the examples below, replace* ***CELSGCEUserID*** *with your CELS GCE user id.*
 
