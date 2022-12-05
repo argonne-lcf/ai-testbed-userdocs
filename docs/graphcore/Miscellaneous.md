@@ -19,6 +19,18 @@ The output will look something like:
 +--------+---------------------------------------------------------------------------------------+--------+------------+----+----------+--------+--------+--------+
 ```
 
+```bash
+gc-info -l
+```
+
+The command **gc-info** lists the partition and different IPU Id's along with the multi-IPU configuration IDs.
+
+```console
+-+- Id:  [0], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [3]
+-+- Id:  [1], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [2]
+-+- Id:  [2], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [1]
+```
+
 ## How busy is the system?
 
 Use one of

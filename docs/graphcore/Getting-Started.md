@@ -2,8 +2,10 @@
 
 ## On-Boarding
 
-See [Get Started](https://www.alcf.anl.gov/support-center/get-started)
-to request an account and additional information.
+<!---See [Get Started](https://www.alcf.anl.gov/support-center/get-started)
+to request an account and additional information.--->
+
+Logging into the Graphcore processors requires a GCE account that can be requested at (https://accounts.cels.anl.gov).
 
 ## Setup
 
@@ -19,7 +21,7 @@ The second step is to log in to a Graphcore node from the **login node**.
 
 ### Log in to Login Node
 
-Log in to **homes** from your local machine using the below command.
+Login to the homes-gce login node from your local machine using the below command. This uses the CELS GCE account ID.
 
 *In the examples below, replace* ***CELSGCEUserID*** *with your CELS GCE user id.*
 
