@@ -37,7 +37,8 @@ OCT4=`echo "$HOST1" | cut -d "." -f 4`
 HOST2=$OCT123.`expr $OCT4 + 1`
 HOST3=$OCT123.`expr $OCT4 + 2`
 HOST4=$OCT123.`expr $OCT4 + 3`
-HOSTS=$HOST1,$HOST2,$HOST3,$HOST4
+export HOSTS=$HOST1,$HOST2,$HOST3,$HOST4
+export CLUSTER=c16
 VIPU_SERVER=${VIPU_SERVER:=$HOST1}
 FIRST_PARTITION=`vipu-admin list partitions --api-host $VIPU_SERVER| grep ACTIVE | cut -d '|' -f 3 | cut -d ' ' -f 2 | head -1`
 PARTITON=${PARTITION:=$FIRST_PARTITION}
