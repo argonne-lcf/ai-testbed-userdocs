@@ -18,6 +18,17 @@ The output will look something like:
 | 268524 |                                        python3                                        |  4m1s  |  wilsonb   | 7  | 1850MHz  | 34.8 C |        |        |
 +--------+---------------------------------------------------------------------------------------+--------+------------+----+----------+--------+--------+--------+
 ```
+```bash
+gc-info -l
+```
+gc-info lists the partition and different IPU Id's along with the multi IPU configuration IDs. 
+
+```console
+-+- Id:  [0], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [3]
+-+- Id:  [1], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [2]
+-+- Id:  [2], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [1]
+```
+ 
 
 ## How busy is the system?
 

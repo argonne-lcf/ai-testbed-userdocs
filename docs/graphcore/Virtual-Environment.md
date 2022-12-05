@@ -32,6 +32,14 @@ POPLAR_SDK_ROOT=/lambda_stor/software/graphcore/poplar_sdk/3.0.0
 export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
 pip install $POPLAR_SDK_ROOT/poptorch-3.0.0+86945_163b7ce462_ubuntu_20_04-cp38-cp38-linux_x86_64.whl
 ```
+## Install Tensorflow 
+```bash
+POPLAR_SDK_ROOT=/lambda_stor/software/graphcore/poplar_sdk/3.0.0
+export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
+pip install $POPLAR_SDK_ROOT/tensorflow-2.6.3+gc3.0.0+236842+d084e493702+amd_znver1-cp38-cp38-linux_x86_64.whl
+pip install $POPLAR_SDK_ROOT/keras-2.6.0+gc3.0.0+236851+1744557f-py2.py3-none-any.whl
+```
+
 
 ## Miscellaneous Environment Variables
 
