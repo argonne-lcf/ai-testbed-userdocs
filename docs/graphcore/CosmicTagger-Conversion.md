@@ -2,7 +2,8 @@
 
 The intent of this page is to show conceptually how to convert a model to run on the Graphcore system.
 It is not necessary to convert CosmicTagger because it has already been converted and is
-located at https://github.com/BruceRayWilsonAtANL/CosmicTagger.git.
+located at [CosmicTagger](https://github.com/BruceRayWilsonAtANL/CosmicTagger.git) on the **Graphcore** branch.  The original is
+located at [CosmicTagger](https://github.com/coreyjadams/CosmicTagger.git).
 
 ## Run CosmicTagger
 
