@@ -208,6 +208,9 @@ Change the code to the following.
             if self.args.run.precision == Precision.mixed and self.args.run.compute_mode == ComputeMode.GPU:
                 with torch.cuda.amp.autocast():
                     logits_image, labels_image = self.forward_pass(minibatch_data, net=val_net)
+
+                    # Compute the loss based on the logits
+                    loss = self.loss_calculator(labels_image, logits_image)
             else:
                 if self.args.run.compute_mode == ComputeMode.IPU:
                     logits_image, labels_image, loss = self.forward_pass(minibatch_data, net=val_net)
