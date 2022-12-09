@@ -6,33 +6,40 @@ This is an adaptation of [Capturing IPU Reports](https://docs.graphcore.ai/proje
 
 Yes - you will need to tunnel a port through ssh like ssh .... -L 8090:127.0.0.1:22 and then open the "remote" report in the Graph Analyser using Hostname 127.0.0.1 and Port 8090.
 
-```text
-     -J destination
-             Connect to the target host by first making a ssh connection to the jump host described by destination and then establishing a TCP forwarding to the
-             ultimate destination from there.  Multiple jump hops may be specified separated by comma characters.  This is a shortcut to specify a ProxyJump con‐
-             figuration directive.  Note that configuration directives supplied on the command-line generally apply to the destination host and not any specified
-             jump hosts.  Use ~/.ssh/config to specify configuration for jump hosts.
-
-     -K      Enables GSSAPI-based authentication and forwarding (delegation) of GSSAPI credentials to the server.
-
-     -k      Disables forwarding (delegation) of GSSAPI credentials to the server.
-
-     -L [bind_address:]port:host:hostport
-     -L [bind_address:]port:remote_socket
-     -L local_socket:host:hostport
-     -L local_socket:remote_socket
-             Specifies that connections to the given TCP port or Unix socket on the local (client) host are to be forwarded to the given host and port, or Unix
-             socket, on the remote side.  This works by allocating a socket to listen to either a TCP port on the local side, optionally bound to the specified
-             bind_address, or to a Unix socket.  Whenever a connection is made to the local port or socket, the connection is forwarded over the secure channel,
-             and a connection is made to either host port hostport, or the Unix socket remote_socket, from the remote machine.
-
-             Port forwardings can also be specified in the configuration file.  Only the superuser can forward privileged ports.  IPv6 addresses can be specified
-             by enclosing the address in square brackets.
-
-             By default, the local port is bound in accordance with the GatewayPorts setting.  However, an explicit bind_address may be used to bind the connec‐
-             tion to a specific address.  The bind_address of “localhost” indicates that the listening port be bound for local use only, while an empty address
-             or ‘*’ indicates that the port should be available from all interfaces.
+```bash
+ssh -J wilsonb@homes.cels.anl.gov wilsonb@gc-poplar-01 -L 8090:127.0.0.1:22
 ```
+
+Launch Graph Analyser on local machine
+
+cd location
+
+./popvision-graph-analyser-3.11.6.AppImage
+
+click "Open a report..."
+
+click remote tab
+
+Enter your username for remote machine
+
+127.0.0.1
+
+8090
+
+Press OK
+
+Enter password and click OK
+
+Navigate to your reports directory
+
+Select training directory
+
+Select 'archive.a' file
+
+Click 'Open' button
+
+You will be on the 'Summary Report' by default
+
 
 ![Graphcore System View](image.png "Graphcore System View")
 
