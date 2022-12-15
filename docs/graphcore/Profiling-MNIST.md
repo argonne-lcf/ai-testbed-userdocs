@@ -1,68 +1,39 @@
-# Profiling ResNet50
+# Profiling MNIST
 
 Follow all the instructions in [Getting Started](/docs/graphcore/Getting-Started) to log into a Graphcore node.
 
-Follow the instructructions in [Virtual Environments](/docs/graphcore/Virtual-Environments) up to and including **PopART Environment Setup**.
+Follow the instructions in [Virtual Environments](/docs/graphcore/Virtual-Environments) up to and including **PopART Environment Setup**.
 
-## Examples Repo
+Following the instructions in [Example Programs](/docs/graphcore/Example-Programs) up to and including
+**MNIST, Install Requirements**.
 
-Graphcore provides examples of some well-known AI applications in their repository at https://github.com/graphcore/examples.git.
-
-Clone the **examples** repository to your personal directory structure:
-
-```bash
-mkdir ~/graphcore
-cd ~/graphcore
-git clone https://github.com/graphcore/examples.git
-```
-
-## lkjsdf
+## Change Directory
 
 ```bash
- 2034  cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
- 2035  python -m pip install -r requirements.txt
- 2036  POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
- 2037  python mnist_poptorch.py
+cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
+cd ~/graphcore/tutorials/simple_applications/pytorch/mnist
 ```
 
-## Install Requirements
+## Set Poplar Options
 
-Change directory
+Set the option to generate all reports, i.e., **"autoReport.all":"true"**.
+
+Set the reports directory, i.e., **"autoReport.directory":"./reports"**.
+
+Do so by running the following commands:
 
 ```bash
-cd ~/graphcore/examples/vision/cnns/pytorch
-python -m pip install -r requirements.txt
+POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
 ```
 
-## Export Variables
+## Run MNIST
 
-Export the datasets directory.
+Do so by running the following command:
 
 ```bash
-export POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
-export DATASETS_DIR=/software/datasets
-HOST1=`ifconfig eno1 | grep "inet " | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1`
-OCT123=`echo "$HOST1" | cut -d "." -f 1,2,3`
-OCT4=`echo "$HOST1" | cut -d "." -f 4`
-HOST2=$OCT123.`expr $OCT4 + 1`
-HOST3=$OCT123.`expr $OCT4 + 2`
-HOST4=$OCT123.`expr $OCT4 + 3`
-export HOSTS=$HOST1,$HOST2,$HOST3,$HOST4
-export CLUSTER=c16
-VIPU_SERVER=${VIPU_SERVER:=$HOST1}
-FIRST_PARTITION=`vipu-admin list partitions --api-host $VIPU_SERVER| grep ACTIVE | cut -d '|' -f 3 | cut -d ' ' -f 2 | head -1`
-PARTITON=${PARTITION:=$FIRST_PARTITION}
+python mnist_poptorch.py
 ```
 
-## Profile ResNet50
+When MNIST has finished running, see [Profiling](/docs/graphcore/Profiling) to use **Graph Analyser**.
 
-Profile **ResNet50**.
 
-**NOTE:** Use **screen** because every run is long.
-
-```bash
-cd train
-python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_pod16
-```
-
-## Profile Results

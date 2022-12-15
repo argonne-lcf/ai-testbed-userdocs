@@ -2,13 +2,12 @@
 
 ## SDK Setup
 
-The Graphcore system has bash shell scripts to set up the required software environment.
+The Graphcore system has a bash shell scripts to set up the required software environment.
 
 Use
 
 ```bash
-source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/popart-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
-source /lambda_stor/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu_20_04-3.0.0+5691-1e179b3b85/enable.sh
+source /software/graphcore/poplar_sdk/3.0.0/enable
 ```
 
 Ignore the error from the second command.
