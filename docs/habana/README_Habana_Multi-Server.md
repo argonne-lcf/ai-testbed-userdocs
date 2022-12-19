@@ -268,7 +268,7 @@ real    11m11.386s
 
 ### One-time per user ssh key set up
 
-On both Habana machines set up the ssh key
+Set up the ssh key on Habana-01.
 
 #### Habana-01
 
