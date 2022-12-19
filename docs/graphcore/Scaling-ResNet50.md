@@ -68,7 +68,7 @@ Export the datasets directory and establish the environment variables for using 
 
 ```bash
 export DATASETS_DIR=/mnt/localdata/datasets/
-HOST1=`ifconfig eno1 | grep "inet " | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1`
+HOST1=`ifconfig ens2f0 | grep "inet " | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1`
 OCT123=`echo "$HOST1" | cut -d "." -f 1,2,3`
 OCT4=`echo "$HOST1" | cut -d "." -f 4`
 HOST2=$OCT123.`expr $OCT4 + 1`
@@ -76,10 +76,36 @@ HOST3=$OCT123.`expr $OCT4 + 2`
 HOST4=$OCT123.`expr $OCT4 + 3`
 export HOSTS=$HOST1,$HOST2,$HOST3,$HOST4
 export CLUSTER=c16
+export TCP_IF_INCLUDE=ens2f0
+export VIPU_CLI_API_HOST=$HOST1
 VIPU_SERVER=${VIPU_SERVER:=$HOST1}
 FIRST_PARTITION=`vipu-admin list partitions --api-host $VIPU_SERVER| grep ACTIVE | cut -d '|' -f 3 | cut -d ' ' -f 2 | head -1`
 PARTITON=${PARTITION:=$FIRST_PARTITION}
 ```
+
+## Known_hosts
+
+lksdjf
+lskdjf
+lksjdf
+lksjdf
+lksjdf
+lksjdf
+lksjdf
+lksjdf
+lksjdf
+lksjdf
+
+## Benchmarks.yml
+
+Update **${HOME}/graphcore/examples/vision/cnns/pytorch/train/benchmarks.yml**
+with your favorite editor to match [benchmarks.yml](/docs/graphcore/benchmarks.yml).
+
+## Configs.yml
+
+Update **${HOME}/graphcore/examples/vision/cnns/pytorch/train/configs.yml**
+with your favorite editor.  At about line 30, change **use_bbox_info: true** to
+**use_bbox_info: false**.
 
 ## Scale ResNet50
 
@@ -88,6 +114,14 @@ Scale and benchmark **ResNet50**.
 **Note:** The number at the end of each line indicates the number of IPUs.
 
 **NOTE:** Use **screen** because every run is long.
+
+"PopRun exposes this control with the --process-placement flag and provides multiple pre-defined strategies. By default (and with --process-placement spreadnuma), PopRun is designed to be NUMA-aware. On each host, all the available NUMA nodes are divided among the instances. This means that each instance is bound to execute on and allocate memory from its assigned NUMA nodes, ensuring memory access locality. This strategy maximises memory bandwidth and is likely to yield optimal performance for most of the data loading workloads in machine learning." [Multi-Instance Multi-Host(https://docs.graphcore.ai/projects/poprun-user-guide/en/latest/launching.html#multi-instance-multi-host)
+
+```console
+[INFO] 2022-12-16 18:54:52: Copying /nfs/AI_testbed/homes/wilsonb/graphcore/examples to 140.221.77.12:/nfs/AI_testbed/homes/wilsonb/graphcore/
+[INFO] 2022-12-16 18:54:55: Copying /nfs/AI_testbed/software/graphcore/poplar_sdk to 140.221.77.12:/nfs/AI_testbed/software/graphcore/
+[INFO] 2022-12-16 18:55:03: Copying /nfs/AI_testbed/homes/wilsonb/venvs to 140.221.77.12:/nfs/AI_testbed/homes/wilsonb/
+```
 
 ```bash
 cd train
@@ -107,41 +141,41 @@ python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_re
 ### One IPU
 
 ```text
-[INFO] 2022-12-03 23:41:11: Total runtime: 9633.622455 seconds
-[INFO] 2022-12-03 23:41:11:    throughput = '3078.715789473684'
-[INFO] 2022-12-03 23:41:11:    accuracy = '57.79'
-[INFO] 2022-12-03 23:41:11:    loss = '2.7951'
-[INFO] 2022-12-03 23:41:11:    Total compile time: 605.56 seconds
+[INFO] 2022-12-16 17:07:32: Total runtime: 3956.836479 seconds
+[INFO] 2022-12-16 17:07:32:    throughput = '7527.626315789474'
+[INFO] 2022-12-16 17:07:32:    accuracy = '57.41'
+[INFO] 2022-12-16 17:07:32:    loss = '2.8153'
+[INFO] 2022-12-16 17:07:33:    Total compile time: 429.59 seconds
 ```
 
 ### Two IPUs
 
 ```text
-[INFO] 2022-12-03 20:07:55: Total runtime: 17839.825218 seconds
-[INFO] 2022-12-03 20:07:55:    throughput = '2119.7526315789473'
-[INFO] 2022-12-03 20:07:55:    accuracy = '69.12'
-[INFO] 2022-12-03 20:07:55:    loss = '2.2767'
-[INFO] 2022-12-03 20:07:57:    Total compile time: 529.23 seconds
-=```
+[INFO] 2022-12-16 15:56:23: Total runtime: 5866.494071 seconds
+[INFO] 2022-12-16 15:56:23:    throughput = '4798.778947368421'
+[INFO] 2022-12-16 15:56:23:    accuracy = '68.23'
+[INFO] 2022-12-16 15:56:23:    loss = '2.3148'
+[INFO] 2022-12-16 15:56:24:    Total compile time: 418.75 seconds
+```
 
 ### Four IPUs
 
 ```text
-[INFO] 2022-12-03 06:44:14: Total runtime: 20047.298082 seconds
-[INFO] 2022-12-03 06:44:14:    throughput = '3420.6052631578946'
-[INFO] 2022-12-03 06:44:14:    accuracy = '68.49'
-[INFO] 2022-12-03 06:44:14:    loss = '2.304'
-[INFO] 2022-12-03 06:44:15:    Total compile time: ERROR
+[INFO] 2022-12-16 04:05:28: Total runtime: 3070.994553 seconds
+[INFO] 2022-12-16 04:05:28:    throughput = '9959.821052631578'
+[INFO] 2022-12-16 04:05:28:    accuracy = '67.76'
+[INFO] 2022-12-16 04:05:28:    loss = '2.338'
+[INFO] 2022-12-16 04:05:29:    Total compile time: 377.4 seconds
 ```
 
 ### Eight IPUs
 
 ```text
-[INFO] 2022-12-03 00:59:25: Total runtime: 7649.385806 seconds
-[INFO] 2022-12-03 00:59:25:    throughput = '3541.1105263157892'
-[INFO] 2022-12-03 00:59:25:    accuracy = '65.78'
-[INFO] 2022-12-03 00:59:25:    loss = '2.4248'
-[INFO] 2022-12-03 00:59:26:    Total compile time: ERROR
+[INFO] 2022-12-16 02:46:45: Total runtime: 1831.437598 seconds
+[INFO] 2022-12-16 02:46:45:    throughput = '19865.263157894733'
+[INFO] 2022-12-16 02:46:45:    accuracy = '64.94'
+[INFO] 2022-12-16 02:46:45:    loss = '2.4649'
+[INFO] 2022-12-16 02:46:46:    Total compile time: 386.27 seconds
 ```
 
 ### Sixteen IPUs
@@ -149,11 +183,11 @@ python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_re
 Epochs: 20
 
 ```text
-[INFO] 2022-12-02 22:42:16: Total runtime: 9182.114773 seconds
-[INFO] 2022-12-02 22:42:16:    throughput = '3261.3894736842108'
-[INFO] 2022-12-02 22:42:16:    accuracy = '58.07'
-[INFO] 2022-12-02 22:42:16:    loss = '2.7838'
-[INFO] 2022-12-02 22:42:17:    Total compile time: ERROR
+[INFO] 2022-12-15 22:01:14: Total runtime: 1297.274336 seconds
+[INFO] 2022-62:01:14:    throughput = '39057.447368421046'
+[INFO] 2022-12-15 22:01:14:    accuracy = '57.43'
+[INFO] 2022-12-15 22:01:14:    loss = '2.8162'
+[INFO] 2022-12-15 22:01:16:    Total compile time: 397.08 seconds
 ```
 
 ### Sixty-Four IPUs
