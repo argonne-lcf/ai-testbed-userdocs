@@ -83,18 +83,79 @@ FIRST_PARTITION=`vipu-admin list partitions --api-host $VIPU_SERVER| grep ACTIVE
 PARTITON=${PARTITION:=$FIRST_PARTITION}
 ```
 
-## Known_hosts
+## One-time per user ssh key set up
 
-lksdjf
-lskdjf
-lksjdf
-lksjdf
-lksjdf
-lksjdf
-lksjdf
-lksjdf
-lksjdf
-lksjdf
+Set up the ssh key on gc-poplar-01.
+
+### Gc-poplar-01
+
+On **gc-poplar-01**:
+
+```bash
+mkdir ~/.ssh
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096
+#Accecpt default filename of id_rsa
+#Enter passphrase (empty for no passphrase):
+#Enter same passphrase again:
+cat id_rsa.pub >> authorized_keys
+```
+
+```bash
+ssh-keyscan -H gc-poplar-01 >> ~/.ssh/known_hosts
+```
+
+You should see:
+
+```console
+# gc-poplar-01:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-01:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-01:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-01:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-01:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+```
+
+```bash
+ssh-keyscan -H gc-poplar-02 >> ~/.ssh/known_hosts
+```
+
+You should see:
+
+```console
+# gc-poplar-02:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-02:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-02:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-02:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-02:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+```
+
+```bash
+ssh-keyscan -H gc-poplar-03 >> ~/.ssh/known_hosts
+```
+
+You should see:
+
+```console
+# gc-poplar-03:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-03:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-03:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-03:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-03:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+```
+
+```bash
+ssh-keyscan -H gc-poplar-04 >> ~/.ssh/known_hosts
+```
+
+You should see:
+
+```console
+# gc-poplar-04:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-04:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-04:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-04:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+# gc-poplar-04:22 SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+```
 
 ## Benchmarks.yml
 

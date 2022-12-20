@@ -23,7 +23,7 @@ Set the reports directory, i.e., **"autoReport.directory":"./reports"**.
 Do so by running the following commands:
 
 ```bash
-POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
+export POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
 ```
 
 ## Run MNIST
@@ -35,5 +35,3 @@ python mnist_poptorch.py
 ```
 
 When MNIST has finished running, see [Profiling](/docs/graphcore/Profiling) to use **Graph Analyser**.
-
-

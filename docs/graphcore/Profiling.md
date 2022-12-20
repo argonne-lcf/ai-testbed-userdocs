@@ -10,20 +10,6 @@ See [Capturing IPU Reports](https://docs.graphcore.ai/projects/graph-analyser-us
 
 This section describes how to generate the files that the Graph Analyser can analyse. The Graph Analyser uses report files generated during compilation and execution by the Poplar SDK.
 
-### lkjsldfs
-
-```bash
-POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
-```
-
-### From Alex
-
-```bash
-git clone https://github.com/graphcore/tutorials.git
-cd tutorials/simple_applications/pytorch/mnist
-POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}' python mnist_poptorch.py
-```
-
 ### IPU Memory Overhead
 
 Because of all these extra memory requirements, a model with high memory consumption may go out of memory when profiling is enabled. Depending on the model, you can adjust its parameters to leave space for the instrumentation. For example, you can try decreasing the batch size. In TensorFlow BERT you can adjust the micro batch-size.
@@ -43,6 +29,8 @@ It is essential that you also try to reduce the iterations on each run. For inst
 4. Install per selected operating system.
 
 ### Create SSH Session
+
+Use **ssh** from your development system.
 
 The **ssh** command will use a **jumphost** and **port forwarding**.  The format is as follows:
 
@@ -80,6 +68,12 @@ cd /path/to/graph/analyser/directory
 ./popvision-graph-analyser-3.11.6.AppImage
 ```
 
+```bash
+#TODOBRW
+cd ~/Downloads/
+./popvision-graph-analyser-3.11.6.AppImage
+```
+
 ### User Interface
 
 ![Graph Analyser](Graph_Ananlyser_main.jpg "Graph Analyser")
@@ -88,16 +82,13 @@ cd /path/to/graph/analyser/directory
 
 1. Click **Open a report...**;
 2. Click the **remote** tab;
-3. Enter your **Username** for remote machine;
+3. Enter your **CELGCEUserID** for remote machine;
 4. Enter the **Hostname** of your local machine, i.e., 127.0.0.1;
 5. Enter your **Port** address used in the **ssh** command, e.g., 8090;
-2. Click **Connect**;
-6. Press **OK**;  xxxx
-7. Enter your **CELSGCEUserID** password;
-8. Click **OK**;
-9. Navigate to your reports directory;
-10. Select the **training** directory;
-11. Select **archive.a** file; and
-12. Click **Open** button.
+6. Click **Connect**;
+7. Navigate to your reports directory;
+8. Select the **training** directory;
+9. Select **archive.a** file; and
+10. Click **Open** button.
 
 The **Summary Report** will be displayed.
