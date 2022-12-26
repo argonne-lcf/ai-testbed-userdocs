@@ -20,7 +20,7 @@ common_options: &common_options
 
 pytorch_resnet50_train_real_1:
   <<: *common_options
-  description: ResNet training on 1 Mk2 IPUs, real data.
+  description: ResNet training on 1 Mk2 IPU, real data.
   cmd: >-
     python3 train.py
       --config resnet50
@@ -32,11 +32,11 @@ pytorch_resnet50_train_real_1:
 
 pytorch_resnet50_train_real_2:
   <<: *common_options
-  description: ResNet training on 2 Mk2 IPUs, real data.
+  description: ResNet training on 16 Mk2 IPUs, real data.
   cmd: >-
     poprun
       -vv
-      --num-instances=1
+      --num-instances=2
       --num-replicas=2
       --executable-cache-path=$PYTORCH_CACHE_DIR
     python3 train.py
@@ -49,11 +49,11 @@ pytorch_resnet50_train_real_2:
 
 pytorch_resnet50_train_real_4:
   <<: *common_options
-  description: ResNet training on 4 Mk2 IPUs, real data.
+  description: ResNet training on 16 Mk2 IPUs, real data.
   cmd: >-
     poprun
       -vv
-      --num-instances=2
+      --num-instances=4
       --num-replicas=4
       --executable-cache-path=$PYTORCH_CACHE_DIR
     python3 train.py
@@ -66,11 +66,11 @@ pytorch_resnet50_train_real_4:
 
 pytorch_resnet50_train_real_8:
   <<: *common_options
-  description: ResNet training on 8 Mk2 IPUs, real data.
+  description: ResNet training on 16 Mk2 IPUs, real data.
   cmd: >-
     poprun
       -vv
-      --num-instances=4
+      --num-instances=8
       --num-replicas=8
       --executable-cache-path=$PYTORCH_CACHE_DIR
     python3 train.py
@@ -87,7 +87,7 @@ pytorch_resnet50_train_real_pod16:
   cmd: >-
     poprun
       -vv
-      --num-instances=8
+      --num-instances=16
       --num-replicas=16
       --executable-cache-path=$PYTORCH_CACHE_DIR
     python3 train.py
@@ -135,7 +135,6 @@ pytorch_resnet50_train_real_pod64:
       --dataloader-rebatch-size 256
       --imagenet-data-path $DATASETS_DIR/imagenet-raw-dataset
       --epoch 20
-      --wandb
       --validation-mode none
 
 pytorch_resnet50_train_real_pod64_conv:

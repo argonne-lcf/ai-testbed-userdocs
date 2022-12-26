@@ -194,7 +194,44 @@ python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_re
 python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_4
 python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_8
 python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_pod16
-python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_pod64
+#export CLUSTER=p64
+xpython3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_resnet50_train_real_pod64_conv
+
+export POPLAR_ENGINE_OPTIONS='{"opt.enableMultiAccessCopies":"false"}'
+export CLUSTER=c16
+export PYTORCH_CACHE_DIR="./pt_cache/"
+poprun \
+    -vv \
+    --num-instances=32 \
+    --num-replicas=64 \
+    --vipu-server-host=$VIPU_CLI_API_HOST \
+    --host=$HOSTS \
+    --vipu-server-port 8090 \
+    --vipu-partition=$PARTITION \
+    --vipu-cluster=$CLUSTER \
+    --update-partition=yes \
+    --remove-partition=yes \
+    --reset-partition=no \
+    --sync-type=ST_POD_NATIVE_DEFAULT \
+    --executable-cache-path=$PYTORCH_CACHE_DIR \
+    --mpi-global-args=" \
+        --mca oob_tcp_if_include $TCP_IF_INCLUDE \
+        --mca btl_tcp_if_include $TCP_IF_INCLUDE" \
+    --mpi-local-args=" \
+    -x LD_LIBRARY_PATH \
+    -x OPAL_PREFIX \
+    -x PATH \
+    -x CPATH \
+    -x PYTHONPATH \
+    -x POPLAR_ENGINE_OPTIONS \
+    -x IPUOF_VIPU_API_TIMEOUT=800" \
+python3 train.py \
+    --config resnet50-pod64 \
+    --dataloader-worker 14 \
+    --dataloader-rebatch-size 256 \
+    --imagenet-data-path $DATASETS_DIR/imagenet-raw-dataset \
+    --validation-mode none
+
 ```
 
 ## Benchmark Results
@@ -252,3 +289,9 @@ Epochs: 20
 ```
 
 ### Sixty-Four IPUs
+
+```text
+[1,0]<stdout>:[INFO] loss: 4.8367,
+[1,0]<stdout>:[INFO] accuracy: 18.83 %
+[1,0]<stdout>:[INFO] throughput: 51368.5 samples/sec
+```

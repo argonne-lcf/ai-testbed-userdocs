@@ -10,8 +10,12 @@ Following the instructions in [Example Programs](/docs/graphcore/Example-Program
 ## Change Directory
 
 ```bash
-cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
 cd ~/graphcore/tutorials/simple_applications/pytorch/mnist
+```
+
+```bash
+#TODOBRW
+cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
 ```
 
 ## Set Poplar Options
