@@ -38,7 +38,7 @@ source ~/venvs/graphcore/poptorch30_env/bin/activate
 Use the following commands to install PopTorch.
 
 ```bash
-POPLAR_SDK_ROOT=/lambda_stor/software/graphcore/poplar_sdk/3.0.0
+POPLAR_SDK_ROOT=/software/graphcore/poplar_sdk/3.0.0
 export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
 pip install $POPLAR_SDK_ROOT/poptorch-3.0.0+86945_163b7ce462_ubuntu_20_04-cp38-cp38-linux_x86_64.whl
 ```
@@ -50,11 +50,11 @@ mkdir ~/tmp
 export TF_POPLAR_FLAGS=--executable_cache_path=~/tmp
 export POPTORCH_CACHE_DIR=~/tmp
 
-export POPART_LOG_LEVEL=INFO
-export POPLAR_LOG_LEVEL=INFO
-export POPLIBS_LOG_LEVEL=INFO
+export POPART_LOG_LEVEL=WARN
+export POPLAR_LOG_LEVEL=WARN
+export POPLIBS_LOG_LEVEL=WARN
 
-export PYTHONPATH=/lambda_stor/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu_20_04-3.0.0+5691-1e179b3b85/python:$PYTHONPATH
+export PYTHONPATH=/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu_20_04-3.0.0+5691-1e179b3b85/python:$PYTHONPATH
 ```
 
 ## TensorFlow 2 Environment Setup
@@ -62,21 +62,21 @@ export PYTHONPATH=/lambda_stor/software/graphcore/poplar_sdk/3.0.0/poplar-ubuntu
 ```bash
 virtualenv ~/venvs/graphcore/tensorflow2_env
 source ~/venvs/graphcore/tensorflow2_env/bin/activate
-POPLAR_SDK_ROOT=/lambda_stor/software/graphcore/poplar_sdk/3.0.0
+POPLAR_SDK_ROOT=/software/graphcore/poplar_sdk/3.0.0
 export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
-pip install $POPLAR_SDK_ROOT/tensorflow-2.6.3+gc3.0.0+236852+d084e493702+intel_skylake512-cp38-cp38-linux_x86_64.whl
+pip install $POPLAR_SDK_ROOT/tensorflow-2.6.3+gc3.0.0+236842+d084e493702+amd_znver1-cp38-cp38-linux_x86_64.whl
 ```
 
 ### Verify Installation
 
 ```bash
-xxpython -c "from tensorflow.python import ipu"
+python -c "from tensorflow.python import ipu"
 ```
 
 You should see:
 
 ```bash
-2021-12-16 18:07:47.882842: I tensorflow/compiler/plugin/poplar/driver/poplar_platform.cc:44] Poplar version: 2.3.0 (d9e4130346) Poplar package: 88f485e763
+2023-01-03 20:32:20.907256: I tensorflow/compiler/plugin/poplar/driver/poplar_platform.cc:43] Poplar version: 3.0.0 (fa83d31c56) Poplar package: 1e179b3b85
 ```
 
 ## Installing Packages
