@@ -2,10 +2,10 @@
 
 The intent of this page is to show conceptually how to convert a model to run on the Graphcore system.
 It is not necessary to convert CosmicTagger because it has already been converted and is
-located at [CosmicTagger](https://github.com/BruceRayWilsonAtANL/CosmicTagger.git) on the **Graphcore** branch.  The original is
-located at [CosmicTagger](https://github.com/coreyjadams/CosmicTagger.git).
+located at [CosmicTagger](https://github.com/BruceRayWilsonAtANL/CosmicTagger.git) on the **Graphcore** branch.
+The original is located at [CosmicTagger](https://github.com/coreyjadams/CosmicTagger.git).
 
-## Run CosmicTagger
+## Run Model on CPU
 
 The first step to converting a model is to verify that it runs on the CPU.  This step has been verified for CosmicTagger.
 
@@ -100,6 +100,9 @@ to:
 
 ### Update the Forward Pass
 
+Putting the **loss** calculation in **forward_pass()** allows the loss computation to be performed on the **IPUs**.
+This will be faster because the data will not need to be transfered round-trip to the **CPU**.
+
 Change **forward_pass()**:
 
 #### Original
@@ -113,9 +116,9 @@ Change **forward_pass()**:
 
 #### Updated
 
-The changes to the following code are to account for the loss function, i.e., self.loss_calculator, and the
-image labels, i.e., labels_image, to be pass to the model's **forward** method.  Additionally, the calculated
-**loss** is returned from the **forward** method.
+The following code changes are to account for the loss function, i.e., self.loss_calculator, and the
+image labels, i.e., labels_image, to be passed to the model's **forward_pass** method.  Additionally, the calculated
+**loss** is returned from the **forward_pass** method.
 
 ```python
             if net is None:
@@ -133,6 +136,8 @@ image labels, i.e., labels_image, to be pass to the model's **forward** method. 
 ```
 
 ### Update the Training Step
+
+Receive the extra **loss** variable from the **forward_pass** method.
 
 Update the **train_step** method.
 
@@ -227,7 +232,7 @@ Change the code to the following.
 ### Update Model
 
 The Graphcore system is more computationally efficient if the loss function is on the
-IPU.  This is accomplished by using the loss function within the model's **forward** method.
+**IPU**.  This is accomplished by using the **loss** function within the model's **forward** method.
 
 Edit **src/networks/torch/uresnet2D.py**.
 
@@ -239,7 +244,7 @@ Find the **forward** method.
 def forward(self, input_tensor):
 ```
 
-Update the argument list to include the loss function, i.e., **loss_calculator**
+Update the argument list to include the **loss** function, i.e., **loss_calculator**
 and the image labels, i.e., **labels_image**.
 
 ```python
