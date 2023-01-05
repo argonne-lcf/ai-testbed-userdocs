@@ -1,10 +1,10 @@
 # Example Programs
 
-For a Graphcore PyTorch tutorial see https://github.com/graphcore/tutorials/blob/master/tutorials/pytorch/basics/README.md.
+For a Graphcore PyTorch tutorial, see [PyTorch Basics](https://github.com/graphcore/tutorials/blob/master/tutorials/pytorch/basics/README.md).
 
 ## Tutorials Repo
 
-Graphcore provides examples of some well-known AI applications in their repository at https://github.com/graphcore/tutorials.git.
+Graphcore provides examples of some well-known AI applications in their repository at [https://github.com/graphcore/tutorials.git](https://github.com/graphcore/tutorials.git).
 
 Clone the **tutorials** repository to your personal directory structure:
 
@@ -15,6 +15,12 @@ git clone https://github.com/graphcore/tutorials.git
 ```
 
 ### MNIST
+
+#### Activate PopTorch Environment
+
+```bash
+source ~/venvs/graphcore/poptorch31_env/bin/activate
+```
 
 #### Install Requirements
 
@@ -183,7 +189,7 @@ On the last line (it starts with **poprun**), replace
 with
 
 ```python
---config resnet50 --imagenet-data-path /software/datasets/imagenet
+--config resnet50--imagenet-data-path /mnt/localdata/datasets/imagenet-raw-dataset/
 ```
 
 The ImageNet data path is now defined.
@@ -193,7 +199,7 @@ The ImageNet data path is now defined.
 You may want to use **screen** because this run can be long.
 
 ```bash
-./rn50_pod16.sh > out 2>&1
+./rn50_pod16.sh > out.log 2>&1
 ```
 
 #### POD64
@@ -208,18 +214,18 @@ Change directory
 cd ~/graphcore/examples/vision/cnns/pytorch/train
 ```
 
-Open **rn50_pod16.sh** with your favorite editor.
+Open **rn50_pod64.sh** with your favorite editor.
 
 On the last line (it starts with **poprun**), replace
 
 ```python
---config resnet50
+--config resnet50-pod64
 ```
 
 with
 
 ```python
---config resnet50 --imagenet-data-path /software/datasets/imagenet
+--config resnet50-pod64 --imagenet-data-path /mnt/localdata/datasets/imagenet-raw-dataset/
 ```
 
 The ImageNet data path is now defined.
