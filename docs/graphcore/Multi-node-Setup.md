@@ -1,5 +1,7 @@
 # Multi-node Setup
 
+These steps only need to be executed once per user.
+
 Running on multiple nodes is a three step process.
 
 1. Create a Key

@@ -189,7 +189,7 @@ On the last line (it starts with **poprun**), replace
 with
 
 ```python
---config resnet50--imagenet-data-path /mnt/localdata/datasets/imagenet-raw-dataset/
+--config resnet50 --imagenet-data-path /mnt/localdata/datasets/imagenet-raw-dataset/
 ```
 
 The ImageNet data path is now defined.
