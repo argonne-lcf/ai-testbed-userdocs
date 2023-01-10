@@ -38,11 +38,6 @@ The **ssh** command will use a **jumphost** and **port forwarding**.  The format
 ssh -J CELSGCEUserID@homes.cels.anl.gov CELSGCEUserID@gc-poplar-DD -L 8090:127.0.0.1:22
 ```
 
-```bash
-# TODOBRW
-ssh -J wilsonb@homes.cels.anl.gov wilsonb@gc-poplar-01 -L 8090:127.0.0.1:22
-```
-
 Where:
 
 | Argument            | Help |
@@ -65,12 +60,6 @@ Continue on your development machine.
 
 ```bash
 cd /path/to/graph/analyser/directory
-./popvision-graph-analyser-3.11.6.AppImage
-```
-
-```bash
-#TODOBRW
-cd ~/Downloads/
 ./popvision-graph-analyser-3.11.6.AppImage
 ```
 

@@ -13,11 +13,6 @@ Following the instructions in [Example Programs](/docs/graphcore/Example-Program
 cd ~/graphcore/tutorials/simple_applications/pytorch/mnist
 ```
 
-```bash
-#TODOBRW
-cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
-```
-
 ## Set Poplar Options
 
 Set the option to generate all reports, i.e., **"autoReport.all":"true"**.

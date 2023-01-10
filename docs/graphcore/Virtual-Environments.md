@@ -1,8 +1,8 @@
 # Virtual Environments
 
-## SDK Setup
+## Poplar SDK Setup
 
-The **Graphcore** system has a bash shell script to set up the required software environment.
+The **Graphcore** system has a bash shell script to set up the required software environment **Poplar** and **PopArt**.
 
 The following command is automatically executed when one logs into a node.
 
@@ -23,7 +23,9 @@ POPLAR version 3.1.0 (e12d5f9f01)
 clang version 15.0.0 (bab932b4fc4cdb58bb009370384b2c41579bd9d9)
 ```
 
-## PopART Environment Setup
+## PopTorch
+
+### PopTorch Environment Setup
 
 Run these commands:
 
@@ -41,7 +43,7 @@ export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
 pip install $POPLAR_SDK_ROOT/poptorch-3.1.0+98660_0a383de63f_ubuntu_20_04-cp38-cp38-linux_x86_64.whl
 ```
 
-## Miscellaneous Environment Variables
+### Miscellaneous Environment Variables
 
 ```bash
 mkdir ~/tmp
@@ -57,12 +59,20 @@ export PYTHONPATH=/software/graphcore/poplar_sdk/3.1.0/poplar-ubuntu_20_04-3.1.0
 
 ## TensorFlow 2 Environment Setup
 
+Create virtual environment.
+
 ```bash
 virtualenv ~/venvs/graphcore/tensorflow2_31_env
 source ~/venvs/graphcore/tensorflow2_31_env/bin/activate
+```
+
+Install **TensorFlow** and **Keras**.
+
+```bash
 POPLAR_SDK_ROOT=/software/graphcore/poplar_sdk/3.1.0
 export POPLAR_SDK_ROOT=$POPLAR_SDK_ROOT
 pip install $POPLAR_SDK_ROOT/tensorflow-2.6.3+gc3.1.0+246224+2b7af067dae+amd_znver1-cp38-cp38-linux_x86_64.whl
+pip install $POPLAR_SDK_ROOT/keras-2.6.0+gc3.1.0+246230+88e2debf-py2.py3-none-any.whl
 ```
 
 ### Verify Installation

@@ -1,11 +1,11 @@
 # Getting Started
 
-## On-Boarding
+<!---## On-Boarding--->
 
 <!---See [Get Started](https://www.alcf.anl.gov/support-center/get-started)
 to request an account and additional information.--->
 
-Logging into the Graphcore BOW-2000 processors requires a GCE account that can be requested at [Get Started](https://www.alcf.anl.gov/support-center/get-started).
+<!---Logging into the Graphcore BOW-2000 processors requires a GCE account that can be requested at [Get Started](https://www.alcf.anl.gov/support-center/get-started).--->
 
 ## Setup
 

@@ -172,6 +172,8 @@ use_bbox_info: false
 
 ##### Update rn50_pod16.sh
 
+POD16 is a single rack consisting of 16 IPUs.
+
 Change directory if necessary.
 
 ```bash
@@ -203,6 +205,8 @@ You may want to use **screen** because this run can be long.
 ```
 
 #### POD64
+
+POD64 refers to four POD16 racks for a total of 64 IPUs.
 
 **NOTE:** One must complete the instructions on [Multi-node Setup](Multi-node-Setup.md) before running this example.
 

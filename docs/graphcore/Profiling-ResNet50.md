@@ -16,15 +16,6 @@ cd ~/graphcore
 git clone https://github.com/graphcore/examples.git
 ```
 
-## lkjsdf
-
-```bash
- 2034  cd ~/DL/github.com/graphcore/tutorials/simple_applications/pytorch/mnist
- 2035  python -m pip install -r requirements.txt
- 2036  POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "autoReport.directory":"./reports"}'
- 2037  python mnist_poptorch.py
-```
-
 ## Install Requirements
 
 Change directory
@@ -66,3 +57,5 @@ python3 -m examples_utils benchmark --spec benchmarks.yml --benchmark pytorch_re
 ```
 
 ## Profile Results
+
+When ResNet50 has finished running, see [Profiling](/docs/graphcore/Profiling) to use **Graph Analyser**.

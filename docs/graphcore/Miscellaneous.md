@@ -2,6 +2,8 @@
 
 ## Status
 
+### GC-Monitor
+
 ```bash
 gc-monitor --no-card-info
 ```
@@ -19,6 +21,8 @@ The output will look something like:
 +--------+---------------------------------------------------------------------------------------+--------+------------+----+----------+--------+--------+--------+
 ```
 
+### GC-Info
+
 ```bash
 gc-info -l
 ```
@@ -30,6 +34,14 @@ The command **gc-info** lists the partition and different IPU Id's along with th
 -+- Id:  [1], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [2]
 -+- Id:  [2], target: [Fabric], IPU-M host:  [10.1.5.1], IPU#: [1]
 ```
+
+One may also check a specific device ID.  The devices a numbered 0-63.  For example,
+
+```bash
+gc-info --device-id 0 --device-info
+```
+
+See **gc-info --help** for more information.
 
 ## How busy is the system?
 
