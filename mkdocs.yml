@@ -22,6 +22,19 @@ nav:
     #- DataParallel: sambanova/DataParallel.md
     - Miscellaneous: sambanova/Miscellaneous.md
     - Documentation: sambanova/Documentation.md
+  # - Graphcore:
+  #   - System Overview: graphcore/System-Overview.md
+  #   - Getting Started: graphcore/Logging-into-a-Graphcore-Node.md
+  #   - Virtual Environment: graphcore/Virtual-Environment.md
+  #   - Steps to Run a Model/Program: graphcore/Steps-to-Run-a-Model-or-Program.md
+  #   - Job Queuing and Submission: graphcore/Job-Queuing-and-Submission.md
+  #   - Example Programs: graphcore/Example-Programs.md
+  #   - Tunneling and Forwarding Ports: graphcore/Tunneling-and-forwarding-ports.md
+  #   - CosmicTagger Conversion: graphcore/CosmicTagger-Conversion.md
+  #   - CosmicTagger Distributed Data Parallel: graphcore/CosmicTagger-DDP.md
+  #   #- DataParallel: graphcore/DataParallel.md
+  #   - Miscellaneous: graphcore/Miscellaneous.md
+  #   - Documentation: graphcore/Documentation.md
   - Storage: common/storage.md
   - Publication Policy: common/pub-policy.md
 
