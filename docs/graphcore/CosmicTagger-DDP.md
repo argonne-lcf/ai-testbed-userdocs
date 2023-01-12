@@ -10,6 +10,10 @@ The original is located at [CosmicTagger](https://github.com/coreyjadams/CosmicT
 
 The first step to converting a model is to verify that it runs on the CPU.  This step has been verified for CosmicTagger.
 
+## Starter Code
+
+You may use the code at [CosmicTagger](https://github.com/BruceRayWilsonAtANL/CosmicTagger.git) on the **Graphcore** branch.
+
 ## Trainer.py
 
 Edit **src/utils/torch/trainer.py**.
@@ -117,3 +121,7 @@ Replace it with:
             else:
                 self._net = poptorch.inferenceModel(self._net)
 ```
+
+## Run The Code
+
+See instructions in **README_GRAPHCORE.md**.
