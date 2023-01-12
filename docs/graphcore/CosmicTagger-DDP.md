@@ -104,7 +104,7 @@ Replace it with:
                 # When using the dataloader with 'auto_distributed_partitioning=True'
                 # and 'shuffle=True' we must set the random seed to ensure that tensors
                 # are in the same order in all processes.
-                opts.randomSeed(self.args.seed)
+                opts.randomSeed(42)
                 # Replication factor is already set via PopRun so
                 # we ignore 'args.num_replicas'.
                 logging.info(f"Num of local replicas: {popdist.getNumLocalReplicas()}")
