@@ -12,9 +12,9 @@
 
 2. Connect to the one of the destination Sambanova nodes:
     ```bash
-    ssh sm-01
+    ssh sn30-r1-h1
     or
-    ssh sm-02
+    ssh sn30-r1-h2
     ```
 
 3. Set up the required software environment. Do:

@@ -73,9 +73,9 @@ do
     #sbatch --cpus-per-task=4 --gres=rdu:${NP} /opt/mpich-3.4.3/bin/mpirun -hosts=192.168.200.131,192.168.200.130  -np ${NP}  python ${UNET}/unet_hook.py  run --num-workers=${NUM_WORKERS} --do-train --in-channels=3 --in-width=${2} --in-height=${2} --init-features 32 --batch-size=${BS} --epochs 10  --data-dir /var/tmp/kaggle_3m  --log-dir log_dir_unet_${NP}_train_kaggle --pef=$(pwd)/out/unet_train_${BS}_${2}_NP/unet_train_${BS}_${2}_NP.pef --data-parallel --reduce-on-rdu --use-sambaloader > run_unet_${BS}_${2}_${NP}.log 2>&1
     #sbatch --cpus-per-task=16 --gres=rdu:1 --ntasks-per-node 1  --nodes 2 --mpi=pmi2 --CPU-per-job 16 ./unet_batch.sh ${NP} ${NUM_WORKERS}
     #sbatch -n 2 --gres=rdu:1 --tasks-per-node 1  --nodes 2 --cpus-per-task=16 ./unet_batch.sh ${NP} ${NUM_WORKERS}
-    sbatch --gres=rdu:1 --tasks-per-node 8  --nodes 2 --nodelist sm-02,sm-01 --cpus-per-task=16 ./unet_batch.sh ${NP} ${NUM_WORKERS}
+    sbatch --gres=rdu:1 --tasks-per-node 8  --nodes 2 --nodelist sn30-r1-h2,sn30-r1-h1 --cpus-per-task=16 ./unet_batch.sh ${NP} ${NUM_WORKERS}
   done
 done
 echo "Duration: " $SECONDS
-(venv) wilsonb@sm-01:~/apps/image$
+(venv) wilsonb@sn30-r1-h1:~/apps/image$
 

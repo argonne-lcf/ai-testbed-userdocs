@@ -106,7 +106,7 @@ Sbatch argument definitions:
 
     The number of nodes to use.  Currently there are two nodes.
 
-  - **--nodelist sm-02,sm-01**
+  - **--nodelist sn30-r1-h2,sn30-r1-h1**
 
     The node names to use.
 
@@ -129,7 +129,7 @@ Sbatch argument definitions:
 NN=2
 echo "RUN"
 echo "NN=${NN}"
-sbatch --gres=rdu:1 --tasks-per-node 8  --nodes 2 --nodelist sm-02,sm-01 --cpus-per-task=16 ./unet_batch.sh ${NN} ${NUM_WORKERS}
+sbatch --gres=rdu:1 --tasks-per-node 8  --nodes 2 --nodelist sn30-r1-h1,sn30-r1-h1 --cpus-per-task=16 ./unet_batch.sh ${NN} ${NUM_WORKERS}
 echo "Duration: " $SECONDS
 ```
 

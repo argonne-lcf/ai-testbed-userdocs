@@ -27,24 +27,24 @@ Password: < MobilPass+ code >
 
 ### From **sambanova.alcf.anl.gov**
 
-Below are the commands specific to sm-01. You may replace **sm-01** with **sm-02** when using the appropriate system.
+Below are the commands specific to sn30-r1-h1. You may replace **sn30-r1-h1** with **sn30-r1-h2** when using the appropriate system.
 
 Run
 
-**NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.**
+**NOTE:  The full name is sn30-r1-h1.ai.alcf.anl.gov and it may also be used.**
 
 ```bash
-ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@sm-01
-ssh ALCFUserID@sm-01
+ssh -N -f -L localhost:16006:localhost:6006 ALCFUserID@sn30-r1-h1
+ssh ALCFUserID@sn30-r1-h1
 ```
 
-### On **sm-01**
+### On **sn30-r1-h1**
 
 Execute the following command:
 
 ```bash
-ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
-(venv) ALCFUserID@sm-01:~$
+ALCFUserID@sn30-r1-h1:~$ source /software/sambanova/envs/sn_env.sh
+(venv) ALCFUserID@sn30-r1-h1:~$
 ```
 
 Navigate to the appropriate directory for your model.
@@ -55,7 +55,7 @@ cd /path/to/your/project
 sbatch --output=pef/my_model/output.log submit-my_model-job.sh
 ```
 
-### On Another sm-01 Terminal Window
+### On Another sn30-r1-h1 Terminal Window
 
 The SambaNova system has a bash shell script to setup the required software environment.
 This sets up the SambaFlow software stack, the associated environmental variables and activates
@@ -64,8 +64,8 @@ a pre-configured virtual environment.
 Use
 
 ```bash
-ALCFUserID@sm-01:~$ source /software/sambanova/envs/sn_env.sh
-(venv) ALCFUserID@sm-01:~$
+ALCFUserID@sn30-r1-h1:~$ source /software/sambanova/envs/sn_env.sh
+(venv) ALCFUserID@sn30-r1-h1:~$
 ```
 
 Navigate to the appropriate directory for your model.

@@ -49,17 +49,17 @@ bottleneck analysis and resolution.
 ```bash
 ssh ALCFUserID@sambanova.alcf.anl.gov
 # Enter MobilePass+ pass code
-ssh sm-01
+ssh sn30-r1-h1
 ```
 
 ```bash
 #TODOBRW
 ssh wilsonb@sambanova.alcf.anl.gov
 # Enter MobilePass+ pass code
-ssh sm-01
+ssh sn30-r1-h1
 ```
 
-First, enter the virtual environment on **sm-01** or **sm-02**:
+First, enter the virtual environment on one of the nodes, e.g., **sn30-r1-h1**:
 
 ```bash
 source /opt/sambaflow/venv/bin/activate
