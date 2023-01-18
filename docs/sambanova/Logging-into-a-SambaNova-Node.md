@@ -17,7 +17,7 @@ The second step is to log in to a SambaNova node from the **login node**.
 The SambaNova system has four racks, r1..4 and two hosts, h1..2, per rack.  So, **sn30-r2-h1** is the
 node on **rack 2** and **host 1**.
 
-![SambaNova System View](Logging-in.jpg "SambaNova System View")
+![SambaNova System View](sambanova_login.jpg "SambaNova System View")
 
 ### Log in to Login Node
 
@@ -65,6 +65,7 @@ a pre-configured virtual environment.
 
 Use
 
+<!-- TODOBRW Is this still true? -->
 ```bash
 ALCFUserID@sn30-r1-h1:~$ source /software/sambanova/envs/sn_env.sh
 (venv) ALCFUserID@sn30-r1-h1:~$
@@ -80,8 +81,53 @@ alias snthreads='export OMP_NUM_THREADS=16' # The OMP_NUM_THREADS environment va
 alias snvenv='source /opt/sambaflow/venv/bin/activate' # This starts the pre-configured virtual environment that consists of sambaflow and other built-in libraries.
 ```
 
-**NOTE:  SambaNova operations will fail unless the SambaNova venv is set
-up.**
+**NOTE:  SambaNova operations will fail unless a SambaNova venv is set-up.**
+
+**NOTE:  With 1.14 there is no longer a common venv. Each model has its own venv.**
+
+#### Starters
+
+```bash
+source /opt/sambaflow/apps/starters/mlp/venv
+source /opt/sambaflow/apps/starters/lenet/venv
+source /opt/sambaflow/apps/starters/ffn_mnist/venv
+source /opt/sambaflow/apps/starters/logreg/venv
+source /opt/sambaflow/apps/starters/upscalenet/venv
+source /opt/sambaflow/apps/starters/power_pca/venv
+```
+
+#### Images
+
+```bash
+source /opt/sambaflow/apps/image/segmentation_3d/venv
+source /opt/sambaflow/apps/image/deepvit/venv
+source /opt/sambaflow/apps/image/segmentation/venv
+source /opt/sambaflow/apps/image/object_detection/venv
+source /opt/sambaflow/apps/image/classification/venv
+```
+
+#### Recommenders
+
+```bash
+source /opt/sambaflow/apps/recommender/dlrm/venv
+source /opt/sambaflow/apps/recommender/ncf/venv
+source /opt/sambaflow/apps/recommender/deepinterest/venv
+```
+
+#### NLP
+
+```bash
+source /opt/sambaflow/apps/nlp/transformers_on_rdu/venv
+source /opt/sambaflow/apps/nlp/transformers_on_rdu/gpt13b/venv
+source /opt/sambaflow/apps/nlp/data_processing/venv
+```
+
+#### Other
+
+```bash
+source /opt/sambaflow/apps/private/anl/venv
+source /opt/sambaflow/apps/micros/venv
+```
 
 You may deactivate the environment if finished.
 
