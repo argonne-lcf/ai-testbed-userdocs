@@ -17,6 +17,7 @@ Slurm will assign a **nodelist/host** to run a job if a host is not specified.
 Example:
 
 ```bash
+source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 srun python lenet.py run --pef="pef/lenet/lenet.pef"
 ```

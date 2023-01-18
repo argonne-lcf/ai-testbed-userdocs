@@ -88,45 +88,45 @@ alias snvenv='source /opt/sambaflow/venv/bin/activate' # This starts the pre-con
 #### Starters
 
 ```bash
-source /opt/sambaflow/apps/starters/mlp/venv
-source /opt/sambaflow/apps/starters/lenet/venv
-source /opt/sambaflow/apps/starters/ffn_mnist/venv
-source /opt/sambaflow/apps/starters/logreg/venv
-source /opt/sambaflow/apps/starters/upscalenet/venv
-source /opt/sambaflow/apps/starters/power_pca/venv
+source /opt/sambaflow/apps/starters/mlp/venv/bin/activate
+source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
+source /opt/sambaflow/apps/starters/ffn_mnist/venv/bin/activate
+source /opt/sambaflow/apps/starters/logreg/venv/bin/activate
+source /opt/sambaflow/apps/starters/upscalenet/venv/bin/activate
+source /opt/sambaflow/apps/starters/power_pca/venv/bin/activate
 ```
 
 #### Images
 
 ```bash
-source /opt/sambaflow/apps/image/segmentation_3d/venv
-source /opt/sambaflow/apps/image/deepvit/venv
-source /opt/sambaflow/apps/image/segmentation/venv
-source /opt/sambaflow/apps/image/object_detection/venv
-source /opt/sambaflow/apps/image/classification/venv
+source /opt/sambaflow/apps/image/segmentation_3d/venv/bin/activate
+source /opt/sambaflow/apps/image/deepvit/venv/bin/activate
+source /opt/sambaflow/apps/image/segmentation/venv/bin/activate
+source /opt/sambaflow/apps/image/object_detection/venv/bin/activate
+source /opt/sambaflow/apps/image/classification/venv/bin/activate
 ```
 
 #### Recommenders
 
 ```bash
-source /opt/sambaflow/apps/recommender/dlrm/venv
-source /opt/sambaflow/apps/recommender/ncf/venv
-source /opt/sambaflow/apps/recommender/deepinterest/venv
+source /opt/sambaflow/apps/recommender/dlrm/venv/bin/activate
+source /opt/sambaflow/apps/recommender/ncf/venv/bin/activate
+source /opt/sambaflow/apps/recommender/deepinterest/venv/bin/activate
 ```
 
 #### NLP
 
 ```bash
-source /opt/sambaflow/apps/nlp/transformers_on_rdu/venv
-source /opt/sambaflow/apps/nlp/transformers_on_rdu/gpt13b/venv
-source /opt/sambaflow/apps/nlp/data_processing/venv
+source /opt/sambaflow/apps/nlp/transformers_on_rdu/venv/bin/activate
+source /opt/sambaflow/apps/nlp/transformers_on_rdu/gpt13b/venv/bin/activate
+source /opt/sambaflow/apps/nlp/data_processing/venv/bin/activate
 ```
 
 #### Other
 
 ```bash
-source /opt/sambaflow/apps/private/anl/venv
-source /opt/sambaflow/apps/micros/venv
+source /opt/sambaflow/apps/private/anl/venv/bin/activate
+source /opt/sambaflow/apps/micros/venv/bin/activate
 ```
 
 You may deactivate the environment if finished.

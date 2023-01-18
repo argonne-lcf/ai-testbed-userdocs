@@ -12,6 +12,12 @@ cp -r /opt/sambaflow/apps/starters apps/starters
 
 ## LeNet
 
+Activate venv:
+
+```bash
+source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
+```
+
 Change directory
 
 ```bash
@@ -146,6 +152,12 @@ Log ID initialized to: [ALCFUserID][python][53607] at
 
 ## MNIST - Feed Forward Network
 
+Activate venv:
+
+```bash
+source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
+```
+
 Change directory
 
 ```bash
@@ -156,7 +168,7 @@ Commands to run MNIST example:
 
 ```bash
 srun python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
+srun python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef"
 ```
 
 To run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh with the following contents.
@@ -164,7 +176,7 @@ To run the same using Slurm sbatch, create and run the submit-ffn_mnist-job.sh w
 ```bash
 #!/bin/sh
 python ffn_mnist.py compile --pef-name="ffn_mnist" --output-folder="pef"
-python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef" --data-path mnist_data
+python ffn_mnist.py run --pef="pef/ffn_mnist/ffn_mnist.pef"
 ```
 
 ```bash
@@ -172,6 +184,12 @@ sbatch --output=pef/ffn_mnist/output.log submit-ffn_mnist-job.sh
 ```
 
 ## Logistic Regression
+
+Activate venv:
+
+```bash
+source /opt/sambaflow/apps/starters/logreg/venv/bin/activate
+```
 
 Change directory
 
@@ -266,11 +284,20 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 ## UNet
 
+Activate venv:
+
+```bash
+source /opt/sambaflow/apps/starters/upscalenet/venv/bin/activate
+```
+
 Change directory and copy files.
 
 ```bash
 cp -r /opt/sambaflow/apps/image ~/apps/image
 cd ~/apps/image/unet
+
+# TODOBRW Test this after the Admins mount it.
+# TODOBRW Test the rest of this UNet section.
 cp /software/sambanova/apps/image/pytorch/unet/*.sh .
 ```
 

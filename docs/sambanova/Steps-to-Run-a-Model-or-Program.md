@@ -12,7 +12,7 @@ on the system.**
 The SambaNova workflow includes the following main steps to run a model.
 
 1. Compile
-2. Run
+2. Run (train)
 3. Test (optional)
 
 The system uses the [Slurm job
@@ -24,19 +24,20 @@ scheduler](https://slurm.schedmd.com/quickstart.html) to schedule the jobs and 
 
 Compiles the model and generates a **.pef** file. This file contains
 information on how to reconfigure the hardware, how many compute and
-memory resources are required and how they will be used in all subsequent steps.
+memory resources are required, and how they will be used in all subsequent steps.
 The pef files are by default saved in the 'out' directory; the
 SambaNova documentation advises saving pef files in separate
 directories with the '--output-folder' option.
 
-It is necessary to re-compile only when the model changes, or parameters specific to the model graph change, including the batch size.  
+It is necessary to re-compile only when the model changes, or parameters specific to the model graph change, including the batch size.
 
-Compile times can be significant.  
+Compile times can be significant.
 Compile of the Unet sample, for example, when using images of size 32x32 pixels, takes 358 (s), and 1844 (s) for images of size 256x256.
 
 Example:
 
 ```bash
+source /opt/sambaflow/apps/starters/lenet/venv
 srun python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 ```
 

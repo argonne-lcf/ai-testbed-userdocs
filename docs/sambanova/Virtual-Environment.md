@@ -5,8 +5,9 @@
 To create a virtual environment, one can use the --system-site-packages flag:
 
 ```bash
-python -m venv --system-site-packages my_env
-source my_env/bin/activate
+mkdir -p ~/venvs/sambanova/
+python -m venv --system-site-packages ~/venvs/sambanova/my_env
+source ~/venvs/sambanova/my_env/bin/activate
 ```
 
 ### System Site Packages
@@ -25,7 +26,7 @@ Given the location of the packages, one may list the packages.
 For example:
 
 ```bash
-ls -al /opt/sambaflow/venv/lib/python3.7/site-packages
+ls -al ~/venvs/sambanova/my_env/lib/python3.7/site-packages
 ```
 
 ## Installing Packages
