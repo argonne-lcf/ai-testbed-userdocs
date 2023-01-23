@@ -59,13 +59,13 @@ ssh sn30-r1-h1
 ### SDK setup
 
 <!-- TODOBRW Show that these commands get executed. -->
-The SambaNova system has a bash shell script to set up the required software environment.
+<!-- The SambaNova system has a bash shell script to set up the required software environment.
 This sets up the SambaFlow software stack, and the associated environmental variables and starts
 a pre-configured virtual environment.
 
 Use
-
-<!-- TODOBRW Is this still true? -->
+-->
+<!-- TODOBRW Is this still true? 
 ```bash
 ALCFUserID@sn30-r1-h1:~$ source /software/sambanova/envs/sn_env.sh
 (venv) ALCFUserID@sn30-r1-h1:~$
@@ -83,7 +83,14 @@ alias snvenv='source /opt/sambaflow/venv/bin/activate' # This starts the pre-con
 
 **NOTE:  SambaNova operations will fail unless a SambaNova venv is set-up.**
 
-**NOTE:  With 1.14 there is no longer a common venv. Each model has its own venv.**
+**NOTE:  With 1.14 there is no longer a common venv. Each model has its own venv.** -->
+
+With SambaFlow version 1.14, the base SambaFlow python environment is installed as part of the system, and the user path is updated automatically to include the directories for the sambanova binaries. 
+Use of python virtual environments made with e.g. `virtualenv` is recommended. Conda is not supported.
+```bash
+virtualenv --system-site-packages sn_venv
+source sn_venv/bin/activate
+```
 
 #### Starters
 
