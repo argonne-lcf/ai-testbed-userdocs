@@ -45,9 +45,6 @@ except:
     pass
 ```
 
-### lksjdf
-
-
 ### Wrap Model
 
 Wrap the model using **poptorch.trainingModel()** so that it may be ran on IPUs for training.
