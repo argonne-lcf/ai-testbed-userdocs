@@ -33,6 +33,7 @@ It is necessary to re-compile only when the model changes, or parameters specifi
 
 Compile times can be significant.
 Compile of the Unet sample, for example, when using images of size 32x32 pixels, takes 358 (s), and 1844 (s) for images of size 256x256.
+TODO Are these correct for version 1.14? 
 
 Example:
 
