@@ -32,7 +32,7 @@ Reasons to specify a node list:
 Example:
 
 ```bash
-srun --nodelist=sm-02 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
+srun --nodelist=s30-r4-h2 python lenet.py compile -b=1 --pef-name="lenet" --output-folder="pef"
 ```
 
 ## Sbatch
@@ -86,3 +86,4 @@ Scancel is used to signal or cancel jobs, job arrays, or job steps.
 ```bash
 scancel job_id
 ```
+SambaNova recommends that `scancel` be used to cancel jobs, to assure proper cleanup. 
