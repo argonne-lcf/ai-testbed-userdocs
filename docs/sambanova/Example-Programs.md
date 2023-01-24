@@ -155,7 +155,7 @@ Log ID initialized to: [ALCFUserID][python][53607] at
 Activate venv:
 
 ```bash
-source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
+source /opt/sambaflow/apps/starters/ffn_mnist/venv/bin/activate
 ```
 
 Change directory
