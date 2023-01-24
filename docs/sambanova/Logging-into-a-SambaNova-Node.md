@@ -87,7 +87,7 @@ alias snvenv='source /opt/sambaflow/venv/bin/activate' # This starts the pre-con
 
 With SambaFlow version 1.14, the base SambaFlow python environment is installed as part of the system, and the user path is updated automatically to include the directories for the sambanova binaries.
 Use of python virtual environments made with e.g. `virtualenv` is recommended. Conda is not supported.
-See [Virtual Environment](Virtual-Environment.md) for details
+See [Virtual Environment](Virtual-Environment.md) for details.
 <!---
 ```bash
 virtualenv --system-site-packages sn_venv
