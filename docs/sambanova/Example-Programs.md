@@ -284,9 +284,7 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 ## Gpt 1.5B 
 
-The script to compile and run the Gpt model is as below and the same is present under the directory /data/ANL/scripts. 
-This model uses 1.5B parameters and is run across all the nodes in the system(--nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2). 
-
+The script to compile and run the Gpt model is as below and the same is present under the directory /data/ANL/scripts. The model is present under the directory /opt/sambaflow/apps/nlp/transformers_on_rdu/. This model uses 1.5B parameters and is run across all the nodes in the system(--nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2).
 
 ```bash
 #! /bin/bash 
