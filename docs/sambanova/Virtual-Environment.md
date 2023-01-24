@@ -46,3 +46,6 @@ pip install --ignore-installed  ... # or -I
 ```
 
 Note: Conda is not supported on the SambaNova system.
+
+Note: Each SambaNova application sample includes its own python virtual environment, which can be activated to compile and run the sample. 
+See the [Example Programs](Example-Programs.md) for more information. 
