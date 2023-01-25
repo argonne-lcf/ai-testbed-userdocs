@@ -284,7 +284,8 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 
 ## Gpt 1.5B 
 
-The script to compile and run the Gpt model is as below and the same is present under the directory /data/ANL/scripts. The model is present under the directory /opt/sambaflow/apps/nlp/transformers_on_rdu/. This model uses 1.5B parameters and is run across all the nodes in the system(--nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2).
+The script to compile and run the Gpt model is as below and the same is present under the directory /data/ANL/scripts. The model is present under the directory /opt/sambaflow/apps/nlp/transformers_on_rdu/. This model uses 1.5B parameters and by default is run across all the nodes in the system(--nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2).
+The modified version below will run on the node from which it is launched, and will use that entire node. It will stay queued, waiting for resources, until the full node is available.
 
 ```bash
 #! /bin/bash 
@@ -295,7 +296,7 @@ LOGDIR=`date +%m%d%y.%H`
 if [ "$1" ] ; then
 LOGDIR=$1
 fi
-MODEL_NAME="GPT1.5B"
+MODEL_NAME="Gpt1.5B"
 OUTPUT_PATH=/data/ANL/results/$(hostname)/${USER}/${LOGDIR}/${MODEL_NAME}.out
 echo "Using ${OUTPUT_PATH} for output"
 mkdir -p /data/ANL/results/$(hostname)/${USER}/${LOGDIR}
@@ -324,18 +325,19 @@ if [ ! -e  ${OUTDIR}/gpt15/gpt15.pef ] ; then
   echo "COMPILE START AT ${SECONDS}" >> ${OUTPUT_PATH} 2>&1
 
   COMMAND="python /opt/sambaflow/apps/nlp/transformers_on_rdu/transformers_hook.py compile --module_name gpt2_pretrain --task_name clm --max_seq_length 1024 -b 16 --output_dir=${OUTDIR}/hf_output --overwrite_output_dir --do_train  --per_device_train_batch_size 16 --cache ${OUTDIR}/cache/ --tokenizer_name gpt2 --model_name gpt2 --mac-v2 --non_split_head --mac-human-decision /opt/sambaflow/apps/nlp/transformers_on_rdu/human_decisions_gm/mac_v2_overrides/gpt2_48_enc_full_recompute_training_spatialmapping_tiling16_clmerge_gm_nonpardp_anl.json --compiler-configs-file /opt/sambaflow/apps/nlp/transformers_on_rdu/human_decisions_gm/compiler_configs/compiler_configs_gpt2_sc_recompute_spatialmapping_tiling16_clsmerge_withcls_nogroups.json --skip_broadcast_patch --config_name /opt/sambaflow/apps/nlp/transformers_on_rdu/customer_specific/mv/configs/gpt2_config_xl_50260.json --no_index_select_patch --data-parallel -ws 2 --weight_decay 0.1  --max_grad_norm_clip 1.0 --num-tiles 4 --pef-name=gpt15 --output-folder=${OUTDIR}"
-
+  
   echo "COMPILE COMMAND: $COMMAND" >> ${OUTPUT_PATH} 2>&1
   eval $COMMAND >> ${OUTPUT_PATH} 2>&1
   echo "COMPILE END AT ${SECONDS}" >> ${OUTPUT_PATH} 2>&1
 fi
 #######################
 echo "RUN" >> ${OUTPUT_PATH} 2>&1
-/usr/local/bin/sbatch --output=${HOME}/slurm-%A.out --ntasks 128 --gres=rdu:1 --ntasks-per-node 16  --nodes 8 --nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2 --cpus-per-task=8  /data/ANL/scripts/Gpt1.5B_run.sh >> ${OUTPUT_PATH} 2>&1
+/usr/local/bin/sbatch --output=${HOME}/slurm-%A.out --ntasks 16 --gres=rdu:8 --ntasks-per-node 16  --cpus-per-task=8 --nodes 1 --nodelist $(hostname) /data/ANL/scripts/Gpt1.5B_run.sh >> ${OUTPUT_PATH} 2>&1
 
 echo "Machine state After: " >> ${OUTPUT_PATH} 2>&1
 /opt/sambaflow/bin/snfadm -l inventory >> ${OUTPUT_PATH} 2>&1
 echo "Duration: " $SECONDS >> ${OUTPUT_PATH} 2>&1
+
 ```
 
 Note: The RUN command uses the sbatch cmd to avoid any resource contention. 
