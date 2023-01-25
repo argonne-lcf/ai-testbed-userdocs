@@ -1,6 +1,6 @@
 # Example Programs
 
-SambaNova provides examples of some well-known AI applications under the path: `/opt/sambaflow/apps/starters`, on both SambaNova compute nodes. Make a copy of this to your home directory:
+SambaNova provides examples of some well-known AI applications under the path: `/opt/sambaflow/apps/starters`, on all SambaNova nodes. Make a copy of this to your home directory:
 
 Copy starters to your personal directory structure:
 
@@ -155,7 +155,7 @@ Log ID initialized to: [ALCFUserID][python][53607] at
 Activate venv:
 
 ```bash
-source /opt/sambaflow/apps/starters/lenet/venv/bin/activate
+source /opt/sambaflow/apps/starters/ffn_mnist/venv/bin/activate
 ```
 
 Change directory
@@ -282,59 +282,67 @@ Log ID initialized to: [ALCFUserID][python][99185] at
 /var/log/sambaflow/runtime/sn.log
 ```
 
-## UNet
+## Gpt 1.5B
 
-Activate venv:
-
-```bash
-source /opt/sambaflow/apps/starters/upscalenet/venv/bin/activate
-```
-
-Change directory and copy files.
+The script to compile and run the Gpt model is as below and the same is present under the directory /data/ANL/scripts. The model is present under the directory /opt/sambaflow/apps/nlp/transformers_on_rdu/. This model uses 1.5B parameters and by default is run across all the nodes in the system(--nodelist sn30-r1-h1,sn30-r1-h2,sn30-r2-h1,sn30-r2-h2,sn30-r3-h1,sn30-r3-h2,sn30-r4-h1,sn30-r1-h2).
+The modified version below will run on the node from which it is launched, and will use that entire node. It will stay queued, waiting for resources, until the full node is available.
 
 ```bash
-cp -r /opt/sambaflow/apps/image ~/apps/image
-cd ~/apps/image/unet
+#! /bin/bash
+set -e
+export SF_RNT_LOG_LEVEL=DEBUG
+ACTIVATE=/opt/sambaflow/apps/nlp/transformers_on_rdu/venv/bin/activate
+LOGDIR=`date +%m%d%y.%H`
+if [ "$1" ] ; then
+LOGDIR=$1
+fi
+MODEL_NAME="Gpt1.5B"
+OUTPUT_PATH=/data/ANL/results/$(hostname)/${USER}/${LOGDIR}/${MODEL_NAME}.out
+echo "Using ${OUTPUT_PATH} for output"
+mkdir -p /data/ANL/results/$(hostname)/${USER}/${LOGDIR}
 
-# TODOBRW Test this after the Admins mount it.
-# TODOBRW Test the rest of this UNet section.
-cp /software/sambanova/apps/image/pytorch/unet/*.sh .
+#######################
+# Edit these variables.
+#######################
+export OMP_NUM_THREADS=18
+#######################
+# Start script timer
+SECONDS=0
+# Temp file location
+DIRECTORY=$$
+OUTDIR=/data/scratch/${USER}/GPT_RUN
+mkdir -p ${OUTDIR}
+source ${ACTIVATE}
+echo "Model: " ${MODEL_NAME} > ${OUTPUT_PATH} 2>&1
+echo "Date: " $(date +%m/%d/%y) >> ${OUTPUT_PATH} 2>&1
+echo "Time: " $(date +%H:%M) >> ${OUTPUT_PATH} 2>&1
+cd ${OUTDIR}
+#######################
+echo "Machine State Before: " >> ${OUTPUT_PATH} 2>&1
+/opt/sambaflow/bin/snfadm -l inventory >> ${OUTPUT_PATH} 2>&1
+if [ ! -e  ${OUTDIR}/gpt15/gpt15.pef ] ; then
+  #######################
+  echo "COMPILE START AT ${SECONDS}" >> ${OUTPUT_PATH} 2>&1
+
+  COMMAND="python /opt/sambaflow/apps/nlp/transformers_on_rdu/transformers_hook.py compile --module_name gpt2_pretrain --task_name clm --max_seq_length 1024 -b 16 --output_dir=${OUTDIR}/hf_output --overwrite_output_dir --do_train  --per_device_train_batch_size 16 --cache ${OUTDIR}/cache/ --tokenizer_name gpt2 --model_name gpt2 --mac-v2 --non_split_head --mac-human-decision /opt/sambaflow/apps/nlp/transformers_on_rdu/human_decisions_gm/mac_v2_overrides/gpt2_48_enc_full_recompute_training_spatialmapping_tiling16_clmerge_gm_nonpardp_anl.json --compiler-configs-file /opt/sambaflow/apps/nlp/transformers_on_rdu/human_decisions_gm/compiler_configs/compiler_configs_gpt2_sc_recompute_spatialmapping_tiling16_clsmerge_withcls_nogroups.json --skip_broadcast_patch --config_name /opt/sambaflow/apps/nlp/transformers_on_rdu/customer_specific/mv/configs/gpt2_config_xl_50260.json --no_index_select_patch --data-parallel -ws 2 --weight_decay 0.1  --max_grad_norm_clip 1.0 --num-tiles 4 --pef-name=gpt15 --output-folder=${OUTDIR}"
+
+  echo "COMPILE COMMAND: $COMMAND" >> ${OUTPUT_PATH} 2>&1
+  eval $COMMAND >> ${OUTPUT_PATH} 2>&1
+  echo "COMPILE END AT ${SECONDS}" >> ${OUTPUT_PATH} 2>&1
+fi
+#######################
+echo "RUN" >> ${OUTPUT_PATH} 2>&1
+/usr/local/bin/sbatch --output=${HOME}/slurm-%A.out --ntasks 16 --gres=rdu:8 --ntasks-per-node 16  --cpus-per-task=8 --nodes 1 --nodelist $(hostname) /data/ANL/scripts/Gpt1.5B_run.sh >> ${OUTPUT_PATH} 2>&1
+
+echo "Machine state After: " >> ${OUTPUT_PATH} 2>&1
+/opt/sambaflow/bin/snfadm -l inventory >> ${OUTPUT_PATH} 2>&1
+echo "Duration: " $SECONDS >> ${OUTPUT_PATH} 2>&1
+
 ```
 
-Export the path to the dataset which is required for the training.
+Note: The RUN command uses the sbatch cmd to avoid any resource contention.
 
-```bash
-export OUTDIR=~/apps/image/unet
-export DATADIR=/software/sambanova/dataset/kaggle_3m
-```
-
-Run these commands for training (compile + train):
-
-```bash
-sbatch unet_compile_run_inf_rl.sh compile 32 1  # Takes over 15 minutes.
-sbatch unet_compile_run_inf_rl.sh test 32 1     # Very fast.
-sbatch unet_compile_run_inf_rl.sh run 32 1      #
-```
-
-The output files are named **slurm-\<batch ID\>.out**.
-
-Using SLURM:  To use Slurm, create submit-unet-job.sh with the following
-contents:
-
-```bash
-#!/bin/sh
-export OUTDIR=~/apps/image/unet
-export DATADIR=/software/sambanova/dataset/kaggle_3m
-./unet_compile_run_inf_rl.sh compile 32 1
-./unet_compile_run_inf_rl.sh test 32 1
-./unet_compile_run_inf_rl.sh run 32 1
-```
-
-Then
-
-```bash
-sbatch submit-unet-job.sh
-```
+The logs are present under the directory : /data/ANL/results/$(hostname)/${USER}/
 
 Squeue will give you the queue status.
 

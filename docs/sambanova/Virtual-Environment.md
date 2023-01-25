@@ -10,6 +10,9 @@ python -m venv --system-site-packages ~/venvs/sambanova/my_env
 source ~/venvs/sambanova/my_env/bin/activate
 ```
 
+Note: Each SambaNova application sample already include its own python virtual environment, which can be activated to compile and run the sample.
+See the [Example Programs](Example-Programs.md) for more information.
+
 ### System Site Packages
 
 There are many packages available on the system.

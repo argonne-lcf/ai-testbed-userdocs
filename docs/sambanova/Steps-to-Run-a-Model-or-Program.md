@@ -32,7 +32,7 @@ directories with the '--output-folder' option.
 It is necessary to re-compile only when the model changes, or parameters specific to the model graph change, including the batch size.
 
 Compile times can be significant.
-Compile of the Unet sample, for example, when using images of size 32x32 pixels, takes 358 (s), and 1844 (s) for images of size 256x256.
+Compile of the Unet3D sample, for example, when using images of size 128x128x128 pixels, takes as long as 1400 seconds.
 
 Example:
 
