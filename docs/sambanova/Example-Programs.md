@@ -5,7 +5,7 @@ SambaNova provides examples of some well-known AI applications under the path: `
 Copy starters to your personal directory structure:
 
 ```bash
-cd ~/
+cd
 mkdir apps
 cp -r /opt/sambaflow/apps/starters apps/starters
 ```
