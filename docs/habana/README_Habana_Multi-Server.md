@@ -416,5 +416,34 @@ This section has not been tested.
 cd Model-References/PyTorch/computer_vision/classification/torchvision/
 export MASTER_PORT=12355
 export MASTER_ADDR=192.168.201.101
-mpirun --allow-run-as-root --mca --bind-to core --map-by ppr:4:socket:PE=7 -np 16 --mca btl_tcp_if_include 192.168.201.0/24 --merge-stderr-to-stdout --prefix $MPI_ROOT -H 140.221.77.101:8,140.221.77.102:8 -x GC_KERNEL_PATH -x PYTHONPATH -x MASTER_ADDR -x MASTER_PORT -x HCCL_SOCKET_IFNAME=enp75s0f0,ens1f0 -x HCCL_OVER_TCP=1 $PYTHON -u train.py --batch-size=256 --model=resnet50 --device=hpu --workers=8 --print-freq=1 --deterministic --data-path=/lambda_stor/habana/data/tensorflow/imagenet --epochs=2 --hmp --hmp-bf16 ./ops_bf16_Resnet.txt --hmp-fp32 ./ops_fp32_Resnet.txt --custom-lr-values 0.475
+mpirun \
+  --allow-run-as-root \
+  --mca \
+  --bind-to core \
+  --map-by ppr:4:socket:PE=7 \
+  -np 16 \
+  --mca btl_tcp_if_include 192.168.201.0/24 \
+  --merge-stderr-to-stdout \
+  --prefix $MPI_ROOT \
+  -H 140.221.77.101:8,140.221.77.102:8 \
+  -x GC_KERNEL_PATH \
+  -x PYTHONPATH \
+  -x MASTER_ADDR \
+  -x MASTER_PORT \
+  -x HCCL_SOCKET_IFNAME=enp75s0f0,ens1f0 \
+  -x HCCL_OVER_TCP=1 \
+    $PYTHON \
+    -u train.py \
+    --batch-size=256 \
+    --model=resnet50 \
+    --device=hpu \
+    --workers=8 \
+    --print-freq=1 \
+    --deterministic \
+    --data-path=/lambda_stor/habana/data/tensorflow/imagenet \
+    --epochs=2 \
+    --hmp \
+    --hmp-bf16 ./ops_bf16_Resnet.txt \
+    --hmp-fp32 ./ops_fp32_Resnet.txt \
+    --custom-lr-values 0.475
 ```
