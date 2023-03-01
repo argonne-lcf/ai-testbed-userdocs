@@ -1,4 +1,9 @@
-# GroqIt
+#
+#
+# Deprecated.  Moved to ALCF userdocs.
+#
+#
+#
 
 This applies to any PyTorch, Keras, or ONNX model that instantiates the
 model and invokes it against some inputs inputs, call groqit(model, inputs).
