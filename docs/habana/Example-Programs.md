@@ -15,10 +15,9 @@ export HABANA_LOGS=~/.habana_logs
 Habana provides examples of some well known AI applications under the path. Clone the repository to your home directory.
 
 ```bash
-cd ~/
-git clone https://github.com/HabanaAI/Model-References.git
+cd
+git clone -b 1.8.0 https://github.com/HabanaAI/Model-References.git
 cd Model-References
-git checkout 1.6.1
 ```
 
 ## Set PYTHONPATH
@@ -54,6 +53,7 @@ If **Model-References** is in your root directory, the command would be
 
 ```bash
 export PYTHONPATH=~/Model-References:$PYTHONPATH
+export PYTHONPATH=~/Model-References:$(which python)
 ```
 
 ## Common Arguments
@@ -136,23 +136,23 @@ There are eight Gaudi cards on the system.
 On 8 HPU, 1 HLS and in FP32 eager mode, run the following command:
 
 ```bash
-mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root python mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu
 ```
 
 On 8 HPU, 1 HLS and in BF16 eager mode, run the following command:
 
 ```bash
-mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root python mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt
 ```
 
 On 8 HPU, 1 HLS and in FP32 lazy mode, run the following command:
 
 ```bash
-mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --use_lazy_mode
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root python mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --use_lazy_mode
 ```
 
 On 8 HPU, 1 HLS and in BF16 lazy mode, run the following command:
 
 ```bash
-mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root $PYTHON mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt --use_lazy_mode
+mpirun -n 8 --bind-to core --map-by slot:PE=7 --rank-by core --report-bindings --allow-run-as-root python mnist.py --batch-size=64 --epochs=1 --lr=1.0 --gamma=0.7 --hpu --hmp --hmp-bf16=ops_bf16_mnist.txt --hmp-fp32=ops_fp32_mnist.txt --use_lazy_mode
 ```

@@ -8,11 +8,14 @@
 
 #### TensorFlow
 
-To create a virtual environment, one can use the **--system-site-packages** flag:
+To create a virtual environment:
 
 ```bash
-python3 -m venv --system-site-packages ~/TF_venv
-source ~/TF_venv/bin/activate
+export VENV_DIR=~/venvs/habana_1.8.0
+mkdir -p ${VENV_DIR}/tf
+cd ${VENV_DIR}/tf
+HABANALABS_VIRTUAL_DIR=${VENV_DIR}/tf /projects/Habana/habanalabs-installer-1.8.0.sh install --type tf --venv
+source ${VENV_DIR}/tf/bin/activate
 ```
 
 #### PyTorch
