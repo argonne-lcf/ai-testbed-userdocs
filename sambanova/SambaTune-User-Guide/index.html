@@ -1,0 +1,1874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://argonne-lcf.github.io/ai-testbed-userdocs/sambanova/SambaTune-User-Guide/">
+      
+      
+      
+      
+      <link rel="icon" href="../../images/alcf_favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+    
+    
+      
+        <title>SambaTune - AI Testbed User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=proxima-nova:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"proxima-nova";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/alcf-extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<link rel="stylesheet" href="https://use.typekit.net/pxo0nvo.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="alcf" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sambatune" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!-- Header -->
+<!-- --------------------------------------------------------------------- -->
+
+<!-- component: header -->
+
+
+	
+	<header class="md-header" data-md-component="header">
+
+
+	<div class="header--primary">
+
+
+	<div class="grid">
+
+		<div class="header__site-title">
+			<h1>Argonne Leadership Computing Facility</h1>
+		</div>
+
+
+
+
+
+		<nav class="header__nav-primary">
+			<ul>
+
+
+				<li id="nav-res" class="js-drop" data-menu="menu-res">
+					<a href="https://www.alcf.anl.gov/alcf-resources">ALCF Resources</a>
+
+					<div id="menu-res" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Leadership Computing Resources</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF provides users with access to supercomputing resources that are significantly more powerful than systems typically used for open scientific research.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Computing Resources</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/aurora">Aurora</a></li>
+										<li><a href="https://www.alcf.anl.gov/polaris">Polaris</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-ai-testbed">ALCF AI Testbed</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/evaluation-testbeds">Evaluation Testbeds</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/storage-and-networking">Storage and Networking</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Facility Expertise</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/facility-expertise">Facility Expertise</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://alcf.anl.gov/aurora">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Aurora
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/aurora.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-sci" class="js-drop" data-menu="menu-sci">
+					<a href="https://www.alcf.anl.gov/science">Science</a>
+
+					<div id="menu-sci" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Computational Science</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF is accelerating scientific discoveries in many disciplines, ranging from chemistry and engineering to physics and materials science.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Output</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/science/projects">Projects</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/publications">Publications</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Allocation Programs</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/science/incite-allocation-program">INCITE Program</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/alcc-allocation-program">ALCC</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/directors-discretionary-allocation-program">Director’s Discretionary</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/early-science-program">Early Science Program</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://www.alcf.anl.gov/science/projects/Engineering">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Engineering
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/engineering.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-cp" class="js-drop" data-menu="menu-cp">
+					<a href="#https://www.alcf.anl.gov/community-and-partnerships">Community and Partnerships</a>
+
+					<div id="menu-cp" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Growing the HPC Community</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF is committed to providing training and outreach opportunities that prepare researchers to efficiently use its leadership computing systems, while also cultivating a diverse and skilled HPC workforce for the future.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Partnerships</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/industry">Industry</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/partners">Partners</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Educational Outreach</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/women-in-stem">Women in STEM</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/student-outreach">Student Outreach</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/training-researchers">Training Researchers</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-abt" class="js-drop" data-menu="menu-abt">
+					<a href="https://www.alcf.anl.gov/about">About</a>
+
+					<div id="menu-abt" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Accelerating Science</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The Argonne Leadership Computing Facility enables breakthroughs in science and engineering by providing supercomputing resources and expertise to the research community.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Get to Know More</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/about/alcf-leadership-team">Leadership</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/people">People</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-organizational-chart">Organizational Chart</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/user-advisory-council">User Advisory Council</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/history">History</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Visit</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/about/visiting-alcf">Visiting ALCF</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/tours">Tours</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-21">
+								<div class="dropdown__links-group">
+									<h3>Latest</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/news">News</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/careers">Careers</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-22">
+								<div class="dropdown__links-group">
+									<h3>Press Kits</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/alcf-media-kit">ALCF Media Kit</a></li>
+										<li><a href="https://www.alcf.anl.gov/aurora-media-kit">Aurora Media Kit</a></li>
+										<li><a href="https://www.alcf.anl.gov/report-archive">Reports Archive</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-sup" class="js-drop" data-menu="menu-sup">
+					<a href="https://www.alcf.anl.gov/support-center">Support Center</a>
+
+					<div id="menu-sup" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Support Center</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF Support Center assists users with support requests related to their ALCF projects.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Current</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/machine-status">Machine Status</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/facility-updates">Facility Updates</a></li>
+										<li><a href="https://accounts.alcf.anl.gov/home">Accounts Website</a></li>
+									</ul>
+
+									<br>
+
+									<h3>Training</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/training-assets">Training Videos & Slides</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/training-overview">Training Overview</a></li>
+										<li><a href="https://www.alcf.anl.gov/events">Training and Events</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Guides</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/get-started">Get Started</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/account-and-project-management">Account and Project Management</a></li>
+										<li><a href="https://docs.alcf.anl.gov/polaris/getting-started/">Polaris</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/ai-testbed">AI Testbed</a></li>
+										<li><a href="https://docs.alcf.anl.gov/aurora/getting-started-on-aurora/">Aurora</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/facility-policies">Facility Policies</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://www.alcf.anl.gov/support-center/get-started">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Get Started
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/getstarted.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+			</ul>
+		</nav>
+
+		<nav class="header__nav-secondary">
+			<!-- wrapper needed to hang right -->
+			<div class="header__nav-secondary--right"> 
+				<ul>
+					<li><a href="https://www.alcf.anl.gov/news"> News </a></li>
+					<li><a href="https://www.alcf.anl.gov/events"> Events </a></li>
+					<li><a href="https://www.alcf.anl.gov/about/people"> People </a></li>
+					<li><a href="https://www.alcf.anl.gov/about/careers"> Careers </a></li>
+				</ul>
+
+			
+			
+
+      <!-- Search interface -->
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+				  
+			
+
+			</div>
+		</nav>
+
+	</div>
+	</div> <!-- end header--primary -->
+
+
+	</header>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Mobile Header -->
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+
+
+<header class="md-header header--mobile" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="AI Testbed User Guide"
+      class="md-header__button md-logo"
+      aria-label="AI Testbed User Guide"
+      data-md-component="logo"
+    >
+      <!-- Logo -->
+<!-- --------------------------------------------------------------------- -->
+
+<a href="https://alcf.anl.gov/" title="ALCF User Guide" class="md-nav__button md-logo" aria-label="ALCF User Guide" data-md-component="logo">
+      
+  <img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/Argonne_wireframe_white_transparent.png" alt="logo">
+
+</a>
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Testbed User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SambaTune
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/argonne-lcf/ALCF-AI-Testbed" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    argonne-lcf/ALCF-AI-Testbed
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Testbed User Guide" class="md-nav__button md-logo" aria-label="AI Testbed User Guide" data-md-component="logo">
+      <!-- Logo -->
+<!-- --------------------------------------------------------------------- -->
+
+<a href="https://alcf.anl.gov/" title="ALCF User Guide" class="md-nav__button md-logo" aria-label="ALCF User Guide" data-md-component="logo">
+      
+  <img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/Argonne_wireframe_white_transparent.png" alt="logo">
+
+</a>
+    </a>
+    AI Testbed User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/argonne-lcf/ALCF-AI-Testbed" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    argonne-lcf/ALCF-AI-Testbed
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cerebras
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cerebras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/System-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Connect-to-a-CS-2-Node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Steps-to-run-a-model-or-program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run a Model/Program
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Job-Queuing-and-Submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Queuing and Submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Example-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Using-virtual-environments-to-customize-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customizing environments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Performance-Tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Tunneling-and-forwarding-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling and Forwarding Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cerebras/Miscellaneous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SambaNova
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SambaNova
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging-into-a-SambaNova-Node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Virtual-Environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steps-to-Run-a-Model-or-Program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run a Model/Program
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Job-Queuing-and-Submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Queuing and Submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example-Multi-Node-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Multi-Node Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steps-to-Run-BERT-Large-on-Sambanova-DataScale-SN10-8R/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run BERT Large on Sambanova DataScale SN10-8R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tunneling-and-forwarding-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling and Forwarding Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Miscellaneous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/pub-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publication Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-sambatune" class="md-nav__link">
+    <span class="md-ellipsis">
+      About SambaTune
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-sambatune" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run SambaTune
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sambatune-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      SambaTune UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SambaTune UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Port Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-sambatune-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start SambaTune UI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-port-forwarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Port-Forwarding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Port-Forwarding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-your-local-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      From your local machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-sambanovaalcfanlgov" class="md-nav__link">
+    <span class="md-ellipsis">
+      From sambanova.alcf.anl.gov
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-on-local-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser on Local Machine
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sambatune">SambaTune</h1>
+<h2 id="notes">Notes</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/home/rweisner/tmp/uno_test
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>#TODOBRW
+ssh wilsonb@homes.cels.anl.gov
+ssh sm-02
+MobilePass+ password
+On sm-02
+source /opt/sambaflow/venv/bin/activate
+export PATH=/opt/sambaflow/bin:$PATH
+sambatune linear_net.yaml --artifact-root $(pwd)/artifact_root --modes benchmark instrument run
+sambatune_ui --directory /home/wilsonb/tmp/sambatune_gen --port 8580
+#There will be a username and password displayed that you will use in your browser on your laptop.
+Command used on laptop for port forward
+ssh -XL 8580:127.0.0.1:8580 wilsonb@sm-02.cels.anl.gov
+MobilePass+ password
+# You will be logged into sm-02 but, you do not need to do anything.
+address used in browser on laptop localhost:8580
+#Use username and password from sambatune_ui.
+Username
+Password
+
+#TODOBRW
+/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/2022-09-21T19-21-05.html
+</code></pre></div>
+<h2 id="about-sambatune">About SambaTune</h2>
+<p>SambaTune is a tool for profiling, debugging, and tuning the performance of applications
+running on SN hardware.</p>
+<p>The tool automates the collection of hardware performance counters, metrics aggregation,
+report generation, and visualization. It also automates benchmarking of the application
+to compute average throughput over a sufficient number of runs. The tool is designed to
+aid the user with performance bottleneck analysis and tuning.</p>
+<p>SambaTune is currently used by SN engineers involved in performance tuning efforts.
+SambaTune is also planned for release to external customers to aid with performance
+bottleneck analysis and resolution.</p>
+<h2 id="run-sambatune">Run SambaTune</h2>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>ALCFUserID@sambanova.alcf.anl.gov
+<span class="c1"># Enter MobilePass+ pass code</span>
+ssh<span class="w"> </span>sm-01
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+ssh<span class="w"> </span>wilsonb@sambanova.alcf.anl.gov
+<span class="c1"># Enter MobilePass+ pass code</span>
+ssh<span class="w"> </span>sm-01
+</code></pre></div>
+<p>First, enter the virtual environment on <strong>sm-01</strong> or <strong>sm-02</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>/opt/sambaflow/venv/bin/activate
+</code></pre></div>
+<p>Update path:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/opt/sambaflow/bin:<span class="nv">$PATH</span>
+</code></pre></div>
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><span></span><code><span class="go">usage: sambatune [-h] [--artifact-root ARTIFACT_ROOT] [--disable-override]</span>
+<span class="go">                 [--compile-only | -m MODES [MODES ...]] [--version]</span>
+<span class="go">                 config</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  config                YAML file with model, compile, run configuration.</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  --artifact-root ARTIFACT_ROOT</span>
+<span class="go">                        Custom location to save compile/run artifacts;</span>
+<span class="go">                        defaults to &#39;$DUMP_ROOT/artifact_root&#39; (default: None)</span>
+<span class="go">  --disable-override    Reuse the placement from the baseline compilation</span>
+<span class="go">                        (default: False)</span>
+<span class="go">  --compile-only        Run compilation of PEFs for selected modes only</span>
+<span class="go">                        (default: False)</span>
+<span class="go">  -m MODES [MODES ...], --modes MODES [MODES ...]</span>
+<span class="go">                        Select modes to execute from [&#39;benchmark&#39;,</span>
+<span class="go">                        &#39;instrument&#39;, &#39;run&#39;] (default: [&#39;benchmark&#39;])</span>
+<span class="go">  --version             version of sambatune and sambaflow.</span>
+</code></pre></div>
+<h2 id="command-overview">Command Overview</h2>
+<p>By default, it will run with the benchmarking mode enabled. Use the --modes flag to run
+modes individually or in any combination.
+Benchmark-Only:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>example_net.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark
+</code></pre></div>
+<p>Instrument-Only:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>example_net.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>instrument
+</code></pre></div>
+<p>All modes:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>example_net.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>instrument
+</code></pre></div>
+<h2 id="command-example">Command Example</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># From Bill</span>
+python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="m">500</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--mac-human-decision<span class="w"> </span>/opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json<span class="w"> </span>--pef-name<span class="o">=</span>uno_16_4_500_ws<span class="w"> </span>--output-folder<span class="o">=</span>/home/arnoldw//models_dir/1520847<span class="w"> </span>--mac-v1
+
+python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="m">500</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>/home/arnoldw//models_dir/1520847/uno_16_4_500_ws/uno_16_4_500_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># From Bill --&gt; Bruce</span>
+python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="m">500</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--mac-human-decision<span class="w"> </span>/opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json<span class="w"> </span>--pef-name<span class="o">=</span>uno_16_4_500_ws<span class="w"> </span>--output-folder<span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="w"> </span>--mac-v1
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="m">500</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./uno_16_4_500_ws/uno_16_4_500_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>#TODOBRW  This works.  9/19/22
+sm-01/home/wilsonb/tmp/uno_test/uno_ccle.yaml
+app: /opt/sambaflow/apps/private/anl/uno_full.py
+
+model-args: --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial
+
+compile-args: compile --plot --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+run-args: --multiprocess-pickle --use-pickle-train  --measure-spatial --train-samba-spatial --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_500 --converted-pickle
+
+env:
+     OMP_NUM_THREADS: 16,
+     SF_RNT_NUMA_BIND: 2
+</code></pre></div>
+<p>Run the following example:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>uno_ccle.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+<span class="c1"># Stand-alone</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">500</span>
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--mac-human-decision<span class="w"> </span>/opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json<span class="w"> </span>--pef-name<span class="o">=</span>uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws<span class="w"> </span>--output-folder<span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="w"> </span>--mac-v1
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+srun<span class="w"> </span>pyinstrument<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>pyinstrument_1.13.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+
+
+Ricks<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>“out/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>.pef”<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>#TODOBRW
+sm-01/home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_brw_CCLE_1_12.yaml
+export OMP_NUM_THREADS=16
+app: /home/wilsonb/DL/Sambanova/apps_1.12/private/anl/uno_full.py
+
+model-args: --weight-sharing -b 16 -mb 4 --num-spatial-batches 500 --mapping spatial
+
+compile-args: compile --plot --mac-human-decision /opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json --mac-v1
+
+run-args: --measure-spatial --train-samba-spatial --mac-v1 --train_source CCLE --lr 0.001 --data-dir /software/sambanova/dataset/CCLE_16_500
+
+env:
+     OMP_NUM_THREADS: 16,
+     SF_RNT_NUMA_BIND: 2
+</code></pre></div>
+<p>Run the following example:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>uno_brw_CCLE_1_12.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">50</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--mac-human-decision<span class="w"> </span>/opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json<span class="w"> </span>--mac-v1
+
+xsrun<span class="w"> </span>pyinstrument<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>my.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--multiprocess-pickle<span class="w">  </span>--measure-spatial<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./out/uno_full_16_47_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>/uno_full_16_47_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>pyinstrument_1.13.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+cat<span class="w"> </span>my.log<span class="w"> </span><span class="c1"># Has pyinstrument run name.</span>
+pyinstrument<span class="w"> </span>--load-prev<span class="w"> </span><span class="m">2022</span>-09-21T19-21-05<span class="w"> </span>-r<span class="w"> </span>html
+
+
+<span class="m">1</span>.13
+
+<span class="nb">source</span><span class="w"> </span>/opt/sambaflow/venv/bin/activate
+<span class="nb">cd</span><span class="w"> </span>~/tmp/uno_test/
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/opt/sambaflow/bin:<span class="nv">$PATH</span>
+sntilestat
+
+
+
+./uno_pickl.sh<span class="w"> </span>compile<span class="w"> </span><span class="m">500</span>
+./uno_pickl.sh<span class="w"> </span>run<span class="w"> </span><span class="m">500</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>uno_brw_CCLE_1_12.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">50</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--mac-human-decision<span class="w"> </span>/opt/sambaflow/apps/private/anl/samba_uno/human_decisions_spatial.json<span class="w"> </span>--mac-v1
+
+xsrun<span class="w"> </span>pyinstrument<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws/uno_16_4_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>_ws.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>my.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+srun<span class="w"> </span>python<span class="w"> </span>/opt/sambaflow/apps/private/anl/uno_full.py<span class="w"> </span>run<span class="w"> </span>--multiprocess-pickle<span class="w">  </span>--measure-spatial<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span>./out/uno_full_16_47_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>/uno_full_16_47_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span>.pef<span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE<span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/CCLE_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>pyinstrument_1.13.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+cat<span class="w"> </span>my.log<span class="w"> </span><span class="c1"># Has pyinstrument run name.</span>
+pyinstrument<span class="w"> </span>--load-prev<span class="w"> </span><span class="m">2022</span>-09-21T19-21-05<span class="w"> </span>-r<span class="w"> </span>html
+
+
+<span class="m">1</span>.13
+
+<span class="nb">source</span><span class="w"> </span>/opt/sambaflow/venv/bin/activate
+<span class="nb">cd</span><span class="w"> </span>~/tmp/uno_test/
+<span class="nb">export</span><span class="w"> </span><span class="nv">UNO</span><span class="o">=</span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">NS</span><span class="o">=</span><span class="m">500</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/opt/sambaflow/bin:<span class="nv">$PATH</span>
+sntilestat
+</code></pre></div>
+<p>uno_pickl.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#! /bin/bash -x</span>
+<span class="c1">#set -e</span>
+<span class="nb">source</span><span class="w"> </span>/opt/sambaflow/venv/bin/activate
+<span class="nv">SECONDS</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">NS</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span>
+<span class="nv">UNO</span><span class="o">=</span>/opt/sambaflow/apps/private/anl/
+<span class="nv">DS</span><span class="o">=</span><span class="s2">&quot;ALL&quot;</span>
+<span class="nv">DS</span><span class="o">=</span><span class="s2">&quot;CCLE&quot;</span>
+
+<span class="nv">BS</span><span class="o">=</span><span class="k">$((</span><span class="nv">NS</span><span class="o">*</span><span class="m">16</span><span class="k">))</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">16</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Model: UNO_SPA_TRN&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Date: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%m/%d/%y<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Time: &quot;</span><span class="w"> </span><span class="k">$(</span>date<span class="w"> </span>+%H:%M<span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;convert&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+python3<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno/uno_data_loaders_converted.py<span class="w">   </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--out_dir<span class="w"> </span>/software/sambanova/dataset/<span class="si">${</span><span class="nv">DS</span><span class="si">}</span>_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w">  </span>--batch-size<span class="w"> </span><span class="si">${</span><span class="nv">BS</span><span class="si">}</span><span class="w"> </span>--train_sources<span class="w"> </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="w"> </span>--file-write-frequency<span class="w"> </span><span class="m">10</span>
+
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;compile&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;COMPILE&quot;</span>
+<span class="w">  </span>python<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno_full.py<span class="w"> </span>compile<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--mac-human-decision<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/samba_uno/human_decisions_spatial.json<span class="w"> </span>--pef-name<span class="o">=</span><span class="s2">&quot;uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--mac-v1
+
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RUN </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">SF_RNT_NUMA_BIND</span><span class="o">=</span><span class="m">2</span>
+<span class="w">  </span><span class="c1">#python ${UNO}/uno_full.py run --acc-test --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=&quot;out/uno_16_4_${NS}/uno_16_4_${NS}.pef&quot; --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE</span>
+<span class="w">  </span>python<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno_full.py<span class="w"> </span>run<span class="w"> </span>--mac-v1<span class="w"> </span>--multiprocess-pickle<span class="w"> </span>--use-pickle-train<span class="w"> </span>--train-samba-spatial<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/<span class="si">${</span><span class="nv">DS</span><span class="si">}</span>_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--converted-pickle<span class="w"> </span>--train_sources<span class="w"> </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="w"> </span>--pef<span class="o">=</span><span class="s2">&quot;out/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">.pef&quot;</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="c1">#python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef=&quot;out/uno_16_4_${NS}/uno_16_4_${NS}.pef&quot;</span>
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;pyinstrument&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RUN </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">SF_RNT_NUMA_BIND</span><span class="o">=</span><span class="m">2</span>
+<span class="w">  </span><span class="c1">#python ${UNO}/uno_full.py run --acc-test --train-samba-spatial --weight-sharing -b 16 -mb 4 --num-spatial-batches ${NS} --mapping spatial --pef=&quot;out/uno_16_4_${NS}/uno_16_4_${NS}.pef&quot; --in_dir /var/tmp/raw/ --mac-v1 --train_source CCLE</span>
+<span class="w">  </span>pyinstrument<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno_full.py<span class="w"> </span>run<span class="w"> </span>--mac-v1<span class="w"> </span>--multiprocess-pickle<span class="w"> </span>--use-pickle-train<span class="w"> </span>--train-samba-spatial<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--data-dir<span class="w"> </span>/software/sambanova/dataset/<span class="si">${</span><span class="nv">DS</span><span class="si">}</span>_16_<span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--converted-pickle<span class="w"> </span>--train_sources<span class="w"> </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="w"> </span>--pef<span class="o">=</span><span class="s2">&quot;out/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">.pef&quot;</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="c1">#python ${UNO}/uno_full.py run --mac-v1 --multiprocess-pickle --use-pickle-train --train-samba-spatial -b 16 -mb 4 --num-spatial-batches ${NS} --lr 0.001 --mapping spatial --data-dir /software/sambanova/dataset/${DS}_16_${NS} --converted-pickle --train_sources ${DS} --pef=&quot;out/uno_16_4_${NS}/uno_16_4_${NS}.pef&quot;</span>
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;no_pickle&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;no_pickle </span><span class="si">${</span><span class="nv">DS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">SF_RNT_NUMA_BIND</span><span class="o">=</span><span class="m">2</span>
+<span class="w">  </span>python<span class="w"> </span><span class="si">${</span><span class="nv">UNO</span><span class="si">}</span>/uno_full.py<span class="w"> </span>run<span class="w"> </span>--train-samba-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span><span class="s2">&quot;out/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">.pef&quot;</span><span class="w"> </span>--in_dir<span class="w"> </span>/var/tmp/raw/<span class="w"> </span>--mac-v1<span class="w"> </span>--train_source<span class="w"> </span>CCLE
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;mp&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Duration: &quot;</span><span class="w"> </span><span class="nv">$SECONDS</span>
+
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;mp&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Duration: &quot;</span><span class="w"> </span><span class="nv">$SECONDS</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PERF&quot;</span>
+python<span class="w"> </span>uno_full.py<span class="w"> </span>measure-performance<span class="w"> </span>--measure-spatial<span class="w"> </span>--weight-sharing<span class="w"> </span>-b<span class="w"> </span><span class="m">16</span><span class="w"> </span>-mb<span class="w"> </span><span class="m">4</span><span class="w"> </span>--num-spatial-batches<span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="w"> </span>--mapping<span class="w"> </span>spatial<span class="w"> </span>--pef<span class="o">=</span><span class="s2">&quot;out/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">/uno_16_4_</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s2">.pef&quot;</span><span class="w"> </span>--num-iterations<span class="w"> </span><span class="m">20</span><span class="w"> </span>--mac-v1
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Duration: &quot;</span><span class="w"> </span><span class="nv">$SECONDS</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>./uno_pickl.sh<span class="w"> </span>compile<span class="w"> </span><span class="m">500</span>
+./uno_pickl.sh<span class="w"> </span>run<span class="w"> </span><span class="m">500</span>
+./uno_pickl.sh<span class="w"> </span>pyinstrument<span class="w"> </span><span class="m">500</span>
+pyinstrument<span class="w"> </span>--load-prev<span class="w"> </span><span class="m">2022</span>-09-22T18-31-24<span class="w"> </span>-r<span class="w"> </span>html
+stdout<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>terminal,<span class="w"> </span>so<span class="w"> </span>saved<span class="w"> </span>profile<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>/tmp/tmpeo5ehksn.html
+cp<span class="w"> </span>/tmp/tmpeo5ehksn.html<span class="w"> </span>.
+</code></pre></div>
+<p>On dev terminal</p>
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>wilsonb@sambanova.alcf.anl.gov:tmp/uno_test/tmpeo5ehksn.html<span class="w"> </span>.
+</code></pre></div>
+<p>View in local browser.</p>
+<h3 id="running">Running</h3>
+<p>Create a directory for your work.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/sambatune
+<span class="nb">cd</span><span class="w"> </span>~/sambatune
+</code></pre></div>
+<p>Create <strong>small_vae.yaml</strong> with the following content using your favorite editor.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/sambaflow/apps/private/anl/moleculevae.py</span>
+
+<span class="nt">model-args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-b 128 --in-width 512 --in-height 512</span>
+
+<span class="nt">compile-args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compile --plot --enable-conv-tiling --compiler-configs-file /opt/sambaflow/apps/private/anl/moleculevae/compiler_configs_conv.json --mac-v2 --mac-human-decision /opt/sambaflow/apps/private/anl/moleculevae/symmetric_human_decisions_tiled_v2.json</span>
+
+<span class="nt">run-args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--input-path /var/tmp/dataset/moleculevae/ras1_prot-pops.h5 --out-path ${HOME}/moleculevae_out --model-id 0 --epochs 10</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">OMP_NUM_THREADS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">     </span><span class="nt">SF_RNT_FSM_POLL_BUSY_WAIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">     </span><span class="nt">SF_RNT_DMA_POLL_BUSY_WAIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">     </span><span class="nt">CONVFUNC_DEBUG_RUN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<p>Run the following example:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>small_vae.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+</code></pre></div>
+<p>Create <strong>linear_net.yaml</strong> with the following content using your favorite editor.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/sambaflow/apps/micros/linear_net.py</span>
+
+<span class="nt">model-args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">-b 1024</span>
+<span class="w">  </span><span class="no">-mb 64</span>
+<span class="w">  </span><span class="no">--in-features 8192</span>
+<span class="w">  </span><span class="no">--out-features 4096</span>
+<span class="w">  </span><span class="no">--repeat 128</span>
+<span class="w">  </span><span class="no">--inference</span>
+
+<span class="nt">compile-args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">  </span><span class="no">--n-chips 2</span>
+<span class="w">  </span><span class="no">--plot</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">SF_RNT_FSM_POLL_BUSY_WAIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">SF_RNT_DMA_POLL_BUSY_WAIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">CONVFUNC_DEBUG_RUN&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div>
+<p><strong>NOTE:</strong> The following takes 45 minutes to run.</p>
+<p>Run the following example:</p>
+<div class="highlight"><pre><span></span><code>sambatune<span class="w"> </span>linear_net.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+<span class="nb">cd</span><span class="w"> </span>~/tmp/uno_test
+screen
+sambatune<span class="w"> </span>uno.yaml<span class="w"> </span>--artifact-root<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/artifact_root<span class="w"> </span>--modes<span class="w"> </span>benchmark<span class="w"> </span>instrument<span class="w"> </span>run
+</code></pre></div>
+<p>where <strong>linear_net.yaml</strong> is a user-specified configuration file you created above.</p>
+<h2 id="sambatune-ui">SambaTune UI</h2>
+<h3 id="port-availability">Port Availability</h3>
+<p>It is recommended that you check if the port you want to use is available. You may check by:</p>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>-elf<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>desired_port
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>-elf<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">8576</span>
+</code></pre></div>
+<p>Alternatively, you may check for all ports in use by <strong>sambatune_ui</strong>:</p>
+<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>-elf<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sambatune_ui
+</code></pre></div>
+<p>If you need to free a port that you are finished with, you may use the <strong>kill</strong> command.</p>
+<h3 id="start-sambatune-ui">Start SambaTune UI</h3>
+<p>If you followed the above directions, your artifact_root will be at ~/sambatune/artifact_root.</p>
+<p>Start the UI:</p>
+<p>It will tell you the <strong>username</strong> and <strong>password</strong>.</p>
+<p><strong>NOTE:</strong> It is recommended to use a port other than <strong>8576</strong> in case someone else is using it.  Select another port close to <strong>8576</strong>.</p>
+<p>Next</p>
+<div class="highlight"><pre><span></span><code>sambatune_ui<span class="w"> </span>--directory<span class="w"> </span>~/sambatune/artifact_root/sambatune_gen/<span class="w"> </span>--port<span class="w"> </span><span class="m">8576</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+sambatune_ui<span class="w"> </span>--directory<span class="w"> </span>~/sambatune/artifact_root/sambatune_gen/<span class="w"> </span>--port<span class="w"> </span><span class="m">8580</span>
+sambatune_ui<span class="w"> </span>--directory<span class="w"> </span>/home/wilsonb/tmp/uno_test/artifact_root/sambatune_gen<span class="w"> </span>--port<span class="w"> </span><span class="m">8580</span>
+username:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,<span class="w"> </span>password:<span class="w"> </span><span class="s2">&quot;4f7cac2c-351e-11ed-93a3-f7ef9c6e5d46&quot;</span>
+username:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,<span class="w"> </span>password:<span class="w"> </span><span class="s2">&quot;aaf1fc88-35c8-11ed-93a3-f7ef9c6e5d46&quot;</span>
+username:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,<span class="w"> </span>password:<span class="w"> </span><span class="s2">&quot;bf64e4f8-3831-11ed-93a3-f7ef9c6e5d46&quot;</span>
+username:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,<span class="w"> </span>password:<span class="w"> </span><span class="s2">&quot;8feca89e-384c-11ed-93a3-f7ef9c6e5d46&quot;</span>
+username:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,<span class="w"> </span>password:<span class="w"> </span><span class="s2">&quot;355222d6-3a88-11ed-93a3-f7ef9c6e5d46&quot;</span>
+</code></pre></div>
+<p>You will see something like:</p>
+<div class="highlight"><pre><span></span><code><span class="go">with the,</span>
+<span class="go">    username: &quot;admin&quot;, password: &quot;05c63938-2941-11ed-93a3-f7ef9c6e5d46&quot;</span>
+<span class="go">[2022-08-31 15:24:36 +0000] [1344959] [Info] Starting gunicorn 20.1.0</span>
+<span class="go">[2022-08-31 15:24:36 +0000] [1344959] [Info] Listening at: http://0.0.0.0:8576 (1344959)</span>
+<span class="go">[2022-08-31 15:24:36 +0000] [1344959] [Info] Using worker: sync</span>
+<span class="go">[2022-08-31 15:24:36 +0000] [1345092] [Info] Booting worker with pid: 1345092</span>
+<span class="go">[2022-08-31 15:24:36 +0000] [1345093] [Info] Booting worker with pid: 1345093</span>
+</code></pre></div>
+<p><strong>NOTE:</strong> Write down the username and password.</p>
+<p><strong>NOTE:</strong> The password only works with this one instance of sambatune_ui.  If you stop this instance of sambatune_ui and start another instance, it will have a new password.</p>
+<p><strong>NOTE:</strong> You will need to <strong><CTRL + C>&gt;</strong> or use the <strong>kill</strong> command to stop sambatune_ui when you have finished.
+Not doing so will tie up the port.
+You can <strong>ps -elf | grep the_port_you_used</strong> to find the running processes.
+If you are not comfortable doing this, please ask for help.</p>
+<h2 id="use-port-forwarding">Use Port-Forwarding</h2>
+<p>This describes the steps to set up port-forwarding for applications,
+like SambaTune UI, which runs on the SambaNova system and binds to one or more ports.
+This example uses 8576 and 18576 as port numbers. <strong>Using port numbers other than these may
+avoid collisions with other users.</strong></p>
+<h3 id="from-your-local-machine">From your local machine</h3>
+<p>This command sets up a port forward SambaNova login node to your local machine.</p>
+<p>Run</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:18576:localhost:18576<span class="w"> </span>ALCFUserID@sambanova.alcf.anl.gov
+...
+Password:<span class="w"> </span>&lt;<span class="w"> </span>MobilPass+<span class="w"> </span>code<span class="w"> </span>&gt;
+
+ssh<span class="w"> </span>ALCFUserID@sambanova.alcf.anl.gov
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+ssh<span class="w"> </span>-v<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:8580:localhost:8580<span class="w"> </span>wilsonb@sambanova.alcf.anl.gov
+ssh<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:8580:localhost:8580<span class="w"> </span>wilsonb@sambanova.alcf.anl.gov
+...
+Password:<span class="w"> </span>&lt;<span class="w"> </span>MobilPass+<span class="w"> </span>code<span class="w"> </span>&gt;
+
+ssh<span class="w"> </span>wilsonb@sambanova.alcf.anl.gov
+</code></pre></div>
+<p><em>replacing</em> <strong><em>ALCFUserID</em></strong> <em>with your ALCF User ID.</em></p>
+<h3 id="from-sambanovaalcfanlgov">From <strong>sambanova.alcf.anl.gov</strong></h3>
+<p>This command sets up a port forward from a SambaNova node to the sambanova login machine.</p>
+<p>Below are the commands specific to sm-01. You may replace <strong>sm-01</strong> with <strong>sm-02</strong> when using that system.</p>
+<p>Run</p>
+<p><strong>NOTE:  The full name is sm-01.ai.alcf.anl.gov and it may also be used.</strong></p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:18576:localhost:8576<span class="w"> </span>ALCFUserID@sm-01
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#TODOBRW</span>
+ssh<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:8580:localhost:8580<span class="w"> </span>wilsonb@sm-01
+</code></pre></div>
+<h3 id="browser-on-local-machine">Browser on Local Machine</h3>
+<p>Then, navigate in your browser to, in this example, <a href="http://localhost:18576">http://localhost:18576</a> on your local machine.</p>
+<p>Use the username and password from <strong>sm-01</strong> to log in.</p>
+<h2 id="ssh-notes">SSH Notes</h2>
+<p>Explanation of <strong>ssh</strong> command:</p>
+<div class="highlight"><pre><span></span><code>-N : no remote commands
+
+-f : put ssh in the background
+
+-L &lt;machine1&gt;:&lt;portA&gt;:&lt;machine2&gt;:&lt;portB&gt; :
+
+The full command line will forward &lt;machine1&gt;:&lt;portA&gt; (local scope) to &lt;machine2&gt;:&lt;portB&gt; (remote scope)
+</code></pre></div>
+<p>Adapted from:  <a href="https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server">How can I run Tensorboard on a remote server?</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!-- Footer -->
+<!-- --------------------------------------------------------------------- -->
+
+<footer>
+<div class="grid">
+
+	<div class="footer--attr">
+		<h2>
+			<span>ALCF</span>
+			A DOE Office of Science User Facility
+	</div>
+
+	<div class="footer--address">
+		<p>
+			Argonne National Laboratory<br>
+			9700 South Cass Avenue<br>
+			Building 240<br>
+			Argonne, IL 60439<br>
+			<a href="mailto:media@alcf.anl.gov">Contact</a>
+		</p>
+	</div>
+
+	<div class="footer--admin">
+		<a href="https://login.anl.gov/idp/profile/SAML2/Redirect/SSO?execution=e1s1">Internal Admin</a>
+	</div>
+
+	<div class="footer--copyright">
+		<p>
+			&copy; 2023 Argonne Leadership Computing Facility
+		</p>
+	</div>
+
+	<div class="footer--logos">
+		<img class="footer--logo-doe" src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/DOE_ko_300.png">
+		<img class="footer--logo-argonne" src="https://argonne-lcf.github.io/ai-testbed-userdocs//
+		images/ANL_ko_300.png">
+	</div>
+
+</div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "instant", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      
+        <script src="../../javascripts/alcf-extra.js"></script>
+      
+    
+  </body>
+</html>

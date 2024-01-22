@@ -1,0 +1,1505 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://argonne-lcf.github.io/ai-testbed-userdocs/cerebras/Miscellaneous/">
+      
+      
+        <link rel="prev" href="../Tunneling-and-forwarding-ports/">
+      
+      
+        <link rel="next" href="../../sambanova/System-Overview/">
+      
+      
+      <link rel="icon" href="../../images/alcf_favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+    
+    
+      
+        <title>Miscellaneous - AI Testbed User Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=proxima-nova:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"proxima-nova";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/alcf-extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<link rel="stylesheet" href="https://use.typekit.net/pxo0nvo.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="alcf" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#miscellaneous" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!-- Header -->
+<!-- --------------------------------------------------------------------- -->
+
+<!-- component: header -->
+
+
+	
+	<header class="md-header" data-md-component="header">
+
+
+	<div class="header--primary">
+
+
+	<div class="grid">
+
+		<div class="header__site-title">
+			<h1>Argonne Leadership Computing Facility</h1>
+		</div>
+
+
+
+
+
+		<nav class="header__nav-primary">
+			<ul>
+
+
+				<li id="nav-res" class="js-drop" data-menu="menu-res">
+					<a href="https://www.alcf.anl.gov/alcf-resources">ALCF Resources</a>
+
+					<div id="menu-res" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Leadership Computing Resources</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF provides users with access to supercomputing resources that are significantly more powerful than systems typically used for open scientific research.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Computing Resources</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/aurora">Aurora</a></li>
+										<li><a href="https://www.alcf.anl.gov/polaris">Polaris</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-ai-testbed">ALCF AI Testbed</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/evaluation-testbeds">Evaluation Testbeds</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/storage-and-networking">Storage and Networking</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Facility Expertise</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/alcf-resources/facility-expertise">Facility Expertise</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://alcf.anl.gov/aurora">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Aurora
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/aurora.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-sci" class="js-drop" data-menu="menu-sci">
+					<a href="https://www.alcf.anl.gov/science">Science</a>
+
+					<div id="menu-sci" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Computational Science</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF is accelerating scientific discoveries in many disciplines, ranging from chemistry and engineering to physics and materials science.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Output</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/science/projects">Projects</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/publications">Publications</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Allocation Programs</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/science/incite-allocation-program">INCITE Program</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/alcc-allocation-program">ALCC</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/directors-discretionary-allocation-program">Director’s Discretionary</a></li>
+										<li><a href="https://www.alcf.anl.gov/science/early-science-program">Early Science Program</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://www.alcf.anl.gov/science/projects/Engineering">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Engineering
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/engineering.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-cp" class="js-drop" data-menu="menu-cp">
+					<a href="#https://www.alcf.anl.gov/community-and-partnerships">Community and Partnerships</a>
+
+					<div id="menu-cp" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Growing the HPC Community</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF is committed to providing training and outreach opportunities that prepare researchers to efficiently use its leadership computing systems, while also cultivating a diverse and skilled HPC workforce for the future.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Partnerships</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/industry">Industry</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/partners">Partners</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Educational Outreach</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/women-in-stem">Women in STEM</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/student-outreach">Student Outreach</a></li>
+										<li><a href="https://www.alcf.anl.gov/community-and-partnerships/training-researchers">Training Researchers</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-abt" class="js-drop" data-menu="menu-abt">
+					<a href="https://www.alcf.anl.gov/about">About</a>
+
+					<div id="menu-abt" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Accelerating Science</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The Argonne Leadership Computing Facility enables breakthroughs in science and engineering by providing supercomputing resources and expertise to the research community.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Get to Know More</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/about/alcf-leadership-team">Leadership</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/people">People</a></li>
+										<li><a href="https://www.alcf.anl.gov/alcf-organizational-chart">Organizational Chart</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/user-advisory-council">User Advisory Council</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/history">History</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Visit</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/about/visiting-alcf">Visiting ALCF</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/tours">Tours</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-21">
+								<div class="dropdown__links-group">
+									<h3>Latest</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/news">News</a></li>
+										<li><a href="https://www.alcf.anl.gov/about/careers">Careers</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-22">
+								<div class="dropdown__links-group">
+									<h3>Press Kits</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/alcf-media-kit">ALCF Media Kit</a></li>
+										<li><a href="https://www.alcf.anl.gov/aurora-media-kit">Aurora Media Kit</a></li>
+										<li><a href="https://www.alcf.anl.gov/report-archive">Reports Archive</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+				<li id="nav-sup" class="js-drop" data-menu="menu-sup">
+					<a href="https://www.alcf.anl.gov/support-center">Support Center</a>
+
+					<div id="menu-sup" class="dropdown js-dropdown-hidden">
+						<nav>
+							<div class="dropdown__intro">
+								<div class="dropdown__intro-subhead">
+									<h2>Support Center</h2>
+								</div>
+								<div class="dropdown__intro-description">
+									<p>
+										The ALCF Support Center assists users with support requests related to their ALCF projects.
+									</p>
+								</div>
+							</div>
+
+							<div class="dropdown__links-1">
+								<div class="dropdown__links-group">
+									<h3>Current</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/machine-status">Machine Status</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/facility-updates">Facility Updates</a></li>
+										<li><a href="https://accounts.alcf.anl.gov/home">Accounts Website</a></li>
+									</ul>
+
+									<br>
+
+									<h3>Training</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/training-assets">Training Videos & Slides</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/training-overview">Training Overview</a></li>
+										<li><a href="https://www.alcf.anl.gov/events">Training and Events</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__links-2">
+								<div class="dropdown__links-group">
+									<h3>Guides</h3>
+									<ul>
+										<li><a href="https://www.alcf.anl.gov/support-center/get-started">Get Started</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/account-and-project-management">Account and Project Management</a></li>
+										<li><a href="https://docs.alcf.anl.gov/polaris/getting-started/">Polaris</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/ai-testbed">AI Testbed</a></li>
+										<li><a href="https://docs.alcf.anl.gov/aurora/getting-started-on-aurora/">Aurora</a></li>
+										<li><a href="https://www.alcf.anl.gov/support-center/facility-policies">Facility Policies</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown__featured">
+								<a href="https://www.alcf.anl.gov/support-center/get-started">
+									<div class="dropdown__featured-title">
+										<h3>
+											Featured: Get Started
+										</h3>
+									</div>
+
+									<div class="dropdown__featured-image">
+										<div class="img-wrapper">
+											<img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/getstarted.png" />
+										</div>
+									</div>
+								</a>
+							</div>
+
+						</nav>
+					</div>
+				</li>
+
+
+			</ul>
+		</nav>
+
+		<nav class="header__nav-secondary">
+			<!-- wrapper needed to hang right -->
+			<div class="header__nav-secondary--right"> 
+				<ul>
+					<li><a href="https://www.alcf.anl.gov/news"> News </a></li>
+					<li><a href="https://www.alcf.anl.gov/events"> Events </a></li>
+					<li><a href="https://www.alcf.anl.gov/about/people"> People </a></li>
+					<li><a href="https://www.alcf.anl.gov/about/careers"> Careers </a></li>
+				</ul>
+
+			
+			
+
+      <!-- Search interface -->
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+				  
+			
+
+			</div>
+		</nav>
+
+	</div>
+	</div> <!-- end header--primary -->
+
+
+	</header>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Mobile Header -->
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+
+
+<header class="md-header header--mobile" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="AI Testbed User Guide"
+      class="md-header__button md-logo"
+      aria-label="AI Testbed User Guide"
+      data-md-component="logo"
+    >
+      <!-- Logo -->
+<!-- --------------------------------------------------------------------- -->
+
+<a href="https://alcf.anl.gov/" title="ALCF User Guide" class="md-nav__button md-logo" aria-label="ALCF User Guide" data-md-component="logo">
+      
+  <img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/Argonne_wireframe_white_transparent.png" alt="logo">
+
+</a>
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Testbed User Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Miscellaneous
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+
+    <!-- Site language selector -->
+    
+
+
+    <!-- Repository information -->
+    
+      <div class="md-header__source">
+        <a href="https://github.com/argonne-lcf/ALCF-AI-Testbed" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    argonne-lcf/ALCF-AI-Testbed
+  </div>
+</a>
+      </div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Testbed User Guide" class="md-nav__button md-logo" aria-label="AI Testbed User Guide" data-md-component="logo">
+      <!-- Logo -->
+<!-- --------------------------------------------------------------------- -->
+
+<a href="https://alcf.anl.gov/" title="ALCF User Guide" class="md-nav__button md-logo" aria-label="ALCF User Guide" data-md-component="logo">
+      
+  <img src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/Argonne_wireframe_white_transparent.png" alt="logo">
+
+</a>
+    </a>
+    AI Testbed User Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/argonne-lcf/ALCF-AI-Testbed" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    argonne-lcf/ALCF-AI-Testbed
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cerebras
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cerebras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connect-to-a-CS-2-Node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Steps-to-run-a-model-or-program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run a Model/Program
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Job-Queuing-and-Submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Queuing and Submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Using-virtual-environments-to-customize-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customizing environments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Performance-Tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tunneling-and-forwarding-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling and Forwarding Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#porting-applications-to-the-cs-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Porting applications to the CS-2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-the-cs-2-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining the CS-2 version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copying-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-a-kaggle-competition-dataset-to-a-cs-2-node-using-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading a Kaggle competition dataset to a CS-2 node using the command line
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SambaNova
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SambaNova
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/System-Overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Logging-into-a-SambaNova-Node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Virtual-Environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Steps-to-Run-a-Model-or-Program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run a Model/Program
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Job-Queuing-and-Submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Queuing and Submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Example-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Example-Multi-Node-Programs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Multi-Node Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Steps-to-Run-BERT-Large-on-Sambanova-DataScale-SN10-8R/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Steps to Run BERT Large on Sambanova DataScale SN10-8R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Tunneling-and-forwarding-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tunneling and Forwarding Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Miscellaneous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sambanova/Documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/pub-policy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publication Policy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#porting-applications-to-the-cs-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Porting applications to the CS-2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-the-cs-2-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining the CS-2 version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copying-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-a-kaggle-competition-dataset-to-a-cs-2-node-using-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading a Kaggle competition dataset to a CS-2 node using the command line
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="miscellaneous">Miscellaneous</h1>
+<h2 id="porting-applications-to-the-cs-2">Porting applications to the CS-2</h2>
+<p>Cerebras’s mature Python support is built around <a href="https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/example-walk-through-cs-estimator.html?highlight=estimator">Cerebras Estimator</a>, which inherits from <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator">TensorFlow Estimator</a>.<br>
+A Keras model can be converted to TF Estimator, and hence to a Cerebras Estimator. See <a href="https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator">https://www.tensorflow.org/tutorials/estimator/keras_model_to_estimator</a> for more information on conversion of Keras models.<br></p>
+<p>Cerebras has recently introduced PyTorch support. The PyTorch support is documented at <a href="https://docs.cerebras.net/en/latest/">Cerebras Software Documentation</a> in the section DEVELOP WITH PYTORCH. </p>
+<p>Cerebras has guides for porting TensorFlow and PyTorch models:<br>
+<a href="https://docs.cerebras.net/en/latest/tensorflow-docs/porting-tf-to-cs/index.html">Port TensorFlow to Cerebras</a></br>
+<a href="https://docs.cerebras.net/en/latest/pytorch-docs/adapting-pytorch-to-cs.html">Porting PyTorch Model to CS</a><br>
+This is Cerebras's list of the TensorFlow layers that they support (for the current version): <a href="https://docs.cerebras.net/en/latest/tensorflow-docs/tf-layers/index.html">Supported TensorFlow Layers</a><br>
+This is Cerebras's list of the PyTorch operations supported (for the current version): <a href="https://docs.cerebras.net/en/latest/pytorch-docs/pytorch-ops.html">Supported PyTorch Ops</a></p>
+<p>When porting, it is often helpful to study a related example in the Cerebras modelzoo.<br>
+A copy of the modelzoo for the install release is at <code>/software/cerebras/model_zoo/modelzoo/</code><br>
+Both the <code>README.md</code> files and source code in the modelzoo can be quite helpful.</p>
+<h2 id="determining-the-cs-2-version">Determining the CS-2 version</h2>
+<!---
+[TODO should this API/auth string be made public? Alternative supplied that inspects the singularity container.]
+Note: replace the IP address with the CS_IP for the CS-2 cluster being used.<br>
+[TODO could use CS_IP environment variable if set.]<br>
+[balin: I was not able to make the `curl` command below run, even removing the `<br>` characters. Bill Arnold - checked with cerebras and this isn't working with the cs2-02 (does on cs2-01) that we're going live with, so commenting out.<br>
+--->
+<!---
+<div class="highlight"><pre><span></span><code><span class="go">...$ # Query the software level in the singularity image</span>
+<span class="go">...$ singularity sif dump 1 /software/cerebras/cs2-02/container/cbcore_latest.sif | grep &quot;from&quot;</span>
+<span class="go">from: cbcore:1.1.1-202203171919-5-6e2dbf07</span>
+<span class="go">...# or singularity sif dump 1 /software/cerebras/cs2-01/container/cbcore_latest.sif | grep &quot;from&quot;</span>
+<span class="go">...$</span>
+</code></pre></div>
+--->
+
+<p>These queries will only work on cs2-01 due to networking constraints:
+<div class="highlight"><pre><span></span><code>...$ # Query the firmware level for cs2-01
+...$ curl -k -X GET &#39;https://192.168.120.30/redfish/v1/Managers/manager&#39; --header &#39;Authorization: Basic YWRtaW46YWRtaW4=&#39; 2&gt; /dev/null  | python -m json.tool | grep FirmwareVersion
+&quot;FirmwareVersion&quot;: &quot;1.1.1-202203171919-5-879ff4ef&quot;,
+...$
+
+...$ # Query the firmware level for cs2-02 (from cs2-01)
+...$ curl -k -X GET &#39;https://192.168.120.50/redfish/v1/Managers/manager&#39; --header &#39;Authorization: Basic YWRtaW46YWRtaW4=&#39; 2&gt; /dev/null  | python -m json.tool | grep FirmwareVersion
+&quot;FirmwareVersion&quot;: &quot;1.1.1-202203171919-5-879ff4ef&quot;,
+...$
+</code></pre></div></p>
+<!---
+## Viewing the Cerebras V 1.3 documentation
+The Cerebras V 1.3 documentation is stored on the Cerebras systems and can be served to be viewed with a local browser by running the following in a command prompt on your workstation/laptop.<br>
+*Change the <strong>ALCFUserID</strong> to your id.*<br>
+If there is a port conflict, use a different port number in either the second and third port number instance, or all three of them.
+<div class="highlight"><pre><span></span><code><span class="go">ssh -t -L localhost:8089:localhost:8089 ALCFUserID@cerebras.alcf.anl.gov  &quot;cd /software/cerebras/docs/V1.3/;python3 -m http.server 8089&quot;</span>
+</code></pre></div>
+To view the documentation, copy the url into your browser as indicated in the output of the above command (e.g., `http://0.0.0.0:8089/`).
+
+This v 1.3 documentation tree can also be copied to your laptop/workstation and the files can be viewed locally with a browser. The Cerebras system has a tar file at /software/cerebras/docs/Cerebras_ML_SW_Docs_V1.3.tar
+--->
+
+<h2 id="copying-files">Copying files</h2>
+<p>To copy a file to your CS-2 home dir (same on both CS2 clusters), replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
+<div class="highlight"><pre><span></span><code><span class="go">scp -o &quot;ProxyJump ALCFUserID@cerebras.alcf.anl.gov&quot; filename ALCFUserID@cs2-01-master:~/</span>
+</code></pre></div></p>
+<p>To copy a file from your CS-2 home dir (same on both CS2 clusters) to the current local directory, replacing <strong>both instances</strong> of ALCFUserID with your ALCF user id:
+<div class="highlight"><pre><span></span><code><span class="go">scp -o &quot;ProxyJump ALCFUserID@cerebras.alcf.anl.gov&quot; ALCFUserID@cs2-01-master:~/filename .</span>
+</code></pre></div></p>
+<h2 id="downloading-a-kaggle-competition-dataset-to-a-cs-2-node-using-the-command-line">Downloading a Kaggle competition dataset to a CS-2 node using the command line</h2>
+<p>These notes may be helpful for downloading some Kaggle datasets</p>
+<p>Inside a singularity shell (e.g. <code>singularity shell -B /opt:/opt /software/cerebras/cs2-02/container/cbcore_latest.sif</code> )</p>
+<div class="highlight"><pre><span></span><code><span class="go">virtualenv env</span>
+<span class="go">source env/bin/activate</span>
+<span class="go">pip3 install kaggle</span>
+</code></pre></div>
+<p>Go to www.kaggle.com in a browser, log in (create account if first time). In user(icon upper right) -&gt; Account tab, there is a button (scroll down) to "Create New API Token". Click it. It will open a download window for a one line json. </p>
+<p>put the json in <code>~/.kaggle/kaggle.json</code></br>
+e.g. scp the downloaded file, or single quote the json text and echo it as shown</br>
+<div class="highlight"><pre><span></span><code><span class="go">mkdir ~/.kaggle</span>
+<span class="go">echo &#39;{&quot;username&quot;:&quot;REDACTED&quot;,&quot;key&quot;:&quot;REDACTED&quot;}&#39; &gt; ~/.kaggle/kaggle.json</span>
+<span class="go">chmod 600 ~/.kaggle/kaggle.json</span>
+</code></pre></div></p>
+<p>On www.kaggle.com, the kaggle api command for download of a dataset is displayed in the data tab. It can be selected and copied to the local clipboard, or copied with the "Copy API command to clipboard" icon.<br>
+Before attempting a download, if there is a button on the kaggle download page to agree to any terms and conditions, e.g. agreement to the competition rules, click on it (after reading them); downloads with your access token will fail with a 403 error until you agree to those T&amp;Cs.</p>
+<p>Paste the API command to the command line inside the singularity shell with the venv activated. E.g.<br>
+<div class="highlight"><pre><span></span><code>kaggle<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>-d<span class="w"> </span>mhskjelvareid/dagm-2007-competition-dataset-optical-inspection
+</code></pre></div></p>
+<p>It will download as a zip file. </p>
+<p>Exit the singularity container (with <code>exit</code>), then unzip the dataset zip file.<br>
+<code>unzip</code> is available on the CS2 worker nodes.</p>
+<p>Note: the kaggle download shown above included two identical copies of the dataset; one copy was in a subdirectory.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!-- Footer -->
+<!-- --------------------------------------------------------------------- -->
+
+<footer>
+<div class="grid">
+
+	<div class="footer--attr">
+		<h2>
+			<span>ALCF</span>
+			A DOE Office of Science User Facility
+	</div>
+
+	<div class="footer--address">
+		<p>
+			Argonne National Laboratory<br>
+			9700 South Cass Avenue<br>
+			Building 240<br>
+			Argonne, IL 60439<br>
+			<a href="mailto:media@alcf.anl.gov">Contact</a>
+		</p>
+	</div>
+
+	<div class="footer--admin">
+		<a href="https://login.anl.gov/idp/profile/SAML2/Redirect/SSO?execution=e1s1">Internal Admin</a>
+	</div>
+
+	<div class="footer--copyright">
+		<p>
+			&copy; 2023 Argonne Leadership Computing Facility
+		</p>
+	</div>
+
+	<div class="footer--logos">
+		<img class="footer--logo-doe" src="https://argonne-lcf.github.io/ai-testbed-userdocs//images/DOE_ko_300.png">
+		<img class="footer--logo-argonne" src="https://argonne-lcf.github.io/ai-testbed-userdocs//
+		images/ANL_ko_300.png">
+	</div>
+
+</div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs", "instant", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      
+        <script src="../../javascripts/alcf-extra.js"></script>
+      
+    
+  </body>
+</html>
